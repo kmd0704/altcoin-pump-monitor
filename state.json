@@ -1,4 +1,23 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "orca": "2026-04-26T13:06:43.100014+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "orca",
+      "symbol": "ORCA",
+      "name": "Orca",
+      "rank": 280,
+      "ch24_at_pump": 76.88033,
+      "ratio_30d": 1.873140241630416,
+      "turnover": 0.9835852451181399,
+      "price_at_detection": 1.71,
+      "pump_time": "2026-04-26T03:00:58.566000+00:00",
+      "entry_time": "2026-04-26T06:00:58.566000+00:00",
+      "exit_time": "2026-05-04T06:00:58.566000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
+    }
+  ]
 }
