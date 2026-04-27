@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "orca": "2026-04-26T13:06:43.100014+00:00"
+    "orca": "2026-04-26T13:06:43.100014+00:00",
+    "nockchain": "2026-04-27T05:51:28.086926+00:00"
   },
   "scheduled": [
     {
@@ -15,6 +16,22 @@
       "pump_time": "2026-04-26T03:00:58.566000+00:00",
       "entry_time": "2026-04-26T06:00:58.566000+00:00",
       "exit_time": "2026-05-04T06:00:58.566000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
+    },
+    {
+      "coin_id": "nockchain",
+      "symbol": "NOCK",
+      "name": "Nockchain",
+      "rank": 580,
+      "ch24_at_pump": 57.56453,
+      "ratio_30d": 1.8890863314174793,
+      "turnover": 0.04235544817724891,
+      "price_at_detection": 0.01920078,
+      "pump_time": "2026-04-26T22:01:19.805000+00:00",
+      "entry_time": "2026-04-27T01:01:19.805000+00:00",
+      "exit_time": "2026-05-05T01:01:19.805000+00:00",
       "detection_notified": true,
       "entry_notified": false,
       "exit_notified": false
