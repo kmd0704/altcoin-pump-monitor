@@ -1,7 +1,8 @@
 {
   "alerted": {
     "orca": "2026-04-26T13:06:43.100014+00:00",
-    "nockchain": "2026-04-27T05:51:28.086926+00:00"
+    "nockchain": "2026-04-27T05:51:28.086926+00:00",
+    "polyhedra-network": "2026-04-28T16:10:11.963521+00:00"
   },
   "scheduled": [
     {
@@ -32,6 +33,22 @@
       "pump_time": "2026-04-26T22:01:19.805000+00:00",
       "entry_time": "2026-04-27T01:01:19.805000+00:00",
       "exit_time": "2026-05-05T01:01:19.805000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
+    },
+    {
+      "coin_id": "polyhedra-network",
+      "symbol": "ZKJ",
+      "name": "Polyhedra Network",
+      "rank": 924,
+      "ch24_at_pump": 163.83396,
+      "ratio_30d": 1.5646928762905001,
+      "turnover": 0.9964000614694516,
+      "price_at_detection": 0.03153666,
+      "pump_time": "2026-04-28T06:01:02.297000+00:00",
+      "entry_time": "2026-04-28T09:01:02.297000+00:00",
+      "exit_time": "2026-05-06T09:01:02.297000+00:00",
       "detection_notified": true,
       "entry_notified": false,
       "exit_notified": false
