@@ -29,6 +29,7 @@ jobs:
           CG_PLAN: ${{ vars.CG_PLAN || 'demo' }}
           ACCOUNT_BALANCE: ${{ vars.ACCOUNT_BALANCE || '100000' }}
           POSITION_PCT: ${{ vars.POSITION_PCT || '0.20' }}
+          TEST_DISCORD: ${{ vars.TEST_DISCORD || '' }}
         run: |
           python monitor.py
 
