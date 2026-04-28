@@ -247,7 +247,10 @@ def discord_notify(content, embeds=None):
     if embeds:
         payload["embeds"] = embeds
     body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+    req = urllib.request.Request(url, data=body, headers={
+        "Content-Type": "application/json",
+        "User-Agent": "DiscordBot (https://github.com/kmd0704/altcoin-pump-monitor, 3.6)"
+    })
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
             log(f"DEBUG: HTTP {r.status} - 通知成功")
