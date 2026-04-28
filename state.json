@@ -1,24 +1,4 @@
 {
-     "alerted": {},
-     "scheduled": []
-   }
-    {
-      "coin_id": "eitherway",
-      "symbol": "EITHER",
-      "name": "Eitherway",
-      "rank": 720,
-      "ch24_at_pump": 53.55283,
-      "ratio_30d": 1.983655010361001,
-      "turnover": 0.24913591025917411,
-      "price_at_detection": 0.26498,
-      "pump_time": "2026-04-28T17:00:16.134000+00:00",
-      "entry_time": "2026-04-28T20:00:16.134000+00:00",
-      "exit_time": "2026-05-06T20:00:16.134000+00:00",
-      "detection_notified": true,
-      "entry_notified": true,
-      "exit_notified": false,
-      "peak_price": 0.27276652615396463,
-      "entry_price": 0.2650280833663524
-    }
-  ]
+  "alerted": {},
+  "scheduled": []
 }
