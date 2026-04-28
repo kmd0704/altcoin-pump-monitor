@@ -1,4 +1,40 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "eitherway": "2026-04-28T21:04:51.078152+00:00",
+    "polyhedra-network": "2026-04-28T21:04:53.944365+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "eitherway",
+      "symbol": "EITHER",
+      "name": "Eitherway",
+      "rank": 733,
+      "ch24_at_pump": 56.76549,
+      "ratio_30d": 1.954476228633284,
+      "turnover": 0.24746040637315433,
+      "price_at_detection": 0.260299,
+      "pump_time": "2026-04-28T17:00:16.134000+00:00",
+      "entry_time": "2026-04-28T20:00:16.134000+00:00",
+      "exit_time": "2026-05-06T20:00:16.134000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
+    },
+    {
+      "coin_id": "polyhedra-network",
+      "symbol": "ZKJ",
+      "name": "Polyhedra Network",
+      "rank": 967,
+      "ch24_at_pump": 130.82023,
+      "ratio_30d": 1.5856792437344205,
+      "turnover": 1.2034836152680488,
+      "price_at_detection": 0.0318392,
+      "pump_time": "2026-04-28T06:01:02.297000+00:00",
+      "entry_time": "2026-04-28T09:01:02.297000+00:00",
+      "exit_time": "2026-05-06T09:01:02.297000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
+    }
+  ]
 }
