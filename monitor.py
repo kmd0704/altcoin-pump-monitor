@@ -8,12 +8,10 @@ GitHub Actions で 1時間ごとに実行
     - 急騰時刻 T_pump を特定(時間足から逆算)
     - 推奨エントリー時刻 T_entry = T_pump + 3h
     - state.json に schedule 登録
-    - Discord に「検知通知」(エントリー時刻明示)
 
   Phase 2 スケジュール処理
     - 既存 schedule を巡回
-    - エントリー時刻が間近 (now 前後 ±60分) → エントリー通知 + 執行レシピ
-    - 決済時刻が間近 (T_entry + 192h ±60分) → 決済通知
+    - 検知通知/エントリー通知/決済通知 を時刻に応じて送信
 
 環境変数(GitHub Secrets / Variables):
   CG_API_KEY:        CoinGecko API キー
@@ -21,6 +19,7 @@ GitHub Actions で 1時間ごとに実行
   CG_PLAN:           "demo" or "pro"(デフォルト: demo)
   ACCOUNT_BALANCE:   口座残高(円、デフォルト: 100000)
   POSITION_PCT:      ポジションサイズ(0-1、デフォルト: 0.20)
+  TEST_DISCORD:      "1" なら接続テストのみ実行
 """
 import os
 import sys
@@ -29,6 +28,7 @@ import time
 import re
 import urllib.request
 import urllib.parse
+import urllib.error
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -53,12 +53,12 @@ MIN_TURNOVER = 0.01
 WAIT_HOURS = 3
 HOLD_HOURS = 192
 STOP_MULT = 1.60
-TP_PCT = 0.50  # v3.6
+TP_PCT = 0.50
 DEDUP_HOURS = 48
 
 # 通知タイミング
-ENTRY_WINDOW_MIN = 60  # エントリー時刻の±この分以内なら通知
-EXIT_WINDOW_MIN = 60   # 決済時刻の±この分以内なら通知
+ENTRY_WINDOW_MIN = 60
+EXIT_WINDOW_MIN = 60
 
 STABLE_SYMBOLS = {
     'usdt','usdc','dai','busd','tusd','usde','usdp','usdd','gusd','fdusd',
@@ -138,54 +138,29 @@ def fetch_top_coins(top_n=1000):
 # ============= フィルタ =============
 def basic_filter(coin):
     ch24 = coin.get("price_change_percentage_24h")
-    if ch24 is None: return False, "ch24 None"
+    if ch24 is None:
+        return False, "ch24 None"
     sym = (coin.get("symbol") or "").lower()
     name = (coin.get("name") or "").lower()
-    if sym in STABLE_SYMBOLS: return False, "stable symbol"
-    if STABLE_NAME_RE.search(name): return False, "stable name"
+    if sym in STABLE_SYMBOLS:
+        return False, "stable symbol"
+    if STABLE_NAME_RE.search(name):
+        return False, "stable name"
     rank = coin.get("market_cap_rank")
-    if rank is None: return False, "no rank"
-    if rank < MIN_RANK or rank > MAX_RANK: return False, f"rank {rank}"
-    if ch24 / 100 < PUMP_THRESHOLD: return False, f"ch24 {ch24:.1f}%"
-    if ch24 / 100 > MAX_CH24: return False, f"ch24 {ch24:.1f}% > max"
+    if rank is None:
+        return False, "no rank"
+    if rank < MIN_RANK or rank > MAX_RANK:
+        return False, f"rank {rank}"
+    if ch24 / 100 < PUMP_THRESHOLD:
+        return False, f"ch24 {ch24:.1f}%"
+    if ch24 / 100 > MAX_CH24:
+        return False, f"ch24 {ch24:.1f}% > max"
     return True, "OK"
-
-
-def find_pump_start_time(coin_id, market_chart_2d):
-    """過去48時間の時間足から、24h_change が +50% を初めて超えた時刻を特定"""
-    prices = market_chart_2d.get("prices") or []
-    if len(prices) < 30:
-        return None
-    # 直近の hour 単位で 24h 比較
-    # prices[i] = [ms_timestamp, price]
-    n = len(prices)
-    cross_ts = None
-    # 最新から遡って、各時点の24h前比を計算
-    for i in range(n - 1, 23, -1):
-        cur = prices[i][1]
-        ago = prices[i - 24][1] if i - 24 >= 0 else None
-        if ago is None or ago <= 0: continue
-        ch = cur / ago - 1
-        # 直前 hour
-        if i - 1 < 24: continue
-        prev_cur = prices[i - 1][1]
-        prev_ago = prices[i - 1 - 24][1]
-        if prev_ago <= 0: continue
-        prev_ch = prev_cur / prev_ago - 1
-        # この hour で 50% 跨いだ?
-        if prev_ch <= 0.50 and ch > 0.50:
-            cross_ts = prices[i][0]
-            break
-    # 見つからない場合、最新時点を採用
-    if cross_ts is None:
-        cross_ts = prices[-1][0]
-    return datetime.fromtimestamp(cross_ts / 1000, tz=timezone.utc)
 
 
 def deep_check(coin):
     """30日前比 + turnover + 急騰開始時刻"""
     try:
-        # 30日 + 7日 turnover 用
         data30 = cg_get(f"/coins/{urllib.parse.quote(coin['id'])}/market_chart", {
             "vs_currency": "usd", "days": 31
         })
@@ -210,22 +185,21 @@ def deep_check(coin):
         if turnover < MIN_TURNOVER:
             return False, f"turnover {turnover*100:.3f}%", {"ratio_30d": ratio_30d, "turnover": turnover}
 
-        # 急騰開始時刻を最新48hの中から特定
-        # data30 の直近48hから推定
-        recent_48 = prices[-48:] if len(prices) >= 48 else prices
-        # data30 の hourly 直近 48 個を用いて pump_start を計算
+        # 急騰開始時刻を特定
         pump_start = None
         for i in range(len(prices) - 1, 23, -1):
             cur = prices[i][1]
             ago = prices[i - 24][1]
-            if ago <= 0: continue
+            if ago <= 0:
+                continue
             ch = cur / ago - 1
             if i - 1 < 24:
                 if ch > 0.50:
                     pump_start = datetime.fromtimestamp(prices[i][0]/1000, tz=timezone.utc)
                 continue
             prev_ago = prices[i - 1 - 24][1]
-            if prev_ago <= 0: continue
+            if prev_ago <= 0:
+                continue
             prev_ch = prices[i - 1][1] / prev_ago - 1
             if prev_ch <= 0.50 and ch > 0.50:
                 pump_start = datetime.fromtimestamp(prices[i][0]/1000, tz=timezone.utc)
@@ -244,13 +218,12 @@ def fetch_peak_and_price(coin_id, pump_start, entry_time):
     """pump_start ~ entry_time の最高値と現在価格を取得"""
     try:
         data = cg_get(f"/coins/{urllib.parse.quote(coin_id)}/market_chart", {
-            "vs_currency": "usd", "days": 5  # 直近5日 hourly
+            "vs_currency": "usd", "days": 5
         })
         prices = data.get("prices") or []
         if not prices:
             return None, None
         cur_price = prices[-1][1]
-        # pump_start から entry_time までの最高値
         ps_ms = pump_start.timestamp() * 1000
         et_ms = entry_time.timestamp() * 1000
         in_window = [p[1] for p in prices if ps_ms <= p[0] <= et_ms]
@@ -268,16 +241,26 @@ def discord_notify(content, embeds=None):
     if not DISCORD_WEBHOOK:
         log("WARN: DISCORD_WEBHOOK 未設定、通知スキップ")
         return False
+    url = DISCORD_WEBHOOK.strip()
+    log(f"DEBUG: Webhook URL長さ={len(url)}文字, 先頭={url[:45]}, 末尾={url[-15:]}")
     payload = {"content": content}
     if embeds:
         payload["embeds"] = embeds
     body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(DISCORD_WEBHOOK, data=body, headers={"Content-Type": "application/json"})
+    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
+            log(f"DEBUG: HTTP {r.status} - 通知成功")
             return r.status in (200, 204)
+    except urllib.error.HTTPError as e:
+        try:
+            err_body = e.read().decode("utf-8", errors="replace")[:200]
+        except Exception:
+            err_body = ""
+        log(f"Discord通知失敗: HTTP {e.code} {e.reason} | body={err_body}")
+        return False
     except Exception as e:
-        log(f"Discord通知失敗: {e}")
+        log(f"Discord通知失敗: {type(e).__name__}: {e}")
         return False
 
 
@@ -290,7 +273,7 @@ def fmt_jst(dt):
 
 
 def build_detection_embed(coin, deep_info, schedule):
-    """検知時の通知(様子見)"""
+    """検知時の通知"""
     sym = coin["symbol"].upper()
     cid = coin["id"]
     name = coin.get("name", "")
@@ -333,9 +316,8 @@ def build_entry_embed(schedule, peak, cur_price):
     entry_time = from_iso(schedule["entry_time"])
     exit_time = from_iso(schedule["exit_time"])
     delta_min = (now_utc() - entry_time).total_seconds() / 60
-
     position_yen = ACCOUNT_BALANCE * POSITION_PCT
-    position_usdt = position_yen / 150  # 1USD ≒ 150円(概算)
+    position_usdt = position_yen / 150
     stop_price = peak * STOP_MULT
     tp_price = cur_price * (1 - TP_PCT)
     stop_dist = (stop_price / cur_price - 1) * 100
@@ -414,7 +396,8 @@ def build_exit_embed(schedule):
 # ============= 状態管理 =============
 def is_alerted_recently(coin_id, alerted):
     last = alerted.get(coin_id)
-    if not last: return False
+    if not last:
+        return False
     return (now_utc() - from_iso(last)) < timedelta(hours=DEDUP_HOURS)
 
 
@@ -424,7 +407,6 @@ def cleanup_state(state):
         cid: ts for cid, ts in (state.get("alerted") or {}).items()
         if from_iso(ts) > cutoff
     }
-    # スケジュールは決済+24h以上経過したら削除
     cutoff_sched = now_utc() - timedelta(hours=24)
     state["scheduled"] = [
         s for s in (state.get("scheduled") or [])
@@ -492,20 +474,16 @@ def schedule_phase(state):
         entry_t = from_iso(s["entry_time"])
         exit_t = from_iso(s["exit_time"])
 
-        # 検知通知(初回のみ、即座に)
+        # 検知通知
         if not s.get("detection_notified"):
             mins_until_entry = (entry_t - now).total_seconds() / 60
-            # 0〜30分後なら entry通知に任せる、それ以外(将来30min超 or 過去)は検知通知
             if 0 <= mins_until_entry <= 30:
-                # entry が近いのでスキップして entry通知へ
                 s["detection_notified"] = True
             else:
-                # 通常の検知通知(将来30min超 or 過去)
                 fake_coin = {"symbol": sym, "name": s["name"], "market_cap_rank": s["rank"],
                              "price_change_percentage_24h": s["ch24_at_pump"], "id": cid}
                 deep = {"ratio_30d": s["ratio_30d"], "turnover": s["turnover"]}
                 embed = build_detection_embed(fake_coin, deep, s)
-                # 過去なら警告付き
                 if mins_until_entry < 0:
                     msg = f"⚠ **検知 [{sym}]**(エントリー時刻 {abs(int(mins_until_entry))}分前に通過済)"
                 else:
@@ -515,11 +493,10 @@ def schedule_phase(state):
                 notified_count["detect"] += 1
                 log(f"  📨 detection notify: {sym} (mins_until={int(mins_until_entry)})")
 
-        # エントリー通知:エントリー時刻 ±60分
+        # エントリー通知
         if not s.get("entry_notified"):
             mins_until = abs((entry_t - now).total_seconds() / 60)
             if mins_until <= ENTRY_WINDOW_MIN:
-                # peak と現在価格を取得
                 pump_start = from_iso(s["pump_time"])
                 peak, cur = fetch_peak_and_price(cid, pump_start, now)
                 if peak is None or cur is None:
@@ -534,7 +511,7 @@ def schedule_phase(state):
                 log(f"  ⚡ entry notify: {sym} peak=${peak:.8f} entry=${cur:.8f}")
                 time.sleep(INTERVAL_SEC)
 
-        # 決済通知:決済時刻 ±60分
+        # 決済通知
         if not s.get("exit_notified") and s.get("entry_notified"):
             mins_until = abs((exit_t - now).total_seconds() / 60)
             if mins_until <= EXIT_WINDOW_MIN:
@@ -550,7 +527,8 @@ def schedule_phase(state):
 def main():
     log(f"=== Altcoin Pump Monitor v3.6(スマート通知版)起動 / プラン={CG_PLAN} ===")
     if not CG_API_KEY:
-        log("ERROR: CG_API_KEY 未設定"); sys.exit(1)
+        log("ERROR: CG_API_KEY 未設定")
+        sys.exit(1)
     if not DISCORD_WEBHOOK:
         log("WARN: DISCORD_WEBHOOK 未設定(通知なし)")
 
@@ -560,11 +538,11 @@ def main():
         ok = discord_notify(
             "🧪 **Discord 接続テスト**\n"
             f"GitHub Actions から正常に到達しました。プラン={CG_PLAN}\n"
-            f"このメッセージが見えたら配線OK!\n"
-            f"確認後 GitHub Variable の TEST_DISCORD を削除してください。"
+            "このメッセージが見えたら配線OK!\n"
+            "確認後 GitHub Variable の TEST_DISCORD を削除してください。"
         )
         log(f"テスト結果: {'✅ 成功' if ok else '❌ 失敗'}")
-        return  # テストモードでは通常処理しない
+        return
 
     state = load_state()
     state = cleanup_state(state)
