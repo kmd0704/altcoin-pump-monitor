@@ -494,22 +494,26 @@ def schedule_phase(state):
 
         # 検知通知(初回のみ、即座に)
         if not s.get("detection_notified"):
-            # まだ検知通知されていない、つまり今登録された
-            # ただし entry_time が近すぎる(< 30分)場合は detection スキップしてentryへ
             mins_until_entry = (entry_t - now).total_seconds() / 60
-            if mins_until_entry > 30:
-                # 通常の検知通知
+            # 0〜30分後なら entry通知に任せる、それ以外(将来30min超 or 過去)は検知通知
+            if 0 <= mins_until_entry <= 30:
+                # entry が近いのでスキップして entry通知へ
+                s["detection_notified"] = True
+            else:
+                # 通常の検知通知(将来30min超 or 過去)
                 fake_coin = {"symbol": sym, "name": s["name"], "market_cap_rank": s["rank"],
                              "price_change_percentage_24h": s["ch24_at_pump"], "id": cid}
                 deep = {"ratio_30d": s["ratio_30d"], "turnover": s["turnover"]}
                 embed = build_detection_embed(fake_coin, deep, s)
-                discord_notify(f"🟡 **検知 [{sym}]** エントリー予定 {fmt_jst(entry_t)}", embeds=[embed])
+                # 過去なら警告付き
+                if mins_until_entry < 0:
+                    msg = f"⚠ **検知 [{sym}]**(エントリー時刻 {abs(int(mins_until_entry))}分前に通過済)"
+                else:
+                    msg = f"🟡 **検知 [{sym}]** エントリー予定 {fmt_jst(entry_t)}"
+                discord_notify(msg, embeds=[embed])
                 s["detection_notified"] = True
                 notified_count["detect"] += 1
-                log(f"  📨 detection notify: {sym}")
-            else:
-                # entry が近いのでスキップして entry通知へ
-                s["detection_notified"] = True
+                log(f"  📨 detection notify: {sym} (mins_until={int(mins_until_entry)})")
 
         # エントリー通知:エントリー時刻 ±60分
         if not s.get("entry_notified"):
@@ -549,6 +553,18 @@ def main():
         log("ERROR: CG_API_KEY 未設定"); sys.exit(1)
     if not DISCORD_WEBHOOK:
         log("WARN: DISCORD_WEBHOOK 未設定(通知なし)")
+
+    # Discord 接続テスト(TEST_DISCORD=1 を Variable に設定すると実行)
+    if os.environ.get("TEST_DISCORD", "").strip() == "1":
+        log("🧪 TEST_DISCORD モード:接続テスト送信中...")
+        ok = discord_notify(
+            "🧪 **Discord 接続テスト**\n"
+            f"GitHub Actions から正常に到達しました。プラン={CG_PLAN}\n"
+            f"このメッセージが見えたら配線OK!\n"
+            f"確認後 GitHub Variable の TEST_DISCORD を削除してください。"
+        )
+        log(f"テスト結果: {'✅ 成功' if ok else '❌ 失敗'}")
+        return  # テストモードでは通常処理しない
 
     state = load_state()
     state = cleanup_state(state)
