@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "polyhedra-network": "2026-04-28T22:55:12.506780+00:00"
+    "polyhedra-network": "2026-04-28T22:55:12.506780+00:00",
+    "fluent-network": "2026-04-29T02:39:22.881672+00:00"
   },
   "scheduled": [
     {
@@ -15,6 +16,22 @@
       "pump_time": "2026-04-28T06:01:02.297000+00:00",
       "entry_time": "2026-04-28T09:01:02.297000+00:00",
       "exit_time": "2026-05-06T09:01:02.297000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
+    },
+    {
+      "coin_id": "fluent-network",
+      "symbol": "BLEND",
+      "name": "Fluent",
+      "rank": 550,
+      "ch24_at_pump": 143.22655,
+      "ratio_30d": 1.769870323885375,
+      "turnover": 0.7038724766847335,
+      "price_at_detection": 0.218343,
+      "pump_time": "2026-04-29T02:39:22+00:00",
+      "entry_time": "2026-04-29T05:39:22+00:00",
+      "exit_time": "2026-05-07T05:39:22+00:00",
       "detection_notified": true,
       "entry_notified": false,
       "exit_notified": false
