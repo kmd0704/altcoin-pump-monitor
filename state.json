@@ -1,7 +1,8 @@
 {
   "alerted": {
     "polyhedra-network": "2026-04-28T22:55:12.506780+00:00",
-    "fluent-network": "2026-04-29T02:39:22.881672+00:00"
+    "fluent-network": "2026-04-29T02:39:22.881672+00:00",
+    "naoris": "2026-04-29T15:10:57.781386+00:00"
   },
   "scheduled": [
     {
@@ -37,6 +38,22 @@
       "exit_notified": false,
       "peak_price": 0.2397668531179885,
       "entry_price": 0.19532644597099832
+    },
+    {
+      "coin_id": "naoris",
+      "symbol": "NAORIS",
+      "name": "Naoris Protocol",
+      "rank": 388,
+      "ch24_at_pump": 50.64421,
+      "ratio_30d": 1.855477852126661,
+      "turnover": 0.0723708024063177,
+      "price_at_detection": 0.115911,
+      "pump_time": "2026-04-29T15:00:25.568000+00:00",
+      "entry_time": "2026-04-29T18:00:25.568000+00:00",
+      "exit_time": "2026-05-07T18:00:25.568000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
