@@ -2,7 +2,8 @@
   "alerted": {
     "polyhedra-network": "2026-04-28T22:55:12.506780+00:00",
     "fluent-network": "2026-04-29T02:39:22.881672+00:00",
-    "naoris": "2026-04-29T15:10:57.781386+00:00"
+    "naoris": "2026-04-29T15:10:57.781386+00:00",
+    "goldfinch": "2026-04-30T15:07:12.369100+00:00"
   },
   "scheduled": [
     {
@@ -56,6 +57,22 @@
       "exit_notified": false,
       "peak_price": 0.11555700299645254,
       "entry_price": 0.1100795496596737
+    },
+    {
+      "coin_id": "goldfinch",
+      "symbol": "GFI",
+      "name": "Goldfinch",
+      "rank": 919,
+      "ch24_at_pump": 53.21465,
+      "ratio_30d": 1.6454936033373264,
+      "turnover": 0.025356899213748983,
+      "price_at_detection": 0.193184,
+      "pump_time": "2026-04-30T15:01:19.191000+00:00",
+      "entry_time": "2026-04-30T18:01:19.191000+00:00",
+      "exit_time": "2026-05-08T18:01:19.191000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
