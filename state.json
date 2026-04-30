@@ -90,8 +90,10 @@
       "entry_time": "2026-04-30T20:01:11.032000+00:00",
       "exit_time": "2026-05-08T20:01:11.032000+00:00",
       "detection_notified": true,
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "peak_price": 0.16930662330714882,
+      "entry_price": 0.16665787231887463
     }
   ]
 }
