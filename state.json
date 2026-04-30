@@ -3,7 +3,8 @@
     "polyhedra-network": "2026-04-28T22:55:12.506780+00:00",
     "fluent-network": "2026-04-29T02:39:22.881672+00:00",
     "naoris": "2026-04-29T15:10:57.781386+00:00",
-    "goldfinch": "2026-04-30T15:07:12.369100+00:00"
+    "goldfinch": "2026-04-30T15:07:12.369100+00:00",
+    "bedrock-token": "2026-04-30T17:17:34.949773+00:00"
   },
   "scheduled": [
     {
@@ -70,6 +71,24 @@
       "pump_time": "2026-04-30T15:01:19.191000+00:00",
       "entry_time": "2026-04-30T18:01:19.191000+00:00",
       "exit_time": "2026-05-08T18:01:19.191000+00:00",
+      "detection_notified": true,
+      "entry_notified": true,
+      "exit_notified": false,
+      "peak_price": 0.20598843379377843,
+      "entry_price": 0.20153803545423996
+    },
+    {
+      "coin_id": "bedrock-token",
+      "symbol": "BR",
+      "name": "Bedrock",
+      "rank": 588,
+      "ch24_at_pump": 62.25462,
+      "ratio_30d": 1.1948400420612184,
+      "turnover": 0.06361830253594766,
+      "price_at_detection": 0.14688,
+      "pump_time": "2026-04-30T17:01:11.032000+00:00",
+      "entry_time": "2026-04-30T20:01:11.032000+00:00",
+      "exit_time": "2026-05-08T20:01:11.032000+00:00",
       "detection_notified": true,
       "entry_notified": false,
       "exit_notified": false
