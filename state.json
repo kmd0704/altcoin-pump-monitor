@@ -5,7 +5,8 @@
     "naoris": "2026-04-29T15:10:57.781386+00:00",
     "goldfinch": "2026-04-30T15:07:12.369100+00:00",
     "bedrock-token": "2026-04-30T17:17:34.949773+00:00",
-    "ready": "2026-05-01T13:25:12.814315+00:00"
+    "ready": "2026-05-01T13:25:12.814315+00:00",
+    "limitless-3": "2026-05-01T15:55:24.492923+00:00"
   },
   "scheduled": [
     {
@@ -108,6 +109,24 @@
       "pump_time": "2026-05-01T13:00:56.359000+00:00",
       "entry_time": "2026-05-01T16:00:56.359000+00:00",
       "exit_time": "2026-05-09T16:00:56.359000+00:00",
+      "detection_notified": true,
+      "entry_notified": true,
+      "exit_notified": false,
+      "peak_price": 0.01831123953339391,
+      "entry_price": 0.014469962767818444
+    },
+    {
+      "coin_id": "limitless-3",
+      "symbol": "LMTS",
+      "name": "Limitless",
+      "rank": 937,
+      "ch24_at_pump": 71.05455,
+      "ratio_30d": 1.1181078740540453,
+      "turnover": 0.3934943461048114,
+      "price_at_detection": 0.125853,
+      "pump_time": "2026-05-01T15:55:07+00:00",
+      "entry_time": "2026-05-01T18:55:07+00:00",
+      "exit_time": "2026-05-09T18:55:07+00:00",
       "detection_notified": true,
       "entry_notified": false,
       "exit_notified": false
