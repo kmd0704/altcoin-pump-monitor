@@ -128,8 +128,10 @@
       "entry_time": "2026-05-01T18:55:07+00:00",
       "exit_time": "2026-05-09T18:55:07+00:00",
       "detection_notified": true,
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "peak_price": 0.14791228323105418,
+      "entry_price": 0.1425295226696381
     }
   ]
 }
