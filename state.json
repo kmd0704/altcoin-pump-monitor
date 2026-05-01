@@ -4,7 +4,8 @@
     "fluent-network": "2026-04-29T02:39:22.881672+00:00",
     "naoris": "2026-04-29T15:10:57.781386+00:00",
     "goldfinch": "2026-04-30T15:07:12.369100+00:00",
-    "bedrock-token": "2026-04-30T17:17:34.949773+00:00"
+    "bedrock-token": "2026-04-30T17:17:34.949773+00:00",
+    "ready": "2026-05-01T13:25:12.814315+00:00"
   },
   "scheduled": [
     {
@@ -94,6 +95,22 @@
       "exit_notified": false,
       "peak_price": 0.16930662330714882,
       "entry_price": 0.16665787231887463
+    },
+    {
+      "coin_id": "ready",
+      "symbol": "READY",
+      "name": "READY!",
+      "rank": 922,
+      "ch24_at_pump": 72.30218,
+      "ratio_30d": 1.754019685190599,
+      "turnover": 0.017936231675074885,
+      "price_at_detection": 0.01793829,
+      "pump_time": "2026-05-01T13:00:56.359000+00:00",
+      "entry_time": "2026-05-01T16:00:56.359000+00:00",
+      "exit_time": "2026-05-09T16:00:56.359000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
