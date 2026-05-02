@@ -7,7 +7,8 @@
     "bedrock-token": "2026-04-30T17:17:34.949773+00:00",
     "ready": "2026-05-01T13:25:12.814315+00:00",
     "limitless-3": "2026-05-01T15:55:24.492923+00:00",
-    "marblex": "2026-05-02T02:29:00.953768+00:00"
+    "marblex": "2026-05-02T02:29:00.953768+00:00",
+    "elastos": "2026-05-02T09:03:19.240852+00:00"
   },
   "scheduled": [
     {
@@ -151,6 +152,22 @@
       "exit_notified": false,
       "peak_price": 0.05915250136403302,
       "entry_price": 0.057334771915932684
+    },
+    {
+      "coin_id": "elastos",
+      "symbol": "ELA",
+      "name": "Elastos",
+      "rank": 981,
+      "ch24_at_pump": 65.52539,
+      "ratio_30d": 1.570257787651352,
+      "turnover": 0.017408838921000067,
+      "price_at_detection": 0.715408,
+      "pump_time": "2026-05-02T09:00:40.568000+00:00",
+      "entry_time": "2026-05-02T12:00:40.568000+00:00",
+      "exit_time": "2026-05-10T12:00:40.568000+00:00",
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
