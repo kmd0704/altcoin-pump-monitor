@@ -1,24 +1,26 @@
 """
-Altcoin Pump Monitor — A案: 4戦略同時通知版
+Altcoin Pump Monitor — A案: 6戦略同時通知版
 GitHub Actions で 1時間ごとに実行
 
 戦略バージョン(全戦略を同時に評価):
-  v3.4 — TP=30% / 全銘柄(rank 250-1000) / 約29件/年
-  v3.5 — TP=30% / vol_z≥0厳選 / 約21件/年
-  v3.6 — TP=50% / リターン最大化 / 約44件/年(★推奨デフォルト)
-  v3.8 — TP=50% / モッピー版 rank 250-900 / rank900以上ハード除外
+  v3.4   — TP=30% / 全銘柄(rank 250-1000) / 約29件/年
+  v3.4m  — TP=30% / モッピー版(rank 250-900) / 警告ゾーン除外
+  v3.5   — TP=30% / vol_z≥0厳選 / 約21件/年
+  v3.5m  — TP=30% / vol_z厳選+モッピー版(rank 250-900)
+  v3.6   — TP=50% / リターン最大化 / 約44件/年(★推奨デフォルト)
+  v3.6m  — TP=50% / モッピー版(rank 250-900)
 
 通知設計:
-  1コインにつき Discord通知1回。embed内に4戦略のマッチ状況をバッジ表示。
+  1コインにつき Discord通知1回。embed内に6戦略のマッチ状況をバッジ表示。
   ・✅ 該当戦略 + TP価格(エントリー時刻通知)
   ・❌ 不該当戦略 + 理由(vol_z<0 / rank≥900 等)
-  ・⚠️ rank≥900 の銘柄はモッピー警告付き
+  ・⚠️ rank≥900 の銘柄は v3.4/v3.5/v3.6 にモッピー警告付き(モッピー版mは警告不要)
 
 機能:
   Phase 1 急騰検出
     - top1000 取得 → 24h+50%急騰候補抽出
     - deep_check で vol_z / 30日比 / turnover 取得
-    - 各候補を 4戦略で評価 → 1つ以上マッチで schedule 登録
+    - 各候補を 6戦略で評価 → 1つ以上マッチで schedule 登録
     - 急騰時刻 T_pump → エントリー予定 T_entry = T_pump + 3h
 
   Phase 2 スケジュール処理
@@ -58,10 +60,12 @@ INTERVAL_SEC = 0.5 if CG_PLAN == "pro" else 2.5
 # ============= 4戦略の定義 =============
 # 全戦略を同時評価して、マッチした戦略一覧を1通の通知にまとめる
 STRATEGIES = [
-    {"id": "v34", "label": "v3.4", "tp": 0.30, "max_rank": 1000, "vol_z_floor": None, "note": "TP30% / 全(rank 250-1000)"},
-    {"id": "v35", "label": "v3.5", "tp": 0.30, "max_rank": 1000, "vol_z_floor": 0.0,  "note": "TP30% / vol_z≥0厳選"},
-    {"id": "v36", "label": "v3.6 ★", "tp": 0.50, "max_rank": 1000, "vol_z_floor": None, "note": "TP50% / リターン最大化"},
-    {"id": "v38", "label": "v3.8", "tp": 0.50, "max_rank": 900,  "vol_z_floor": None, "note": "TP50% / モッピー版(rank 250-900)"},
+    {"id": "v34",  "label": "v3.4",    "tp": 0.30, "max_rank": 1000, "vol_z_floor": None, "note": "TP30% / 全(rank 250-1000)"},
+    {"id": "v34m", "label": "v3.4m",   "tp": 0.30, "max_rank": 900,  "vol_z_floor": None, "note": "TP30% / モッピー版(rank 250-900)"},
+    {"id": "v35",  "label": "v3.5",    "tp": 0.30, "max_rank": 1000, "vol_z_floor": 0.0,  "note": "TP30% / vol_z≥0厳選"},
+    {"id": "v35m", "label": "v3.5m",   "tp": 0.30, "max_rank": 900,  "vol_z_floor": 0.0,  "note": "TP30% / vol_z厳選+モッピー版"},
+    {"id": "v36",  "label": "v3.6 ★", "tp": 0.50, "max_rank": 1000, "vol_z_floor": None, "note": "TP50% / リターン最大化"},
+    {"id": "v36m", "label": "v3.6m",   "tp": 0.50, "max_rank": 900,  "vol_z_floor": None, "note": "TP50% / モッピー版(rank 250-900)"},
 ]
 STRATEGY_BY_ID = {s["id"]: s for s in STRATEGIES}
 
@@ -396,7 +400,7 @@ def build_detection_embed(coin, deep_info, schedule):
         {"name": "turnover", "value": f"{(deep_info.get('turnover') or 0)*100:.2f}%", "inline": True},
         {"name": "vol_z", "value": vol_z_str, "inline": True},
         {"name": "ランク", "value": f"#{rank}" + (" ⚠️" if rank >= MOPPY_WARNING_RANK else ""), "inline": True},
-        {"name": f"🎯 戦略マッチ状況 ({matched_count}/4)",
+        {"name": f"🎯 戦略マッチ状況 ({matched_count}/{len(STRATEGIES)})",
          "value": fmt_strategy_badges(evals, with_tp=False),
          "inline": False},
     ]
@@ -415,7 +419,7 @@ def build_detection_embed(coin, deep_info, schedule):
         "description": f"**{name}** (rank {rank}) — 現時点ではまだエントリーしません\n📊 [**CoinGecko でチャートを開く**]({chart_url})",
         "color": 0xf0b648,
         "fields": fields,
-        "footer": {"text": f"4戦略同時評価 / 検知 → 3時間様子見 → 推奨時刻でエントリー"},
+        "footer": {"text": f"{len(STRATEGIES)}戦略同時評価 / 検知 → 3時間様子見 → 推奨時刻でエントリー"},
         "timestamp": now_utc().isoformat()
     }
     return embed
@@ -504,7 +508,7 @@ def build_entry_embed(schedule, peak, cur_price):
                 f"[Binance](https://www.binance.com/en/futures/{sym}USDT)"
              ), "inline": False},
         ],
-        "footer": {"text": f"4戦略同時評価 / Stop=Peak×1.60 / Hold={HOLD_HOURS}h / Phase2"},
+        "footer": {"text": f"{len(STRATEGIES)}戦略同時評価 / Stop=Peak×1.60 / Hold={HOLD_HOURS}h / Phase2"},
         "timestamp": now_utc().isoformat()
     }
     return embed
@@ -531,7 +535,7 @@ def build_exit_embed(schedule):
                 f"[MEXC](https://futures.mexc.com/exchange/{sym}_USDT)"
              ), "inline": False},
         ],
-        "footer": {"text": f"4戦略同時評価 / {HOLD_HOURS}h 経過"}
+        "footer": {"text": f"{len(STRATEGIES)}戦略同時評価 / {HOLD_HOURS}h 経過"}
     }
 
 
@@ -679,7 +683,7 @@ def schedule_phase(state):
 
 def main():
     strat_summary = " / ".join(s["label"] for s in STRATEGIES)
-    log(f"=== Altcoin Pump Monitor 起動 / 4戦略同時評価: {strat_summary} / プラン={CG_PLAN} ===")
+    log(f"=== Altcoin Pump Monitor 起動 / {len(STRATEGIES)}戦略同時評価: {strat_summary} / プラン={CG_PLAN} ===")
     if not CG_API_KEY:
         log("ERROR: CG_API_KEY 未設定")
         sys.exit(1)
@@ -692,7 +696,7 @@ def main():
         ok = discord_notify(
             "🧪 **Discord 接続テスト**\n"
             f"GitHub Actions から正常に到達しました。\n"
-            f"4戦略同時評価モード: {strat_summary} / プラン={CG_PLAN}\n"
+            f"{len(STRATEGIES)}戦略同時評価モード: {strat_summary} / プラン={CG_PLAN}\n"
             "このメッセージが見えたら配線OK!\n"
             "確認後 GitHub Variable の TEST_DISCORD を削除してください。"
         )
