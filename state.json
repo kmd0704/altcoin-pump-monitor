@@ -6,7 +6,8 @@
     "ready": "2026-05-01T13:25:12.814315+00:00",
     "limitless-3": "2026-05-01T15:55:24.492923+00:00",
     "marblex": "2026-05-02T02:29:00.953768+00:00",
-    "elastos": "2026-05-02T09:03:19.240852+00:00"
+    "elastos": "2026-05-02T09:03:19.240852+00:00",
+    "babylon": "2026-05-03T10:02:03.670467+00:00"
   },
   "scheduled": [
     {
@@ -168,6 +169,24 @@
       "exit_notified": false,
       "peak_price": 0.8203102637579465,
       "entry_price": 0.8203102637579465
+    },
+    {
+      "coin_id": "babylon",
+      "symbol": "BABY",
+      "name": "Babylon",
+      "rank": 284,
+      "ch24_at_pump": 58.29521,
+      "ratio_30d": 1.9553473251493338,
+      "turnover": 0.26871740730821203,
+      "price_at_detection": 0.02757912,
+      "pump_time": "2026-05-03T07:00:57.028000+00:00",
+      "entry_time": "2026-05-03T10:00:57.028000+00:00",
+      "exit_time": "2026-05-11T10:00:57.028000+00:00",
+      "detection_notified": true,
+      "entry_notified": true,
+      "exit_notified": false,
+      "peak_price": 0.03103048277255633,
+      "entry_price": 0.02756505702110747
     }
   ]
 }
