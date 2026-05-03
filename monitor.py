@@ -1,10 +1,21 @@
 """
-Altcoin Pump Monitor v3.6 — スマート通知版
+Altcoin Pump Monitor v3.4 / v3.5 / v3.6 / v3.8 — スマート通知版
 GitHub Actions で 1時間ごとに実行
+
+戦略バージョン:
+  v3.4 — TP=30% / 全銘柄(rank 250-1000) / 約29件/年
+  v3.5 — TP=30% / vol_z≥0厳選 / 約21件/年
+  v3.6 — TP=50% / リターン最大化 / 約44件/年(★デフォルト)
+  v3.8 — TP=50% / モッピー版 rank 250-900 / rank900以上ハード除外
+
+モッピーさん助言:
+  rank ≥ 900 の銘柄は「継続pumpリスク」あり
+  v3.4/v3.5/v3.6 → ⚠️警告マーク付きで通知
+  v3.8         → 通知すら来ない(MAX_RANK=900 でハード除外)
 
 機能:
   Phase 1 急騰検出
-    - top1000 取得 → v3.6条件
+    - top1000 取得 → 戦略条件
     - 急騰時刻 T_pump を特定(時間足から逆算)
     - 推奨エントリー時刻 T_entry = T_pump + 3h
     - state.json に schedule 登録
@@ -19,6 +30,7 @@ GitHub Actions で 1時間ごとに実行
   CG_PLAN:           "demo" or "pro"(デフォルト: demo)
   ACCOUNT_BALANCE:   口座残高(円、デフォルト: 100000)
   POSITION_PCT:      ポジションサイズ(0-1、デフォルト: 0.20)
+  STRATEGY:          "v34" / "v35" / "v36" / "v38"(デフォルト: v36)
   TEST_DISCORD:      "1" なら接続テストのみ実行
 """
 import os
@@ -38,23 +50,42 @@ DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK", "").strip()
 CG_PLAN = os.environ.get("CG_PLAN", "demo").strip().lower()
 ACCOUNT_BALANCE = float(os.environ.get("ACCOUNT_BALANCE", "100000"))
 POSITION_PCT = float(os.environ.get("POSITION_PCT", "0.20"))
+STRATEGY = os.environ.get("STRATEGY", "v36").strip().lower()
+if STRATEGY not in ("v34", "v35", "v36", "v38"):
+    STRATEGY = "v36"
 
 API_BASE = "https://pro-api.coingecko.com/api/v3" if CG_PLAN == "pro" else "https://api.coingecko.com/api/v3"
 KEY_PARAM = "x_cg_pro_api_key" if CG_PLAN == "pro" else "x_cg_demo_api_key"
 INTERVAL_SEC = 0.5 if CG_PLAN == "pro" else 2.5
 
-# v3.6 戦略パラメータ
+# ============= 戦略別パラメータ =============
+# モッピー警告 rank≥900 は v3.4/v3.5/v3.6 では ⚠️マーク表示のみ(検知はする)
+# v3.8 は MAX_RANK=900 でハード除外
+STRATEGY_CONFIG = {
+    "v34": {"tp": 0.30, "max_rank": 1000, "use_vol_z": False, "label": "v3.4(TP30%/全)"},
+    "v35": {"tp": 0.30, "max_rank": 1000, "use_vol_z": True,  "label": "v3.5(TP30%/vol_z厳選)"},
+    "v36": {"tp": 0.50, "max_rank": 1000, "use_vol_z": False, "label": "v3.6(TP50%/最大化)"},
+    "v38": {"tp": 0.50, "max_rank": 900,  "use_vol_z": False, "label": "v3.8(TP50%/モッピー版)"},
+}
+_CFG = STRATEGY_CONFIG[STRATEGY]
+
+# 共通パラメータ
 PUMP_THRESHOLD = 0.50
 MAX_CH24 = 2.00
 MIN_RANK = 250
-MAX_RANK = 1000
+MAX_RANK = _CFG["max_rank"]   # v3.8 のみ 900
+TP_PCT = _CFG["tp"]            # v3.4/v3.5=0.30, v3.6/v3.8=0.50
+USE_VOL_Z = _CFG["use_vol_z"]  # v3.5 のみ True
+STRATEGY_LABEL = _CFG["label"]
 MAX_30D_RATIO = 2.0
 MIN_TURNOVER = 0.01
 WAIT_HOURS = 3
 HOLD_HOURS = 192
 STOP_MULT = 1.60
-TP_PCT = 0.50
 DEDUP_HOURS = 48
+
+# モッピー警告閾値(全戦略で表示)
+MOPPY_WARNING_RANK = 900
 
 # 通知タイミング
 ENTRY_WINDOW_MIN = 60
@@ -159,7 +190,7 @@ def basic_filter(coin):
 
 
 def deep_check(coin):
-    """30日前比 + turnover + 急騰開始時刻"""
+    """30日前比 + turnover + 急騰開始時刻 (+ v3.5 用 vol_z)"""
     try:
         data30 = cg_get(f"/coins/{urllib.parse.quote(coin['id'])}/market_chart", {
             "vs_currency": "usd", "days": 31
@@ -185,6 +216,28 @@ def deep_check(coin):
         if turnover < MIN_TURNOVER:
             return False, f"turnover {turnover*100:.3f}%", {"ratio_30d": ratio_30d, "turnover": turnover}
 
+        # vol_z 計算(v3.5 用 — 直近24h累計 vs 過去30日 rolling 24h sum)
+        vol_z = None
+        if len(volumes) >= 24 * 7:
+            pump24 = sum(v[1] for v in volumes[-24:])
+            lookback_vols = [v[1] for v in volumes[:-24]]
+            if len(lookback_vols) >= 24:
+                rolling_sums = []
+                for i in range(0, len(lookback_vols) - 24 + 1):
+                    rolling_sums.append(sum(lookback_vols[i:i + 24]))
+                if rolling_sums:
+                    mean = sum(rolling_sums) / len(rolling_sums)
+                    var = sum((x - mean) ** 2 for x in rolling_sums) / len(rolling_sums)
+                    std = var ** 0.5
+                    if std > 0:
+                        vol_z = (pump24 - mean) / std
+
+        # v3.5 のみ vol_z<0 を除外
+        if USE_VOL_Z and vol_z is not None and vol_z < 0:
+            return False, f"vol_z {vol_z:.2f}(<0、出来高ペラペラpump)", {
+                "ratio_30d": ratio_30d, "turnover": turnover, "vol_z": vol_z
+            }
+
         # 急騰開始時刻を特定
         pump_start = None
         for i in range(len(prices) - 1, 23, -1):
@@ -208,7 +261,7 @@ def deep_check(coin):
             pump_start = datetime.fromtimestamp(prices[-1][0]/1000, tz=timezone.utc)
 
         return True, "OK", {
-            "ratio_30d": ratio_30d, "turnover": turnover, "pump_start": pump_start
+            "ratio_30d": ratio_30d, "turnover": turnover, "vol_z": vol_z, "pump_start": pump_start
         }
     except Exception as e:
         return False, f"APIエラー: {e}", {}
@@ -282,30 +335,65 @@ def build_detection_embed(coin, deep_info, schedule):
     name = coin.get("name", "")
     rank = coin["market_cap_rank"]
     ch24 = coin["price_change_percentage_24h"]
+    market_cap = schedule.get("market_cap")
     pump_start = from_iso(schedule["pump_time"])
     entry_time = from_iso(schedule["entry_time"])
     until_entry = (entry_time - now_utc()).total_seconds() / 60
     chart_url = f"https://www.coingecko.com/ja/coins/{cid}"
+
+    # 時価総額表示
+    if market_cap:
+        if market_cap >= 1e9:
+            mc_str = f"${market_cap/1e9:.2f}B"
+        else:
+            mc_str = f"${market_cap/1e6:.1f}M"
+    else:
+        mc_str = "—"
+
+    # rank≥900 モッピー警告 (全戦略で表示)
+    # ※ v3.8 では rank>900 はそもそも MAX_RANK で除外されるので警告は出ない
+    warning_field = None
+    if rank >= MOPPY_WARNING_RANK:
+        warning_field = {
+            "name": "⚠️ 友人(モッピー)警告ゾーン",
+            "value": "rank 900以上は **継続pumpリスク** あり。チャートで戻り兆候を必ず目視確認してから判断推奨。",
+            "inline": False
+        }
+
+    # vol_z 表示(v3.5 では条件、それ以外は参考情報)
+    vol_z = deep_info.get("vol_z")
+    vol_z_str = f"{vol_z:+.2f}" if vol_z is not None else "—"
+
+    strategy_in_use = schedule.get("strategy", STRATEGY)
+    strategy_label_used = STRATEGY_CONFIG.get(strategy_in_use, _CFG)["label"]
+
+    fields = [
+        {"name": "急騰開始時刻", "value": fmt_jst(pump_start), "inline": True},
+        {"name": "★ エントリー予定時刻 ★", "value": fmt_jst(entry_time), "inline": True},
+        {"name": "あと", "value": f"{int(until_entry)}分後", "inline": True},
+        {"name": "24h急騰", "value": f"+{ch24:.1f}%", "inline": True},
+        {"name": "時価総額", "value": mc_str, "inline": True},
+        {"name": "30日前比", "value": f"{deep_info.get('ratio_30d',0):.2f}倍", "inline": True},
+        {"name": "turnover", "value": f"{(deep_info.get('turnover') or 0)*100:.2f}%", "inline": True},
+        {"name": "vol_z", "value": vol_z_str, "inline": True},
+        {"name": "戦略", "value": strategy_label_used, "inline": True},
+    ]
+    if warning_field:
+        fields.append(warning_field)
+    fields.append({"name": "📌 行動",
+         "value": (
+            f"・**今すぐ何もしない**\n"
+            f"・エントリー予定時刻が近づいたら自動で再通知\n"
+            f"・[CoinGecko チャートを確認]({chart_url}) しておくと吉"
+         ), "inline": False})
+
     embed = {
         "title": f"🟡 急騰検知 [{sym}] — クリックでチャート確認",
         "url": chart_url,
         "description": f"**{name}** (rank {rank}) — 現時点ではまだエントリーしません\n📊 [**CoinGecko でチャートを開く**]({chart_url})",
         "color": 0xf0b648,
-        "fields": [
-            {"name": "急騰開始時刻", "value": fmt_jst(pump_start), "inline": True},
-            {"name": "★ エントリー予定時刻 ★", "value": fmt_jst(entry_time), "inline": True},
-            {"name": "あと", "value": f"{int(until_entry)}分後", "inline": True},
-            {"name": "24h急騰", "value": f"+{ch24:.1f}%", "inline": True},
-            {"name": "30日前比", "value": f"{deep_info.get('ratio_30d',0):.2f}倍", "inline": True},
-            {"name": "turnover", "value": f"{(deep_info.get('turnover') or 0)*100:.2f}%", "inline": True},
-            {"name": "📌 行動",
-             "value": (
-                f"・**今すぐ何もしない**\n"
-                f"・エントリー予定時刻が近づいたら自動で再通知\n"
-                f"・[CoinGecko チャートを確認]({chart_url}) しておくと吉"
-             ), "inline": False},
-        ],
-        "footer": {"text": "v3.6 / 検知 → 3時間様子見 → 推奨時刻でエントリー"},
+        "fields": fields,
+        "footer": {"text": f"{strategy_in_use.upper()} / 検知 → 3時間様子見 → 推奨時刻でエントリー"},
         "timestamp": now_utc().isoformat()
     }
     return embed
@@ -321,31 +409,51 @@ def build_entry_embed(schedule, peak, cur_price):
     delta_min = (now_utc() - entry_time).total_seconds() / 60
     position_yen = ACCOUNT_BALANCE * POSITION_PCT
     position_usdt = position_yen / 150
+
+    # 戦略バージョン別の TP%(scheduleに保存されたものを優先)
+    strategy_used = schedule.get("strategy", STRATEGY)
+    tp_pct_used = STRATEGY_CONFIG.get(strategy_used, _CFG)["tp"]
+    strategy_label_used = STRATEGY_CONFIG.get(strategy_used, _CFG)["label"]
+
     stop_price = peak * STOP_MULT
-    tp_price = cur_price * (1 - TP_PCT)
+    tp_price = cur_price * (1 - tp_pct_used)
     stop_dist = (stop_price / cur_price - 1) * 100
     chart_url = f"https://www.coingecko.com/ja/coins/{cid}"
     mexc_url = f"https://futures.mexc.com/exchange/{sym}_USDT"
+
+    # 時価総額表示
+    market_cap = schedule.get("market_cap")
+    if market_cap:
+        if market_cap >= 1e9:
+            mc_str = f"${market_cap/1e9:.2f}B"
+        else:
+            mc_str = f"${market_cap/1e6:.1f}M"
+    else:
+        mc_str = "—"
+    rank_label = f"#{rank}" + (" ⚠️" if rank and rank >= MOPPY_WARNING_RANK else "")
+    tp_label = f"💥 利確-{int(tp_pct_used*100)}%"
 
     embed = {
         "title": f"🚨 エントリー時刻です [{sym}] — クリックでチャート確認",
         "url": chart_url,
         "description": (
             f"**いますぐ MEXC でショート発注** | 推奨時刻 {fmt_jst(entry_time)}({int(delta_min):+}分)\n"
-            f"📊 [**CoinGecko でチャート確認**]({chart_url}) | "
+            + (f"⚠️ **rank {rank}(900+)は友人警告ゾーン**:継続pumpリスク、目視確認必須\n" if rank and rank >= MOPPY_WARNING_RANK else "")
+            + f"📊 [**CoinGecko でチャート確認**]({chart_url}) | "
             f"⚡ [**MEXC で発注画面**]({mexc_url})"
         ),
         "color": 0xe06c6c,
         "fields": [
             {"name": "🎯 銘柄", "value": f"`{sym}USDT` (Perpetual)", "inline": True},
-            {"name": "ランク", "value": f"#{rank}", "inline": True},
+            {"name": "ランク", "value": rank_label, "inline": True},
+            {"name": "時価総額", "value": mc_str, "inline": True},
+            {"name": "戦略", "value": strategy_label_used, "inline": True},
             {"name": "ポジション", "value": f"{int(position_yen):,}円 ≒ **${position_usdt:.2f} USDT**", "inline": True},
             {"name": "🟢 Peak価格", "value": f"`${peak:.8f}`", "inline": True},
             {"name": "🟡 エントリー価格", "value": f"`${cur_price:.8f}`", "inline": True},
-            {"name": "💥 利確-50%", "value": f"`${tp_price:.8f}`", "inline": True},
+            {"name": tp_label, "value": f"`${tp_price:.8f}`", "inline": True},
             {"name": "🛑 ストップ", "value": f"`${stop_price:.8f}` ({stop_dist:+.1f}%)", "inline": True},
             {"name": "⏰ 強制決済時刻", "value": fmt_jst(exit_time), "inline": True},
-            {"name": " ", "value": " ", "inline": True},
             {"name": "✅ Phase 2 執行チェックリスト",
              "value": (
                 f"**① MEXC で `{sym}USDT` を開く** [→ クリック]({mexc_url})\n"
@@ -355,7 +463,7 @@ def build_entry_embed(schedule, peak, cur_price):
                 f"**⑤ 証拠金を `${position_usdt:.2f} USDT` 入力**\n"
                 f"**⑥ 成行注文(Market)で発注**\n"
                 f"**⑦ ストップロス: `${stop_price:.8f}`**\n"
-                f"**⑧ 利確(TP): `${tp_price:.8f}`**\n"
+                f"**⑧ 利確(TP -{int(tp_pct_used*100)}%): `${tp_price:.8f}`**\n"
                 f"**⑨ カレンダーに {fmt_jst(exit_time)} を登録**"
              ), "inline": False},
             {"name": "🔗 取引所",
@@ -365,7 +473,7 @@ def build_entry_embed(schedule, peak, cur_price):
                 f"[Binance](https://www.binance.com/en/futures/{sym}USDT)"
              ), "inline": False},
         ],
-        "footer": {"text": "v3.6 / TP=50% / Stop=Peak×1.60 / Hold=192h / Phase2"},
+        "footer": {"text": f"{strategy_used.upper()} / TP={int(tp_pct_used*100)}% / Stop=Peak×1.60 / Hold={HOLD_HOURS}h / Phase2"},
         "timestamp": now_utc().isoformat()
     }
     return embed
@@ -392,7 +500,7 @@ def build_exit_embed(schedule):
                 f"[MEXC](https://futures.mexc.com/exchange/{sym}_USDT)"
              ), "inline": False},
         ],
-        "footer": {"text": "v3.6 / 192h 経過"}
+        "footer": {"text": f"{schedule.get('strategy', STRATEGY).upper()} / {HOLD_HOURS}h 経過"}
     }
 
 
@@ -447,13 +555,16 @@ def detect_phase(state):
             "symbol": c["symbol"].upper(),
             "name": c.get("name", ""),
             "rank": c.get("market_cap_rank"),
+            "market_cap": c.get("market_cap"),
             "ch24_at_pump": c.get("price_change_percentage_24h"),
             "ratio_30d": info.get("ratio_30d"),
             "turnover": info.get("turnover"),
+            "vol_z": info.get("vol_z"),
             "price_at_detection": c.get("current_price"),
             "pump_time": to_iso(pump_start),
             "entry_time": to_iso(entry_time),
             "exit_time": to_iso(exit_time),
+            "strategy": STRATEGY,
             "detection_notified": False,
             "entry_notified": False,
             "exit_notified": False,
@@ -485,7 +596,7 @@ def schedule_phase(state):
             else:
                 fake_coin = {"symbol": sym, "name": s["name"], "market_cap_rank": s["rank"],
                              "price_change_percentage_24h": s["ch24_at_pump"], "id": cid}
-                deep = {"ratio_30d": s["ratio_30d"], "turnover": s["turnover"]}
+                deep = {"ratio_30d": s["ratio_30d"], "turnover": s["turnover"], "vol_z": s.get("vol_z")}
                 embed = build_detection_embed(fake_coin, deep, s)
                 if mins_until_entry < 0:
                     msg = f"⚠ **検知 [{sym}]**(エントリー時刻 {abs(int(mins_until_entry))}分前に通過済)"
@@ -528,7 +639,7 @@ def schedule_phase(state):
 
 
 def main():
-    log(f"=== Altcoin Pump Monitor v3.6(スマート通知版)起動 / プラン={CG_PLAN} ===")
+    log(f"=== Altcoin Pump Monitor 起動 / 戦略={STRATEGY_LABEL} / TP={int(TP_PCT*100)}% / rank上限={MAX_RANK} / vol_z={'ON' if USE_VOL_Z else 'OFF'} / プラン={CG_PLAN} ===")
     if not CG_API_KEY:
         log("ERROR: CG_API_KEY 未設定")
         sys.exit(1)
@@ -540,7 +651,7 @@ def main():
         log("🧪 TEST_DISCORD モード:接続テスト送信中...")
         ok = discord_notify(
             "🧪 **Discord 接続テスト**\n"
-            f"GitHub Actions から正常に到達しました。プラン={CG_PLAN}\n"
+            f"GitHub Actions から正常に到達しました。戦略={STRATEGY_LABEL} / プラン={CG_PLAN}\n"
             "このメッセージが見えたら配線OK!\n"
             "確認後 GitHub Variable の TEST_DISCORD を削除してください。"
         )
