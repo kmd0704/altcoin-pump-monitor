@@ -6,7 +6,8 @@
     "limitless-3": "2026-05-01T15:55:24.492923+00:00",
     "marblex": "2026-05-02T02:29:00.953768+00:00",
     "elastos": "2026-05-02T09:03:19.240852+00:00",
-    "babylon": "2026-05-03T10:02:03.670467+00:00"
+    "babylon": "2026-05-03T10:02:03.670467+00:00",
+    "b3": "2026-05-04T09:16:41.770393+00:00"
   },
   "scheduled": [
     {
@@ -186,6 +187,74 @@
       "exit_notified": false,
       "peak_price": 0.03103048277255633,
       "entry_price": 0.02756505702110747
+    },
+    {
+      "coin_id": "b3",
+      "symbol": "B3",
+      "name": "B3 (Base)",
+      "rank": 888,
+      "market_cap": 19967631,
+      "ch24_at_pump": 52.61434,
+      "ratio_30d": 1.4527400866864535,
+      "turnover": 0.19026563960479756,
+      "vol_z": 4.853335003276926,
+      "price_at_detection": 0.00043055,
+      "pump_time": "2026-05-04T08:00:37.800000+00:00",
+      "entry_time": "2026-05-04T11:00:37.800000+00:00",
+      "exit_time": "2026-05-12T11:00:37.800000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全(rank 250-1000)"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / モッピー版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z≥0厳選"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選+モッピー版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / モッピー版(rank 250-900)"
+        }
+      ],
+      "detection_notified": true,
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
