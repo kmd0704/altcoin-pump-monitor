@@ -1,27 +1,28 @@
 """
-Altcoin Pump Monitor — A案: 6戦略同時通知版
+Altcoin Pump Monitor — 7戦略統合版
 GitHub Actions で 1時間ごとに実行
 
 戦略バージョン(全戦略を同時に評価):
-  v3.4   — TP=30% / 全銘柄(rank 250-1000) / 約29件/年
-  v3.4m  — TP=30% / モッピー版(rank 250-900) / 警告ゾーン除外
-  v3.5   — TP=30% / vol_z≥0厳選 / 約21件/年
-  v3.5m  — TP=30% / vol_z厳選+モッピー版(rank 250-900)
-  v3.6   — TP=50% / リターン最大化 / 約44件/年(★推奨デフォルト)
-  v3.6m  — TP=50% / モッピー版(rank 250-900)
+  v3.4   — TP=30% / 全銘柄(rank 250-1000) / 3h待ち
+  v3.4m  — TP=30% / モッピーさん版(rank 250-900) / 3h待ち
+  v3.5   — TP=30% / vol_z≥0厳選 / 3h待ち
+  v3.5m  — TP=30% / vol_z厳選+モッピーさん版 / 3h待ち
+  v3.6 ★ — TP=50% / リターン最大化 / 3h待ち / 推奨デフォルト
+  v3.6m  — TP=50% / モッピーさん版(rank 250-900) / 3h待ち
+  s     — TP=20% / 即時エントリー / 0h待ち / 短命pump向け、勝率93%
 
 通知設計:
-  1コインにつき Discord通知1回。embed内に6戦略のマッチ状況をバッジ表示。
-  ・✅ 該当戦略 + TP価格(エントリー時刻通知)
-  ・❌ 不該当戦略 + 理由(vol_z<0 / rank≥900 等)
-  ・⚠️ rank≥900 の銘柄は v3.4/v3.5/v3.6 にモッピー警告付き(モッピー版mは警告不要)
+  s版マッチ → ⚡ 即時エントリー通知(検知と同時)
+  通常版マッチ → 🚨 3時間後エントリー通知
+  192h後 → ⏰ 決済通知
 
 機能:
   Phase 1 急騰検出
     - top1000 取得 → 24h+50%急騰候補抽出
     - deep_check で vol_z / 30日比 / turnover 取得
-    - 各候補を 6戦略で評価 → 1つ以上マッチで schedule 登録
-    - 急騰時刻 T_pump → エントリー予定 T_entry = T_pump + 3h
+    - 各候補を 5戦略で評価 → 1つ以上マッチで schedule 登録
+    - s版マッチ時点で即時エントリー通知
+    - 通常版マッチは pump_start + 3h でエントリー通知
 
   Phase 2 スケジュール処理
     - 既存 schedule を巡回
@@ -57,15 +58,17 @@ API_BASE = "https://pro-api.coingecko.com/api/v3" if CG_PLAN == "pro" else "http
 KEY_PARAM = "x_cg_pro_api_key" if CG_PLAN == "pro" else "x_cg_demo_api_key"
 INTERVAL_SEC = 0.5 if CG_PLAN == "pro" else 2.5
 
-# ============= 4戦略の定義 =============
-# 全戦略を同時評価して、マッチした戦略一覧を1通の通知にまとめる
+# ============= 7戦略の定義 =============
+# 通常3つ(v3.4 / v3.5 / v3.6)+ それぞれの m(モッピーさん版)+ s版(即時統合)
+# wait_hours: エントリーまでの待ち時間(0=即時, 3=従来)
 STRATEGIES = [
-    {"id": "v34",  "label": "v3.4",    "tp": 0.30, "max_rank": 1000, "vol_z_floor": None, "note": "TP30% / 全(rank 250-1000)"},
-    {"id": "v34m", "label": "v3.4m",   "tp": 0.30, "max_rank": 900,  "vol_z_floor": None, "note": "TP30% / モッピー版(rank 250-900)"},
-    {"id": "v35",  "label": "v3.5",    "tp": 0.30, "max_rank": 1000, "vol_z_floor": 0.0,  "note": "TP30% / vol_z≥0厳選"},
-    {"id": "v35m", "label": "v3.5m",   "tp": 0.30, "max_rank": 900,  "vol_z_floor": 0.0,  "note": "TP30% / vol_z厳選+モッピー版"},
-    {"id": "v36",  "label": "v3.6 ★", "tp": 0.50, "max_rank": 1000, "vol_z_floor": None, "note": "TP50% / リターン最大化"},
-    {"id": "v36m", "label": "v3.6m",   "tp": 0.50, "max_rank": 900,  "vol_z_floor": None, "note": "TP50% / モッピー版(rank 250-900)"},
+    {"id": "v34",  "label": "v3.4",    "tp": 0.30, "wait_hours": 3, "max_rank": 1000, "vol_z_floor": None, "note": "TP30% / 全銘柄 / 3h待ち"},
+    {"id": "v34m", "label": "v3.4m",   "tp": 0.30, "wait_hours": 3, "max_rank": 900,  "vol_z_floor": None, "note": "TP30% / モッピーさん版(rank 250-900)"},
+    {"id": "v35",  "label": "v3.5",    "tp": 0.30, "wait_hours": 3, "max_rank": 1000, "vol_z_floor": 0.0,  "note": "TP30% / vol_z厳選 / 3h待ち"},
+    {"id": "v35m", "label": "v3.5m",   "tp": 0.30, "wait_hours": 3, "max_rank": 900,  "vol_z_floor": 0.0,  "note": "TP30% / vol_z厳選+モッピーさん版"},
+    {"id": "v36",  "label": "v3.6 ★", "tp": 0.50, "wait_hours": 3, "max_rank": 1000, "vol_z_floor": None, "note": "TP50% / リターン最大化(推奨)"},
+    {"id": "v36m", "label": "v3.6m",   "tp": 0.50, "wait_hours": 3, "max_rank": 900,  "vol_z_floor": None, "note": "TP50% / モッピーさん版(rank 250-900)"},
+    {"id": "s",    "label": "s",       "tp": 0.20, "wait_hours": 0, "max_rank": 1000, "vol_z_floor": None, "note": "TP20% / 即時エントリー(勝率93%)"},
 ]
 STRATEGY_BY_ID = {s["id"]: s for s in STRATEGIES}
 
@@ -81,7 +84,7 @@ HOLD_HOURS = 192               # 保有 192h(8日)
 STOP_MULT = 1.60               # ストップ = Peak × 1.60
 DEDUP_HOURS = 48               # 同銘柄の再アラート抑止
 
-# モッピー警告閾値(全戦略で表示)
+# モッピーさん警告閾値(全戦略で表示)
 MOPPY_WARNING_RANK = 900
 
 # 通知タイミング
@@ -381,11 +384,11 @@ def build_detection_embed(coin, deep_info, schedule):
     evals = schedule.get("evals") or evaluate_strategies(coin, deep_info)
     matched_count = sum(1 for e in evals if e["match"])
 
-    # rank≥900 モッピー警告
+    # rank≥900 モッピーさん警告
     warning_field = None
     if rank >= MOPPY_WARNING_RANK:
         warning_field = {
-            "name": "⚠️ 友人(モッピー)警告ゾーン",
+            "name": "⚠️ モッピーさん 警告ゾーン",
             "value": "rank 900以上は **継続pumpリスク** あり。チャートで戻り兆候を必ず目視確認してから判断推奨。\n(※ v3.8 ではそもそも対象外)",
             "inline": False
         }
@@ -425,16 +428,22 @@ def build_detection_embed(coin, deep_info, schedule):
     return embed
 
 
-def build_entry_embed(schedule, peak, cur_price):
-    """エントリー時刻の通知 — 4戦略のTP価格を一覧表示"""
+def build_entry_embed(schedule, peak, cur_price, mode="immediate"):
+    """エントリー時刻の通知。
+    mode="immediate" → s版用(即時エントリー、TP-20%)
+    mode="normal"    → 通常版用(3h待ち、TP-30%/-50%)
+    """
     sym = schedule["symbol"]
     cid = schedule["coin_id"]
     rank = schedule.get("rank")
-    entry_time = from_iso(schedule["entry_time"])
-    exit_time = from_iso(schedule["exit_time"])
+    pump_start = from_iso(schedule["pump_time"])
+    if mode == "immediate":
+        entry_time = pump_start
+    else:
+        entry_time = from_iso(schedule["entry_time_normal"])
+    exit_time_obj = entry_time + timedelta(hours=HOLD_HOURS)
     delta_min = (now_utc() - entry_time).total_seconds() / 60
-    position_yen = ACCOUNT_BALANCE * POSITION_PCT
-    position_usdt = position_yen / 150
+    position_usd = ACCOUNT_BALANCE * POSITION_PCT  # USD扱い
 
     stop_price = peak * STOP_MULT
     stop_dist = (stop_price / cur_price - 1) * 100
@@ -448,58 +457,73 @@ def build_entry_embed(schedule, peak, cur_price):
         mc_str = "—"
     rank_label = f"#{rank}" + (" ⚠️" if rank and rank >= MOPPY_WARNING_RANK else "")
 
-    # 戦略別 TP価格(該当戦略のみ表示)
+    # 該当戦略を mode で絞り込み(s版 = wait_hours=0、通常 = wait_hours=3)
     evals = schedule.get("evals") or []
+    target_wait = 0 if mode == "immediate" else 3
+    relevant_strats = [s for s in STRATEGIES if s["wait_hours"] == target_wait]
+    relevant_ids = {s["id"] for s in relevant_strats}
+
+    # 戦略別 TP価格(対象戦略のみ表示。他mode戦略はグレーアウトで参考表示)
     tp_lines = []
-    matched_evals = [e for e in evals if e["match"]]
-    for e in matched_evals:
+    matched_relevant = [e for e in evals if e["match"] and e["id"] in relevant_ids]
+    for e in matched_relevant:
         tp_price = cur_price * (1 - e["tp"])
-        tp_lines.append(f"✅ **{e['label']}** TP-{int(e['tp']*100)}% → `${tp_price:.8f}`")
-    skipped_evals = [e for e in evals if not e["match"]]
-    for e in skipped_evals:
+        tp_lines.append(f"✅ **{e['label']}** TP-{int(e['tp']*100)}% → 💰 `${tp_price:.8f}` (利確指値)")
+    skipped_relevant = [e for e in evals if not e["match"] and e["id"] in relevant_ids]
+    for e in skipped_relevant:
         tp_lines.append(f"❌ {e['label']} — {e['reason']}")
     tp_block = "\n".join(tp_lines) if tp_lines else "(該当戦略なし)"
 
-    # 推奨デフォルトの TP(v3.6 が match していれば v3.6、なければ最初のマッチ)
-    default_tp = 0.50
-    if matched_evals:
-        v36_match = next((e for e in matched_evals if e["id"] == "v36"), None)
-        default_tp = (v36_match or matched_evals[0])["tp"]
+    # 推奨デフォルト
+    if mode == "immediate":
+        default_id = "s"
+        title_emoji = "⚡"
+        title_word = "即時エントリー(s版)"
+        color = 0x4fc3f7
+    else:
+        default_id = "v36"
+        title_emoji = "🚨"
+        title_word = "3時間後エントリー(通常版)"
+        color = 0xe06c6c
+    default_strat = next((e for e in matched_relevant if e["id"] == default_id), None) or (matched_relevant[0] if matched_relevant else None)
+    default_tp = default_strat["tp"] if default_strat else 0.20
     default_tp_price = cur_price * (1 - default_tp)
 
+    matched_count = len(matched_relevant)
+    relevant_total = len(relevant_strats)
+
     embed = {
-        "title": f"🚨 エントリー時刻です [{sym}] — クリックでチャート確認",
+        "title": f"{title_emoji} {title_word} [{sym}] — クリックでチャート確認",
         "url": chart_url,
         "description": (
-            f"**いますぐ MEXC でショート発注** | 推奨時刻 {fmt_jst(entry_time)}({int(delta_min):+}分)\n"
-            + (f"⚠️ **rank {rank}(900+)は友人警告ゾーン**:継続pumpリスク、目視確認必須\n" if rank and rank >= MOPPY_WARNING_RANK else "")
-            + f"📊 [**CoinGecko**]({chart_url}) | "
-            f"⚡ [**MEXC**]({mexc_url})"
+            f"**いますぐ MEXC でショート発注** | {fmt_jst(entry_time)}({int(delta_min):+}分)\n"
+            + (f"⚠️ **rank {rank}(900+)はモッピーさん警告ゾーン**:継続pumpリスク、目視確認必須\n" if rank and rank >= MOPPY_WARNING_RANK else "")
+            + f"📊 [**CoinGecko**]({chart_url}) | ⚡ [**MEXC**]({mexc_url})"
         ),
-        "color": 0xe06c6c,
+        "color": color,
         "fields": [
             {"name": "🎯 銘柄", "value": f"`{sym}USDT` (Perpetual)", "inline": True},
             {"name": "ランク", "value": rank_label, "inline": True},
             {"name": "時価総額", "value": mc_str, "inline": True},
-            {"name": "ポジション", "value": f"{int(position_yen):,}円 ≒ **${position_usdt:.2f} USDT**", "inline": True},
+            {"name": "ポジション", "value": f"**${position_usd:.2f} USDT** ({int(POSITION_PCT*100)}%)", "inline": True},
             {"name": "🟢 Peak価格", "value": f"`${peak:.8f}`", "inline": True},
             {"name": "🟡 エントリー価格", "value": f"`${cur_price:.8f}`", "inline": True},
-            {"name": "🛑 ストップ(全戦略共通)", "value": f"`${stop_price:.8f}` ({stop_dist:+.1f}%)", "inline": True},
-            {"name": "⏰ 強制決済(全戦略共通 192h)", "value": fmt_jst(exit_time), "inline": True},
-            {"name": "💥 戦略別 TP価格(早期利確)",
+            {"name": "🛑 ストップロス指値(共通)", "value": f"`${stop_price:.8f}` ({stop_dist:+.1f}%)", "inline": True},
+            {"name": "⏰ 強制決済時刻(192h後)", "value": fmt_jst(exit_time_obj), "inline": True},
+            {"name": f"💰 戦略別 利確指値(該当 {matched_count}/{relevant_total})",
              "value": tp_block, "inline": False},
-            {"name": "✅ Phase 2 執行チェックリスト",
+            {"name": "✅ 執行チェックリスト",
              "value": (
                 f"**① MEXC で `{sym}USDT` を開く** [→ クリック]({mexc_url})\n"
                 f"**② USDT-M Perpetual** を選択(現物ではない)\n"
                 f"**③ ⚠ ショート(Short/Sell)を選択** ← 一番大事\n"
                 f"**④ レバレッジを 1x に設定**(必須)\n"
-                f"**⑤ 証拠金を `${position_usdt:.2f} USDT` 入力**\n"
+                f"**⑤ 証拠金 `${position_usd:.2f} USDT` を入力**\n"
                 f"**⑥ 成行注文(Market)で発注**\n"
-                f"**⑦ ストップロス: `${stop_price:.8f}`**\n"
-                f"**⑧ 利確(TP): 上の戦略別TPから1つ選んで設定**\n"
-                f"  └ 推奨デフォルト: `${default_tp_price:.8f}`(TP-{int(default_tp*100)}%)\n"
-                f"**⑨ カレンダーに {fmt_jst(exit_time)} を登録**"
+                f"**⑦ ストップロス指値: `${stop_price:.8f}`**\n"
+                f"**⑧ 利確指値: `${default_tp_price:.8f}`** (推奨 `{default_id}`/TP-{int(default_tp*100)}%)\n"
+                f"  └ 別戦略の値を使いたい時は上の一覧から選択\n"
+                f"**⑨ カレンダーに {fmt_jst(exit_time_obj)} を登録**"
              ), "inline": False},
             {"name": "🔗 取引所",
              "value": (
@@ -508,7 +532,7 @@ def build_entry_embed(schedule, peak, cur_price):
                 f"[Binance](https://www.binance.com/en/futures/{sym}USDT)"
              ), "inline": False},
         ],
-        "footer": {"text": f"{len(STRATEGIES)}戦略同時評価 / Stop=Peak×1.60 / Hold={HOLD_HOURS}h / Phase2"},
+        "footer": {"text": f"{title_word} / Stop=Peak×1.60 / Hold={HOLD_HOURS}h"},
         "timestamp": now_utc().isoformat()
     }
     return embed
@@ -590,8 +614,9 @@ def detect_phase(state):
             continue
 
         pump_start = info.get("pump_start", now_utc())
-        entry_time = pump_start + timedelta(hours=WAIT_HOURS)
-        exit_time = entry_time + timedelta(hours=HOLD_HOURS)
+        entry_time_normal = pump_start + timedelta(hours=3)   # 通常版用
+        # exit_time は通常版基準(s版は entry が早いので少し早く出るが192h固定で扱う)
+        exit_time = entry_time_normal + timedelta(hours=HOLD_HOURS)
         sched = {
             "coin_id": c["id"],
             "symbol": c["symbol"].upper(),
@@ -604,17 +629,21 @@ def detect_phase(state):
             "vol_z": info.get("vol_z"),
             "price_at_detection": c.get("current_price"),
             "pump_time": to_iso(pump_start),
-            "entry_time": to_iso(entry_time),
+            "entry_time_normal": to_iso(entry_time_normal),
+            "entry_time": to_iso(entry_time_normal),  # 後方互換
             "exit_time": to_iso(exit_time),
             "evals": evals,
             "detection_notified": False,
-            "entry_notified": False,
+            "immediate_entry_notified": False,   # s版用エントリー通知
+            "normal_entry_notified": False,      # 通常版エントリー通知(旧 entry_notified)
+            "entry_notified": False,             # 後方互換
             "exit_notified": False,
         }
         state["scheduled"].append(sched)
         state["alerted"][c["id"]] = to_iso(now_utc())
-        match_ids = ",".join(e["id"] for e in matched)
-        log(f"  ✓ {c['symbol'].upper()} 登録: マッチ=[{match_ids}] / エントリー予定 {fmt_jst(entry_time)}")
+        s_strats = [e for e in matched if e["id"] == "s"]
+        n_strats = [e for e in matched if e["id"] != "s"]
+        log(f"  ✓ {c['symbol'].upper()} 登録: s版マッチ {len(s_strats)} / 通常版マッチ {len(n_strats)} / 通常エントリー予定 {fmt_jst(entry_time_normal)}")
         new_count += 1
     return new_count
 
@@ -628,12 +657,32 @@ def schedule_phase(state):
     for s in state["scheduled"]:
         sym = s["symbol"]
         cid = s["coin_id"]
-        entry_t = from_iso(s["entry_time"])
+        entry_t_normal = from_iso(s.get("entry_time_normal") or s["entry_time"])
         exit_t = from_iso(s["exit_time"])
+        evals = s.get("evals") or []
+        # s版マッチ / 通常版マッチを判定
+        has_s_match = any(e["match"] and STRATEGY_BY_ID.get(e["id"], {}).get("wait_hours") == 0 for e in evals)
+        has_normal_match = any(e["match"] and STRATEGY_BY_ID.get(e["id"], {}).get("wait_hours") == 3 for e in evals)
 
-        # 検知通知
-        if not s.get("detection_notified"):
-            mins_until_entry = (entry_t - now).total_seconds() / 60
+        # === ⚡ 即時エントリー通知(s版用、検知と同時)===
+        if has_s_match and not s.get("immediate_entry_notified"):
+            pump_start = from_iso(s["pump_time"])
+            peak, cur = fetch_peak_and_price(cid, pump_start, now)
+            if peak is not None and cur is not None:
+                embed = build_entry_embed(s, peak, cur, mode="immediate")
+                discord_notify(f"⚡ **即時エントリー [{sym}]** s版用、いますぐ発注!", embeds=[embed])
+                s["immediate_entry_notified"] = True
+                s["s_peak_price"] = peak
+                s["s_entry_price"] = cur
+                notified_count["entry"] += 1
+                log(f"  ⚡ s版 entry notify: {sym} peak=${peak:.8f} entry=${cur:.8f}")
+                time.sleep(INTERVAL_SEC)
+            else:
+                log(f"  ⚠ {sym} s版 peak/price 取得失敗、保留")
+
+        # === 🟡 検知通知(s版マッチが無い場合のみ。s版マッチがあれば即時エントリーで代替) ===
+        if not has_s_match and not s.get("detection_notified"):
+            mins_until_entry = (entry_t_normal - now).total_seconds() / 60
             if 0 <= mins_until_entry <= 30:
                 s["detection_notified"] = True
             else:
@@ -644,32 +693,37 @@ def schedule_phase(state):
                 if mins_until_entry < 0:
                     msg = f"⚠ **検知 [{sym}]**(エントリー時刻 {abs(int(mins_until_entry))}分前に通過済)"
                 else:
-                    msg = f"🟡 **検知 [{sym}]** エントリー予定 {fmt_jst(entry_t)}"
+                    msg = f"🟡 **検知 [{sym}]** 通常版エントリー予定 {fmt_jst(entry_t_normal)}"
                 discord_notify(msg, embeds=[embed])
                 s["detection_notified"] = True
                 notified_count["detect"] += 1
                 log(f"  📨 detection notify: {sym} (mins_until={int(mins_until_entry)})")
+        elif has_s_match and not s.get("detection_notified"):
+            # s版でカバー済みなので detection_notified=True にしておく
+            s["detection_notified"] = True
 
-        # エントリー通知
-        if not s.get("entry_notified"):
-            mins_until = abs((entry_t - now).total_seconds() / 60)
+        # === 🚨 通常版エントリー通知(3h待ち、通常版マッチがある場合のみ) ===
+        if has_normal_match and not s.get("normal_entry_notified") and not s.get("entry_notified"):
+            mins_until = abs((entry_t_normal - now).total_seconds() / 60)
             if mins_until <= ENTRY_WINDOW_MIN:
                 pump_start = from_iso(s["pump_time"])
                 peak, cur = fetch_peak_and_price(cid, pump_start, now)
                 if peak is None or cur is None:
-                    log(f"  ⚠ {sym} peak/price 取得失敗、entry通知保留")
+                    log(f"  ⚠ {sym} 通常版 peak/price 取得失敗、保留")
                     continue
-                embed = build_entry_embed(s, peak, cur)
-                discord_notify(f"🚨 **エントリー時刻 [{sym}]** いますぐ発注!", embeds=[embed])
-                s["entry_notified"] = True
+                embed = build_entry_embed(s, peak, cur, mode="normal")
+                discord_notify(f"🚨 **3時間後エントリー [{sym}]** 通常版用、いますぐ発注!", embeds=[embed])
+                s["normal_entry_notified"] = True
+                s["entry_notified"] = True   # 後方互換
                 s["peak_price"] = peak
                 s["entry_price"] = cur
                 notified_count["entry"] += 1
-                log(f"  ⚡ entry notify: {sym} peak=${peak:.8f} entry=${cur:.8f}")
+                log(f"  🚨 通常版 entry notify: {sym} peak=${peak:.8f} entry=${cur:.8f}")
                 time.sleep(INTERVAL_SEC)
 
-        # 決済通知
-        if not s.get("exit_notified") and s.get("entry_notified"):
+        # === ⏰ 決済通知 ===
+        already_entered = s.get("immediate_entry_notified") or s.get("normal_entry_notified") or s.get("entry_notified")
+        if already_entered and not s.get("exit_notified"):
             mins_until = abs((exit_t - now).total_seconds() / 60)
             if mins_until <= EXIT_WINDOW_MIN:
                 embed = build_exit_embed(s)
