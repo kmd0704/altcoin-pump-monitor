@@ -1,5 +1,4 @@
-name: Altcoin Pump Monitor (4戦略同時通知版)
-
+name: Altcoin Pump Monitor (7戦略統合版)
 on:
   schedule:
     # 1時間ごとに実行(毎時0分)
