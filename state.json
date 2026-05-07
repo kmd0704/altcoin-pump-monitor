@@ -7,22 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "polyhedra-network",
-      "symbol": "ZKJ",
-      "name": "Polyhedra Network",
-      "rank": 946,
-      "ch24_at_pump": 139.59319,
-      "ratio_30d": 1.6703111208381576,
-      "turnover": 1.248811434053479,
-      "price_at_detection": 0.03384269,
-      "pump_time": "2026-04-28T06:01:02.297000+00:00",
-      "entry_time": "2026-04-28T09:01:02.297000+00:00",
-      "exit_time": "2026-05-06T09:01:02.297000+00:00",
-      "detection_notified": true,
-      "entry_notified": false,
-      "exit_notified": false
-    },
-    {
       "coin_id": "fluent-network",
       "symbol": "BLEND",
       "name": "Fluent",
