@@ -2,27 +2,10 @@
   "alerted": {
     "octra": "2026-05-06T18:14:25.956790+00:00",
     "nillion": "2026-05-08T02:44:07.100749+00:00",
-    "pharos-network": "2026-05-08T11:11:38.572375+00:00"
+    "pharos-network": "2026-05-08T11:11:38.572375+00:00",
+    "constellation-labs": "2026-05-08T19:13:47.793297+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "naoris",
-      "symbol": "NAORIS",
-      "name": "Naoris Protocol",
-      "rank": 388,
-      "ch24_at_pump": 50.64421,
-      "ratio_30d": 1.855477852126661,
-      "turnover": 0.0723708024063177,
-      "price_at_detection": 0.115911,
-      "pump_time": "2026-04-29T15:00:25.568000+00:00",
-      "entry_time": "2026-04-29T18:00:25.568000+00:00",
-      "exit_time": "2026-05-07T18:00:25.568000+00:00",
-      "detection_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "peak_price": 0.11555700299645254,
-      "entry_price": 0.1100795496596737
-    },
     {
       "coin_id": "goldfinch",
       "symbol": "GFI",
@@ -55,7 +38,7 @@
       "exit_time": "2026-05-08T20:01:11.032000+00:00",
       "detection_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "peak_price": 0.16930662330714882,
       "entry_price": 0.16665787231887463
     },
@@ -535,6 +518,87 @@
       "s_entry_price": 1.0100690370349779,
       "peak_price": 0.9644818290149657,
       "entry_price": 0.929919127519631
+    },
+    {
+      "coin_id": "constellation-labs",
+      "symbol": "DAG",
+      "name": "Constellation",
+      "rank": 499,
+      "market_cap": 50613233,
+      "ch24_at_pump": 50.97304,
+      "ratio_30d": 1.477688998322158,
+      "turnover": 0.022120628799528023,
+      "vol_z": 9.221121742194818,
+      "price_at_detection": 0.01311264,
+      "pump_time": "2026-05-08T19:00:37.434000+00:00",
+      "entry_time_normal": "2026-05-08T22:00:37.434000+00:00",
+      "entry_time": "2026-05-08T22:00:37.434000+00:00",
+      "exit_time": "2026-05-16T22:00:37.434000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
+      "normal_entry_notified": false,
+      "entry_notified": false,
+      "exit_notified": false,
+      "s_peak_price": 0.013182873997618994,
+      "s_entry_price": 0.013103979963946752
     }
   ]
 }
