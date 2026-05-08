@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "gigachad-2": "2026-05-04T11:46:38.053161+00:00",
     "octra": "2026-05-06T18:14:25.956790+00:00",
     "nillion": "2026-05-08T02:44:07.100749+00:00",
     "pharos-network": "2026-05-08T11:11:38.572375+00:00"
@@ -529,11 +528,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 1.0100690370349779,
-      "s_entry_price": 1.0100690370349779
+      "s_entry_price": 1.0100690370349779,
+      "peak_price": 0.9644818290149657,
+      "entry_price": 0.929919127519631
     }
   ]
 }
