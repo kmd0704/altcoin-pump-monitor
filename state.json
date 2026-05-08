@@ -595,11 +595,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.013182873997618994,
-      "s_entry_price": 0.013103979963946752
+      "s_entry_price": 0.013103979963946752,
+      "peak_price": 0.021167851597856856,
+      "entry_price": 0.021167851597856856
     },
     {
       "coin_id": "collect-on-fanable",
@@ -676,11 +678,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.045457691890337056,
-      "s_entry_price": 0.04501351193471451
+      "s_entry_price": 0.04501351193471451,
+      "peak_price": 0.049770742219058015,
+      "entry_price": 0.049770742219058015
     }
   ]
 }
