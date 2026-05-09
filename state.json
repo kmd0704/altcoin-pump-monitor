@@ -11,24 +11,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "bedrock-token",
-      "symbol": "BR",
-      "name": "Bedrock",
-      "rank": 588,
-      "ch24_at_pump": 62.25462,
-      "ratio_30d": 1.1948400420612184,
-      "turnover": 0.06361830253594766,
-      "price_at_detection": 0.14688,
-      "pump_time": "2026-04-30T17:01:11.032000+00:00",
-      "entry_time": "2026-04-30T20:01:11.032000+00:00",
-      "exit_time": "2026-05-08T20:01:11.032000+00:00",
-      "detection_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "peak_price": 0.16930662330714882,
-      "entry_price": 0.16665787231887463
-    },
-    {
       "coin_id": "ready",
       "symbol": "READY",
       "name": "READY!",
@@ -910,11 +892,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.014990941641618556,
-      "s_entry_price": 0.014773274138272481
+      "s_entry_price": 0.014773274138272481,
+      "peak_price": 0.01565535184067246,
+      "entry_price": 0.01565535184067246
     }
   ]
 }
