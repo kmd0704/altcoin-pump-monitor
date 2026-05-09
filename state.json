@@ -5,7 +5,8 @@
     "pharos-network": "2026-05-08T11:11:38.572375+00:00",
     "constellation-labs": "2026-05-08T19:13:47.793297+00:00",
     "collect-on-fanable": "2026-05-08T20:57:47.792565+00:00",
-    "limitless-3": "2026-05-09T05:47:06.345938+00:00"
+    "limitless-3": "2026-05-09T05:47:06.345938+00:00",
+    "rss3": "2026-05-09T07:53:29.178130+00:00"
   },
   "scheduled": [
     {
@@ -762,11 +763,94 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
+      "normal_entry_notified": true,
+      "entry_notified": true,
+      "exit_notified": false,
+      "s_peak_price": 0.1638582373130147,
+      "s_entry_price": 0.1638582373130147,
+      "peak_price": 0.1631579817393653,
+      "entry_price": 0.1595902455505416
+    },
+    {
+      "coin_id": "rss3",
+      "symbol": "RSS3",
+      "name": "RSS3",
+      "rank": 961,
+      "market_cap": 18258657,
+      "ch24_at_pump": 66.02037,
+      "ratio_30d": 1.9953142470836007,
+      "turnover": 0.7170638149774008,
+      "vol_z": 3.3645815195302626,
+      "price_at_detection": 0.01192718,
+      "pump_time": "2026-05-09T00:00:46.119000+00:00",
+      "entry_time_normal": "2026-05-09T03:00:46.119000+00:00",
+      "entry_time": "2026-05-09T03:00:46.119000+00:00",
+      "exit_time": "2026-05-17T03:00:46.119000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 961 > 900",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 961 > 900",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": false,
+          "reason": "rank 961 > 900",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
       "exit_notified": false,
-      "s_peak_price": 0.1638582373130147,
-      "s_entry_price": 0.1638582373130147
+      "s_peak_price": 0.01380577554630573,
+      "s_entry_price": 0.011927340259603526
     }
   ]
 }
