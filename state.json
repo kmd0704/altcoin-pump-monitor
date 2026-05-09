@@ -6,27 +6,10 @@
     "constellation-labs": "2026-05-08T19:13:47.793297+00:00",
     "collect-on-fanable": "2026-05-08T20:57:47.792565+00:00",
     "limitless-3": "2026-05-09T05:47:06.345938+00:00",
-    "rss3": "2026-05-09T07:53:29.178130+00:00"
+    "rss3": "2026-05-09T07:53:29.178130+00:00",
+    "infinex-2": "2026-05-09T18:57:25.029903+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "goldfinch",
-      "symbol": "GFI",
-      "name": "Goldfinch",
-      "rank": 919,
-      "ch24_at_pump": 53.21465,
-      "ratio_30d": 1.6454936033373264,
-      "turnover": 0.025356899213748983,
-      "price_at_detection": 0.193184,
-      "pump_time": "2026-04-30T15:01:19.191000+00:00",
-      "entry_time": "2026-04-30T18:01:19.191000+00:00",
-      "exit_time": "2026-05-08T18:01:19.191000+00:00",
-      "detection_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "peak_price": 0.20598843379377843,
-      "entry_price": 0.20153803545423996
-    },
     {
       "coin_id": "bedrock-token",
       "symbol": "BR",
@@ -77,7 +60,7 @@
       "exit_time": "2026-05-09T18:55:07+00:00",
       "detection_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "peak_price": 0.14791228323105418,
       "entry_price": 0.1425295226696381
     },
@@ -851,6 +834,87 @@
       "exit_notified": false,
       "s_peak_price": 0.01380577554630573,
       "s_entry_price": 0.011927340259603526
+    },
+    {
+      "coin_id": "infinex-2",
+      "symbol": "INX",
+      "name": "Infinex",
+      "rank": 737,
+      "market_cap": 29363265,
+      "ch24_at_pump": 54.18506,
+      "ratio_30d": 1.186895433891329,
+      "turnover": 0.17687424610065516,
+      "vol_z": -0.03901891784188309,
+      "price_at_detection": 0.01477327,
+      "pump_time": "2026-05-09T18:01:34.142000+00:00",
+      "entry_time_normal": "2026-05-09T21:01:34.142000+00:00",
+      "entry_time": "2026-05-09T21:01:34.142000+00:00",
+      "exit_time": "2026-05-17T21:01:34.142000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": false,
+          "reason": "vol_z -0.04 < 0.0",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "vol_z -0.04 < 0.0",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
+      "normal_entry_notified": false,
+      "entry_notified": false,
+      "exit_notified": false,
+      "s_peak_price": 0.014990941641618556,
+      "s_entry_price": 0.014773274138272481
     }
   ]
 }
