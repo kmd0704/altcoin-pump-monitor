@@ -59,7 +59,7 @@
       "exit_time": "2026-05-09T16:00:56.359000+00:00",
       "detection_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "peak_price": 0.01831123953339391,
       "entry_price": 0.014469962767818444
     },
