@@ -1,0 +1,42 @@
+name: ETH Swing Short Monitor (戦略A)
+
+on:
+  schedule:
+    # 1時間ごとに実行(毎時0分)
+    - cron: '0 * * * *'
+  workflow_dispatch:  # 手動実行も可能
+
+permissions:
+  contents: write  # eth_swing_state.json をコミット保存
+
+jobs:
+  eth_monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run ETH swing monitor
+        env:
+          DISCORD_WEBHOOK_ETH: ${{ secrets.DISCORD_WEBHOOK_ETH }}
+          ACCOUNT_BALANCE_ETH: ${{ vars.ACCOUNT_BALANCE_ETH || '1000' }}
+          POSITION_PCT_ETH: ${{ vars.POSITION_PCT_ETH || '0.10' }}
+          TEST_DISCORD_ETH: ${{ vars.TEST_DISCORD_ETH || '' }}
+        run: |
+          python eth_swing.py
+
+      - name: Commit eth_swing_state.json
+        run: |
+          if [[ -n $(git status --porcelain eth_swing_state.json) ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add eth_swing_state.json
+            git commit -m "update eth_swing state $(date -u +%Y-%m-%dT%H:%MZ)" || true
+            git push || true
+          fi
