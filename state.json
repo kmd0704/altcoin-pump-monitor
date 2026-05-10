@@ -8,7 +8,8 @@
     "limitless-3": "2026-05-09T05:47:06.345938+00:00",
     "rss3": "2026-05-09T07:53:29.178130+00:00",
     "infinex-2": "2026-05-09T18:57:25.029903+00:00",
-    "solayer": "2026-05-10T06:09:54.979986+00:00"
+    "solayer": "2026-05-10T06:09:54.979986+00:00",
+    "paris-saint-germain-fan-token": "2026-05-10T14:50:42.156551+00:00"
   },
   "scheduled": [
     {
@@ -983,6 +984,87 @@
       "s_entry_price": 0.15564470623697485,
       "peak_price": 0.14827283101527988,
       "entry_price": 0.14046752356987224
+    },
+    {
+      "coin_id": "paris-saint-germain-fan-token",
+      "symbol": "PSG",
+      "name": "Paris Saint-Germain Fan Token",
+      "rank": 941,
+      "market_cap": 19291891,
+      "ch24_at_pump": 52.71564,
+      "ratio_30d": 1.51983895838857,
+      "turnover": 1.0377809873218693,
+      "vol_z": 1.3342718623758756,
+      "price_at_detection": 1.26,
+      "pump_time": "2026-05-10T14:50:21+00:00",
+      "entry_time_normal": "2026-05-10T17:50:21+00:00",
+      "entry_time": "2026-05-10T17:50:21+00:00",
+      "exit_time": "2026-05-18T17:50:21+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 941 > 900",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 941 > 900",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": false,
+          "reason": "rank 941 > 900",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
+      "normal_entry_notified": false,
+      "entry_notified": false,
+      "exit_notified": false,
+      "s_peak_price": 1.2635227093469374,
+      "s_entry_price": 1.2635227093469374
     }
   ]
 }
