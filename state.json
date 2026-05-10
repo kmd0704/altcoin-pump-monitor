@@ -1,6 +1,6 @@
 {
   "alerted": {
-    "octra": "2026-05-06T18:14:25.956790+00:00",
+    "octra": "2026-05-10T16:52:44.672218+00:00",
     "nillion": "2026-05-08T02:44:07.100749+00:00",
     "pharos-network": "2026-05-08T11:11:38.572375+00:00",
     "constellation-labs": "2026-05-08T19:13:47.793297+00:00",
@@ -12,24 +12,6 @@
     "paris-saint-germain-fan-token": "2026-05-10T14:50:42.156551+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "ready",
-      "symbol": "READY",
-      "name": "READY!",
-      "rank": 922,
-      "ch24_at_pump": 72.30218,
-      "ratio_30d": 1.754019685190599,
-      "turnover": 0.017936231675074885,
-      "price_at_detection": 0.01793829,
-      "pump_time": "2026-05-01T13:00:56.359000+00:00",
-      "entry_time": "2026-05-01T16:00:56.359000+00:00",
-      "exit_time": "2026-05-09T16:00:56.359000+00:00",
-      "detection_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "peak_price": 0.01831123953339391,
-      "entry_price": 0.014469962767818444
-    },
     {
       "coin_id": "limitless-3",
       "symbol": "LMTS",
@@ -1060,11 +1042,94 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
+      "normal_entry_notified": true,
+      "entry_notified": true,
+      "exit_notified": false,
+      "s_peak_price": 1.2635227093469374,
+      "s_entry_price": 1.2635227093469374,
+      "peak_price": 1.2665143699806716,
+      "entry_price": 1.0605774281364946
+    },
+    {
+      "coin_id": "octra",
+      "symbol": "OCT",
+      "name": "Octra",
+      "rank": 527,
+      "market_cap": 47889761,
+      "ch24_at_pump": 64.46511,
+      "ratio_30d": 1.8958458859331704,
+      "turnover": 0.02292390504642844,
+      "vol_z": -0.10361921034902066,
+      "price_at_detection": 0.079579,
+      "pump_time": "2026-05-10T16:52:27+00:00",
+      "entry_time_normal": "2026-05-10T19:52:27+00:00",
+      "entry_time": "2026-05-10T19:52:27+00:00",
+      "exit_time": "2026-05-18T19:52:27+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": false,
+          "reason": "vol_z -0.10 < 0.0",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "vol_z -0.10 < 0.0",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
       "exit_notified": false,
-      "s_peak_price": 1.2635227093469374,
-      "s_entry_price": 1.2635227093469374
+      "s_peak_price": 0.07616463143216824,
+      "s_entry_price": 0.07616463143216824
     }
   ]
 }
