@@ -139,15 +139,28 @@ def save_state(state):
 
 
 # ============= CoinGecko =============
-def cg_get(path, params=None):
+def cg_get(path, params=None, max_retries=4):
+    """CoinGecko GET with retry + exponential backoff.
+    GitHub Actions runner と CoinGecko の間で散発的に TimeoutError / 429 が起きるため
+    リトライ機構を入れる(2026-05-11)."""
     params = dict(params or {})
     if CG_API_KEY:
         params[KEY_PARAM] = CG_API_KEY
     qs = urllib.parse.urlencode(params)
     url = f"{API_BASE}{path}?{qs}"
     req = urllib.request.Request(url, headers={"accept": "application/json"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read())
+    last_err = None
+    for attempt in range(max_retries):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.loads(r.read())
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ConnectionError) as e:
+            last_err = e
+            code = getattr(e, "code", None)
+            wait = 30 if code == 429 else (2 ** attempt) * 3  # 3,6,12,24s
+            print(f"[cg_get] {path} attempt {attempt+1}/{max_retries} failed: {e}  → retry in {wait}s", flush=True)
+            time.sleep(wait)
+    raise last_err
 
 
 def fetch_top_coins(top_n=1000):
