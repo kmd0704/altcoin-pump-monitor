@@ -1,6 +1,12 @@
 {
   "daily_briefed_date": null,
-  "last_trend_state": null,
+  "last_trend_state": {
+    "ema20_above_ema50": true,
+    "ema50_above_ema200": false,
+    "price_above_ema200": false,
+    "fr_state": "neutral",
+    "cb_state": "neutral"
+  },
   "last_trend_alert": null,
   "last_sudden_move_alert": null,
   "last_fr_state": null,
