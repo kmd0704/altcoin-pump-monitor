@@ -11,7 +11,7 @@ BTC を中心に、価格・出来高・デリバティブ(FR/OI)・機関フロ
   ⚡ BTC 急変       : 直近15分で BTC が ±2% 動いた時(出来高・FR含む)
 
 データソース(全て無料):
-  - Binance Spot/Futures (klines, funding rate, open interest)
+  - Bybit V5 (klines, funding rate, open interest) ※Binance API は GitHub Actions(米国IP)から 451 拒否のため移行
   - Coinbase Pro (現物価格 — Coinbaseプレミアム計算)
 
 スケジュール: 15分ごと
@@ -107,28 +107,55 @@ def http_get_json(url, timeout=20):
 
 
 def fetch_klines(symbol, interval, limit=200, source='spot'):
-    """Binance kline 取得"""
-    base = 'https://api.binance.com/api/v3/klines' if source == 'spot' else 'https://fapi.binance.com/fapi/v1/klines'
-    params = {'symbol': symbol, 'interval': interval, 'limit': limit}
-    return http_get_json(f"{base}?{urllib.parse.urlencode(params)}")
+    """Bybit V5 kline 取得 (Binance互換形式に変換)
+    GitHub Actions(米国IP)から Binance API が HTTP 451 で拒否されるため Bybit に移行(2026-05-11)."""
+    cat = 'spot' if source == 'spot' else 'linear'
+    iv_map = {"1d":"D", "1w":"W", "12h":"720", "4h":"240", "1h":"60", "30m":"30", "15m":"15", "5m":"5", "1m":"1"}
+    iv = iv_map.get(interval, interval)
+    url = f"https://api.bybit.com/v5/market/kline?category={cat}&symbol={symbol}&interval={iv}&limit={min(limit, 1000)}"
+    data = http_get_json(url)
+    if data.get("retCode") != 0:
+        raise Exception(f"Bybit kline error: {data.get('retMsg')}")
+    rows = data["result"]["list"]
+    rows.reverse()  # Bybitは新しい順 → 古い順に直す
+    # Binance互換: [open_time(ms), open, high, low, close, volume]
+    return [[int(r[0]), r[1], r[2], r[3], r[4], r[5]] for r in rows]
 
 
 def fetch_funding_rate(symbol='BTCUSDT', limit=30):
-    """Binance Futures Funding Rate 履歴"""
-    url = f"https://fapi.binance.com/fapi/v1/fundingRate?symbol={symbol}&limit={limit}"
-    return http_get_json(url)
+    """Bybit V5 funding rate 履歴 (Binance互換)"""
+    url = f"https://api.bybit.com/v5/market/funding/history?category=linear&symbol={symbol}&limit={min(limit, 200)}"
+    data = http_get_json(url)
+    if data.get("retCode") != 0:
+        raise Exception(f"Bybit funding error: {data.get('retMsg')}")
+    rows = data["result"]["list"]
+    rows.reverse()  # 古い順に
+    return [{"fundingRate": r["fundingRate"], "fundingTime": int(r["fundingRateTimestamp"])} for r in rows]
 
 
 def fetch_oi_now(symbol='BTCUSDT'):
-    """現在の Open Interest"""
-    url = f"https://fapi.binance.com/fapi/v1/openInterest?symbol={symbol}"
-    return http_get_json(url)
+    """Bybit V5 現在のOI (Binance互換: openInterest)"""
+    url = f"https://api.bybit.com/v5/market/open-interest?category=linear&symbol={symbol}&intervalTime=5min&limit=1"
+    data = http_get_json(url)
+    if data.get("retCode") != 0:
+        raise Exception(f"Bybit OI error: {data.get('retMsg')}")
+    rows = data["result"]["list"]
+    if not rows:
+        return None
+    return {"openInterest": rows[0]["openInterest"]}
 
 
 def fetch_oi_history(symbol='BTCUSDT', period='1h', limit=48):
-    """Open Interest 履歴(過去48時間)"""
-    url = f"https://fapi.binance.com/futures/data/openInterestHist?symbol={symbol}&period={period}&limit={limit}"
-    return http_get_json(url)
+    """Bybit V5 OI履歴 (Binance互換: sumOpenInterest, timestamp)"""
+    iv_map = {"5m":"5min", "15m":"15min", "30m":"30min", "1h":"1h", "4h":"4h", "1d":"1d"}
+    iv = iv_map.get(period, period)
+    url = f"https://api.bybit.com/v5/market/open-interest?category=linear&symbol={symbol}&intervalTime={iv}&limit={min(limit, 200)}"
+    data = http_get_json(url)
+    if data.get("retCode") != 0:
+        raise Exception(f"Bybit OI hist error: {data.get('retMsg')}")
+    rows = data["result"]["list"]
+    rows.reverse()
+    return [{"sumOpenInterest": r["openInterest"], "timestamp": int(r["timestamp"])} for r in rows]
 
 
 def fetch_coinbase_btc():
