@@ -15,24 +15,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "elastos",
-      "symbol": "ELA",
-      "name": "Elastos",
-      "rank": 981,
-      "ch24_at_pump": 65.52539,
-      "ratio_30d": 1.570257787651352,
-      "turnover": 0.017408838921000067,
-      "price_at_detection": 0.715408,
-      "pump_time": "2026-05-02T09:00:40.568000+00:00",
-      "entry_time": "2026-05-02T12:00:40.568000+00:00",
-      "exit_time": "2026-05-10T12:00:40.568000+00:00",
-      "detection_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "peak_price": 0.8203102637579465,
-      "entry_price": 0.8203102637579465
-    },
-    {
       "coin_id": "babylon",
       "symbol": "BABY",
       "name": "Babylon",
