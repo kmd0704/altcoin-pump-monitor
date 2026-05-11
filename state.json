@@ -15,24 +15,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "marblex",
-      "symbol": "MBX",
-      "name": "MARBLEX",
-      "rank": 983,
-      "ch24_at_pump": 54.57106,
-      "ratio_30d": 1.5114161570236733,
-      "turnover": 0.11064298503937813,
-      "price_at_detection": 0.058541,
-      "pump_time": "2026-05-02T02:28:42+00:00",
-      "entry_time": "2026-05-02T05:28:42+00:00",
-      "exit_time": "2026-05-10T05:28:42+00:00",
-      "detection_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "peak_price": 0.05915250136403302,
-      "entry_price": 0.057334771915932684
-    },
-    {
       "coin_id": "elastos",
       "symbol": "ELA",
       "name": "Elastos",
