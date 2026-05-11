@@ -1,0 +1,40 @@
+name: BTC Pulse Monitor (相場フェーズ + トレンド転換 + 急変)
+
+on:
+  schedule:
+    # 15分ごと(*/15)
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pulse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run BTC pulse monitor
+        env:
+          DISCORD_WEBHOOK_TREND: ${{ secrets.DISCORD_WEBHOOK_TREND }}
+          TEST_DISCORD_TREND: ${{ vars.TEST_DISCORD_TREND || '' }}
+        run: |
+          python btc_pulse.py
+
+      - name: Commit btc_pulse_state.json
+        run: |
+          if [[ -n $(git status --porcelain btc_pulse_state.json) ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add btc_pulse_state.json
+            git commit -m "update btc_pulse state $(date -u +%Y-%m-%dT%H:%MZ)" || true
+            git push || true
+          fi
