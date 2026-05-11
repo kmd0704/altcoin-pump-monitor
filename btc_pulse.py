@@ -11,7 +11,8 @@ BTC を中心に、価格・出来高・デリバティブ(FR/OI)・機関フロ
   ⚡ BTC 急変       : 直近15分で BTC が ±2% 動いた時(出来高・FR含む)
 
 データソース(全て無料):
-  - Bybit V5 (klines, funding rate, open interest) ※Binance API は GitHub Actions(米国IP)から 451 拒否のため移行
+  - Kraken (klines) ※Binance・Bybit は GitHub Actions(米国IP)から 451/403 拒否のため Kraken に再移行(2026-05-12)
+  - FR / OI は米国IP対応の無料データソース不在のため一時無効化（analyze_market は None/neutral 扱いで吸収）
   - Coinbase Pro (現物価格 — Coinbaseプレミアム計算)
 
 スケジュール: 15分ごと
@@ -107,55 +108,40 @@ def http_get_json(url, timeout=20):
 
 
 def fetch_klines(symbol, interval, limit=200, source='spot'):
-    """Bybit V5 kline 取得 (Binance互換形式に変換)
-    GitHub Actions(米国IP)から Binance API が HTTP 451 で拒否されるため Bybit に移行(2026-05-11)."""
-    cat = 'spot' if source == 'spot' else 'linear'
-    iv_map = {"1d":"D", "1w":"W", "12h":"720", "4h":"240", "1h":"60", "30m":"30", "15m":"15", "5m":"5", "1m":"1"}
-    iv = iv_map.get(interval, interval)
-    url = f"https://api.bybit.com/v5/market/kline?category={cat}&symbol={symbol}&interval={iv}&limit={min(limit, 1000)}"
+    """Kraken OHLC (米国IP対応) / Binance・Bybit は GHA から HTTP 451/403 で拒否されるため Kraken に再移行(2026-05-12)."""
+    sym_map = {"BTCUSDT": "XBTUSDT", "ETHUSDT": "ETHUSDT"}
+    pair = sym_map.get(symbol, symbol)
+    iv_map = {"1d": 1440, "12h": 720, "4h": 240, "1h": 60, "30m": 30, "15m": 15, "5m": 5, "1m": 1}
+    iv = iv_map.get(interval, 60)
+    url = f"https://api.kraken.com/0/public/OHLC?pair={pair}&interval={iv}"
     data = http_get_json(url)
-    if data.get("retCode") != 0:
-        raise Exception(f"Bybit kline error: {data.get('retMsg')}")
-    rows = data["result"]["list"]
-    rows.reverse()  # Bybitは新しい順 → 古い順に直す
-    # Binance互換: [open_time(ms), open, high, low, close, volume]
-    return [[int(r[0]), r[1], r[2], r[3], r[4], r[5]] for r in rows]
+    if data.get("error"):
+        raise Exception(f"Kraken error: {data['error']}")
+    result = data.get("result", {})
+    keys = [k for k in result if k != "last"]
+    if not keys:
+        raise Exception("Kraken: no result key")
+    rows = result[keys[0]]
+    # Kraken形式: [time(sec), open, high, low, close, vwap, volume, count]
+    # → Binance互換: [open_time(ms), open, high, low, close, volume]
+    klines = [[int(r[0])*1000, r[1], r[2], r[3], r[4], r[6]] for r in rows]
+    return klines[-limit:] if limit else klines
 
 
 def fetch_funding_rate(symbol='BTCUSDT', limit=30):
-    """Bybit V5 funding rate 履歴 (Binance互換)"""
-    url = f"https://api.bybit.com/v5/market/funding/history?category=linear&symbol={symbol}&limit={min(limit, 200)}"
-    data = http_get_json(url)
-    if data.get("retCode") != 0:
-        raise Exception(f"Bybit funding error: {data.get('retMsg')}")
-    rows = data["result"]["list"]
-    rows.reverse()  # 古い順に
-    return [{"fundingRate": r["fundingRate"], "fundingTime": int(r["fundingRateTimestamp"])} for r in rows]
+    """FR取得は米国IPから無料アクセス可能なデータソース不在のため一時無効化(2026-05-12).
+    analyze_market 側で fr_state='neutral' として扱われる。"""
+    return []
 
 
 def fetch_oi_now(symbol='BTCUSDT'):
-    """Bybit V5 現在のOI (Binance互換: openInterest)"""
-    url = f"https://api.bybit.com/v5/market/open-interest?category=linear&symbol={symbol}&intervalTime=5min&limit=1"
-    data = http_get_json(url)
-    if data.get("retCode") != 0:
-        raise Exception(f"Bybit OI error: {data.get('retMsg')}")
-    rows = data["result"]["list"]
-    if not rows:
-        return None
-    return {"openInterest": rows[0]["openInterest"]}
+    """OI取得は米国IP対応の無料データソース不在のため一時無効化(2026-05-12)."""
+    return None
 
 
 def fetch_oi_history(symbol='BTCUSDT', period='1h', limit=48):
-    """Bybit V5 OI履歴 (Binance互換: sumOpenInterest, timestamp)"""
-    iv_map = {"5m":"5min", "15m":"15min", "30m":"30min", "1h":"1h", "4h":"4h", "1d":"1d"}
-    iv = iv_map.get(period, period)
-    url = f"https://api.bybit.com/v5/market/open-interest?category=linear&symbol={symbol}&intervalTime={iv}&limit={min(limit, 200)}"
-    data = http_get_json(url)
-    if data.get("retCode") != 0:
-        raise Exception(f"Bybit OI hist error: {data.get('retMsg')}")
-    rows = data["result"]["list"]
-    rows.reverse()
-    return [{"sumOpenInterest": r["openInterest"], "timestamp": int(r["timestamp"])} for r in rows]
+    """OI履歴も一時無効化(2026-05-12)."""
+    return []
 
 
 def fetch_coinbase_btc():
