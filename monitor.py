@@ -14,7 +14,7 @@ GitHub Actions で 1時間ごとに実行
 通知設計:
   s版マッチ → ⚡ 即時エントリー通知(検知と同時)
   通常版マッチ → 🚨 3時間後エントリー通知
-  192h後 → ⏰ 決済通知
+  24h後 → ⏰ 決済通知
 
 機能:
   Phase 1 急騰検出
@@ -80,7 +80,7 @@ WIDEST_MAX_RANK = 1000         # Phase1で広く取る上限(各戦略のmax_ran
 MAX_30D_RATIO = 2.0            # 30日で2倍超は除外
 MIN_TURNOVER = 0.01            # turnover ≥ 1%
 WAIT_HOURS = 3                 # 急騰検知後 3h でエントリー
-HOLD_HOURS = 192               # 保有 192h(8日)
+HOLD_HOURS = 24                # 保有 24h(1日) ※2026-05-12: 8日→1日に短縮 (バックテストで最適化、PF1.36→1.68)
 STOP_MULT = 1.60               # ストップ = Peak × 1.60
 DEDUP_HOURS = 48               # 同銘柄の再アラート抑止
 
