@@ -12,76 +12,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "gigachad-2",
-      "symbol": "GIGA",
-      "name": "Gigachad",
-      "rank": 797,
-      "market_cap": 25113421,
-      "ch24_at_pump": 57.99635,
-      "ratio_30d": 1.4774961638317756,
-      "turnover": 0.0846705189904719,
-      "vol_z": 24.28103576662395,
-      "price_at_detection": 0.00264857,
-      "pump_time": "2026-05-04T11:46:23+00:00",
-      "entry_time": "2026-05-04T14:46:23+00:00",
-      "exit_time": "2026-05-12T14:46:23+00:00",
-      "evals": [
-        {
-          "id": "v34",
-          "label": "v3.4",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / 全(rank 250-1000)"
-        },
-        {
-          "id": "v34m",
-          "label": "v3.4m",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / モッピー版(rank 250-900)"
-        },
-        {
-          "id": "v35",
-          "label": "v3.5",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / vol_z≥0厳選"
-        },
-        {
-          "id": "v35m",
-          "label": "v3.5m",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / vol_z厳選+モッピー版"
-        },
-        {
-          "id": "v36",
-          "label": "v3.6 ★",
-          "tp": 0.5,
-          "match": true,
-          "reason": "OK",
-          "note": "TP50% / リターン最大化"
-        },
-        {
-          "id": "v36m",
-          "label": "v3.6m",
-          "tp": 0.5,
-          "match": true,
-          "reason": "OK",
-          "note": "TP50% / モッピー版(rank 250-900)"
-        }
-      ],
-      "detection_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "peak_price": 0.002753330148621279,
-      "entry_price": 0.0025438206698750604
-    },
-    {
       "coin_id": "octra",
       "symbol": "OCT",
       "name": "Octra",
@@ -1397,7 +1327,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.04551126038235716,
       "s_entry_price": 0.04384949428202614
     }
