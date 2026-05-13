@@ -1,7 +1,6 @@
 {
   "alerted": {
     "octra": "2026-05-10T16:52:44.672218+00:00",
-    "limitless-3": "2026-05-09T05:47:06.345938+00:00",
     "rss3": "2026-05-09T07:53:29.178130+00:00",
     "infinex-2": "2026-05-09T18:57:25.029903+00:00",
     "solayer": "2026-05-10T06:09:54.979986+00:00",
@@ -1386,7 +1385,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.31589177178044053,
       "s_entry_price": 0.2623145692228884,
       "peak_price": 0.31589177178044053,
