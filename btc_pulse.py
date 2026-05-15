@@ -6,7 +6,8 @@ BTC を中心に、価格・出来高・デリバティブ(FR/OI)・機関フロ
 の4軸で総合判定。
 
 通知タイプ:
-  📅 朝ブリーフ      : 毎日 9:00 JST(0:00 UTC)に4軸の総まとめ
+  📅 朝/夜ブリーフ   : 毎日 9:00 JST / 21:00 JST に4軸の総まとめ
+                     + クロス取引所比較 (Binance/Bybit/OKX の FR・OI スプレッド)
   🔀 トレンド転換    : EMA クロス + FR/CB 反転（FR 復活で 6 種に拡張）
   ⚡ BTC 急変       : 直近15分で BTC が ±2% 動いた時(出来高・FR含む)
 
@@ -45,13 +46,19 @@ COINALYZE_BASE = "https://api.coinalyze.net/v1"
 # Binance USDT-Margined BTC Perpetual (最も流動性が高い)。
 # 取引所横断値が欲しい場合はカンマ区切りで複数指定可: "BTCUSDT_PERP.A,BTCUSDT_PERP.6"
 COINALYZE_SYMBOL = os.environ.get("COINALYZE_BTC_SYMBOL", "BTCUSDT_PERP.A").strip()
+# クロス取引所比較: Binance + Bybit + OKX の BTC USDT Perp
+CROSS_EXCHANGE_SYMBOLS = [
+    ('BTCUSDT_PERP.A', 'Binance'),
+    ('BTCUSDT.6',      'Bybit'),
+    ('BTCUSDT_PERP.3', 'OKX'),
+]
 
 # 急変アラート
 SUDDEN_MOVE_THRESHOLD = 0.02
 SUDDEN_MOVE_COOLDOWN_HOURS = 1
 
-# 朝ブリーフ
-DAILY_BRIEF_UTC_HOUR = 0  # 0:00 UTC = 9:00 JST
+# ブリーフ (1日2回: 9:00 JST = 0 UTC, 21:00 JST = 12 UTC)
+DAILY_BRIEF_UTC_HOURS = [0, 12]
 
 # トレンド転換
 TREND_COOLDOWN_HOURS = 6
@@ -102,7 +109,7 @@ def load_state():
         except Exception:
             pass
     return {
-        "daily_briefed_date": None,
+        "last_brief_key": None,        # "YYYY-MM-DD-HH" 形式で送信済みスロット記録
         "last_trend_state": None,
         "last_trend_alert": None,
         "last_sudden_move_alert": None,
@@ -319,6 +326,39 @@ def fetch_oi_now(symbol='BTCUSDT'):
         return None
 
 
+def fetch_cross_exchange_snapshot():
+    """
+    Coinalyze v1: 複数取引所の現在 FR と OI を一括取得して比較データを生成。
+    Endpoints: /v1/funding-rate, /v1/open-interest (convert_to_usd=true)
+    Returns: [{'exchange': 'Binance', 'symbol': '...', 'fr': float, 'oi': float}, ...]
+    キー未設定 / API エラー時は []。
+    """
+    if not COINALYZE_API_KEY:
+        return []
+    try:
+        symbols_csv = ','.join(s for s, _ in CROSS_EXCHANGE_SYMBOLS)
+        # 現在 FR
+        fr_resp = coinalyze_get('funding-rate', {'symbols': symbols_csv})
+        # 現在 OI (USD)
+        oi_resp = coinalyze_get('open-interest', {'symbols': symbols_csv, 'convert_to_usd': 'true'})
+        # symbol → value マッピング
+        fr_map = {item['symbol']: item.get('value') for item in (fr_resp or []) if isinstance(item, dict)}
+        oi_map = {item['symbol']: item.get('value') for item in (oi_resp or []) if isinstance(item, dict)}
+        # 取引所ごとに整理 (元の順番を維持)
+        result = []
+        for sym, label in CROSS_EXCHANGE_SYMBOLS:
+            result.append({
+                'exchange': label,
+                'symbol': sym,
+                'fr': fr_map.get(sym),
+                'oi': oi_map.get(sym),
+            })
+        return result
+    except Exception as e:
+        log(f"  ⚠ Coinalyze クロス取引所取得失敗: {e}")
+        return []
+
+
 def fetch_coinbase_btc():
     """Coinbase Pro の BTC-USD 価格"""
     url = "https://api.exchange.coinbase.com/products/BTC-USD/ticker"
@@ -374,6 +414,7 @@ def analyze_market():
     oi_now_data = safe(fetch_oi_now, 'BTCUSDT')
     oi_hist = safe(fetch_oi_history, 'BTCUSDT', '1h', 48) or []
     cb_data = safe(fetch_coinbase_btc)
+    cross_ex = safe(fetch_cross_exchange_snapshot) or []
 
     # === Price ===
     btc_d_closes = [float(k[4]) for k in btc_d]
@@ -465,6 +506,31 @@ def analyze_market():
     eth_lead_24h = (eth_ret_24h - btc_ret_24h) if (eth_ret_24h is not None and btc_ret_24h is not None) else None
     eth_btc_ratio = (eth_price / btc_price) if (eth_price and btc_price) else None
 
+    # === クロス取引所統計 ===
+    cross_summary = None
+    if cross_ex:
+        frs = [(x['exchange'], x['fr']) for x in cross_ex if x.get('fr') is not None]
+        ois = [(x['exchange'], x['oi']) for x in cross_ex if x.get('oi') is not None]
+        if frs:
+            max_fr = max(frs, key=lambda v: v[1])
+            min_fr = min(frs, key=lambda v: v[1])
+            fr_spread = max_fr[1] - min_fr[1]
+        else:
+            max_fr = min_fr = None; fr_spread = None
+        if ois:
+            total_oi = sum(v for _, v in ois)
+            top_oi = max(ois, key=lambda v: v[1])
+        else:
+            total_oi = None; top_oi = None
+        cross_summary = {
+            'rows': cross_ex,        # [{exchange, symbol, fr, oi}]
+            'max_fr': max_fr,        # ('Exchange', value)
+            'min_fr': min_fr,
+            'fr_spread': fr_spread,  # FR の取引所間スプレッド (Bybit -0.56% と OKX +0.25% なら 0.81%)
+            'top_oi': top_oi,
+            'total_oi': total_oi,
+        }
+
     # === 総合スコア(機関視点) ===
     bull_score = 0
     score_reasons = []
@@ -550,6 +616,8 @@ def analyze_market():
         'cb_price': cb_price, 'cb_premium': cb_premium, 'cb_state': cb_state,
         # OI (USD 建て — Coinalyze convert_to_usd)
         'oi_current': oi_current, 'oi_24h_ago': oi_24h_ago, 'oi_change_24h': oi_change_24h,
+        # クロス取引所
+        'cross_summary': cross_summary,
         # 総合
         'bull_score': bull_score, 'score_reasons': score_reasons,
         'phase': phase,
@@ -614,15 +682,47 @@ def discord_notify(content, embeds=None):
 
 
 # ============= Embed builders =============
-def build_daily_brief_embed(m):
-    emoji, label, color, desc = m['phase']
+def _build_cross_exchange_fields(cs):
+    """クロス取引所比較セクションを生成 (build_daily_brief_embed のヘルパー)."""
+    if not cs or not cs.get('rows'):
+        return []
+    # FR テーブル
+    fr_lines = []
+    for r in cs['rows']:
+        fr = r.get('fr')
+        fr_str = fmt_fr(fr) if fr is not None else '—'
+        fr_lines.append(f"• **{r['exchange']:<8s}** {fr_str}")
+    # OI テーブル + シェア
+    oi_lines = []
+    total = cs.get('total_oi') or 0
+    for r in cs['rows']:
+        oi = r.get('oi')
+        if oi is None:
+            oi_lines.append(f"• **{r['exchange']:<8s}** —")
+            continue
+        share = (oi / total * 100) if total else 0
+        oi_lines.append(f"• **{r['exchange']:<8s}** {fmt_dollar_short(oi)} ({share:.0f}%)")
+    # スプレッド情報
+    spread_str = ''
+    if cs.get('fr_spread') is not None and cs.get('max_fr') and cs.get('min_fr'):
+        spread_str = (f"\n**FRスプレッド**: {cs['fr_spread']*100:+.4f}%\n"
+                      f"(max: {cs['max_fr'][0]} {fmt_fr(cs['max_fr'][1])} / "
+                      f"min: {cs['min_fr'][0]} {fmt_fr(cs['min_fr'][1])})")
+    return [
+        {"name": "🌐 クロス取引所 — Funding Rate", "value": '\n'.join(fr_lines) + spread_str, "inline": True},
+        {"name": "🌐 クロス取引所 — Open Interest", "value": '\n'.join(oi_lines), "inline": True},
+    ]
+
+
+def build_daily_brief_embed(m, brief_label='📅 ブリーフ'):
+    emoji, phase_label, color, desc = m['phase']
     fr_emoji = '🔥' if m['fr_state'] == 'hot' else '❄️' if m['fr_state'] == 'cold' else '⚖️'
     cb_emoji = '🟢' if m['cb_state'] == 'hot' else '🔴' if m['cb_state'] == 'cold' else '⚖️'
     eth_swing_ok = m['bull_score'] <= 1
     new_long_ok = m['bull_score'] >= 2 and m['fr_state'] != 'hot'
 
     return {
-        "title": f"📅 朝ブリーフ — {emoji} {label}",
+        "title": f"{brief_label} — {emoji} {phase_label}",
         "description": f"**{desc}**\nスコア: **{m['bull_score']:+}**(+5以上=強気 / +2〜=弱強気 / -1〜+1=レンジ / -2〜=弱気)",
         "color": color,
         "fields": [
@@ -653,6 +753,8 @@ def build_daily_brief_embed(m):
                 f"現在: {fmt_dollar_short(m['oi_current'])}\n"
                 f"24h変化: {fmt_pct(m['oi_change_24h'])}",
              "inline": True},
+            # === クロス取引所比較 ===
+            *(_build_cross_exchange_fields(m['cross_summary']) if m.get('cross_summary') else []),
             # === 出来高 ===
             {"name": "📈 出来高 / ボラティリティ", "value":
                 f"24h出来高: {fmt_dollar_short((m['vol_24h']*m['btc_price']) if m['vol_24h'] else None)}\n"
@@ -756,16 +858,22 @@ def build_sudden_move_embed(m):
 
 # ============= 各チェック =============
 def check_daily_brief(state, m):
+    """9:00 JST (= 0:00 UTC) と 21:00 JST (= 12:00 UTC) の2回ブリーフ送信."""
     now = now_utc()
+    if now.hour not in DAILY_BRIEF_UTC_HOURS:
+        return False
+    # slot キー: "YYYY-MM-DD-HH" (UTC時刻ベース)
+    slot_key = now.strftime('%Y-%m-%d-%H')
+    if state.get('last_brief_key') == slot_key:
+        return False
+    # 朝(9:00 JST)・夜(21:00 JST) を区別
+    jst_hour = to_jst(now).hour
+    label = '🌅 朝ブリーフ' if jst_hour == 9 else '🌃 夜ブリーフ'
     today_jst = to_jst(now).strftime('%Y-%m-%d')
-    if state.get('daily_briefed_date') == today_jst:
-        return False
-    if now.hour != DAILY_BRIEF_UTC_HOUR:
-        return False
-    embed = build_daily_brief_embed(m)
-    discord_notify(f"📅 **{today_jst} 朝ブリーフ**", embeds=[embed])
-    state['daily_briefed_date'] = today_jst
-    log(f"📅 朝ブリーフ送信: {today_jst}")
+    embed = build_daily_brief_embed(m, label)
+    discord_notify(f"📅 **{today_jst} {label}** ({jst_hour:02d}:00 JST)", embeds=[embed])
+    state['last_brief_key'] = slot_key
+    log(f"📅 {label} 送信: {slot_key}")
     return True
 
 
@@ -858,7 +966,7 @@ def check_sudden_move(state, m):
 
 # ============= メイン =============
 def main():
-    log("=== BTC Pulse Monitor v3 起動(機関視点 / Coinalyze FR/OI 復活) ===")
+    log("=== BTC Pulse Monitor v3 起動(機関視点 / Coinalyze FR/OI + クロス取引所) ===")
     if not DISCORD_WEBHOOK:
         log("WARN: DISCORD_WEBHOOK_TREND 未設定")
     if not COINALYZE_API_KEY:
@@ -872,13 +980,13 @@ def main():
         ok = discord_notify(
             "🧪 **BTC Pulse v3 接続テスト**\n"
             "GitHub Actions から正常に到達しました。\n\n"
-            "📅 朝ブリーフ(毎日 9:00 JST)— 4軸統合\n"
+            "📅 朝/夜ブリーフ (9:00 / 21:00 JST) — 4軸統合 + クロス取引所比較\n"
             "🔀 トレンド転換検知(EMA / FR / CBプレミアム — 最大6種)\n"
             "⚡ BTC 急変(±2% / 15分、出来高・FR込み)\n\n"
             f"データソース:\n"
             f"  • 価格(klines): Kraken\n"
             f"  • 機関フロー: Coinbase Pro\n"
-            f"  • FR/OI: Coinalyze ({coinalyze_status}) / symbol={COINALYZE_SYMBOL}\n"
+            f"  • FR/OI/クロス取引所: Coinalyze ({coinalyze_status})\n"
             f"  • HTTP: 4回リトライ+指数バックオフ\n\n"
             "確認後、TEST_DISCORD_TREND を削除してください。"
         )
@@ -899,6 +1007,8 @@ def main():
         log(f"  OI 24h変化: {fmt_pct(m['oi_change_24h'])} / 出来高: {m['vol_ratio']:.2f}x")
     else:
         log(f"  OI 24h変化: {fmt_pct(m['oi_change_24h'])} / 出来高: データ不足")
+    if m.get('cross_summary') and m['cross_summary'].get('fr_spread') is not None:
+        log(f"  クロス取引所 FR スプレッド: {m['cross_summary']['fr_spread']*100:+.4f}%")
     log(f"  15分変動: {m['sudden_move_15m']*100:+.2f}%")
 
     sent_brief = check_daily_brief(state, m)
@@ -907,7 +1017,7 @@ def main():
     save_state(state)
 
     summary = []
-    if sent_brief: summary.append('📅朝ブリーフ')
+    if sent_brief: summary.append('📅ブリーフ')
     if sent_trend: summary.append('🔀トレンド転換')
     if sent_sudden: summary.append('⚡急変')
     log(f"=== 完了 / 送信: {' / '.join(summary) if summary else 'なし(平常)'} ===")
