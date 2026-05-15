@@ -213,10 +213,14 @@ def _coinalyze_history_to_rows(resp):
     return first.get('history') or []
 
 
-def fetch_funding_rate(symbol='BTCUSDT', limit=30):
+def fetch_funding_rate(symbol='BTCUSDT', limit=60):
     """
-    Coinalyze v1: Funding Rate 履歴 (8時間足、OHLC)。
+    Coinalyze v1: Funding Rate 履歴 (4時間足、OHLC)。
     Endpoint: /v1/funding-rate-history
+    Note: Coinalyze は '8hour' を非サポート (1min/5min/15min/30min/1hour/2hour/4hour/6hour/12hour/daily のみ)。
+    そのため 4hour で取得し、analyze_market 側で「2サイクル=8h」相当として扱う:
+      - 24h前 = 6 cycles ago (index -7)
+      - 7日 = 42 cycles (index -42:)
     OHLC の close (c) を採用 → 旧 Binance Futures fundingRate 形式に整形して返す。
     キー未設定 / API エラー時は [] (analyze_market で fr_state='neutral' として吸収)。
     """
@@ -224,11 +228,11 @@ def fetch_funding_rate(symbol='BTCUSDT', limit=30):
         return []
     try:
         now = int(datetime.now(timezone.utc).timestamp())
-        # 8h * limit + バッファで遡る
-        frm = now - (8 * 3600 * (limit + 2))
+        # 4h * limit + バッファで遡る
+        frm = now - (4 * 3600 * (limit + 2))
         data = coinalyze_get('funding-rate-history', {
             'symbols': COINALYZE_SYMBOL,
-            'interval': '8hour',
+            'interval': '4hour',
             'from': frm,
             'to': now,
         })
@@ -366,7 +370,7 @@ def analyze_market():
     if not btc_d or not btc_h:
         raise Exception("BTC データ取得失敗")
 
-    fr_history = safe(fetch_funding_rate, 'BTCUSDT', 30) or []
+    fr_history = safe(fetch_funding_rate, 'BTCUSDT', 60) or []
     oi_now_data = safe(fetch_oi_now, 'BTCUSDT')
     oi_hist = safe(fetch_oi_history, 'BTCUSDT', '1h', 48) or []
     cb_data = safe(fetch_coinbase_btc)
@@ -406,15 +410,15 @@ def analyze_market():
     vol_7d_avg_24h = sum(btc_h_volumes[-168:]) / 7 if len(btc_h_volumes) >= 168 else None
     vol_ratio = vol_24h / vol_7d_avg_24h if (vol_24h and vol_7d_avg_24h and vol_7d_avg_24h > 0) else None
 
-    # === Funding Rate ===
+    # === Funding Rate (4hour cycles via Coinalyze) ===
     fr_current = fr_24h_ago = fr_7d_avg = fr_change_24h = None
     fr_state = 'neutral'
-    if fr_history and len(fr_history) >= 21:
+    if fr_history and len(fr_history) >= 42:
         try:
             fr_current = float(fr_history[-1]['fundingRate'])
-            fr_24h_ago = float(fr_history[-4]['fundingRate'])  # 3 cycles ago = 24h
-            last_21 = [float(f['fundingRate']) for f in fr_history[-21:]]
-            fr_7d_avg = sum(last_21) / len(last_21)
+            fr_24h_ago = float(fr_history[-7]['fundingRate'])  # 6 cycles ago = 24h (4h * 6)
+            last_42 = [float(f['fundingRate']) for f in fr_history[-42:]]  # 42 * 4h = 168h = 7d
+            fr_7d_avg = sum(last_42) / len(last_42)
             fr_change_24h = fr_current - fr_24h_ago
             if fr_current >= FR_HOT_THRESHOLD:
                 fr_state = 'hot'      # ロング過熱
