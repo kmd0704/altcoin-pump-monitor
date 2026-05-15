@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "avalon-2": "2026-05-11T18:56:51.969784+00:00",
     "stader": "2026-05-12T06:13:40.321561+00:00",
     "saga-2": "2026-05-12T14:17:34.363039+00:00",
     "gensyn": "2026-05-14T14:04:34.289253+00:00",
@@ -1407,7 +1406,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.001206182298885455,
       "s_entry_price": 0.001206182298885455,
       "peak_price": 0.0013271479274741846,
