@@ -1,19 +1,26 @@
 """
-BTC Pulse Monitor v2 — 機関視点のトレンド判定
-==============================================
+BTC Pulse Monitor v3 — 機関視点のトレンド判定（Coinalyze FR/OI 復活版）
+======================================================================
 
 BTC を中心に、価格・出来高・デリバティブ(FR/OI)・機関フロー(Coinbase Premium)
 の4軸で総合判定。
 
 通知タイプ:
   📅 朝ブリーフ      : 毎日 9:00 JST(0:00 UTC)に4軸の総まとめ
-  🔀 トレンド転換    : EMA クロス + FR 急変 + Coinbase プレミアム反転
+  🔀 トレンド転換    : EMA クロス + FR/CB 反転（FR 復活で 6 種に拡張）
   ⚡ BTC 急変       : 直近15分で BTC が ±2% 動いた時(出来高・FR含む)
 
 データソース(全て無料):
-  - Kraken (klines) ※Binance・Bybit は GitHub Actions(米国IP)から 451/403 拒否のため Kraken に再移行(2026-05-12)
-  - FR / OI は米国IP対応の無料データソース不在のため一時無効化（analyze_market は None/neutral 扱いで吸収）
-  - Coinbase Pro (現物価格 — Coinbaseプレミアム計算)
+  - Kraken (klines) ※Binance/Bybit/OKX/MEXC は GitHub Actions(米国IP) から 451/403 拒否
+  - Coinbase Pro (現物価格 — Coinbase プレミアム計算)
+  - **Coinalyze v1 (Funding Rate / Open Interest)** ※2026-05-15 復活
+    - エンドポイント: /v1/funding-rate-history, /v1/open-interest-history
+    - 認証: 環境変数 COINALYZE_API_KEY (api_key ヘッダ)
+    - 無料プラン: 40 req/min(本BOTは15分に3req=月8,640req、十分余裕)
+    - シンボル: BTCUSDT_PERP.A (Binance USDT-Margined Perp、最も流動性が高い)
+    - 取得失敗時は従来通り neutral 扱いで継続（後方互換）
+
+ネットワーク: http_get_json は 4回リトライ + 指数バックオフ。429/5xx をハンドル。
 
 スケジュール: 15分ごと
 通知先: DISCORD_WEBHOOK_TREND
@@ -22,6 +29,7 @@ import os
 import sys
 import json
 import time
+import random
 import urllib.request
 import urllib.parse
 import urllib.error
@@ -30,6 +38,13 @@ from pathlib import Path
 
 # ============= 設定 =============
 DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK_TREND", "").strip()
+
+# Coinalyze API (FR/OI 復活、2026-05-15)
+COINALYZE_API_KEY = os.environ.get("COINALYZE_API_KEY", "").strip()
+COINALYZE_BASE = "https://api.coinalyze.net/v1"
+# Binance USDT-Margined BTC Perpetual (最も流動性が高い)。
+# 取引所横断値が欲しい場合はカンマ区切りで複数指定可: "BTCUSDT_PERP.A,BTCUSDT_PERP.6"
+COINALYZE_SYMBOL = os.environ.get("COINALYZE_BTC_SYMBOL", "BTCUSDT_PERP.A").strip()
 
 # 急変アラート
 SUDDEN_MOVE_THRESHOLD = 0.02
@@ -101,10 +116,66 @@ def save_state(state):
 
 
 # ============= API 取得 =============
-def http_get_json(url, timeout=20):
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read())
+def http_get_json(url, timeout=20, headers=None, max_retries=4):
+    """
+    HTTP GET → JSON。指数バックオフ付き 4回リトライ。
+    - 429 (rate limit) / 5xx をリトライ
+    - ネットワーク例外 (URLError, TimeoutError, JSONDecodeError) もリトライ
+    - リトライ間隔: 2^attempt + ジッタ (1, 2, 4, 8秒ベース)
+    monitor.py の cg_get() 相当の堅牢性を btc_pulse にも付与（2026-05-15）。
+    """
+    hdrs = {'User-Agent': 'Mozilla/5.0', 'Accept': 'application/json'}
+    if headers:
+        hdrs.update(headers)
+
+    last_err = None
+    for attempt in range(max_retries):
+        try:
+            req = urllib.request.Request(url, headers=hdrs)
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            last_err = e
+            # 429 (rate limit) / 5xx はリトライ。それ以外は即 raise
+            if e.code == 429 or e.code >= 500:
+                if attempt < max_retries - 1:
+                    wait = (2 ** attempt) + random.uniform(0, 0.5)
+                    log(f"  HTTP {e.code} → {wait:.1f}秒後リトライ ({attempt+1}/{max_retries})")
+                    time.sleep(wait)
+                    continue
+            raise
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+            last_err = e
+            if attempt < max_retries - 1:
+                wait = (2 ** attempt) + random.uniform(0, 0.5)
+                log(f"  {type(e).__name__} → {wait:.1f}秒後リトライ ({attempt+1}/{max_retries})")
+                time.sleep(wait)
+                continue
+            raise
+    if last_err:
+        raise last_err
+    raise Exception("http_get_json: 不明なエラー")
+
+
+def coinalyze_get(path, params=None):
+    """
+    Coinalyze v1 API GET。
+    - 認証: api_key ヘッダ (環境変数 COINALYZE_API_KEY)
+    - レスポンスはルートが list の場合が多い (history 系)
+    - エラー時は {"message": "..."} の dict が返るので例外化
+    """
+    if not COINALYZE_API_KEY:
+        raise Exception("COINALYZE_API_KEY 未設定")
+    qs = ''
+    if params:
+        qs = '?' + urllib.parse.urlencode(params)
+    url = f"{COINALYZE_BASE}/{path}{qs}"
+    headers = {'api_key': COINALYZE_API_KEY, 'accept': 'application/json'}
+    data = http_get_json(url, headers=headers)
+    # エラーレスポンスは {"message": "..."} 形式
+    if isinstance(data, dict) and 'message' in data and 'history' not in data:
+        raise Exception(f"Coinalyze {path} error: {data['message']}")
+    return data
 
 
 def fetch_klines(symbol, interval, limit=200, source='spot'):
@@ -128,20 +199,120 @@ def fetch_klines(symbol, interval, limit=200, source='spot'):
     return klines[-limit:] if limit else klines
 
 
+def _coinalyze_history_to_rows(resp):
+    """
+    Coinalyze の履歴レスポンス共通パーサ。
+    レスポンス形: [{"symbol": "...", "history": [{"t": <sec>, "o": ..., "h": ..., "l": ..., "c": ...}, ...]}]
+    複数シンボルが返った場合は最初の history を採用。
+    """
+    if not isinstance(resp, list) or not resp:
+        return []
+    first = resp[0]
+    if not isinstance(first, dict):
+        return []
+    return first.get('history') or []
+
+
 def fetch_funding_rate(symbol='BTCUSDT', limit=30):
-    """FR取得は米国IPから無料アクセス可能なデータソース不在のため一時無効化(2026-05-12).
-    analyze_market 側で fr_state='neutral' として扱われる。"""
-    return []
-
-
-def fetch_oi_now(symbol='BTCUSDT'):
-    """OI取得は米国IP対応の無料データソース不在のため一時無効化(2026-05-12)."""
-    return None
+    """
+    Coinalyze v1: Funding Rate 履歴 (8時間足、OHLC)。
+    Endpoint: /v1/funding-rate-history
+    OHLC の close (c) を採用 → 旧 Binance Futures fundingRate 形式に整形して返す。
+    キー未設定 / API エラー時は [] (analyze_market で fr_state='neutral' として吸収)。
+    """
+    if not COINALYZE_API_KEY:
+        return []
+    try:
+        now = int(datetime.now(timezone.utc).timestamp())
+        # 8h * limit + バッファで遡る
+        frm = now - (8 * 3600 * (limit + 2))
+        data = coinalyze_get('funding-rate-history', {
+            'symbols': COINALYZE_SYMBOL,
+            'interval': '8hour',
+            'from': frm,
+            'to': now,
+        })
+        rows = _coinalyze_history_to_rows(data)
+        if not rows:
+            return []
+        out = []
+        for row in rows[-limit:]:
+            if not isinstance(row, dict):
+                continue
+            close = row.get('c')
+            if close is None:
+                continue
+            out.append({
+                'fundingRate': close,            # 旧コードが float(x['fundingRate']) で読む
+                'fundingTime': (row.get('t') or 0) * 1000,  # ms に変換 (旧Binance互換)
+            })
+        return out
+    except Exception as e:
+        log(f"  ⚠ Coinalyze FR 取得失敗: {e}")
+        return []
 
 
 def fetch_oi_history(symbol='BTCUSDT', period='1h', limit=48):
-    """OI履歴も一時無効化(2026-05-12)."""
-    return []
+    """
+    Coinalyze v1: Open Interest 履歴 (USD 換算)。
+    Endpoint: /v1/open-interest-history
+    OHLC の close (c) を採用 → 旧形式 [{'sumOpenInterest': ..., 'timestamp': ...}, ...] に整形。
+    キー未設定 / API エラー時は []。
+    """
+    if not COINALYZE_API_KEY:
+        return []
+    try:
+        # interval 変換: '1h' → '1hour' / '5m' → '5min' など
+        iv_map = {'1m':'1min','5m':'5min','15m':'15min','30m':'30min',
+                  '1h':'1hour','2h':'2hour','4h':'4hour','12h':'12hour','1d':'daily'}
+        iv = iv_map.get(period, '1hour')
+        # 分換算で from を計算
+        minutes = {'1min':1,'5min':5,'15min':15,'30min':30,
+                   '1hour':60,'2hour':120,'4hour':240,'12hour':720,'daily':1440}.get(iv, 60)
+        now = int(datetime.now(timezone.utc).timestamp())
+        frm = now - (minutes * 60 * (limit + 2))
+        data = coinalyze_get('open-interest-history', {
+            'symbols': COINALYZE_SYMBOL,
+            'interval': iv,
+            'from': frm,
+            'to': now,
+            'convert_to_usd': 'true',
+        })
+        rows = _coinalyze_history_to_rows(data)
+        if not rows:
+            return []
+        out = []
+        for row in rows[-limit:]:
+            if not isinstance(row, dict):
+                continue
+            close = row.get('c')
+            if close is None:
+                continue
+            out.append({
+                'sumOpenInterest': close,        # USD 建て
+                'timestamp': (row.get('t') or 0) * 1000,
+            })
+        return out
+    except Exception as e:
+        log(f"  ⚠ Coinalyze OI 履歴取得失敗: {e}")
+        return []
+
+
+def fetch_oi_now(symbol='BTCUSDT'):
+    """
+    現在 OI。OI 履歴の最新足を流用（追加API呼び出しを節約）。
+    返り値: {'openInterest': <USD>} or None
+    ※ Coinalyze は convert_to_usd=true で USD 建てを返すため、
+       analyze_market 側の表示は `oi_current` をそのまま USD 表記に。
+    """
+    hist = fetch_oi_history(symbol, period='1h', limit=2)
+    if not hist:
+        return None
+    try:
+        latest = float(hist[-1]['sumOpenInterest'])
+        return {'openInterest': latest, '_unit': 'USD'}
+    except Exception:
+        return None
 
 
 def fetch_coinbase_btc():
@@ -239,17 +410,20 @@ def analyze_market():
     fr_current = fr_24h_ago = fr_7d_avg = fr_change_24h = None
     fr_state = 'neutral'
     if fr_history and len(fr_history) >= 21:
-        fr_current = float(fr_history[-1]['fundingRate'])
-        fr_24h_ago = float(fr_history[-4]['fundingRate'])  # 3 cycles ago = 24h
-        last_21 = [float(f['fundingRate']) for f in fr_history[-21:]]
-        fr_7d_avg = sum(last_21) / len(last_21)
-        fr_change_24h = fr_current - fr_24h_ago
-        if fr_current >= FR_HOT_THRESHOLD:
-            fr_state = 'hot'      # ロング過熱
-        elif fr_current <= FR_COLD_THRESHOLD:
-            fr_state = 'cold'     # ショート過剰 or 現物優勢
-        else:
-            fr_state = 'neutral'
+        try:
+            fr_current = float(fr_history[-1]['fundingRate'])
+            fr_24h_ago = float(fr_history[-4]['fundingRate'])  # 3 cycles ago = 24h
+            last_21 = [float(f['fundingRate']) for f in fr_history[-21:]]
+            fr_7d_avg = sum(last_21) / len(last_21)
+            fr_change_24h = fr_current - fr_24h_ago
+            if fr_current >= FR_HOT_THRESHOLD:
+                fr_state = 'hot'      # ロング過熱
+            elif fr_current <= FR_COLD_THRESHOLD:
+                fr_state = 'cold'     # ショート過剰 or 現物優勢
+            else:
+                fr_state = 'neutral'
+        except (TypeError, ValueError, KeyError, IndexError) as e:
+            log(f"  ⚠ FR パース失敗: {e}")
 
     # === Coinbase Premium ===
     cb_price = None
@@ -266,15 +440,22 @@ def analyze_market():
             cb_state = 'neutral'
 
     # === Open Interest ===
+    # Coinalyze は convert_to_usd=true で USD 建てを返す。oi_current は USD ($)
     oi_current = None
     oi_24h_ago = None
     oi_change_24h = None
     if oi_now_data and 'openInterest' in oi_now_data:
-        oi_current = float(oi_now_data['openInterest'])
+        try:
+            oi_current = float(oi_now_data['openInterest'])
+        except (TypeError, ValueError):
+            pass
     if oi_hist and len(oi_hist) >= 25:
-        oi_24h_ago = float(oi_hist[-25]['sumOpenInterest'])
-        if oi_current and oi_24h_ago:
-            oi_change_24h = oi_current / oi_24h_ago - 1
+        try:
+            oi_24h_ago = float(oi_hist[-25]['sumOpenInterest'])
+            if oi_current and oi_24h_ago:
+                oi_change_24h = oi_current / oi_24h_ago - 1
+        except (TypeError, ValueError, KeyError, IndexError) as e:
+            log(f"  ⚠ OI 履歴パース失敗: {e}")
 
     # === ETH先行 ===
     eth_lead_24h = (eth_ret_24h - btc_ret_24h) if (eth_ret_24h is not None and btc_ret_24h is not None) else None
@@ -338,7 +519,7 @@ def analyze_market():
     if bull_score >= 5:
         phase = ('🚀', '強気トレンド', 0x5cb85c, 'BTC は明確に上昇、機関も積極買い')
     elif bull_score >= 2:
-        phase = ('📈', '弑強気', 0x86d981, '緩やかに上昇、ブル優勢')
+        phase = ('📈', '弱強気', 0x86d981, '緩やかに上昇、ブル優勢')
     elif bull_score >= -1:
         phase = ('📊', 'レンジ相場', 0xf0b648, '横ばい、ETHスイング戦略の本命相場')
     elif bull_score >= -4:
@@ -363,7 +544,7 @@ def analyze_market():
         'fr_state': fr_state,
         # CB premium
         'cb_price': cb_price, 'cb_premium': cb_premium, 'cb_state': cb_state,
-        # OI
+        # OI (USD 建て — Coinalyze convert_to_usd)
         'oi_current': oi_current, 'oi_24h_ago': oi_24h_ago, 'oi_change_24h': oi_change_24h,
         # 総合
         'bull_score': bull_score, 'score_reasons': score_reasons,
@@ -417,7 +598,7 @@ def discord_notify(content, embeds=None):
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(DISCORD_WEBHOOK, data=body, headers={
         "Content-Type": "application/json",
-        "User-Agent": "DiscordBot (https://github.com/kmd0704/altcoin-pump-monitor, btc-pulse-2.0)"
+        "User-Agent": "DiscordBot (https://github.com/kmd0704/altcoin-pump-monitor, btc-pulse-3.0)"
     })
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
@@ -455,19 +636,18 @@ def build_daily_brief_embed(m):
             {"name": f"{cb_emoji} Coinbase プレミアム", "value":
                 f"**{fmt_pct(m['cb_premium'])}** ({m['cb_state']})\n"
                 f"CB: {fmt_dollar(m['cb_price'])}\n"
-                f"Binance: {fmt_dollar(m['btc_price'])}\n"
+                f"Kraken基準: {fmt_dollar(m['btc_price'])}\n"
                 f"{'米国機関買い' if m['cb_state']=='hot' else '米国機関売り' if m['cb_state']=='cold' else '中立'}",
              "inline": False},
             # === デリバティブ ===
-            {"name": f"{fr_emoji} ファンディングレート (8h単位)", "value":
+            {"name": f"{fr_emoji} ファンディングレート (Binance USDT-Perp / 8h)", "value":
                 f"現在: **{fmt_fr(m['fr_current'])}** ({m['fr_state']})\n"
                 f"24h前: {fmt_fr(m['fr_24h_ago'])} → {fmt_pct(m['fr_change_24h'], decimals=4) if m['fr_change_24h'] else '—'}\n"
                 f"7日平均: {fmt_fr(m['fr_7d_avg'])}",
              "inline": True},
-            {"name": "📊 Open Interest", "value":
-                f"現在: {fmt_dollar_short(m['oi_current'] * m['btc_price']) if m['oi_current'] else '—'}\n"
-                f"24h: {fmt_pct(m['oi_change_24h'])}\n"
-                f"({fmt_dollar_short(m['oi_current']) + ' BTC' if m['oi_current'] else '—'})",
+            {"name": "📊 Open Interest (USD換算)", "value":
+                f"現在: {fmt_dollar_short(m['oi_current'])}\n"
+                f"24h変化: {fmt_pct(m['oi_change_24h'])}",
              "inline": True},
             # === 出来高 ===
             {"name": "📈 出来高 / ボラティリティ", "value":
@@ -492,7 +672,7 @@ def build_daily_brief_embed(m):
                 f"・**新規ロング**: {'🟢 検討OK(機関買い+FR冷却)' if new_long_ok else '🟡 慎重' if m['bull_score']>=0 else '🔴 待機'}",
              "inline": False},
         ],
-        "footer": {"text": "次回ブリーフ: 明日 9:00 JST / トレンド転換と急変は随時通知"},
+        "footer": {"text": "次回ブリーフ: 明日 9:00 JST / FR/OI ソース: Coinalyze / 価格: Kraken+Coinbase"},
         "timestamp": now_utc().isoformat()
     }
 
@@ -535,7 +715,7 @@ def build_trend_change_embed(m, change_type, detail):
             {"name": "CB プレミアム", "value": f"{fmt_pct(m['cb_premium'])} ({m['cb_state']})", "inline": True},
             {"name": "OI 24h変化", "value": fmt_pct(m['oi_change_24h']), "inline": True},
         ],
-        "footer": {"text": "BTC Pulse v2 / トレンド転換アラート"},
+        "footer": {"text": "BTC Pulse v3 / トレンド転換アラート"},
         "timestamp": now_utc().isoformat()
     }
 
@@ -565,7 +745,7 @@ def build_sudden_move_embed(m):
                 f"{'天井近い可能性' if (m['fr_state']=='hot' and is_up) else '転換候補' if (m['fr_state']=='cold' and is_up) else ''}"
              ), "inline": False},
         ],
-        "footer": {"text": "BTC Pulse v2 / 急変アラート(クールダウン1h)"},
+        "footer": {"text": "BTC Pulse v3 / 急変アラート(クールダウン1h)"},
         "timestamp": now_utc().isoformat()
     }
 
@@ -632,12 +812,12 @@ def check_trend_change(state, m):
         if cur['cb_state'] == 'hot':
             ct = 'cb_flip_to_hot'
             d = (f"Coinbase プレミアム +{m['cb_premium']*100:.2f}% に転換。**米国機関の買いフロー始動**。\n"
-                 f"CB: {fmt_dollar(m['cb_price'])} / Binance: {fmt_dollar(m['btc_price'])}")
+                 f"CB: {fmt_dollar(m['cb_price'])} / Kraken基準: {fmt_dollar(m['btc_price'])}")
             changes.append((ct, d, 2))
         elif cur['cb_state'] == 'cold':
             ct = 'cb_flip_to_cold'
             d = (f"Coinbase ディスカウント {m['cb_premium']*100:.2f}% に転換。**米国機関の売りフロー始動**。\n"
-                 f"CB: {fmt_dollar(m['cb_price'])} / Binance: {fmt_dollar(m['btc_price'])}")
+                 f"CB: {fmt_dollar(m['cb_price'])} / Kraken基準: {fmt_dollar(m['btc_price'])}")
             changes.append((ct, d, 2))
 
     if not changes:
@@ -674,19 +854,28 @@ def check_sudden_move(state, m):
 
 # ============= メイン =============
 def main():
-    log("=== BTC Pulse Monitor v2 起動(機関視点) ===")
+    log("=== BTC Pulse Monitor v3 起動(機関視点 / Coinalyze FR/OI 復活) ===")
     if not DISCORD_WEBHOOK:
         log("WARN: DISCORD_WEBHOOK_TREND 未設定")
+    if not COINALYZE_API_KEY:
+        log("WARN: COINALYZE_API_KEY 未設定 — FR/OI は無効化されます")
+    else:
+        log(f"✓ Coinalyze API 設定済み — FR/OI 取得を有効化 (symbol={COINALYZE_SYMBOL})")
 
     if os.environ.get("TEST_DISCORD_TREND", "").strip() == "1":
         log("🧪 TEST_DISCORD_TREND モード")
+        coinalyze_status = "✅ 有効" if COINALYZE_API_KEY else "⚠️ 未設定（FR/OI は無効）"
         ok = discord_notify(
-            "🧪 **BTC Pulse v2 接続テスト**\n"
+            "🧪 **BTC Pulse v3 接続テスト**\n"
             "GitHub Actions から正常に到達しました。\n\n"
             "📅 朝ブリーフ(毎日 9:00 JST)— 4軸統合\n"
-            "🔀 トレンド転換検知(EMA / FR / CBプレミアム)\n"
+            "🔀 トレンド転換検知(EMA / FR / CBプレミアム — 最大6種)\n"
             "⚡ BTC 急変(±2% / 15分、出来高・FR込み)\n\n"
-            "データソース: Binance (Spot/Futures) + Coinbase Pro\n"
+            f"データソース:\n"
+            f"  • 価格(klines): Kraken\n"
+            f"  • 機関フロー: Coinbase Pro\n"
+            f"  • FR/OI: Coinalyze ({coinalyze_status}) / symbol={COINALYZE_SYMBOL}\n"
+            f"  • HTTP: 4回リトライ+指数バックオフ\n\n"
             "確認後、TEST_DISCORD_TREND を削除してください。"
         )
         log(f"テスト結果: {'✅ 成功' if ok else '❌ 失敗'}")
@@ -702,7 +891,10 @@ def main():
 
     log(f"  BTC: {fmt_dollar(m['btc_price'])} / フェーズ: {m['phase'][1]} (score {m['bull_score']:+})")
     log(f"  FR: {fmt_fr(m['fr_current'])} ({m['fr_state']}) / CB: {fmt_pct(m['cb_premium'])} ({m['cb_state']})")
-    log(f"  OI 24h変化: {fmt_pct(m['oi_change_24h'])} / 出来高: {m['vol_ratio']:.2f}x" if m['vol_ratio'] else "  OI/Vol: データ不足")
+    if m['vol_ratio']:
+        log(f"  OI 24h変化: {fmt_pct(m['oi_change_24h'])} / 出来高: {m['vol_ratio']:.2f}x")
+    else:
+        log(f"  OI 24h変化: {fmt_pct(m['oi_change_24h'])} / 出来高: データ不足")
     log(f"  15分変動: {m['sudden_move_15m']*100:+.2f}%")
 
     sent_brief = check_daily_brief(state, m)
