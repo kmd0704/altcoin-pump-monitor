@@ -5,7 +5,7 @@
     "ema50_above_ema200": false,
     "price_above_ema200": false,
     "fr_state": "hot",
-    "cb_state": "cold"
+    "cb_state": "neutral"
   },
   "last_trend_alert": "2026-05-16T04:04:25.996954+00:00",
   "last_sudden_move_alert": null,
