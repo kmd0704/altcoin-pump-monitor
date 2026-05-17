@@ -2,7 +2,8 @@
   "alerted": {
     "gensyn": "2026-05-14T14:04:34.289253+00:00",
     "openserv": "2026-05-16T23:50:41.809657+00:00",
-    "degen-base": "2026-05-14T16:59:27.762238+00:00"
+    "degen-base": "2026-05-14T16:59:27.762238+00:00",
+    "nexst": "2026-05-17T02:50:24.299550+00:00"
   },
   "scheduled": [
     {
@@ -414,7 +415,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.01380577554630573,
       "s_entry_price": 0.011927340259603526
     },
@@ -998,20 +999,20 @@
       "entry_price": 0.0545931006016946
     },
     {
-      "coin_id": "openserv",
-      "symbol": "SERV",
-      "name": "OpenServ",
-      "rank": 652,
-      "market_cap": 34172124,
-      "ch24_at_pump": 50.35409,
-      "ratio_30d": 1.8480428107644309,
-      "turnover": 0.21784994226760027,
-      "vol_z": -0.5701273623566613,
-      "price_at_detection": 0.04400866,
-      "pump_time": "2026-05-14T13:00:44.634000+00:00",
-      "entry_time_normal": "2026-05-14T16:00:44.634000+00:00",
-      "entry_time": "2026-05-14T16:00:44.634000+00:00",
-      "exit_time": "2026-05-15T16:00:44.634000+00:00",
+      "coin_id": "nexst",
+      "symbol": "NXT",
+      "name": "NEXST",
+      "rank": 581,
+      "market_cap": 39378760,
+      "ch24_at_pump": 59.22868,
+      "ratio_30d": 1.8526452620912295,
+      "turnover": 0.11571202342890448,
+      "vol_z": null,
+      "price_at_detection": 0.173091,
+      "pump_time": "2026-05-17T02:50:21+00:00",
+      "entry_time_normal": "2026-05-17T05:50:21+00:00",
+      "entry_time": "2026-05-17T05:50:21+00:00",
+      "exit_time": "2026-05-18T05:50:21+00:00",
       "evals": [
         {
           "id": "v34",
@@ -1033,16 +1034,16 @@
           "id": "v35",
           "label": "v3.5",
           "tp": 0.3,
-          "match": false,
-          "reason": "vol_z -0.57 < 0.0",
+          "match": true,
+          "reason": "OK",
           "note": "TP30% / vol_z厳選 / 3h待ち"
         },
         {
           "id": "v35m",
           "label": "v3.5m",
           "tp": 0.3,
-          "match": false,
-          "reason": "vol_z -0.57 < 0.0",
+          "match": true,
+          "reason": "OK",
           "note": "TP30% / vol_z厳選+モッピーさん版"
         },
         {
@@ -1075,8 +1076,8 @@
       "normal_entry_notified": false,
       "entry_notified": false,
       "exit_notified": false,
-      "s_peak_price": 0.04732227451703221,
-      "s_entry_price": 0.043998018646441504
+      "s_peak_price": 0.17313463823135092,
+      "s_entry_price": 0.17313463823135092
     }
   ]
 }
