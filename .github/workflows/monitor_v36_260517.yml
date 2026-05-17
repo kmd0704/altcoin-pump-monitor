@@ -1,0 +1,44 @@
+name: Altcoin Pump Monitor v3.6-260517 (TP40% 深掘り)
+
+on:
+  schedule:
+    # 1時間ごとに実行(毎時10分 — 既存BOT/v34と競合回避)
+    - cron: '10 * * * *'
+  workflow_dispatch:  # 手動実行も可能
+
+permissions:
+  contents: write
+
+jobs:
+  monitor_v36_260517:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run v3.6-260517 monitor
+        env:
+          CG_API_KEY: ${{ secrets.CG_API_KEY }}
+          DISCORD_WEBHOOK_V36_260517: ${{ secrets.DISCORD_WEBHOOK_V36_260517 }}
+          CG_PLAN: ${{ vars.CG_PLAN || 'demo' }}
+          ACCOUNT_BALANCE: ${{ vars.ACCOUNT_BALANCE || '100000' }}
+          POSITION_PCT: ${{ vars.POSITION_PCT || '0.20' }}
+          TEST_DISCORD_V36_260517: ${{ vars.TEST_DISCORD_V36_260517 || '' }}
+        run: |
+          python monitor_v36_260517.py
+
+      - name: Commit state file
+        run: |
+          if [[ -n $(git status --porcelain monitor_v36_260517_state.json) ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add monitor_v36_260517_state.json
+            git commit -m "update v36-260517 state $(date -u +%Y-%m-%dT%H:%MZ)" || true
+            git push || true
+          fi
