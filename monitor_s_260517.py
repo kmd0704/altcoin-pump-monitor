@@ -45,6 +45,12 @@ import urllib.error
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+# ★ perp上場銘柄リスト(全perp取引所union)
+try:
+    from perp_universe import PERP_COINS
+except ImportError:
+    PERP_COINS = frozenset()  # フィルタなしフォールバック
+
 # ============= 設定 =============
 CG_API_KEY = os.environ.get("CG_API_KEY", "").strip()
 DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK_S_260517", "").strip()
@@ -182,6 +188,9 @@ def basic_filter(coin):
         return False, "stable symbol"
     if STABLE_NAME_RE.search(name):
         return False, "stable name"
+    # ★ perp上場銘柄のみ(全perp取引所union、774銘柄)
+    if PERP_COINS and coin["id"] not in PERP_COINS:
+        return False, "not on perp exchange"
     rank = coin.get("market_cap_rank")
     if rank is None:
         return False, "no rank"

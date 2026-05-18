@@ -45,6 +45,12 @@ import urllib.error
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+# ★ perp上場銘柄リスト(全perp取引所union)
+try:
+    from perp_universe import PERP_COINS
+except ImportError:
+    PERP_COINS = frozenset()  # フィルタなしフォールバック
+
 # ============= 設定 =============
 CG_API_KEY = os.environ.get("CG_API_KEY", "").strip()
 DISCORD_WEBHOOK = os.environ.get("DISCORD_WEBHOOK_V36_260517", "").strip()
@@ -73,7 +79,7 @@ VOL_Z_MIN = 0.0                 # vol_z ≥ 0 (NaN は通す)
 WAIT_HOURS = 2                  # pump_start + 2h でエントリー
 HOLD_HOURS = 48                 # entry + 48h で決済
 TP_PCT = 0.40                   # 利確 -40% ★v3.4-260517(25%)より深く★
-SL_PCT = 0.10                   # 損切 +10% (entry比)
+SL_PCT = 0.15                   # 損切 +15% (entry比、perp銘柄向けに緩和)
 
 # その他
 DEDUP_HOURS = 48                # 同銘柄の再アラート抑止
@@ -181,6 +187,9 @@ def basic_filter(coin):
         return False, "stable symbol"
     if STABLE_NAME_RE.search(name):
         return False, "stable name"
+    # ★ perp上場銘柄のみ(全perp取引所union、774銘柄)
+    if PERP_COINS and coin["id"] not in PERP_COINS:
+        return False, "not on perp exchange"
     rank = coin.get("market_cap_rank")
     if rank is None:
         return False, "no rank"
