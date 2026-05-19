@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "openeden": "2026-05-19T19:03:34.103404+00:00"
+    "openeden": "2026-05-19T19:03:34.103404+00:00",
+    "roll-2": "2026-05-19T20:49:35.815889+00:00"
   },
   "scheduled": [
     {
@@ -19,6 +20,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.0884542659966476
+    },
+    {
+      "coin_id": "roll-2",
+      "symbol": "ROLL",
+      "name": "ROLL",
+      "rank": 915,
+      "market_cap": 20686907,
+      "ch24_at_pump": 151.02495,
+      "ratio_30d": 2.091410918462897,
+      "turnover": 0.08642921110459736,
+      "vol_z": 13.101893692428652,
+      "pump_time": "2026-05-19T18:01:09.735000+00:00",
+      "entry_time": "2026-05-19T20:01:09.735000+00:00",
+      "exit_time": "2026-05-21T20:01:09.735000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.14177165384093907
     }
   ]
 }
