@@ -6,23 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "openeden",
-      "symbol": "EDEN",
-      "name": "OpenEden",
-      "rank": 981,
-      "market_cap": 16385315,
-      "ch24_at_pump": 85.33336,
-      "ratio_30d": 2.563601797398154,
-      "turnover": 3.404142708696799,
-      "vol_z": 4.135150353441436,
-      "pump_time": "2026-05-19T17:01:20.672000+00:00",
-      "entry_time": "2026-05-19T19:01:20.672000+00:00",
-      "exit_time": "2026-05-21T19:01:20.672000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0884542659966476
-    },
-    {
       "coin_id": "roll-2",
       "symbol": "ROLL",
       "name": "ROLL",
