@@ -3,7 +3,8 @@
     "openeden": "2026-05-19T19:16:04.066372+00:00",
     "roll-2": "2026-05-19T21:42:36.086556+00:00",
     "bonfida": "2026-05-20T21:08:04.390970+00:00",
-    "bob-build-on-bitcoin": "2026-05-22T05:12:25.016187+00:00"
+    "bob-build-on-bitcoin": "2026-05-22T05:12:25.016187+00:00",
+    "audiera": "2026-05-22T23:17:06.149704+00:00"
   },
   "scheduled": [
     {
@@ -39,6 +40,22 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.011441779126721556
+    },
+    {
+      "coin_id": "audiera",
+      "symbol": "BEAT",
+      "name": "Audiera",
+      "rank": 137,
+      "market_cap": 324055148,
+      "ch24_at_pump": 70.18933,
+      "ratio_30d": 2.2142989399118145,
+      "turnover": 0.09215426183751861,
+      "vol_z": 11.23012937162324,
+      "pump_time": "2026-05-22T23:00:42.018000+00:00",
+      "entry_time": "2026-05-23T01:00:42.018000+00:00",
+      "exit_time": "2026-05-25T01:00:42.018000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
