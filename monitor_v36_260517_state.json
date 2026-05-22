@@ -2,7 +2,8 @@
   "alerted": {
     "openeden": "2026-05-19T19:16:04.066372+00:00",
     "roll-2": "2026-05-19T21:42:36.086556+00:00",
-    "bonfida": "2026-05-20T21:08:04.390970+00:00"
+    "bonfida": "2026-05-20T21:08:04.390970+00:00",
+    "bob-build-on-bitcoin": "2026-05-22T05:12:25.016187+00:00"
   },
   "scheduled": [
     {
@@ -55,6 +56,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.03829224382157133
+    },
+    {
+      "coin_id": "bob-build-on-bitcoin",
+      "symbol": "BOB",
+      "name": "BOB (Build on Bitcoin)",
+      "rank": 607,
+      "market_cap": 37337315,
+      "ch24_at_pump": 92.67949,
+      "ratio_30d": 1.6803697891368645,
+      "turnover": 0.48683050473026684,
+      "vol_z": 1.8120332479967542,
+      "pump_time": "2026-05-22T03:01:23.593000+00:00",
+      "entry_time": "2026-05-22T05:01:23.593000+00:00",
+      "exit_time": "2026-05-24T05:01:23.593000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.011441779126721556
     }
   ]
 }
