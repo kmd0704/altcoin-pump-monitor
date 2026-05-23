@@ -1,28 +1,10 @@
 {
   "alerted": {
-    "roll-2": "2026-05-19T21:42:36.086556+00:00",
     "bonfida": "2026-05-20T21:08:04.390970+00:00",
     "bob-build-on-bitcoin": "2026-05-22T05:12:25.016187+00:00",
     "audiera": "2026-05-22T23:17:06.149704+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "bonfida",
-      "symbol": "FIDA",
-      "name": "Bonfida",
-      "rank": 606,
-      "market_cap": 37820606,
-      "ch24_at_pump": 81.93075,
-      "ratio_30d": 2.3843157711691196,
-      "turnover": 1.7446197104714307,
-      "vol_z": 3.4635445134469673,
-      "pump_time": "2026-05-20T20:00:14.533000+00:00",
-      "entry_time": "2026-05-20T22:00:14.533000+00:00",
-      "exit_time": "2026-05-22T22:00:14.533000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.03829224382157133
-    },
     {
       "coin_id": "bob-build-on-bitcoin",
       "symbol": "BOB",
