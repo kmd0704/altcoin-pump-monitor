@@ -2,24 +2,5 @@
   "alerted": {
     "succinct": "2026-05-21T10:03:14.826422+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "succinct",
-      "symbol": "PROVE",
-      "name": "Succinct",
-      "rank": 402,
-      "market_cap": 68937528,
-      "ch24_at_pump": 60.7563,
-      "ratio_30d": 1.5139936736477928,
-      "turnover": 0.24070070359510803,
-      "vol_z": 10.964627389266226,
-      "ret_7d": 0.3836818099585273,
-      "pump_time": "2026-05-21T09:01:35.638000+00:00",
-      "entry_time": "2026-05-21T09:01:35.638000+00:00",
-      "exit_time": "2026-05-22T09:01:35.638000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.35748194729347127
-    }
-  ]
+  "scheduled": []
 }
