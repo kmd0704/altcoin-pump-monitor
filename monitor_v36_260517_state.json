@@ -54,8 +54,9 @@
       "pump_time": "2026-05-22T23:00:42.018000+00:00",
       "entry_time": "2026-05-23T01:00:42.018000+00:00",
       "exit_time": "2026-05-25T01:00:42.018000+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 1.3353850519899946
     }
   ]
 }
