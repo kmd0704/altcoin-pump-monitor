@@ -1,4 +1,25 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "playsout": "2026-05-25T23:21:28.023524+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "playsout",
+      "symbol": "PLAY",
+      "name": "PlaysOut",
+      "rank": 587,
+      "market_cap": 38321705,
+      "ch24_at_pump": 61.9488,
+      "ratio_30d": 0.7481981796145203,
+      "turnover": 0.3340442385388577,
+      "vol_z": 2.226776383698119,
+      "ret_7d": 0.021500241106395368,
+      "pump_time": "2026-05-25T16:00:41.298000+00:00",
+      "entry_time": "2026-05-25T16:00:41.298000+00:00",
+      "exit_time": "2026-05-26T16:00:41.298000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.1024473127847931
+    }
+  ]
 }
