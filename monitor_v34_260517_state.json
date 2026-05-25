@@ -35,7 +35,7 @@
       "entry_time": "2026-05-23T01:00:42.018000+00:00",
       "exit_time": "2026-05-25T01:00:42.018000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 1.3155065607947656
     }
   ]
