@@ -6,23 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "audiera",
-      "symbol": "BEAT",
-      "name": "Audiera",
-      "rank": 137,
-      "market_cap": 324055148,
-      "ch24_at_pump": 70.18933,
-      "ratio_30d": 2.2142989399118145,
-      "turnover": 0.09215426183751861,
-      "vol_z": 11.23012937162324,
-      "pump_time": "2026-05-22T23:00:42.018000+00:00",
-      "entry_time": "2026-05-23T01:00:42.018000+00:00",
-      "exit_time": "2026-05-25T01:00:42.018000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 1.3353850519899946
-    },
-    {
       "coin_id": "marlin",
       "symbol": "POND",
       "name": "Marlin",
