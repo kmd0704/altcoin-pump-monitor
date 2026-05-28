@@ -80,7 +80,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.09731844701844361,
       "s_entry_price": 0.09731844701844361
     }
