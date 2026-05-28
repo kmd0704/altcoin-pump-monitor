@@ -2,23 +2,5 @@
   "alerted": {
     "marlin": "2026-05-25T17:51:59.950177+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "marlin",
-      "symbol": "POND",
-      "name": "Marlin",
-      "rank": 875,
-      "market_cap": 20788292,
-      "ch24_at_pump": 80.58634,
-      "ratio_30d": 1.0259796279740305,
-      "turnover": 0.09974803631600816,
-      "vol_z": 1.7902004885071006,
-      "pump_time": "2026-05-25T17:01:03.984000+00:00",
-      "entry_time": "2026-05-25T19:01:03.984000+00:00",
-      "exit_time": "2026-05-27T19:01:03.984000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.002318730466628871
-    }
-  ]
+  "scheduled": []
 }
