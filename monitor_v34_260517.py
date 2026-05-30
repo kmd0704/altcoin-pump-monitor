@@ -336,7 +336,7 @@ def build_entry_embed(schedule, entry_price):
     # SL = entry * (1 + SL_PCT), TP = entry * (1 - TP_PCT)
     stop_price = entry_price * (1 + SL_PCT)
     tp_price = entry_price * (1 - TP_PCT)
-    chart_url = f"https://www.coingecko.com/ja/coins/{cid}"
+    chart_url = f"https://www.coingecko.com/en/coins/{cid}"
     mexc_url = f"https://futures.mexc.com/exchange/{sym}_USDT"
 
     market_cap = schedule.get("market_cap")
@@ -382,7 +382,7 @@ def build_entry_embed(schedule, entry_price):
 def build_exit_embed(schedule):
     sym = schedule["symbol"]
     cid = schedule["coin_id"]
-    chart_url = f"https://www.coingecko.com/ja/coins/{cid}"
+    chart_url = f"https://www.coingecko.com/en/coins/{cid}"
     return {
         "title": f"⏰ v3.4-260517 強制決済 [{sym}]",
         "url": chart_url,
