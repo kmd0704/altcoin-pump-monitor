@@ -333,11 +333,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.3868398684090876,
-      "s_entry_price": 0.3868398684090876
+      "s_entry_price": 0.3868398684090876,
+      "peak_price": 0.4083205136677915,
+      "entry_price": 0.4083205136677915
     }
   ]
 }
