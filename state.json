@@ -4,92 +4,10 @@
     "allora": "2026-05-28T18:40:39.576151+00:00",
     "superfortune": "2026-05-28T21:09:41.487611+00:00",
     "space-id": "2026-05-29T11:36:48.001459+00:00",
-    "kaio": "2026-05-30T20:59:04.945044+00:00"
+    "kaio": "2026-05-30T20:59:04.945044+00:00",
+    "playsout": "2026-05-31T14:45:47.670409+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "space-id",
-      "symbol": "ID",
-      "name": "SPACE ID",
-      "rank": 967,
-      "market_cap": 17273084,
-      "ch24_at_pump": 53.29702,
-      "ratio_30d": 1.2939795656476587,
-      "turnover": 0.6707906364193609,
-      "vol_z": 8.000035279579338,
-      "price_at_detection": 0.04012302,
-      "pump_time": "2026-05-29T11:36:43+00:00",
-      "entry_time_normal": "2026-05-29T14:36:43+00:00",
-      "entry_time": "2026-05-29T14:36:43+00:00",
-      "exit_time": "2026-05-30T14:36:43+00:00",
-      "evals": [
-        {
-          "id": "v34",
-          "label": "v3.4",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / 全銘柄 / 3h待ち"
-        },
-        {
-          "id": "v34m",
-          "label": "v3.4m",
-          "tp": 0.3,
-          "match": false,
-          "reason": "rank 967 > 900",
-          "note": "TP30% / モッピーさん版(rank 250-900)"
-        },
-        {
-          "id": "v35",
-          "label": "v3.5",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / vol_z厳選 / 3h待ち"
-        },
-        {
-          "id": "v35m",
-          "label": "v3.5m",
-          "tp": 0.3,
-          "match": false,
-          "reason": "rank 967 > 900",
-          "note": "TP30% / vol_z厳選+モッピーさん版"
-        },
-        {
-          "id": "v36",
-          "label": "v3.6 ★",
-          "tp": 0.5,
-          "match": true,
-          "reason": "OK",
-          "note": "TP50% / リターン最大化(推奨)"
-        },
-        {
-          "id": "v36m",
-          "label": "v3.6m",
-          "tp": 0.5,
-          "match": false,
-          "reason": "rank 967 > 900",
-          "note": "TP50% / モッピーさん版(rank 250-900)"
-        },
-        {
-          "id": "s",
-          "label": "s",
-          "tp": 0.2,
-          "match": true,
-          "reason": "OK",
-          "note": "TP20% / 即時エントリー(勝率93%)"
-        }
-      ],
-      "detection_notified": true,
-      "immediate_entry_notified": true,
-      "normal_entry_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "s_peak_price": 0.040002396365158954,
-      "s_entry_price": 0.040002396365158954,
-      "peak_price": 0.03887903413002193,
-      "entry_price": 0.03796544312342905
-    },
     {
       "coin_id": "kaio",
       "symbol": "KAIO",
@@ -255,6 +173,87 @@
       "s_entry_price": 8.951508038036012,
       "peak_price": 8.951568892932418,
       "entry_price": 6.205043720381082
+    },
+    {
+      "coin_id": "playsout",
+      "symbol": "PLAY",
+      "name": "PlaysOut",
+      "rank": 506,
+      "market_cap": 46703583,
+      "ch24_at_pump": 51.87026,
+      "ratio_30d": 1.2549137689238863,
+      "turnover": 0.2872486823243309,
+      "vol_z": -0.7542053988843638,
+      "price_at_detection": 0.125043,
+      "pump_time": "2026-05-31T14:45:25+00:00",
+      "entry_time_normal": "2026-05-31T17:45:25+00:00",
+      "entry_time": "2026-05-31T17:45:25+00:00",
+      "exit_time": "2026-06-01T17:45:25+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": false,
+          "reason": "vol_z -0.75 < 0.0",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "vol_z -0.75 < 0.0",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
+      "normal_entry_notified": false,
+      "entry_notified": false,
+      "exit_notified": false,
+      "s_peak_price": 0.1250430615727185,
+      "s_entry_price": 0.1250430615727185
     }
   ]
 }
