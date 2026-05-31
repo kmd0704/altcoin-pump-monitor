@@ -1,7 +1,8 @@
 {
   "alerted": {
     "allora": "2026-05-28T21:58:12.263576+00:00",
-    "superfortune": "2026-05-28T21:58:15.037092+00:00"
+    "superfortune": "2026-05-28T21:58:15.037092+00:00",
+    "stargate-finance": "2026-05-31T19:38:32.012199+00:00"
   },
   "scheduled": [
     {
@@ -37,6 +38,22 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.7085705136097691
+    },
+    {
+      "coin_id": "stargate-finance",
+      "symbol": "STG",
+      "name": "Stargate Finance",
+      "rank": 508,
+      "market_cap": 46055389,
+      "ch24_at_pump": 74.65838,
+      "ratio_30d": 1.8005571251167958,
+      "turnover": 0.6885966783659083,
+      "vol_z": 19.94185760932223,
+      "pump_time": "2026-05-31T19:01:03.945000+00:00",
+      "entry_time": "2026-05-31T21:01:03.945000+00:00",
+      "exit_time": "2026-06-02T21:01:03.945000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
