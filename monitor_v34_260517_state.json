@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "superfortune",
-      "symbol": "GUA",
-      "name": "Superfortune",
-      "rank": 682,
-      "market_cap": 30817678,
-      "ch24_at_pump": 110.86127,
-      "ratio_30d": 0.7986213476135462,
-      "turnover": 0.3061297327197047,
-      "vol_z": 21.885607012600307,
-      "pump_time": "2026-05-28T21:00:51.666000+00:00",
-      "entry_time": "2026-05-28T23:00:51.666000+00:00",
-      "exit_time": "2026-05-30T23:00:51.666000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.7085705136097691
-    },
-    {
       "coin_id": "stargate-finance",
       "symbol": "STG",
       "name": "Stargate Finance",
