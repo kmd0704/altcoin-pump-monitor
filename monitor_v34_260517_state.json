@@ -6,23 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "allora",
-      "symbol": "ALLO",
-      "name": "Allora",
-      "rank": 592,
-      "market_cap": 35580996,
-      "ch24_at_pump": 72.4154,
-      "ratio_30d": 1.4274296568723297,
-      "turnover": 2.1336229413233974,
-      "vol_z": 3.072070476963761,
-      "pump_time": "2026-05-28T19:00:47.405000+00:00",
-      "entry_time": "2026-05-28T21:00:47.405000+00:00",
-      "exit_time": "2026-05-30T21:00:47.405000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.15493916072261626
-    },
-    {
       "coin_id": "superfortune",
       "symbol": "GUA",
       "name": "Superfortune",
@@ -52,8 +35,9 @@
       "pump_time": "2026-05-31T19:01:03.945000+00:00",
       "entry_time": "2026-05-31T21:01:03.945000+00:00",
       "exit_time": "2026-06-02T21:01:03.945000+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.38789374658482567
     }
   ]
 }
