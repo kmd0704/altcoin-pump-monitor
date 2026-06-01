@@ -1,8 +1,6 @@
 {
   "alerted": {
     "verified-emeralds": "2026-05-30T20:59:10.580995+00:00",
-    "allora": "2026-05-28T18:40:39.576151+00:00",
-    "superfortune": "2026-05-28T21:09:41.487611+00:00",
     "space-id": "2026-05-29T11:36:48.001459+00:00",
     "kaio": "2026-05-30T20:59:04.945044+00:00",
     "playsout": "2026-05-31T14:45:47.670409+00:00",
@@ -336,7 +334,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.3868398684090876,
       "s_entry_price": 0.3868398684090876,
       "peak_price": 0.4083205136677915,
