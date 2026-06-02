@@ -6,23 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "space-id",
-      "symbol": "ID",
-      "name": "SPACE ID",
-      "rank": 885,
-      "market_cap": 21198707,
-      "ch24_at_pump": 72.43771,
-      "ratio_30d": 1.5794572695764215,
-      "turnover": 2.4545687527122024,
-      "vol_z": 72.81081686743325,
-      "pump_time": "2026-05-30T04:00:03.509000+00:00",
-      "entry_time": "2026-05-30T06:00:03.509000+00:00",
-      "exit_time": "2026-06-01T06:00:03.509000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0427389539180824
-    },
-    {
       "coin_id": "stargate-finance",
       "symbol": "STG",
       "name": "Stargate Finance",
