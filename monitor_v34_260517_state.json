@@ -1,7 +1,8 @@
 {
   "alerted": {
     "stargate-finance": "2026-05-31T19:38:32.012199+00:00",
-    "portal-2": "2026-05-31T22:05:17.875983+00:00"
+    "portal-2": "2026-05-31T22:05:17.875983+00:00",
+    "talus": "2026-06-02T23:47:31.032953+00:00"
   },
   "scheduled": [
     {
@@ -35,8 +36,24 @@
       "entry_time": "2026-05-31T23:01:10.067000+00:00",
       "exit_time": "2026-06-02T23:01:10.067000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.027703297762859888
+    },
+    {
+      "coin_id": "talus",
+      "symbol": "US",
+      "name": "Talus",
+      "rank": 874,
+      "market_cap": 19056427,
+      "ch24_at_pump": 85.04377,
+      "ratio_30d": 2.9939642586671673,
+      "turnover": 0.4038224630171407,
+      "vol_z": 1.5750649694844228,
+      "pump_time": "2026-06-02T23:00:39.002000+00:00",
+      "entry_time": "2026-06-03T01:00:39.002000+00:00",
+      "exit_time": "2026-06-05T01:00:39.002000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
