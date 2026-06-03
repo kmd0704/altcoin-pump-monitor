@@ -1,7 +1,8 @@
 {
   "alerted": {
     "stargate-finance": "2026-05-31T19:39:14.573936+00:00",
-    "portal-2": "2026-05-31T23:15:20.738132+00:00"
+    "portal-2": "2026-05-31T23:15:20.738132+00:00",
+    "backpack": "2026-06-03T10:03:44.449466+00:00"
   },
   "scheduled": [
     {
@@ -37,6 +38,23 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.03215168348075231
+    },
+    {
+      "coin_id": "backpack",
+      "symbol": "BP",
+      "name": "Backpack",
+      "rank": 389,
+      "market_cap": 68407254,
+      "ch24_at_pump": 89.14821,
+      "ratio_30d": 1.661946912393682,
+      "turnover": 0.05026392598993532,
+      "vol_z": 8.563035684776612,
+      "pump_time": "2026-06-03T06:00:32.456000+00:00",
+      "entry_time": "2026-06-03T08:00:32.456000+00:00",
+      "exit_time": "2026-06-05T08:00:32.456000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.2766204453848699
     }
   ]
 }
