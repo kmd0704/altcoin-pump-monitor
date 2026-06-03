@@ -8,23 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "portal-2",
-      "symbol": "PORTAL",
-      "name": "Portal",
-      "rank": 882,
-      "market_cap": 19777531,
-      "ch24_at_pump": 133.89556,
-      "ratio_30d": 2.477463054452459,
-      "turnover": 3.9268896782100313,
-      "vol_z": 40.68530226125895,
-      "pump_time": "2026-05-31T21:01:10.067000+00:00",
-      "entry_time": "2026-05-31T23:01:10.067000+00:00",
-      "exit_time": "2026-06-02T23:01:10.067000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.027703297762859888
-    },
-    {
       "coin_id": "talus",
       "symbol": "US",
       "name": "Talus",
