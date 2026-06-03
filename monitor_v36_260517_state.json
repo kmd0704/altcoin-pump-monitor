@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "portal-2",
-      "symbol": "PORTAL",
-      "name": "Portal",
-      "rank": 765,
-      "market_cap": 25784397,
-      "ch24_at_pump": 160.00598,
-      "ratio_30d": 2.890848878023492,
-      "turnover": 4.124473700297844,
-      "vol_z": 39.937613247895754,
-      "pump_time": "2026-05-31T21:01:10.067000+00:00",
-      "entry_time": "2026-05-31T23:01:10.067000+00:00",
-      "exit_time": "2026-06-02T23:01:10.067000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.03215168348075231
-    },
-    {
       "coin_id": "backpack",
       "symbol": "BP",
       "name": "Backpack",
