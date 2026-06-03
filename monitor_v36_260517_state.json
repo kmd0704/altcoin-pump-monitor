@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "stargate-finance",
-      "symbol": "STG",
-      "name": "Stargate Finance",
-      "rank": 508,
-      "market_cap": 46055389,
-      "ch24_at_pump": 74.65838,
-      "ratio_30d": 1.8064561445096736,
-      "turnover": 0.6887257234514461,
-      "vol_z": 19.9430026007658,
-      "pump_time": "2026-05-31T19:01:03.945000+00:00",
-      "entry_time": "2026-05-31T21:01:03.945000+00:00",
-      "exit_time": "2026-06-02T21:01:03.945000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.3884421267639902
-    },
-    {
       "coin_id": "portal-2",
       "symbol": "PORTAL",
       "name": "Portal",
