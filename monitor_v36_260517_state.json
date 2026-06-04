@@ -1,9 +1,9 @@
 {
   "alerted": {
-    "stargate-finance": "2026-05-31T19:39:14.573936+00:00",
     "portal-2": "2026-05-31T23:15:20.738132+00:00",
     "backpack": "2026-06-03T10:03:44.449466+00:00",
-    "opinion": "2026-06-03T18:56:28.057559+00:00"
+    "opinion": "2026-06-03T18:56:28.057559+00:00",
+    "bitway": "2026-06-04T21:51:47.733306+00:00"
   },
   "scheduled": [
     {
@@ -39,6 +39,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.25629703334386583
+    },
+    {
+      "coin_id": "bitway",
+      "symbol": "BTW",
+      "name": "Bitway",
+      "rank": 355,
+      "market_cap": 68608187,
+      "ch24_at_pump": 153.59275,
+      "ratio_30d": 1.8839087566791752,
+      "turnover": 0.25475103461938764,
+      "vol_z": 0.5725083206554575,
+      "pump_time": "2026-06-04T16:00:59.244000+00:00",
+      "entry_time": "2026-06-04T18:00:59.244000+00:00",
+      "exit_time": "2026-06-06T18:00:59.244000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.03124915273556662
     }
   ]
 }
