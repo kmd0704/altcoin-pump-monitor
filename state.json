@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "stargate-finance": "2026-05-31T20:09:31.615511+00:00",
     "solstice": "2026-06-01T06:03:21.966736+00:00",
     "backpack": "2026-06-03T09:26:19.856384+00:00",
     "yei-finance": "2026-06-03T09:26:22.583629+00:00",
@@ -250,7 +249,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.4412693651354158,
       "s_entry_price": 0.4412693651354158
     },
@@ -331,7 +330,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.25180394958159974,
       "s_entry_price": 0.25180394958159974
     },
