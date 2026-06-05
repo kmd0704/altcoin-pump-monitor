@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "opinion": "2026-06-03T17:17:21.220589+00:00"
+    "opinion": "2026-06-03T17:17:21.220589+00:00",
+    "babylon": "2026-06-05T12:19:28.168743+00:00"
   },
   "scheduled": [
     {
@@ -20,6 +21,24 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.19711269078128565
+    },
+    {
+      "coin_id": "babylon",
+      "symbol": "BABY",
+      "name": "Babylon",
+      "rank": 297,
+      "market_cap": 84040927,
+      "ch24_at_pump": 74.14011,
+      "ratio_30d": 1.1909844532967027,
+      "turnover": 0.18423128723408094,
+      "vol_z": 2.1525006643653883,
+      "ret_7d": 0.49077040230270397,
+      "pump_time": "2026-06-05T11:00:55.367000+00:00",
+      "entry_time": "2026-06-05T11:00:55.367000+00:00",
+      "exit_time": "2026-06-06T11:00:55.367000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.02226519275431183
     }
   ]
 }
