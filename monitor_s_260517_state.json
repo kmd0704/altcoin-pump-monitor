@@ -5,24 +5,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "opinion",
-      "symbol": "OPN",
-      "name": "Opinion",
-      "rank": 697,
-      "market_cap": 28365611,
-      "ch24_at_pump": 67.4043,
-      "ratio_30d": 1.1621836136299244,
-      "turnover": 0.5122948592395501,
-      "vol_z": 0.46689470057063187,
-      "ret_7d": 0.17328081199674594,
-      "pump_time": "2026-06-03T17:01:11.033000+00:00",
-      "entry_time": "2026-06-03T17:01:11.033000+00:00",
-      "exit_time": "2026-06-04T17:01:11.033000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.19711269078128565
-    },
-    {
       "coin_id": "babylon",
       "symbol": "BABY",
       "name": "Babylon",
