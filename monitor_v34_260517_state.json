@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "talus",
-      "symbol": "US",
-      "name": "Talus",
-      "rank": 874,
-      "market_cap": 19056427,
-      "ch24_at_pump": 85.04377,
-      "ratio_30d": 2.9939642586671673,
-      "turnover": 0.4038224630171407,
-      "vol_z": 1.5750649694844228,
-      "pump_time": "2026-06-02T23:00:39.002000+00:00",
-      "entry_time": "2026-06-03T01:00:39.002000+00:00",
-      "exit_time": "2026-06-05T01:00:39.002000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.012399676507148984
-    },
-    {
       "coin_id": "backpack",
       "symbol": "BP",
       "name": "Backpack",
