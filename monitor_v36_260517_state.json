@@ -3,26 +3,10 @@
     "backpack": "2026-06-03T10:03:44.449466+00:00",
     "opinion": "2026-06-03T18:56:28.057559+00:00",
     "bitway": "2026-06-04T21:51:47.733306+00:00",
-    "babylon": "2026-06-05T12:18:18.940562+00:00"
+    "babylon": "2026-06-05T12:18:18.940562+00:00",
+    "allora": "2026-06-06T10:17:38.059759+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "backpack",
-      "symbol": "BP",
-      "name": "Backpack",
-      "rank": 389,
-      "market_cap": 68407254,
-      "ch24_at_pump": 89.14821,
-      "ratio_30d": 1.661946912393682,
-      "turnover": 0.05026392598993532,
-      "vol_z": 8.563035684776612,
-      "pump_time": "2026-06-03T06:00:32.456000+00:00",
-      "entry_time": "2026-06-03T08:00:32.456000+00:00",
-      "exit_time": "2026-06-05T08:00:32.456000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.2766204453848699
-    },
     {
       "coin_id": "opinion",
       "symbol": "OPN",
@@ -73,6 +57,22 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.022416350223333416
+    },
+    {
+      "coin_id": "allora",
+      "symbol": "ALLO",
+      "name": "Allora",
+      "rank": 298,
+      "market_cap": 82475164,
+      "ch24_at_pump": 76.74537,
+      "ratio_30d": 2.886557315259446,
+      "turnover": 1.810555868478254,
+      "vol_z": 0.24008138878761628,
+      "pump_time": "2026-06-06T10:00:46.632000+00:00",
+      "entry_time": "2026-06-06T12:00:46.632000+00:00",
+      "exit_time": "2026-06-08T12:00:46.632000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
