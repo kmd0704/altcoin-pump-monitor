@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "backpack",
-      "symbol": "BP",
-      "name": "Backpack",
-      "rank": 391,
-      "market_cap": 66355585,
-      "ch24_at_pump": 77.95586,
-      "ratio_30d": 1.6458971247637464,
-      "turnover": 0.049386730195164666,
-      "vol_z": 7.6654042071654525,
-      "pump_time": "2026-06-03T06:00:32.456000+00:00",
-      "entry_time": "2026-06-03T08:00:32.456000+00:00",
-      "exit_time": "2026-06-05T08:00:32.456000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.26869624184464846
-    },
-    {
       "coin_id": "opinion",
       "symbol": "OPN",
       "name": "Opinion",
