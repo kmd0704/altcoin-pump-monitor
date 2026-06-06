@@ -171,7 +171,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.021841563202901385,
       "s_entry_price": 0.02037611268081932
     },
@@ -333,11 +333,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.18212744685382684,
-      "s_entry_price": 0.18212744685382684
+      "s_entry_price": 0.18212744685382684,
+      "peak_price": 0.18688218050321434,
+      "entry_price": 0.18238923293128317
     },
     {
       "coin_id": "bluwhale",
@@ -414,11 +416,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.019854939998849633,
-      "s_entry_price": 0.019854939998849633
+      "s_entry_price": 0.019854939998849633,
+      "peak_price": 0.02019453353656587,
+      "entry_price": 0.02019453353656587
     }
   ]
 }
