@@ -9,23 +9,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "opinion",
-      "symbol": "OPN",
-      "name": "Opinion",
-      "rank": 574,
-      "market_cap": 36949895,
-      "ch24_at_pump": 110.67361,
-      "ratio_30d": 1.4892409377769396,
-      "turnover": 0.5428047509323052,
-      "vol_z": 1.570694269840512,
-      "pump_time": "2026-06-03T17:01:11.033000+00:00",
-      "entry_time": "2026-06-03T19:01:11.033000+00:00",
-      "exit_time": "2026-06-05T19:01:11.033000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.25629703334386583
-    },
-    {
       "coin_id": "bitway",
       "symbol": "BTW",
       "name": "Bitway",
