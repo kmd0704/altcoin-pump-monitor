@@ -340,7 +340,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.15097332957298254,
       "s_entry_price": 0.15097332957298254
     },
@@ -583,11 +583,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.3271977004012449,
-      "s_entry_price": 0.3271977004012449
+      "s_entry_price": 0.3271977004012449,
+      "peak_price": 0.40033007917158336,
+      "entry_price": 0.35498699348493595
     }
   ]
 }
