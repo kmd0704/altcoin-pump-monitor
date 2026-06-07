@@ -1,27 +1,9 @@
 {
   "alerted": {
-    "opinion": "2026-06-03T18:46:34.677350+00:00",
     "bitway": "2026-06-04T20:58:09.293196+00:00",
     "heima": "2026-06-06T17:17:29.460345+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "bitway",
-      "symbol": "BTW",
-      "name": "Bitway",
-      "rank": 363,
-      "market_cap": 68206611,
-      "ch24_at_pump": 151.66936,
-      "ratio_30d": 1.8609233708851367,
-      "turnover": 0.251230379682007,
-      "vol_z": 0.32152615132033857,
-      "pump_time": "2026-06-04T16:00:59.244000+00:00",
-      "entry_time": "2026-06-04T18:00:59.244000+00:00",
-      "exit_time": "2026-06-06T18:00:59.244000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.03091487589156752
-    },
     {
       "coin_id": "heima",
       "symbol": "HEI",
