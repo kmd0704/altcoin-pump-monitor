@@ -8,23 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "bitway",
-      "symbol": "BTW",
-      "name": "Bitway",
-      "rank": 355,
-      "market_cap": 68608187,
-      "ch24_at_pump": 153.59275,
-      "ratio_30d": 1.8839087566791752,
-      "turnover": 0.25475103461938764,
-      "vol_z": 0.5725083206554575,
-      "pump_time": "2026-06-04T16:00:59.244000+00:00",
-      "entry_time": "2026-06-04T18:00:59.244000+00:00",
-      "exit_time": "2026-06-06T18:00:59.244000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.03124915273556662
-    },
-    {
       "coin_id": "babylon",
       "symbol": "BABY",
       "name": "Babylon",
