@@ -1,7 +1,5 @@
 {
   "alerted": {
-    "backpack": "2026-06-03T09:26:19.856384+00:00",
-    "yei-finance": "2026-06-03T09:26:22.583629+00:00",
     "magma-finance": "2026-06-03T18:44:31.402823+00:00",
     "opinion": "2026-06-03T18:44:34.106139+00:00",
     "bitway": "2026-06-04T18:16:48.413972+00:00",
@@ -173,7 +171,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.16694141007954488,
       "s_entry_price": 0.13717957970225617,
       "peak_price": 0.16694141007954488,
