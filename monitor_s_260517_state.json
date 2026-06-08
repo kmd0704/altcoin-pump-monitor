@@ -1,7 +1,8 @@
 {
   "alerted": {
     "babylon": "2026-06-05T12:19:28.168743+00:00",
-    "bonfida": "2026-06-07T12:01:55.805099+00:00"
+    "bonfida": "2026-06-07T12:01:55.805099+00:00",
+    "pippin": "2026-06-08T16:21:40.820019+00:00"
   },
   "scheduled": [
     {
@@ -21,6 +22,24 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.0297640860168856
+    },
+    {
+      "coin_id": "pippin",
+      "symbol": "PIPPIN",
+      "name": "pippin",
+      "rank": 739,
+      "market_cap": 23779256,
+      "ch24_at_pump": 63.69759,
+      "ratio_30d": 0.9807006722296465,
+      "turnover": 0.35033299900699266,
+      "vol_z": 4.642470555335129,
+      "ret_7d": 0.3319706806025249,
+      "pump_time": "2026-06-08T16:21:38+00:00",
+      "entry_time": "2026-06-08T16:21:38+00:00",
+      "exit_time": "2026-06-09T16:21:38+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.024614718131126194
     }
   ]
 }
