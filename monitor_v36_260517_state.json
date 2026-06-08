@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "babylon",
-      "symbol": "BABY",
-      "name": "Babylon",
-      "rank": 297,
-      "market_cap": 84040927,
-      "ch24_at_pump": 74.57896,
-      "ratio_30d": 1.1993129264494007,
-      "turnover": 0.1842858355778779,
-      "vol_z": 2.156085341088756,
-      "pump_time": "2026-06-05T11:00:55.367000+00:00",
-      "entry_time": "2026-06-05T13:00:55.367000+00:00",
-      "exit_time": "2026-06-07T13:00:55.367000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.022416350223333416
-    },
-    {
       "coin_id": "allora",
       "symbol": "ALLO",
       "name": "Allora",
@@ -54,7 +37,7 @@
       "entry_time": "2026-06-06T16:51:25+00:00",
       "exit_time": "2026-06-08T16:51:25+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.14104150631661458
     }
   ]
