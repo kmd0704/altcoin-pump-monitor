@@ -6,24 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "bonfida",
-      "symbol": "FIDA",
-      "name": "Bonfida",
-      "rank": 630,
-      "market_cap": 29490953,
-      "ch24_at_pump": 64.77448,
-      "ratio_30d": 1.6163305439829,
-      "turnover": 1.0439524954301367,
-      "vol_z": 0.6368757620888261,
-      "ret_7d": 0.21653516512005555,
-      "pump_time": "2026-06-07T06:01:09.920000+00:00",
-      "entry_time": "2026-06-07T06:01:09.920000+00:00",
-      "exit_time": "2026-06-08T06:01:09.920000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0297640860168856
-    },
-    {
       "coin_id": "pippin",
       "symbol": "PIPPIN",
       "name": "pippin",
