@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "allora",
-      "symbol": "ALLO",
-      "name": "Allora",
-      "rank": 298,
-      "market_cap": 82475164,
-      "ch24_at_pump": 76.74537,
-      "ratio_30d": 2.886557315259446,
-      "turnover": 1.810555868478254,
-      "vol_z": 0.24008138878761628,
-      "pump_time": "2026-06-06T10:00:46.632000+00:00",
-      "entry_time": "2026-06-06T12:00:46.632000+00:00",
-      "exit_time": "2026-06-08T12:00:46.632000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.40590489647144296
-    },
-    {
       "coin_id": "heima",
       "symbol": "HEI",
       "name": "Heima",
