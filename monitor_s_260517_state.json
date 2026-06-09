@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "babylon": "2026-06-05T12:19:28.168743+00:00",
     "bonfida": "2026-06-07T12:01:55.805099+00:00",
     "pippin": "2026-06-08T16:21:40.820019+00:00"
   },
@@ -20,7 +19,7 @@
       "entry_time": "2026-06-08T16:21:38+00:00",
       "exit_time": "2026-06-09T16:21:38+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.024614718131126194
     }
   ]
