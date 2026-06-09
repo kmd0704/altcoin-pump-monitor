@@ -5,23 +5,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "heima",
-      "symbol": "HEI",
-      "name": "Heima",
-      "rank": 958,
-      "market_cap": 14881758,
-      "ch24_at_pump": 81.2546,
-      "ratio_30d": 1.9572817951674168,
-      "turnover": 5.343820296578623,
-      "vol_z": 0.882793547609205,
-      "pump_time": "2026-06-06T15:01:36.121000+00:00",
-      "entry_time": "2026-06-06T17:01:36.121000+00:00",
-      "exit_time": "2026-06-08T17:01:36.121000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.1680530931876772
-    },
-    {
       "coin_id": "pippin",
       "symbol": "PIPPIN",
       "name": "pippin",
