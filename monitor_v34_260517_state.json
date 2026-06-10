@@ -1,7 +1,8 @@
 {
   "alerted": {
     "heima": "2026-06-06T17:17:29.460345+00:00",
-    "pippin": "2026-06-08T20:21:12.224161+00:00"
+    "pippin": "2026-06-08T20:21:12.224161+00:00",
+    "humanity": "2026-06-10T00:16:55.622868+00:00"
   },
   "scheduled": [
     {
@@ -20,6 +21,22 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.026875538283534506
+    },
+    {
+      "coin_id": "humanity",
+      "symbol": "H",
+      "name": "Humanity",
+      "rank": 133,
+      "market_cap": 307191866,
+      "ch24_at_pump": 77.72934,
+      "ratio_30d": 0.8208612880484232,
+      "turnover": 0.24531634268932012,
+      "vol_z": 2.261570160200713,
+      "pump_time": "2026-06-10T00:01:22.352000+00:00",
+      "entry_time": "2026-06-10T02:01:22.352000+00:00",
+      "exit_time": "2026-06-12T02:01:22.352000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
