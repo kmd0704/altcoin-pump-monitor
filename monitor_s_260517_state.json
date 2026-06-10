@@ -1,7 +1,8 @@
 {
   "alerted": {
     "bonfida": "2026-06-07T12:01:55.805099+00:00",
-    "pippin": "2026-06-08T16:21:40.820019+00:00"
+    "pippin": "2026-06-08T16:21:40.820019+00:00",
+    "stratis": "2026-06-10T06:42:10.760621+00:00"
   },
   "scheduled": [
     {
@@ -21,6 +22,24 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.024614718131126194
+    },
+    {
+      "coin_id": "stratis",
+      "symbol": "STRAX",
+      "name": "Xertra",
+      "rank": 637,
+      "market_cap": 29426598,
+      "ch24_at_pump": 67.53958,
+      "ratio_30d": 0.9648169366191791,
+      "turnover": 1.9202870669120262,
+      "vol_z": 3.562823958145101,
+      "ret_7d": 0.12394471378963834,
+      "pump_time": "2026-06-10T05:00:36.775000+00:00",
+      "entry_time": "2026-06-10T05:00:36.775000+00:00",
+      "exit_time": "2026-06-11T05:00:36.775000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.013396932942368761
     }
   ]
 }
