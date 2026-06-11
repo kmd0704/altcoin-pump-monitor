@@ -5,23 +5,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "pippin",
-      "symbol": "PIPPIN",
-      "name": "pippin",
-      "rank": 694,
-      "market_cap": 25599137,
-      "ch24_at_pump": 72.21465,
-      "ratio_30d": 1.00165977396466,
-      "turnover": 0.37285177470450315,
-      "vol_z": 7.170136716353785,
-      "pump_time": "2026-06-08T17:00:53.367000+00:00",
-      "entry_time": "2026-06-08T19:00:53.367000+00:00",
-      "exit_time": "2026-06-10T19:00:53.367000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.02559987663670403
-    },
-    {
       "coin_id": "olaxbt",
       "symbol": "AIO",
       "name": "OlaXBT",
