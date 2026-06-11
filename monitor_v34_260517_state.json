@@ -6,23 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "pippin",
-      "symbol": "PIPPIN",
-      "name": "pippin",
-      "rank": 686,
-      "market_cap": 26785670,
-      "ch24_at_pump": 75.36771,
-      "ratio_30d": 1.0613338161772283,
-      "turnover": 0.38054886873398286,
-      "vol_z": 8.054331732610786,
-      "pump_time": "2026-06-08T17:00:53.367000+00:00",
-      "entry_time": "2026-06-08T19:00:53.367000+00:00",
-      "exit_time": "2026-06-10T19:00:53.367000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.026875538283534506
-    },
-    {
       "coin_id": "humanity",
       "symbol": "H",
       "name": "Humanity",
