@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "pippin": "2026-06-08T19:33:22.960143+00:00"
+    "pippin": "2026-06-08T19:33:22.960143+00:00",
+    "olaxbt": "2026-06-11T01:35:24.529595+00:00"
   },
   "scheduled": [
     {
@@ -19,6 +20,22 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.02559987663670403
+    },
+    {
+      "coin_id": "olaxbt",
+      "symbol": "AIO",
+      "name": "OlaXBT",
+      "rank": 517,
+      "market_cap": 41683838,
+      "ch24_at_pump": 72.13106,
+      "ratio_30d": 1.8200778348391278,
+      "turnover": 0.0493464161801147,
+      "vol_z": 1.4377666883365243,
+      "pump_time": "2026-06-11T01:01:29.079000+00:00",
+      "entry_time": "2026-06-11T03:01:29.079000+00:00",
+      "exit_time": "2026-06-13T03:01:29.079000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
