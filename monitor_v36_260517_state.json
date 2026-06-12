@@ -1,7 +1,8 @@
 {
   "alerted": {
     "pippin": "2026-06-08T19:33:22.960143+00:00",
-    "olaxbt": "2026-06-11T01:35:24.529595+00:00"
+    "olaxbt": "2026-06-11T01:35:24.529595+00:00",
+    "yooldo-games": "2026-06-12T06:54:00.755470+00:00"
   },
   "scheduled": [
     {
@@ -20,6 +21,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.19454307479030133
+    },
+    {
+      "coin_id": "yooldo-games",
+      "symbol": "ESPORTS",
+      "name": "Yooldo Games",
+      "rank": 639,
+      "market_cap": 30080626,
+      "ch24_at_pump": 98.1202,
+      "ratio_30d": 0.4019256517906703,
+      "turnover": 1.2322567962422617,
+      "vol_z": 0.04626404218545774,
+      "pump_time": "2026-06-11T18:01:15.674000+00:00",
+      "entry_time": "2026-06-11T20:01:15.674000+00:00",
+      "exit_time": "2026-06-13T20:01:15.674000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.1938677188256953
     }
   ]
 }
