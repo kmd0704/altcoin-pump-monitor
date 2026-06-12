@@ -13,89 +13,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "stargate-finance",
-      "symbol": "STG",
-      "name": "Stargate Finance",
-      "rank": 458,
-      "market_cap": 49220914,
-      "ch24_at_pump": 66.71343,
-      "ratio_30d": 1.6789633684141592,
-      "turnover": 0.8907887711370549,
-      "vol_z": 1.5623069140762582,
-      "price_at_detection": 0.419658,
-      "pump_time": "2026-06-10T07:00:43.351000+00:00",
-      "entry_time_normal": "2026-06-10T10:00:43.351000+00:00",
-      "entry_time": "2026-06-10T10:00:43.351000+00:00",
-      "exit_time": "2026-06-11T10:00:43.351000+00:00",
-      "evals": [
-        {
-          "id": "v34",
-          "label": "v3.4",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / 全銘柄 / 3h待ち"
-        },
-        {
-          "id": "v34m",
-          "label": "v3.4m",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / モッピーさん版(rank 250-900)"
-        },
-        {
-          "id": "v35",
-          "label": "v3.5",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / vol_z厳選 / 3h待ち"
-        },
-        {
-          "id": "v35m",
-          "label": "v3.5m",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / vol_z厳選+モッピーさん版"
-        },
-        {
-          "id": "v36",
-          "label": "v3.6 ★",
-          "tp": 0.5,
-          "match": true,
-          "reason": "OK",
-          "note": "TP50% / リターン最大化(推奨)"
-        },
-        {
-          "id": "v36m",
-          "label": "v3.6m",
-          "tp": 0.5,
-          "match": true,
-          "reason": "OK",
-          "note": "TP50% / モッピーさん版(rank 250-900)"
-        },
-        {
-          "id": "s",
-          "label": "s",
-          "tp": 0.2,
-          "match": true,
-          "reason": "OK",
-          "note": "TP20% / 即時エントリー(勝率93%)"
-        }
-      ],
-      "detection_notified": true,
-      "immediate_entry_notified": true,
-      "normal_entry_notified": true,
-      "entry_notified": true,
-      "exit_notified": true,
-      "s_peak_price": 0.4197499694465948,
-      "s_entry_price": 0.4197499694465948,
-      "peak_price": 0.4197499694465948,
-      "entry_price": 0.4197499694465948
-    },
-    {
       "coin_id": "axion-3",
       "symbol": "AXION",
       "name": "AXION",
@@ -419,7 +336,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.06148437891525117,
       "s_entry_price": 0.06119797846019989
     },
