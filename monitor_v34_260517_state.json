@@ -2,7 +2,8 @@
   "alerted": {
     "humanity": "2026-06-10T00:16:55.622868+00:00",
     "olaxbt": "2026-06-11T05:50:37.451319+00:00",
-    "yooldo-games": "2026-06-12T08:58:59.153179+00:00"
+    "yooldo-games": "2026-06-12T08:58:59.153179+00:00",
+    "chainopera-ai": "2026-06-13T16:20:52.687457+00:00"
   },
   "scheduled": [
     {
@@ -38,6 +39,22 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.19599936010130664
+    },
+    {
+      "coin_id": "chainopera-ai",
+      "symbol": "COAI",
+      "name": "ChainOpera AI",
+      "rank": 245,
+      "market_cap": 119018349,
+      "ch24_at_pump": 82.15649,
+      "ratio_30d": 1.9287407545517259,
+      "turnover": 0.2605776754517144,
+      "vol_z": 20.69228670251698,
+      "pump_time": "2026-06-13T16:00:49.371000+00:00",
+      "entry_time": "2026-06-13T18:00:49.371000+00:00",
+      "exit_time": "2026-06-15T18:00:49.371000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
