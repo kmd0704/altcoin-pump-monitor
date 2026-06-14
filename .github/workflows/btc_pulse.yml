@@ -32,12 +32,14 @@ jobs:
         run: |
           python btc_pulse.py
 
-      - name: Commit btc_pulse_state.json
+      - name: Commit btc_pulse state and phase log
         run: |
-          if [[ -n $(git status --porcelain btc_pulse_state.json) ]]; then
+          # btc_phase_log.csv (改良1: フェーズ履歴) も追跡対象に追加。
+          # phase log は btc_pulse.py 側で毎時1回のみ追記されるため、コミットも実質1時間に1回。
+          if [[ -n $(git status --porcelain btc_pulse_state.json btc_phase_log.csv) ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add btc_pulse_state.json
+            git add btc_pulse_state.json btc_phase_log.csv
             git commit -m "update btc_pulse state $(date -u +%Y-%m-%dT%H:%MZ)" || true
             git push || true
           fi
