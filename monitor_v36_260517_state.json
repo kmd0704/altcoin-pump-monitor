@@ -2,7 +2,8 @@
   "alerted": {
     "olaxbt": "2026-06-11T01:35:24.529595+00:00",
     "yooldo-games": "2026-06-12T06:54:00.755470+00:00",
-    "chainopera-ai": "2026-06-13T18:21:41.043087+00:00"
+    "chainopera-ai": "2026-06-13T18:21:41.043087+00:00",
+    "opengradient": "2026-06-14T23:23:53.252180+00:00"
   },
   "scheduled": [
     {
@@ -21,6 +22,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.60597351785645
+    },
+    {
+      "coin_id": "opengradient",
+      "symbol": "OPG",
+      "name": "OpenGradient",
+      "rank": 405,
+      "market_cap": 60084160,
+      "ch24_at_pump": 81.209,
+      "ratio_30d": 1.1743985464582678,
+      "turnover": 1.5162800077171263,
+      "vol_z": 0.25581612534619175,
+      "pump_time": "2026-06-14T22:00:34.224000+00:00",
+      "entry_time": "2026-06-15T00:00:34.224000+00:00",
+      "exit_time": "2026-06-17T00:00:34.224000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.32217718642147797
     }
   ]
 }
