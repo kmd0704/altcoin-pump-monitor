@@ -1,15 +1,15 @@
 {
   "daily_briefed_date": null,
   "last_trend_state": {
-    "ema20_above_ema50": true,
+    "ema20_above_ema50": false,
     "ema50_above_ema200": false,
     "price_above_ema200": false,
-    "fr_state": "hot",
-    "cb_state": "cold"
+    "fr_state": "cold",
+    "cb_state": "neutral"
   },
-  "last_trend_alert": "2026-05-22T17:25:09.062620+00:00",
+  "last_trend_alert": "2026-06-14T02:39:03.191896+00:00",
   "last_sudden_move_alert": null,
-  "last_fr_state": null,
-  "last_premium_state": null,
+  "last_fr_state": "cold",
+  "last_premium_state": "neutral",
   "last_brief_key": "2026-05-24-12"
 }
