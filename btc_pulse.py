@@ -1,7 +1,17 @@
 """
-BTC Pulse Monitor v3 — 機関視点のトレンド判定（Coinalyze FR/OI 復活版）
+BTC Pulse Monitor v4 — 機関視点のトレンド判定 + 構造化フェーズログ + モメンタム
 ======================================================================
 
+v3 をベースに以下2点を追加 (2026-06-14):
+  改良1: フェーズの構造化ログ出力 (btc_phase_log.csv へ analyze_market 結果を1行追記)
+         → 検証データの前向き蓄積。
+  改良2: トレンドの「傾き」(モメンタム) 算出と表示
+         → bull_score は遅行指標 (水準) のため、転換点で「bear継続(ショート有利)」と
+           「bear終わりかけ=転換警戒(ショート危険)」を区別できない。
+           phase_log.csv の履歴から bull_score の変化方向 (score_delta) を計算し、
+           「bear緩和・転換警戒」を別軸として出す。
+
+--- 以下 v3 のドキュメント (機能は完全保持) ---
 BTC を中心に、価格・出来高・デリバティブ(FR/OI)・機関フロー(Coinbase Premium)
 の4軸で総合判定。
 
@@ -28,6 +38,7 @@ BTC を中心に、価格・出来高・デリバティブ(FR/OI)・機関フロ
 """
 import os
 import sys
+import csv
 import json
 import time
 import random
@@ -74,6 +85,18 @@ OI_CHANGE_BIG = 0.05             # 5% OI変化 = 大きい
 VOL_SURGE_RATIO = 1.5            # 24h出来高/7日平均 > 1.5 = 急増
 
 STATE_FILE = Path(__file__).parent / "btc_pulse_state.json"
+# 改良1: フェーズの構造化ログ (STATE_FILE と同じディレクトリ = btc_pulse.py 隣)
+PHASE_LOG_FILE = STATE_FILE.parent / "btc_phase_log.csv"
+
+# phase_log.csv のカラム順 (ヘッダ)
+PHASE_LOG_COLUMNS = [
+    'ts_utc', 'btc_price', 'bull_score', 'phase_label',
+    'ret_7d', 'ret_30d',
+    'ema20', 'ema50', 'ema200',
+    'ema20_gt_ema50', 'ema50_gt_ema200', 'price_gt_ema200',
+    'fr_current', 'fr_state', 'cb_premium', 'cb_state',
+    'oi_change_24h', 'vol_ratio', 'drawdown_90d',
+]
 
 
 # ============= ヘルパー =============
@@ -120,6 +143,197 @@ def load_state():
 
 def save_state(state):
     STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2))
+
+
+# ============= 改良1: フェーズの構造化ログ =============
+def _csv_num(x):
+    """数値を csv 用に整形。None は空文字。"""
+    if x is None:
+        return ''
+    return x
+
+
+def append_phase_log(m, path=None):
+    """
+    analyze_market() の結果 m を btc_phase_log.csv に1行追記する。
+    - path 省略時は本番デフォルト (PHASE_LOG_FILE = btc_pulse.py 隣)。
+      テスト時は別パスを渡すことで本番ログを汚さない。
+    - ファイルが無ければヘッダを書いてから追記。
+    - 追記は 'a' モード + newline='' (Windows 改行二重化回避)。
+    - 例外が出てもメイン処理を止めない (ログ警告のみ)。
+    """
+    log_path = Path(path) if path else PHASE_LOG_FILE
+    try:
+        ts = m['trend_state']
+        row = {
+            'ts_utc':          now_utc().isoformat(),
+            'btc_price':       _csv_num(m.get('btc_price')),
+            'bull_score':      _csv_num(m.get('bull_score')),
+            'phase_label':     m['phase'][1] if m.get('phase') else '',
+            'ret_7d':          _csv_num(m.get('btc_ret_7d')),
+            'ret_30d':         _csv_num(m.get('btc_ret_30d')),
+            'ema20':           _csv_num(m.get('ema20')),
+            'ema50':           _csv_num(m.get('ema50')),
+            'ema200':          _csv_num(m.get('ema200')),
+            'ema20_gt_ema50':  bool(ts.get('ema20_above_ema50')) if ts else '',
+            'ema50_gt_ema200': bool(ts.get('ema50_above_ema200')) if ts else '',
+            'price_gt_ema200': bool(ts.get('price_above_ema200')) if ts else '',
+            'fr_current':      _csv_num(m.get('fr_current')),
+            'fr_state':        m.get('fr_state', ''),
+            'cb_premium':      _csv_num(m.get('cb_premium')),
+            'cb_state':        m.get('cb_state', ''),
+            'oi_change_24h':   _csv_num(m.get('oi_change_24h')),
+            'vol_ratio':       _csv_num(m.get('vol_ratio')),
+            'drawdown_90d':    _csv_num(m.get('drawdown_90d')),
+        }
+        write_header = not log_path.exists()
+        with open(log_path, 'a', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=PHASE_LOG_COLUMNS)
+            if write_header:
+                writer.writeheader()
+            writer.writerow(row)
+        log(f"  📝 phase_log 追記: {log_path.name} (score {row['bull_score']})")
+    except Exception as e:
+        log(f"  ⚠ phase_log 追記失敗(処理は継続): {e}")
+
+
+# ============= 改良2: モメンタム算出 =============
+def _read_phase_log_rows(path=None):
+    """
+    phase_log.csv を読んで dict 行のリストを返す (時系列順)。
+    無い/空/ヘッダのみ/読み取り失敗 → [] (安全)。
+    """
+    log_path = Path(path) if path else PHASE_LOG_FILE
+    if not log_path.exists():
+        return []
+    try:
+        with open(log_path, 'r', newline='', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            return [r for r in reader]
+    except Exception as e:
+        log(f"  ⚠ phase_log 読み取り失敗: {e}")
+        return []
+
+
+def _to_float(x):
+    try:
+        if x is None or x == '':
+            return None
+        return float(x)
+    except (TypeError, ValueError):
+        return None
+
+
+def _to_bool(x):
+    """csv の 'True'/'False'/'' を bool or None に。"""
+    if x is None or x == '':
+        return None
+    s = str(x).strip().lower()
+    if s == 'true':
+        return True
+    if s == 'false':
+        return False
+    return None
+
+
+def _find_score_at_hours_ago(rows, target_hours, now=None, tol_hours=4):
+    """
+    rows (時系列、各行に ts_utc, bull_score) から、
+    now の約 target_hours 前 (±tol_hours で最も近い行) の bull_score を返す。
+    該当なし → None。
+    """
+    if not rows:
+        return None
+    now = now or now_utc()
+    target_ts = now - timedelta(hours=target_hours)
+    best = None
+    best_diff = None
+    for r in rows:
+        try:
+            rts = from_iso(r['ts_utc'])
+        except Exception:
+            continue
+        diff = abs((rts - target_ts).total_seconds()) / 3600.0
+        if diff <= tol_hours and (best_diff is None or diff < best_diff):
+            score = _to_float(r.get('bull_score'))
+            if score is not None:
+                best = score
+                best_diff = diff
+    return best
+
+
+def compute_momentum(m, state, path=None):
+    """
+    改良2: トレンドの「傾き」(モメンタム) を算出。
+    phase_log.csv の履歴から、現在 bull_score と約24h前/72h前の bull_score の差分を取り、
+    変化の向きでラベルを付ける。履歴ゼロ/不足でも KeyError/IndexError で絶対に落ちない。
+
+    返り値 dict: {score_delta_24h, score_delta_72h, ema20_cross_up, momentum_label}
+    """
+    result = {
+        'score_delta_24h': None,
+        'score_delta_72h': None,
+        'ema20_cross_up': None,
+        'momentum_label': '→ 継続/横ばい (履歴不足)',
+    }
+    try:
+        cur_score = m.get('bull_score')
+        rows = _read_phase_log_rows(path)
+        now = now_utc()
+
+        score_24h_ago = _find_score_at_hours_ago(rows, 24, now=now, tol_hours=4)
+        score_72h_ago = _find_score_at_hours_ago(rows, 72, now=now, tol_hours=4)
+
+        if cur_score is not None and score_24h_ago is not None:
+            result['score_delta_24h'] = cur_score - score_24h_ago
+        if cur_score is not None and score_72h_ago is not None:
+            result['score_delta_72h'] = cur_score - score_72h_ago
+
+        # ema20_cross_up: 直近ログ行で ema20_gt_ema50 が False→True に転じたか
+        # (前回ログ行と現在の m を比較)
+        if rows:
+            prev_cross = _to_bool(rows[-1].get('ema20_gt_ema50'))
+            cur_cross = None
+            ts = m.get('trend_state') or {}
+            if ts:
+                cur_cross = bool(ts.get('ema20_above_ema50'))
+            if prev_cross is not None and cur_cross is not None:
+                result['ema20_cross_up'] = (prev_cross is False and cur_cross is True)
+
+        # fr_easing: fr_state が cold→neutral へ戻った or neutral からの変化
+        # (state['last_fr_state'] 活用、無ければ None)
+        fr_easing = None
+        last_fr = state.get('last_fr_state') if isinstance(state, dict) else None
+        cur_fr = m.get('fr_state')
+        if last_fr is not None and cur_fr is not None:
+            if last_fr == 'cold' and cur_fr == 'neutral':
+                fr_easing = True
+            elif last_fr == 'neutral' and cur_fr != 'neutral':
+                fr_easing = True
+            else:
+                fr_easing = False
+        result['fr_easing'] = fr_easing
+
+        # === momentum_label 判定 (優先順) ===
+        d24 = result['score_delta_24h']
+        has_history = d24 is not None
+        suffix = '' if has_history else ' (履歴不足)'
+
+        if has_history and cur_score is not None and cur_score <= -2 and d24 >= 3:
+            label = '🔄 bear緩和・転換警戒（ショート利食い/新規ショート慎重）'
+        elif has_history and cur_score is not None and cur_score >= 2 and d24 <= -3:
+            label = '🔄 bull息切れ（弱含み）'
+        elif has_history and d24 >= 2:
+            label = '↗ 改善方向'
+        elif has_history and d24 <= -2:
+            label = '↘ 悪化方向'
+        else:
+            label = '→ 継続/横ばい' + suffix
+        result['momentum_label'] = label
+    except Exception as e:
+        # 想定外でも絶対に落とさない
+        log(f"  ⚠ compute_momentum 例外(neutral返却): {e}")
+    return result
 
 
 # ============= API 取得 =============
@@ -659,6 +873,13 @@ def fmt_fr(x):
     return f'{x*100:+.4f}%'
 
 
+def fmt_score_delta(x):
+    """score_delta を符号付き整数風で。None は '—'。"""
+    if x is None:
+        return '—'
+    return f'{x:+g}'
+
+
 # ============= Discord =============
 def discord_notify(content, embeds=None):
     if not DISCORD_WEBHOOK:
@@ -670,7 +891,7 @@ def discord_notify(content, embeds=None):
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(DISCORD_WEBHOOK, data=body, headers={
         "Content-Type": "application/json",
-        "User-Agent": "DiscordBot (https://github.com/kmd0704/altcoin-pump-monitor, btc-pulse-3.0)"
+        "User-Agent": "DiscordBot (https://github.com/kmd0704/altcoin-pump-monitor, btc-pulse-4.0)"
     })
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
@@ -714,6 +935,30 @@ def _build_cross_exchange_fields(cs):
     ]
 
 
+def _build_momentum_field(m):
+    """
+    改良2: 「📐 トレンドの傾き」フィールドを生成 (build_daily_brief_embed のヘルパー)。
+    m['momentum'] 未格納でも落ちないようガード。
+    """
+    mom = m.get('momentum') or {}
+    label = mom.get('momentum_label', '→ 継続/横ばい (履歴不足)')
+    d24 = fmt_score_delta(mom.get('score_delta_24h'))
+    d72 = fmt_score_delta(mom.get('score_delta_72h'))
+    cross_up = mom.get('ema20_cross_up')
+    cross_str = ('🟢 あり (EMA20>EMA50 へ転換)' if cross_up is True
+                 else 'なし' if cross_up is False else '—')
+    return {
+        "name": "📐 トレンドの傾き (モメンタム)",
+        "value": (
+            f"**{label}**\n"
+            f"score変化: 24h {d24} / 72h {d72} (現在 {m.get('bull_score', '—'):+})\n"
+            f"EMA短期上抜け: {cross_str}\n"
+            f"※ bull_scoreは水準(遅行)、傾きは向き。bear継続とbear終わりかけを区別。"
+        ),
+        "inline": False,
+    }
+
+
 def build_daily_brief_embed(m, brief_label='📅 ブリーフ'):
     emoji, phase_label, color, desc = m['phase']
     fr_emoji = '🔥' if m['fr_state'] == 'hot' else '❄️' if m['fr_state'] == 'cold' else '⚖️'
@@ -736,6 +981,8 @@ def build_daily_brief_embed(m, brief_label='📅 ブリーフ'):
                 f"24h {fmt_pct(m['eth_ret_24h'])} / 30d {fmt_pct(m['eth_ret_30d'])}\n"
                 f"ETH先行: {fmt_pct(m['eth_lead_24h'])}",
              "inline": True},
+            # === トレンドの傾き (改良2) ===
+            _build_momentum_field(m),
             # === 機関フロー ===
             {"name": f"{cb_emoji} Coinbase プレミアム", "value":
                 f"**{fmt_pct(m['cb_premium'])}** ({m['cb_state']})\n"
@@ -821,7 +1068,7 @@ def build_trend_change_embed(m, change_type, detail):
             {"name": "CB プレミアム", "value": f"{fmt_pct(m['cb_premium'])} ({m['cb_state']})", "inline": True},
             {"name": "OI 24h変化", "value": fmt_pct(m['oi_change_24h']), "inline": True},
         ],
-        "footer": {"text": "BTC Pulse v3 / トレンド転換アラート"},
+        "footer": {"text": "BTC Pulse v4 / トレンド転換アラート"},
         "timestamp": now_utc().isoformat()
     }
 
@@ -829,6 +1076,8 @@ def build_trend_change_embed(m, change_type, detail):
 def build_sudden_move_embed(m):
     move = m['sudden_move_15m']
     is_up = move > 0
+    mom = m.get('momentum') or {}
+    momentum_label = mom.get('momentum_label', '→ 継続/横ばい (履歴不足)')
     return {
         "title": f"{'🚀' if is_up else '🔻'} BTC 急変 — 直近15分で {fmt_pct(move)}",
         "description": (
@@ -845,13 +1094,14 @@ def build_sudden_move_embed(m):
             {"name": "出来高", "value": f"{m['vol_ratio']:.2f}x" if m['vol_ratio'] else '—', "inline": True},
             {"name": "💡 解釈ヒント",
              "value": (
+                f"• トレンドの傾き: {momentum_label}\n"
                 f"• 出来高 {'急増' if m['vol_ratio'] and m['vol_ratio'] > 1.5 else '通常'} = "
                 f"{'本物の動き' if m['vol_ratio'] and m['vol_ratio'] > 1.5 else 'ノイズの可能性'}\n"
                 f"• ファンディング {'過熱' if m['fr_state']=='hot' else '冷却中' if m['fr_state']=='cold' else '中立'} → "
                 f"{'天井近い可能性' if (m['fr_state']=='hot' and is_up) else '転換候補' if (m['fr_state']=='cold' and is_up) else ''}"
              ), "inline": False},
         ],
-        "footer": {"text": "BTC Pulse v3 / 急変アラート(クールダウン1h)"},
+        "footer": {"text": "BTC Pulse v4 / 急変アラート(クールダウン1h)"},
         "timestamp": now_utc().isoformat()
     }
 
@@ -966,7 +1216,7 @@ def check_sudden_move(state, m):
 
 # ============= メイン =============
 def main():
-    log("=== BTC Pulse Monitor v3 起動(機関視点 / Coinalyze FR/OI + クロス取引所) ===")
+    log("=== BTC Pulse Monitor v4 起動(機関視点 / Coinalyze FR/OI + クロス取引所 + フェーズログ + モメンタム) ===")
     if not DISCORD_WEBHOOK:
         log("WARN: DISCORD_WEBHOOK_TREND 未設定")
     if not COINALYZE_API_KEY:
@@ -978,11 +1228,12 @@ def main():
         log("🧪 TEST_DISCORD_TREND モード")
         coinalyze_status = "✅ 有効" if COINALYZE_API_KEY else "⚠️ 未設定（FR/OI は無効）"
         ok = discord_notify(
-            "🧪 **BTC Pulse v3 接続テスト**\n"
+            "🧪 **BTC Pulse v4 接続テスト**\n"
             "GitHub Actions から正常に到達しました。\n\n"
-            "📅 朝/夜ブリーフ (9:00 / 21:00 JST) — 4軸統合 + クロス取引所比較\n"
+            "📅 朝/夜ブリーフ (9:00 / 21:00 JST) — 4軸統合 + クロス取引所比較 + トレンドの傾き\n"
             "🔀 トレンド転換検知(EMA / FR / CBプレミアム — 最大6種)\n"
-            "⚡ BTC 急変(±2% / 15分、出来高・FR込み)\n\n"
+            "⚡ BTC 急変(±2% / 15分、出来高・FR込み)\n"
+            "📝 フェーズ構造化ログ (btc_phase_log.csv)\n\n"
             f"データソース:\n"
             f"  • 価格(klines): Kraken\n"
             f"  • 機関フロー: Coinbase Pro\n"
@@ -1001,6 +1252,9 @@ def main():
         log(f"市場分析エラー: {e}")
         sys.exit(1)
 
+    # 改良2: モメンタム (傾き) を m に格納してから各 check を呼ぶ
+    m['momentum'] = compute_momentum(m, state)
+
     log(f"  BTC: {fmt_dollar(m['btc_price'])} / フェーズ: {m['phase'][1]} (score {m['bull_score']:+})")
     log(f"  FR: {fmt_fr(m['fr_current'])} ({m['fr_state']}) / CB: {fmt_pct(m['cb_premium'])} ({m['cb_state']})")
     if m['vol_ratio']:
@@ -1010,10 +1264,22 @@ def main():
     if m.get('cross_summary') and m['cross_summary'].get('fr_spread') is not None:
         log(f"  クロス取引所 FR スプレッド: {m['cross_summary']['fr_spread']*100:+.4f}%")
     log(f"  15分変動: {m['sudden_move_15m']*100:+.2f}%")
+    log(f"  📐 トレンドの傾き: {m['momentum']['momentum_label']} "
+        f"(Δ24h {fmt_score_delta(m['momentum']['score_delta_24h'])} / "
+        f"Δ72h {fmt_score_delta(m['momentum']['score_delta_72h'])})")
 
     sent_brief = check_daily_brief(state, m)
     sent_trend = check_trend_change(state, m)
     sent_sudden = check_sudden_move(state, m)
+
+    # 改良1: フェーズ構造化ログを追記 (state 保存近辺)。
+    # コミット頻度抑制(§5-7 abuse誤検知回避)のため、毎時1回=正時台(分<15)の実行のみ追記。
+    # momentum の 24h/72h 前参照は1時間粒度で十分機能する。
+    if now_utc().minute < 15:
+        append_phase_log(m)
+    # last_fr_state を更新 (compute_momentum の fr_easing 用、次回実行で参照)。
+    state['last_fr_state'] = m.get('fr_state')
+    state['last_premium_state'] = m.get('cb_state')
     save_state(state)
 
     summary = []
