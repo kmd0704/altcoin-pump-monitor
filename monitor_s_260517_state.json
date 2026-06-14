@@ -1,6 +1,26 @@
 {
   "alerted": {
-    "stratis": "2026-06-10T06:42:10.760621+00:00"
+    "stratis": "2026-06-10T06:42:10.760621+00:00",
+    "yei-finance": "2026-06-14T06:04:44.842063+00:00"
   },
-  "scheduled": []
+  "scheduled": [
+    {
+      "coin_id": "yei-finance",
+      "symbol": "CLO",
+      "name": "Yei Finance",
+      "rank": 739,
+      "market_cap": 24214549,
+      "ch24_at_pump": 60.81738,
+      "ratio_30d": 1.648750794872558,
+      "turnover": 0.7845061094998061,
+      "vol_z": 0.9176547121372909,
+      "ret_7d": -0.19807907324607832,
+      "pump_time": "2026-06-14T06:00:56.651000+00:00",
+      "entry_time": "2026-06-14T06:00:56.651000+00:00",
+      "exit_time": "2026-06-15T06:00:56.651000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.1883649087830775
+    }
+  ]
 }
