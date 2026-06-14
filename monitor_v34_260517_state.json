@@ -1,28 +1,10 @@
 {
   "alerted": {
-    "humanity": "2026-06-10T00:16:55.622868+00:00",
     "olaxbt": "2026-06-11T05:50:37.451319+00:00",
     "yooldo-games": "2026-06-12T08:58:59.153179+00:00",
     "chainopera-ai": "2026-06-13T16:20:52.687457+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "olaxbt",
-      "symbol": "AIO",
-      "name": "OlaXBT",
-      "rank": 511,
-      "market_cap": 43292789,
-      "ch24_at_pump": 80.94264,
-      "ratio_30d": 1.859428497949962,
-      "turnover": 0.05932364911452822,
-      "vol_z": 7.624663753296386,
-      "pump_time": "2026-06-11T01:01:29.079000+00:00",
-      "entry_time": "2026-06-11T03:01:29.079000+00:00",
-      "exit_time": "2026-06-13T03:01:29.079000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.1905271104565352
-    },
     {
       "coin_id": "yooldo-games",
       "symbol": "ESPORTS",
