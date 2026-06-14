@@ -35,11 +35,16 @@ jobs:
       - name: Commit btc_pulse state and phase log
         run: |
           # btc_phase_log.csv (改良1: フェーズ履歴) も追跡対象に追加。
-          # phase log は btc_pulse.py 側で毎時1回のみ追記されるため、コミットも実質1時間に1回。
-          if [[ -n $(git status --porcelain btc_pulse_state.json btc_phase_log.csv) ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add btc_pulse_state.json btc_phase_log.csv
-            git commit -m "update btc_pulse state $(date -u +%Y-%m-%dT%H:%MZ)" || true
-            git push || true
+          # phase log は btc_pulse.py 側で毎時1回のみ追記されるため、未生成の回もある。
+          # 存在するファイルだけ stage し、staged 変更がある時だけ commit/push する
+          # (phase_log 未生成でも pathspec エラー(exit 128)で落ちないようにする)。
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add btc_pulse_state.json 2>/dev/null || true
+          [ -f btc_phase_log.csv ] && git add btc_phase_log.csv 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "update btc_pulse state $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          else
+            echo "no changes to commit"
           fi
