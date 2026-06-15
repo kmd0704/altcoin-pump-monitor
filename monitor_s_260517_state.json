@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "yei-finance": "2026-06-14T06:04:44.842063+00:00"
+    "yei-finance": "2026-06-14T06:04:44.842063+00:00",
+    "asteroid-shiba": "2026-06-15T14:35:07.858044+00:00"
   },
   "scheduled": [
     {
@@ -20,6 +21,24 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.1883649087830775
+    },
+    {
+      "coin_id": "asteroid-shiba",
+      "symbol": "ASTEROID",
+      "name": "Asteroid Shiba",
+      "rank": 542,
+      "market_cap": 39651530,
+      "ch24_at_pump": 67.90579,
+      "ratio_30d": 0.34650912640800496,
+      "turnover": 0.2331472631868273,
+      "vol_z": 1.1370850131841206,
+      "ret_7d": 0.08566086034498599,
+      "pump_time": "2026-06-15T04:01:12.192000+00:00",
+      "entry_time": "2026-06-15T04:01:12.192000+00:00",
+      "exit_time": "2026-06-16T04:01:12.192000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 9.461335940034035e-05
     }
   ]
 }
