@@ -1,9 +1,9 @@
 {
   "alerted": {
-    "yooldo-games": "2026-06-12T06:54:00.755470+00:00",
     "chainopera-ai": "2026-06-13T18:21:41.043087+00:00",
     "opengradient": "2026-06-14T23:23:53.252180+00:00",
-    "asteroid-shiba": "2026-06-15T12:39:23.649314+00:00"
+    "asteroid-shiba": "2026-06-15T12:39:23.649314+00:00",
+    "block-street": "2026-06-16T11:31:40.195951+00:00"
   },
   "scheduled": [
     {
@@ -56,6 +56,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 9.772457324911708e-05
+    },
+    {
+      "coin_id": "block-street",
+      "symbol": "BSB",
+      "name": "Block Street",
+      "rank": 256,
+      "market_cap": 111131689,
+      "ch24_at_pump": 74.74966,
+      "ratio_30d": 1.2839011534204683,
+      "turnover": 0.45252278929076145,
+      "vol_z": 0.47887380132871316,
+      "pump_time": "2026-06-16T06:01:13.085000+00:00",
+      "entry_time": "2026-06-16T08:01:13.085000+00:00",
+      "exit_time": "2026-06-18T08:01:13.085000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.49863851845491985
     }
   ]
 }
