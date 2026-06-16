@@ -1,27 +1,10 @@
 {
   "alerted": {
     "yei-finance": "2026-06-14T06:04:44.842063+00:00",
-    "asteroid-shiba": "2026-06-15T14:35:07.858044+00:00"
+    "asteroid-shiba": "2026-06-15T14:35:07.858044+00:00",
+    "block-street": "2026-06-16T11:33:42.975084+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "yei-finance",
-      "symbol": "CLO",
-      "name": "Yei Finance",
-      "rank": 739,
-      "market_cap": 24214549,
-      "ch24_at_pump": 60.81738,
-      "ratio_30d": 1.648750794872558,
-      "turnover": 0.7845061094998061,
-      "vol_z": 0.9176547121372909,
-      "ret_7d": -0.19807907324607832,
-      "pump_time": "2026-06-14T06:00:56.651000+00:00",
-      "entry_time": "2026-06-14T06:00:56.651000+00:00",
-      "exit_time": "2026-06-15T06:00:56.651000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.1883649087830775
-    },
     {
       "coin_id": "asteroid-shiba",
       "symbol": "ASTEROID",
@@ -39,6 +22,24 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 9.461335940034035e-05
+    },
+    {
+      "coin_id": "block-street",
+      "symbol": "BSB",
+      "name": "Block Street",
+      "rank": 256,
+      "market_cap": 111021866,
+      "ch24_at_pump": 73.6762,
+      "ratio_30d": 1.2815515000222575,
+      "turnover": 0.4525288361431156,
+      "vol_z": 0.4789521298524144,
+      "ret_7d": 0.48345876461224324,
+      "pump_time": "2026-06-16T06:01:13.085000+00:00",
+      "entry_time": "2026-06-16T06:01:13.085000+00:00",
+      "exit_time": "2026-06-17T06:01:13.085000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.4977259655794551
     }
   ]
 }
