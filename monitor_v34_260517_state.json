@@ -6,23 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "chainopera-ai",
-      "symbol": "COAI",
-      "name": "ChainOpera AI",
-      "rank": 245,
-      "market_cap": 119018349,
-      "ch24_at_pump": 82.15649,
-      "ratio_30d": 1.9287407545517259,
-      "turnover": 0.2605776754517144,
-      "vol_z": 20.69228670251698,
-      "pump_time": "2026-06-13T16:00:49.371000+00:00",
-      "entry_time": "2026-06-13T18:00:49.371000+00:00",
-      "exit_time": "2026-06-15T18:00:49.371000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.606985250967807
-    },
-    {
       "coin_id": "opengradient",
       "symbol": "OPG",
       "name": "OpenGradient",
