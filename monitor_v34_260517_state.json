@@ -2,7 +2,8 @@
   "alerted": {
     "chainopera-ai": "2026-06-13T16:20:52.687457+00:00",
     "opengradient": "2026-06-15T00:13:12.182162+00:00",
-    "asteroid-shiba": "2026-06-15T13:17:00.609340+00:00"
+    "asteroid-shiba": "2026-06-15T13:17:00.609340+00:00",
+    "bedrock-token": "2026-06-17T00:18:46.257845+00:00"
   },
   "scheduled": [
     {
@@ -19,7 +20,7 @@
       "entry_time": "2026-06-15T00:00:34.224000+00:00",
       "exit_time": "2026-06-17T00:00:34.224000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.311362604077415
     },
     {
@@ -38,6 +39,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 9.995717726942923e-05
+    },
+    {
+      "coin_id": "bedrock-token",
+      "symbol": "BR",
+      "name": "Bedrock",
+      "rank": 485,
+      "market_cap": 47786278,
+      "ch24_at_pump": 72.56398,
+      "ratio_30d": 1.4550511090117422,
+      "turnover": 0.21007143774479123,
+      "vol_z": 2.6829351818374834,
+      "pump_time": "2026-06-16T17:01:03.605000+00:00",
+      "entry_time": "2026-06-16T19:01:03.605000+00:00",
+      "exit_time": "2026-06-18T19:01:03.605000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.19129894361245253
     }
   ]
 }
