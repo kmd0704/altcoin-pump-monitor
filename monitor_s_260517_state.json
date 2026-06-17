@@ -6,24 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "asteroid-shiba",
-      "symbol": "ASTEROID",
-      "name": "Asteroid Shiba",
-      "rank": 542,
-      "market_cap": 39651530,
-      "ch24_at_pump": 67.90579,
-      "ratio_30d": 0.34650912640800496,
-      "turnover": 0.2331472631868273,
-      "vol_z": 1.1370850131841206,
-      "ret_7d": 0.08566086034498599,
-      "pump_time": "2026-06-15T04:01:12.192000+00:00",
-      "entry_time": "2026-06-15T04:01:12.192000+00:00",
-      "exit_time": "2026-06-16T04:01:12.192000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 9.461335940034035e-05
-    },
-    {
       "coin_id": "block-street",
       "symbol": "BSB",
       "name": "Block Street",
@@ -38,7 +20,7 @@
       "entry_time": "2026-06-16T06:01:13.085000+00:00",
       "exit_time": "2026-06-17T06:01:13.085000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.4977259655794551
     }
   ]
