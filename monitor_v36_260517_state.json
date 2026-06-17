@@ -1,10 +1,10 @@
 {
   "alerted": {
-    "chainopera-ai": "2026-06-13T18:21:41.043087+00:00",
     "opengradient": "2026-06-14T23:23:53.252180+00:00",
     "asteroid-shiba": "2026-06-15T12:39:23.649314+00:00",
     "block-street": "2026-06-16T11:31:40.195951+00:00",
-    "bedrock-token": "2026-06-16T23:45:41.606316+00:00"
+    "bedrock-token": "2026-06-16T23:45:41.606316+00:00",
+    "synapse-2": "2026-06-17T20:28:05.136579+00:00"
   },
   "scheduled": [
     {
@@ -74,6 +74,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.19192005500116047
+    },
+    {
+      "coin_id": "synapse-2",
+      "symbol": "SYN",
+      "name": "Synapse",
+      "rank": 842,
+      "market_cap": 20688667,
+      "ch24_at_pump": 95.17234,
+      "ratio_30d": 1.928180104574851,
+      "turnover": 1.3505632980395446,
+      "vol_z": 2.2860076350832172,
+      "pump_time": "2026-06-17T19:00:41.002000+00:00",
+      "entry_time": "2026-06-17T21:00:41.002000+00:00",
+      "exit_time": "2026-06-19T21:00:41.002000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.09587471740866137
     }
   ]
 }
