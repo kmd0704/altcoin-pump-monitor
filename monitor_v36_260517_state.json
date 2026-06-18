@@ -4,26 +4,10 @@
     "asteroid-shiba": "2026-06-15T12:39:23.649314+00:00",
     "block-street": "2026-06-16T11:31:40.195951+00:00",
     "bedrock-token": "2026-06-16T23:45:41.606316+00:00",
-    "synapse-2": "2026-06-17T20:28:05.136579+00:00"
+    "synapse-2": "2026-06-17T20:28:05.136579+00:00",
+    "yooldo-games": "2026-06-18T07:03:24.199084+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "asteroid-shiba",
-      "symbol": "ASTEROID",
-      "name": "Asteroid Shiba",
-      "rank": 519,
-      "market_cap": 41115976,
-      "ch24_at_pump": 83.55198,
-      "ratio_30d": 0.34592681015506277,
-      "turnover": 0.22541161654389777,
-      "vol_z": 0.6611963672946665,
-      "pump_time": "2026-06-15T04:01:12.192000+00:00",
-      "entry_time": "2026-06-15T06:01:12.192000+00:00",
-      "exit_time": "2026-06-17T06:01:12.192000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 9.772457324911708e-05
-    },
     {
       "coin_id": "block-street",
       "symbol": "BSB",
@@ -38,7 +22,7 @@
       "entry_time": "2026-06-16T08:01:13.085000+00:00",
       "exit_time": "2026-06-18T08:01:13.085000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.49863851845491985
     },
     {
@@ -74,6 +58,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.09587471740866137
+    },
+    {
+      "coin_id": "yooldo-games",
+      "symbol": "ESPORTS",
+      "name": "Yooldo Games",
+      "rank": 634,
+      "market_cap": 31099975,
+      "ch24_at_pump": 145.65386,
+      "ratio_30d": 0.30080877512610155,
+      "turnover": 1.2414538987621342,
+      "vol_z": 0.25318992015693176,
+      "pump_time": "2026-06-17T23:00:42.304000+00:00",
+      "entry_time": "2026-06-18T01:00:42.304000+00:00",
+      "exit_time": "2026-06-20T01:00:42.304000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.2006072694839624
     }
   ]
 }
