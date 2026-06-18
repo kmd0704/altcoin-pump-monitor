@@ -8,23 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "opengradient",
-      "symbol": "OPG",
-      "name": "OpenGradient",
-      "rank": 405,
-      "market_cap": 60084160,
-      "ch24_at_pump": 81.209,
-      "ratio_30d": 1.1743985464582678,
-      "turnover": 1.5162800077171263,
-      "vol_z": 0.25581612534619175,
-      "pump_time": "2026-06-14T22:00:34.224000+00:00",
-      "entry_time": "2026-06-15T00:00:34.224000+00:00",
-      "exit_time": "2026-06-17T00:00:34.224000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.32217718642147797
-    },
-    {
       "coin_id": "asteroid-shiba",
       "symbol": "ASTEROID",
       "name": "Asteroid Shiba",
