@@ -44,7 +44,8 @@ jobs:
           [ -f btc_phase_log.csv ] && git add btc_phase_log.csv 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "update btc_pulse state $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            git pull --rebase --autostash || true
+            git push || echo "push skipped (will retry next run)"
           else
             echo "no changes to commit"
           fi
