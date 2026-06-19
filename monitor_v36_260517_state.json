@@ -4,7 +4,8 @@
     "block-street": "2026-06-16T11:31:40.195951+00:00",
     "bedrock-token": "2026-06-16T23:45:41.606316+00:00",
     "synapse-2": "2026-06-17T20:28:05.136579+00:00",
-    "yooldo-games": "2026-06-18T07:03:24.199084+00:00"
+    "yooldo-games": "2026-06-18T07:03:24.199084+00:00",
+    "biconomy": "2026-06-19T17:25:10.554538+00:00"
   },
   "scheduled": [
     {
@@ -74,6 +75,22 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.00016830089767027587
+    },
+    {
+      "coin_id": "biconomy",
+      "symbol": "BICO",
+      "name": "Biconomy",
+      "rank": 719,
+      "market_cap": 25320273,
+      "ch24_at_pump": 88.04342,
+      "ratio_30d": 1.4532227965921771,
+      "turnover": 0.23655076070211248,
+      "vol_z": 2.42184069083592,
+      "pump_time": "2026-06-19T17:00:14.261000+00:00",
+      "entry_time": "2026-06-19T19:00:14.261000+00:00",
+      "exit_time": "2026-06-21T19:00:14.261000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
