@@ -8,23 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "block-street",
-      "symbol": "BSB",
-      "name": "Block Street",
-      "rank": 256,
-      "market_cap": 111131689,
-      "ch24_at_pump": 74.74966,
-      "ratio_30d": 1.2839011534204683,
-      "turnover": 0.45252278929076145,
-      "vol_z": 0.47887380132871316,
-      "pump_time": "2026-06-16T06:01:13.085000+00:00",
-      "entry_time": "2026-06-16T08:01:13.085000+00:00",
-      "exit_time": "2026-06-18T08:01:13.085000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.49863851845491985
-    },
-    {
       "coin_id": "bedrock-token",
       "symbol": "BR",
       "name": "Bedrock",
