@@ -3,7 +3,8 @@
     "asteroid-shiba": "2026-06-19T01:43:49.884043+00:00",
     "bedrock-token": "2026-06-17T00:18:46.257845+00:00",
     "synapse-2": "2026-06-17T21:09:06.630895+00:00",
-    "yooldo-games": "2026-06-18T09:16:11.510645+00:00"
+    "yooldo-games": "2026-06-18T09:16:11.510645+00:00",
+    "biconomy": "2026-06-19T18:57:07.766575+00:00"
   },
   "scheduled": [
     {
@@ -73,6 +74,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.00017040112419302222
+    },
+    {
+      "coin_id": "biconomy",
+      "symbol": "BICO",
+      "name": "Biconomy",
+      "rank": 734,
+      "market_cap": 24383212,
+      "ch24_at_pump": 77.7558,
+      "ratio_30d": 1.37655957010042,
+      "turnover": 0.2580096472832767,
+      "vol_z": 3.3944181921184886,
+      "pump_time": "2026-06-19T17:00:14.261000+00:00",
+      "entry_time": "2026-06-19T19:00:14.261000+00:00",
+      "exit_time": "2026-06-21T19:00:14.261000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.03398543275977794
     }
   ]
 }
