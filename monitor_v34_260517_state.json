@@ -8,23 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "bedrock-token",
-      "symbol": "BR",
-      "name": "Bedrock",
-      "rank": 485,
-      "market_cap": 47786278,
-      "ch24_at_pump": 72.56398,
-      "ratio_30d": 1.4550511090117422,
-      "turnover": 0.21007143774479123,
-      "vol_z": 2.6829351818374834,
-      "pump_time": "2026-06-16T17:01:03.605000+00:00",
-      "entry_time": "2026-06-16T19:01:03.605000+00:00",
-      "exit_time": "2026-06-18T19:01:03.605000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.19129894361245253
-    },
-    {
       "coin_id": "synapse-2",
       "symbol": "SYN",
       "name": "Synapse",
@@ -38,7 +21,7 @@
       "entry_time": "2026-06-17T21:00:41.002000+00:00",
       "exit_time": "2026-06-19T21:00:41.002000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.09343501511669496
     },
     {
