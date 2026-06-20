@@ -8,23 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "synapse-2",
-      "symbol": "SYN",
-      "name": "Synapse",
-      "rank": 814,
-      "market_cap": 20495645,
-      "ch24_at_pump": 91.09444,
-      "ratio_30d": 1.8767446631039546,
-      "turnover": 1.3580674290581676,
-      "vol_z": 2.4475792720329426,
-      "pump_time": "2026-06-17T19:00:41.002000+00:00",
-      "entry_time": "2026-06-17T21:00:41.002000+00:00",
-      "exit_time": "2026-06-19T21:00:41.002000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.09343501511669496
-    },
-    {
       "coin_id": "yooldo-games",
       "symbol": "ESPORTS",
       "name": "Yooldo Games",
