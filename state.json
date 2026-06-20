@@ -1,7 +1,6 @@
 {
   "alerted": {
     "asteroid-shiba": "2026-06-19T00:27:21.187849+00:00",
-    "block-street": "2026-06-16T10:08:09.871817+00:00",
     "bedrock-token": "2026-06-16T19:37:20.757826+00:00",
     "yooldo-games": "2026-06-17T11:48:52.087583+00:00",
     "synapse-2": "2026-06-17T21:07:54.677419+00:00",
@@ -9,7 +8,8 @@
     "siren-2": "2026-06-19T00:27:18.502501+00:00",
     "biconomy": "2026-06-19T17:59:12.304937+00:00",
     "superfortune": "2026-06-20T08:57:53.051354+00:00",
-    "wojak-5": "2026-06-20T08:57:55.993977+00:00"
+    "wojak-5": "2026-06-20T08:57:55.993977+00:00",
+    "bella-protocol": "2026-06-20T11:23:39.358000+00:00"
   },
   "scheduled": [
     {
@@ -334,11 +334,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 1.3160190985982048,
-      "s_entry_price": 1.3160190985982048
+      "s_entry_price": 1.3160190985982048,
+      "peak_price": 1.311779309558843,
+      "entry_price": 0.8853519862103271
     },
     {
       "coin_id": "wojak-5",
@@ -420,6 +422,87 @@
       "exit_notified": false,
       "s_peak_price": 1.4592757049146774e-07,
       "s_entry_price": 1.4592757049146774e-07
+    },
+    {
+      "coin_id": "bella-protocol",
+      "symbol": "BEL",
+      "name": "Bella Protocol",
+      "rank": 975,
+      "market_cap": 14116086,
+      "ch24_at_pump": 68.4483,
+      "ratio_30d": 1.7406153910020716,
+      "turnover": 1.2035553543941837,
+      "vol_z": 16.89683309243626,
+      "price_at_detection": 0.178257,
+      "pump_time": "2026-06-20T11:00:53.041000+00:00",
+      "entry_time_normal": "2026-06-20T14:00:53.041000+00:00",
+      "entry_time": "2026-06-20T14:00:53.041000+00:00",
+      "exit_time": "2026-06-21T14:00:53.041000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 975 > 900",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 975 > 900",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": false,
+          "reason": "rank 975 > 900",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
+      "normal_entry_notified": false,
+      "entry_notified": false,
+      "exit_notified": false,
+      "s_peak_price": 0.1725952269812358,
+      "s_entry_price": 0.17825678836077877
     }
   ]
 }
