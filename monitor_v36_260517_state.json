@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "yooldo-games",
-      "symbol": "ESPORTS",
-      "name": "Yooldo Games",
-      "rank": 634,
-      "market_cap": 31099975,
-      "ch24_at_pump": 145.65386,
-      "ratio_30d": 0.30080877512610155,
-      "turnover": 1.2414538987621342,
-      "vol_z": 0.25318992015693176,
-      "pump_time": "2026-06-17T23:00:42.304000+00:00",
-      "entry_time": "2026-06-18T01:00:42.304000+00:00",
-      "exit_time": "2026-06-20T01:00:42.304000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.2006072694839624
-    },
-    {
       "coin_id": "asteroid-shiba",
       "symbol": "ASTEROID",
       "name": "Asteroid Shiba",
