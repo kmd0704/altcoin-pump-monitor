@@ -1,7 +1,6 @@
 {
   "alerted": {
     "asteroid-shiba": "2026-06-19T00:27:21.187849+00:00",
-    "yooldo-games": "2026-06-17T11:48:52.087583+00:00",
     "synapse-2": "2026-06-17T21:07:54.677419+00:00",
     "tac": "2026-06-17T23:25:07.009315+00:00",
     "siren-2": "2026-06-19T00:27:18.502501+00:00",
@@ -337,7 +336,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.1725952269812358,
       "s_entry_price": 0.17825678836077877,
       "peak_price": 0.1822036012945048,
