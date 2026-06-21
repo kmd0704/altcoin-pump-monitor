@@ -335,7 +335,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": true,
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 0.1613646507128046,
       "s_entry_price": 0.1613646507128046,
       "peak_price": 0.16723715897978042,
