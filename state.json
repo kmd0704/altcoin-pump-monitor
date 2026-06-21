@@ -9,7 +9,8 @@
     "superfortune": "2026-06-20T08:57:53.051354+00:00",
     "wojak-5": "2026-06-20T08:57:55.993977+00:00",
     "bella-protocol": "2026-06-20T11:23:39.358000+00:00",
-    "my-neighbor-alice": "2026-06-20T20:15:29.147431+00:00"
+    "my-neighbor-alice": "2026-06-20T20:15:29.147431+00:00",
+    "tensor": "2026-06-21T10:29:58.299446+00:00"
   },
   "scheduled": [
     {
@@ -255,7 +256,7 @@
       "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
-      "exit_notified": false,
+      "exit_notified": true,
       "s_peak_price": 1.4592757049146774e-07,
       "s_entry_price": 1.4592757049146774e-07
     },
@@ -424,6 +425,89 @@
       "s_entry_price": 0.1613646507128046,
       "peak_price": 0.16723715897978042,
       "entry_price": 0.16416776219770063
+    },
+    {
+      "coin_id": "tensor",
+      "symbol": "TNSR",
+      "name": "Tensor",
+      "rank": 901,
+      "market_cap": 16607039,
+      "ch24_at_pump": 66.61933,
+      "ratio_30d": 1.2564402565846966,
+      "turnover": 0.875279407476778,
+      "vol_z": 4.2384984882721675,
+      "price_at_detection": 0.04884862,
+      "pump_time": "2026-06-21T07:00:08.085000+00:00",
+      "entry_time_normal": "2026-06-21T10:00:08.085000+00:00",
+      "entry_time": "2026-06-21T10:00:08.085000+00:00",
+      "exit_time": "2026-06-22T10:00:08.085000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 901 > 900",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 901 > 900",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": false,
+          "reason": "rank 901 > 900",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
+      "normal_entry_notified": true,
+      "entry_notified": true,
+      "exit_notified": false,
+      "s_peak_price": 0.05319109397754334,
+      "s_entry_price": 0.04877242867309683,
+      "peak_price": 0.05319109397754334,
+      "entry_price": 0.04877242867309683
     }
   ]
 }
