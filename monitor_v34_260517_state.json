@@ -1,29 +1,11 @@
 {
   "alerted": {
     "asteroid-shiba": "2026-06-19T01:43:49.884043+00:00",
-    "bedrock-token": "2026-06-17T00:18:46.257845+00:00",
     "synapse-2": "2026-06-17T21:09:06.630895+00:00",
     "yooldo-games": "2026-06-18T09:16:11.510645+00:00",
     "biconomy": "2026-06-19T18:57:07.766575+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "yooldo-games",
-      "symbol": "ESPORTS",
-      "name": "Yooldo Games",
-      "rank": 676,
-      "market_cap": 28077454,
-      "ch24_at_pump": 102.62983,
-      "ratio_30d": 0.27958160801315346,
-      "turnover": 1.2653020207986025,
-      "vol_z": 0.4631580318732625,
-      "pump_time": "2026-06-17T23:00:42.304000+00:00",
-      "entry_time": "2026-06-18T01:00:42.304000+00:00",
-      "exit_time": "2026-06-20T01:00:42.304000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.1808840522059375
-    },
     {
       "coin_id": "asteroid-shiba",
       "symbol": "ASTEROID",
