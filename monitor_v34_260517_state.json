@@ -3,7 +3,8 @@
     "asteroid-shiba": "2026-06-19T01:43:49.884043+00:00",
     "synapse-2": "2026-06-17T21:09:06.630895+00:00",
     "yooldo-games": "2026-06-18T09:16:11.510645+00:00",
-    "biconomy": "2026-06-19T18:57:07.766575+00:00"
+    "biconomy": "2026-06-19T18:57:07.766575+00:00",
+    "tensor": "2026-06-21T10:02:18.128022+00:00"
   },
   "scheduled": [
     {
@@ -39,6 +40,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.03398543275977794
+    },
+    {
+      "coin_id": "tensor",
+      "symbol": "TNSR",
+      "name": "Tensor",
+      "rank": 897,
+      "market_cap": 16919870,
+      "ch24_at_pump": 70.90415,
+      "ratio_30d": 1.3003831441447118,
+      "turnover": 0.8749590069233293,
+      "vol_z": 4.235766567348779,
+      "pump_time": "2026-06-21T07:00:08.085000+00:00",
+      "entry_time": "2026-06-21T09:00:08.085000+00:00",
+      "exit_time": "2026-06-23T09:00:08.085000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.05047820126194756
     }
   ]
 }
