@@ -6,23 +6,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "biconomy",
-      "symbol": "BICO",
-      "name": "Biconomy",
-      "rank": 719,
-      "market_cap": 25320273,
-      "ch24_at_pump": 88.04342,
-      "ratio_30d": 1.4532227965921771,
-      "turnover": 0.23655076070211248,
-      "vol_z": 2.42184069083592,
-      "pump_time": "2026-06-19T17:00:14.261000+00:00",
-      "entry_time": "2026-06-19T19:00:14.261000+00:00",
-      "exit_time": "2026-06-21T19:00:14.261000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.03469990755580369
-    },
-    {
       "coin_id": "tensor",
       "symbol": "TNSR",
       "name": "Tensor",
