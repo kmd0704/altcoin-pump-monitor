@@ -7,23 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "asteroid-shiba",
-      "symbol": "ASTEROID",
-      "name": "Asteroid Shiba",
-      "rank": 344,
-      "market_cap": 71813684,
-      "ch24_at_pump": 87.41841,
-      "ratio_30d": 0.5148682814505409,
-      "turnover": 0.31981809809857187,
-      "vol_z": 0.12022581884196132,
-      "pump_time": "2026-06-18T22:00:30.002000+00:00",
-      "entry_time": "2026-06-19T00:00:30.002000+00:00",
-      "exit_time": "2026-06-21T00:00:30.002000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.00017040112419302222
-    },
-    {
       "coin_id": "biconomy",
       "symbol": "BICO",
       "name": "Biconomy",
