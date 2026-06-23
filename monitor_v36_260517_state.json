@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "asteroid-shiba": "2026-06-19T05:20:18.663338+00:00",
     "biconomy": "2026-06-19T17:25:10.554538+00:00",
     "tensor": "2026-06-21T13:16:43.327978+00:00"
   },
@@ -19,7 +18,7 @@
       "entry_time": "2026-06-21T09:00:08.085000+00:00",
       "exit_time": "2026-06-23T09:00:08.085000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.04983815786666406
     }
   ]
