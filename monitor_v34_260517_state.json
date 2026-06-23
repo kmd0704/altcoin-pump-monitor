@@ -1,8 +1,8 @@
 {
   "alerted": {
-    "asteroid-shiba": "2026-06-19T01:43:49.884043+00:00",
     "biconomy": "2026-06-19T18:57:07.766575+00:00",
-    "tensor": "2026-06-21T10:02:18.128022+00:00"
+    "tensor": "2026-06-21T10:02:18.128022+00:00",
+    "xion-2": "2026-06-23T03:43:25.199240+00:00"
   },
   "scheduled": [
     {
@@ -21,6 +21,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.05047820126194756
+    },
+    {
+      "coin_id": "xion-2",
+      "symbol": "VERONA",
+      "name": "Verona",
+      "rank": 956,
+      "market_cap": 14741512,
+      "ch24_at_pump": 71.73579,
+      "ratio_30d": 1.4802980685995009,
+      "turnover": 0.4927099487625737,
+      "vol_z": 0.44082284899518664,
+      "pump_time": "2026-06-23T01:00:14.084000+00:00",
+      "entry_time": "2026-06-23T03:00:14.084000+00:00",
+      "exit_time": "2026-06-25T03:00:14.084000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.20373652599705686
     }
   ]
 }
