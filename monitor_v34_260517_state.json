@@ -5,23 +5,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "tensor",
-      "symbol": "TNSR",
-      "name": "Tensor",
-      "rank": 897,
-      "market_cap": 16919870,
-      "ch24_at_pump": 70.90415,
-      "ratio_30d": 1.3003831441447118,
-      "turnover": 0.8749590069233293,
-      "vol_z": 4.235766567348779,
-      "pump_time": "2026-06-21T07:00:08.085000+00:00",
-      "entry_time": "2026-06-21T09:00:08.085000+00:00",
-      "exit_time": "2026-06-23T09:00:08.085000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.05047820126194756
-    },
-    {
       "coin_id": "xion-2",
       "symbol": "VERONA",
       "name": "Verona",
