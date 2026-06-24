@@ -2,23 +2,5 @@
   "alerted": {
     "tensor": "2026-06-21T13:16:43.327978+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "tensor",
-      "symbol": "TNSR",
-      "name": "Tensor",
-      "rank": 894,
-      "market_cap": 16976040,
-      "ch24_at_pump": 71.03443,
-      "ratio_30d": 1.277885439336237,
-      "turnover": 1.071997066908245,
-      "vol_z": 7.826831516011809,
-      "pump_time": "2026-06-21T07:00:08.085000+00:00",
-      "entry_time": "2026-06-21T09:00:08.085000+00:00",
-      "exit_time": "2026-06-23T09:00:08.085000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.04983815786666406
-    }
-  ]
+  "scheduled": []
 }
