@@ -248,11 +248,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.026193542725801853,
-      "s_entry_price": 0.025128924883262384
+      "s_entry_price": 0.025128924883262384,
+      "peak_price": 0.026193542725801853,
+      "entry_price": 0.024845717608682504
     },
     {
       "coin_id": "superform",
@@ -329,11 +331,13 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
-      "normal_entry_notified": false,
-      "entry_notified": false,
+      "normal_entry_notified": true,
+      "entry_notified": true,
       "exit_notified": false,
       "s_peak_price": 0.08977650857405908,
-      "s_entry_price": 0.08977650857405908
+      "s_entry_price": 0.08977650857405908,
+      "peak_price": 0.0989406051437188,
+      "entry_price": 0.0989406051437188
     }
   ]
 }
