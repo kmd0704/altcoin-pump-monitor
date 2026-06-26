@@ -5,92 +5,10 @@
     "ai-companions": "2026-06-24T14:32:11.226996+00:00",
     "meet48": "2026-06-25T19:05:21.214534+00:00",
     "superform": "2026-06-25T19:05:24.211105+00:00",
-    "infinity-ground": "2026-06-26T03:46:26.052026+00:00"
+    "infinity-ground": "2026-06-26T03:46:26.052026+00:00",
+    "opal-3": "2026-06-26T16:17:20.079094+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "solstice",
-      "symbol": "SLX",
-      "name": "Solstice",
-      "rank": 339,
-      "market_cap": 73033728,
-      "ch24_at_pump": 51.58615,
-      "ratio_30d": 1.0119118653837915,
-      "turnover": 1.0840826173642057,
-      "vol_z": 1.3770298741972842,
-      "price_at_detection": 0.302091,
-      "pump_time": "2026-06-24T11:45:11+00:00",
-      "entry_time_normal": "2026-06-24T14:45:11+00:00",
-      "entry_time": "2026-06-24T14:45:11+00:00",
-      "exit_time": "2026-06-25T14:45:11+00:00",
-      "evals": [
-        {
-          "id": "v34",
-          "label": "v3.4",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / 全銘柄 / 3h待ち"
-        },
-        {
-          "id": "v34m",
-          "label": "v3.4m",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / モッピーさん版(rank 250-900)"
-        },
-        {
-          "id": "v35",
-          "label": "v3.5",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / vol_z厳選 / 3h待ち"
-        },
-        {
-          "id": "v35m",
-          "label": "v3.5m",
-          "tp": 0.3,
-          "match": true,
-          "reason": "OK",
-          "note": "TP30% / vol_z厳選+モッピーさん版"
-        },
-        {
-          "id": "v36",
-          "label": "v3.6 ★",
-          "tp": 0.5,
-          "match": true,
-          "reason": "OK",
-          "note": "TP50% / リターン最大化(推奨)"
-        },
-        {
-          "id": "v36m",
-          "label": "v3.6m",
-          "tp": 0.5,
-          "match": true,
-          "reason": "OK",
-          "note": "TP50% / モッピーさん版(rank 250-900)"
-        },
-        {
-          "id": "s",
-          "label": "s",
-          "tp": 0.2,
-          "match": true,
-          "reason": "OK",
-          "note": "TP20% / 即時エントリー(勝率93%)"
-        }
-      ],
-      "detection_notified": true,
-      "immediate_entry_notified": true,
-      "normal_entry_notified": true,
-      "entry_notified": true,
-      "exit_notified": false,
-      "s_peak_price": 0.30208265919741656,
-      "s_entry_price": 0.30208265919741656,
-      "peak_price": 0.3029910670522621,
-      "entry_price": 0.2661662180733982
-    },
     {
       "coin_id": "ai-companions",
       "symbol": "AIC",
@@ -420,6 +338,87 @@
       "exit_notified": false,
       "s_peak_price": 0.10728781441750085,
       "s_entry_price": 0.10728781441750085
+    },
+    {
+      "coin_id": "opal-3",
+      "symbol": "OPAL",
+      "name": "Opal",
+      "rank": 963,
+      "market_cap": 14057438,
+      "ch24_at_pump": 62.87989,
+      "ratio_30d": 1.9577355037116984,
+      "turnover": 0.031467911293365305,
+      "vol_z": 4.689901503180553,
+      "price_at_detection": 0.280884,
+      "pump_time": "2026-06-26T15:02:55.320000+00:00",
+      "entry_time_normal": "2026-06-26T18:02:55.320000+00:00",
+      "entry_time": "2026-06-26T18:02:55.320000+00:00",
+      "exit_time": "2026-06-27T18:02:55.320000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 963 > 900",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 963 > 900",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": false,
+          "reason": "rank 963 > 900",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
+      "normal_entry_notified": false,
+      "entry_notified": false,
+      "exit_notified": false,
+      "s_peak_price": 0.28088390658365825,
+      "s_entry_price": 0.28088390658365825
     }
   ]
 }
