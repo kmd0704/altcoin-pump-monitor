@@ -1,13 +1,13 @@
 {
   "alerted": {
-    "solstice": "2026-06-24T11:45:17.760159+00:00",
     "ai-companions": "2026-06-24T14:32:11.226996+00:00",
     "meet48": "2026-06-25T19:05:21.214534+00:00",
     "superform": "2026-06-25T19:05:24.211105+00:00",
     "infinity-ground": "2026-06-26T03:46:26.052026+00:00",
     "opal-3": "2026-06-26T16:17:20.079094+00:00",
     "kled-ai": "2026-06-27T04:53:58.198682+00:00",
-    "definitive": "2026-06-27T07:50:02.758056+00:00"
+    "definitive": "2026-06-27T07:50:02.758056+00:00",
+    "act-i-the-ai-prophecy": "2026-06-28T13:47:21.558961+00:00"
   },
   "scheduled": [
     {
@@ -258,6 +258,87 @@
       "s_entry_price": 0.10799856802354041,
       "peak_price": 0.0915267385351547,
       "entry_price": 0.07944896029742024
+    },
+    {
+      "coin_id": "act-i-the-ai-prophecy",
+      "symbol": "ACT",
+      "name": "Act I The AI Prophecy",
+      "rank": 980,
+      "market_cap": 13479279,
+      "ch24_at_pump": 78.16353,
+      "ratio_30d": 1.2174227857279025,
+      "turnover": 1.4654879549585844,
+      "vol_z": 3.3204524170006096,
+      "price_at_detection": 0.01420148,
+      "pump_time": "2026-06-28T12:00:07.390000+00:00",
+      "entry_time_normal": "2026-06-28T15:00:07.390000+00:00",
+      "entry_time": "2026-06-28T15:00:07.390000+00:00",
+      "exit_time": "2026-06-29T15:00:07.390000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 980 > 900",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": false,
+          "reason": "rank 980 > 900",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": false,
+          "reason": "rank 980 > 900",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
+      "normal_entry_notified": false,
+      "entry_notified": false,
+      "exit_notified": false,
+      "s_peak_price": 0.015154044309733272,
+      "s_entry_price": 0.014188853312068176
     }
   ]
 }
