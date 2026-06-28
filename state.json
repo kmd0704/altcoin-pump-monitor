@@ -1,13 +1,13 @@
 {
   "alerted": {
-    "ai-companions": "2026-06-24T14:32:11.226996+00:00",
     "meet48": "2026-06-25T19:05:21.214534+00:00",
     "superform": "2026-06-25T19:05:24.211105+00:00",
     "infinity-ground": "2026-06-26T03:46:26.052026+00:00",
     "opal-3": "2026-06-26T16:17:20.079094+00:00",
     "kled-ai": "2026-06-27T04:53:58.198682+00:00",
     "definitive": "2026-06-27T07:50:02.758056+00:00",
-    "act-i-the-ai-prophecy": "2026-06-28T13:47:21.558961+00:00"
+    "act-i-the-ai-prophecy": "2026-06-28T13:47:21.558961+00:00",
+    "manta-network": "2026-06-28T15:18:06.433549+00:00"
   },
   "scheduled": [
     {
@@ -334,11 +334,94 @@
       ],
       "detection_notified": true,
       "immediate_entry_notified": true,
+      "normal_entry_notified": true,
+      "entry_notified": true,
+      "exit_notified": false,
+      "s_peak_price": 0.015154044309733272,
+      "s_entry_price": 0.014188853312068176,
+      "peak_price": 0.015154044309733272,
+      "entry_price": 0.012550296992700166
+    },
+    {
+      "coin_id": "manta-network",
+      "symbol": "MANTA",
+      "name": "Manta Network",
+      "rank": 338,
+      "market_cap": 70883644,
+      "ch24_at_pump": 83.95794,
+      "ratio_30d": 1.854216602543958,
+      "turnover": 0.24734147536780393,
+      "vol_z": 1.2152710832438913,
+      "price_at_detection": 0.149031,
+      "pump_time": "2026-06-28T15:01:58.191000+00:00",
+      "entry_time_normal": "2026-06-28T18:01:58.191000+00:00",
+      "entry_time": "2026-06-28T18:01:58.191000+00:00",
+      "exit_time": "2026-06-29T18:01:58.191000+00:00",
+      "evals": [
+        {
+          "id": "v34",
+          "label": "v3.4",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / 全銘柄 / 3h待ち"
+        },
+        {
+          "id": "v34m",
+          "label": "v3.4m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "v35",
+          "label": "v3.5",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選 / 3h待ち"
+        },
+        {
+          "id": "v35m",
+          "label": "v3.5m",
+          "tp": 0.3,
+          "match": true,
+          "reason": "OK",
+          "note": "TP30% / vol_z厳選+モッピーさん版"
+        },
+        {
+          "id": "v36",
+          "label": "v3.6 ★",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / リターン最大化(推奨)"
+        },
+        {
+          "id": "v36m",
+          "label": "v3.6m",
+          "tp": 0.5,
+          "match": true,
+          "reason": "OK",
+          "note": "TP50% / モッピーさん版(rank 250-900)"
+        },
+        {
+          "id": "s",
+          "label": "s",
+          "tp": 0.2,
+          "match": true,
+          "reason": "OK",
+          "note": "TP20% / 即時エントリー(勝率93%)"
+        }
+      ],
+      "detection_notified": true,
+      "immediate_entry_notified": true,
       "normal_entry_notified": false,
       "entry_notified": false,
       "exit_notified": false,
-      "s_peak_price": 0.015154044309733272,
-      "s_entry_price": 0.014188853312068176
+      "s_peak_price": 0.15015020641556798,
+      "s_entry_price": 0.14973680436578152
     }
   ]
 }
