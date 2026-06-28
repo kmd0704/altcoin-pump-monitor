@@ -1,4 +1,24 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "act-i-the-ai-prophecy": "2026-06-28T13:50:14.752513+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "act-i-the-ai-prophecy",
+      "symbol": "ACT",
+      "name": "Act I The AI Prophecy",
+      "rank": 980,
+      "market_cap": 13548859,
+      "ch24_at_pump": 79.25432,
+      "ratio_30d": 1.2280274345135405,
+      "turnover": 1.4662644307107369,
+      "vol_z": 3.3300733382085146,
+      "pump_time": "2026-06-28T12:00:07.390000+00:00",
+      "entry_time": "2026-06-28T14:00:07.390000+00:00",
+      "exit_time": "2026-06-30T14:00:07.390000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.01431244867089453
+    }
+  ]
 }
