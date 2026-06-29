@@ -1,7 +1,8 @@
 {
   "alerted": {
     "act-i-the-ai-prophecy": "2026-06-28T13:50:14.752513+00:00",
-    "manta-network": "2026-06-28T15:19:13.781061+00:00"
+    "manta-network": "2026-06-28T15:19:13.781061+00:00",
+    "tac": "2026-06-29T11:03:45.204584+00:00"
   },
   "scheduled": [
     {
@@ -37,6 +38,23 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.1067718099754556
+    },
+    {
+      "coin_id": "tac",
+      "symbol": "TAC",
+      "name": "TAC",
+      "rank": 145,
+      "market_cap": 237478828,
+      "ch24_at_pump": 137.35872,
+      "ratio_30d": 2.7759097035069886,
+      "turnover": 0.021282808299560124,
+      "vol_z": 1.1334573228302405,
+      "pump_time": "2026-06-29T08:00:10.659000+00:00",
+      "entry_time": "2026-06-29T10:00:10.659000+00:00",
+      "exit_time": "2026-07-01T10:00:10.659000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.05164948887649017
     }
   ]
 }
