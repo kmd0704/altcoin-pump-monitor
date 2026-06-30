@@ -1,4 +1,25 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "gensyn": "2026-06-30T05:17:00.796690+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "gensyn",
+      "symbol": "AI",
+      "name": "Gensyn",
+      "rank": 444,
+      "market_cap": 49511404,
+      "ch24_at_pump": 64.05911,
+      "ratio_30d": 1.2732316228187452,
+      "turnover": 0.2498227995019059,
+      "vol_z": 0.0845362727930052,
+      "ret_7d": 0.45875010883010403,
+      "pump_time": "2026-06-30T04:01:43.684000+00:00",
+      "entry_time": "2026-06-30T04:01:43.684000+00:00",
+      "exit_time": "2026-07-01T04:01:43.684000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.038463223002485565
+    }
+  ]
 }
