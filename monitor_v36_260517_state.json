@@ -1,7 +1,8 @@
 {
   "alerted": {
     "act-i-the-ai-prophecy": "2026-06-28T11:56:55.301737+00:00",
-    "tac": "2026-06-29T11:21:49.917969+00:00"
+    "tac": "2026-06-29T11:21:49.917969+00:00",
+    "infinit": "2026-06-30T15:39:04.521819+00:00"
   },
   "scheduled": [
     {
@@ -37,6 +38,22 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.04949021775909485
+    },
+    {
+      "coin_id": "infinit",
+      "symbol": "IN",
+      "name": "INFINIT",
+      "rank": 264,
+      "market_cap": 101593149,
+      "ch24_at_pump": 140.37524,
+      "ratio_30d": 2.7354013593377484,
+      "turnover": 0.5254509986148567,
+      "vol_z": 2.444106302842667,
+      "pump_time": "2026-06-30T15:00:52.476000+00:00",
+      "entry_time": "2026-06-30T17:00:52.476000+00:00",
+      "exit_time": "2026-07-02T17:00:52.476000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
