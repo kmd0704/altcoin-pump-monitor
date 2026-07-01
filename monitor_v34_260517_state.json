@@ -8,23 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "manta-network",
-      "symbol": "MANTA",
-      "name": "Manta Network",
-      "rank": 338,
-      "market_cap": 70538831,
-      "ch24_at_pump": 81.95228,
-      "ratio_30d": 1.8253728494641985,
-      "turnover": 0.24822879833010905,
-      "vol_z": 1.269815170936598,
-      "pump_time": "2026-06-28T15:01:58.191000+00:00",
-      "entry_time": "2026-06-28T17:01:58.191000+00:00",
-      "exit_time": "2026-06-30T17:01:58.191000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.1067718099754556
-    },
-    {
       "coin_id": "tac",
       "symbol": "TAC",
       "name": "TAC",
