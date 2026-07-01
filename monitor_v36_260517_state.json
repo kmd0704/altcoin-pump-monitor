@@ -2,7 +2,8 @@
   "alerted": {
     "act-i-the-ai-prophecy": "2026-06-28T11:56:55.301737+00:00",
     "tac": "2026-06-29T11:21:49.917969+00:00",
-    "infinit": "2026-06-30T15:39:04.521819+00:00"
+    "infinit": "2026-06-30T15:39:04.521819+00:00",
+    "taiko": "2026-07-01T10:08:54.704603+00:00"
   },
   "scheduled": [
     {
@@ -36,7 +37,7 @@
       "entry_time": "2026-06-29T10:00:10.659000+00:00",
       "exit_time": "2026-07-01T10:00:10.659000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.04949021775909485
     },
     {
@@ -55,6 +56,22 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.2309956209028515
+    },
+    {
+      "coin_id": "taiko",
+      "symbol": "TAIKO",
+      "name": "Taiko",
+      "rank": 771,
+      "market_cap": 21268648,
+      "ch24_at_pump": 71.26475,
+      "ratio_30d": 1.1309985218985714,
+      "turnover": 0.32525658699582244,
+      "vol_z": 1.3288427402115044,
+      "pump_time": "2026-07-01T10:02:10.414000+00:00",
+      "entry_time": "2026-07-01T12:02:10.414000+00:00",
+      "exit_time": "2026-07-03T12:02:10.414000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
