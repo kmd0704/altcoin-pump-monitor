@@ -79,6 +79,7 @@ WAIT_HOURS = 2                  # pump_start + 2h でエントリー
 HOLD_HOURS = 48                 # entry + 48h で決済
 TP_PCT = 0.25                   # 利確 -25%
 SL_PCT = 0.15                   # 損切 +15% (entry比、perp銘柄向けに緩和)
+HARD_SL_PCT = 0.30              # 保険逆指値 +30% (hybrid型: 終値判定SL_PCT + 瞬間保険HARD)
 
 # その他
 DEDUP_HOURS = 48                # 同銘柄の再アラート抑止
@@ -250,7 +251,9 @@ def deep_check(coin):
             return False, f"vol_z {vol_z:.2f} < {VOL_Z_MIN}", {"ratio_30d": ratio_30d, "turnover": turnover, "vol_z": vol_z}
 
         # pump_start を特定(ch24が初めて 50% を越えた瞬間)
+        # ch24_at_pump_start: pump_start 時点の 24h変化率(小数)を前向き検証用に保持
         pump_start = None
+        ch24_at_pump_start = None
         for i in range(len(prices) - 1, 23, -1):
             cur = prices[i][1]
             ago = prices[i - 24][1]
@@ -260,6 +263,7 @@ def deep_check(coin):
             if i - 1 < 24:
                 if ch > PUMP_DETECT_THRESHOLD:
                     pump_start = datetime.fromtimestamp(prices[i][0]/1000, tz=timezone.utc)
+                    ch24_at_pump_start = ch
                 continue
             prev_ago = prices[i - 1 - 24][1]
             if prev_ago <= 0:
@@ -267,12 +271,17 @@ def deep_check(coin):
             prev_ch = prices[i - 1][1] / prev_ago - 1
             if prev_ch <= PUMP_DETECT_THRESHOLD and ch > PUMP_DETECT_THRESHOLD:
                 pump_start = datetime.fromtimestamp(prices[i][0]/1000, tz=timezone.utc)
+                ch24_at_pump_start = ch
                 break
         if pump_start is None:
             pump_start = datetime.fromtimestamp(prices[-1][0]/1000, tz=timezone.utc)
+            # フォールバック: 可能なら末尾の 24h変化率を計算(不可なら None)
+            if len(prices) >= 25 and prices[-25][1] > 0:
+                ch24_at_pump_start = prices[-1][1] / prices[-25][1] - 1
 
         return True, "OK", {
-            "ratio_30d": ratio_30d, "turnover": turnover, "vol_z": vol_z, "pump_start": pump_start
+            "ratio_30d": ratio_30d, "turnover": turnover, "vol_z": vol_z, "pump_start": pump_start,
+            "ch24_at_pump_start": ch24_at_pump_start
         }
     except Exception as e:
         return False, f"APIエラー: {e}", {}
@@ -333,7 +342,8 @@ def build_entry_embed(schedule, entry_price):
     delta_min = (now_utc() - entry_time).total_seconds() / 60
     position_usd = ACCOUNT_BALANCE * POSITION_PCT
 
-    # SL = entry * (1 + SL_PCT), TP = entry * (1 - TP_PCT)
+    # hybrid型: 保険逆指値 = entry * (1 + HARD_SL_PCT), 終値判定SL = entry * (1 + SL_PCT), TP = entry * (1 - TP_PCT)
+    hard_stop_price = entry_price * (1 + HARD_SL_PCT)
     stop_price = entry_price * (1 + SL_PCT)
     tp_price = entry_price * (1 - TP_PCT)
     chart_url = f"https://www.coingecko.com/en/coins/{cid}"
@@ -358,7 +368,8 @@ def build_entry_embed(schedule, entry_price):
             {"name": "ポジション", "value": f"**${position_usd:.2f} USDT** ({int(POSITION_PCT*100)}%)", "inline": True},
             {"name": "🟡 エントリー価格", "value": f"`${entry_price:.8f}`", "inline": True},
             {"name": "📈 24h変動率", "value": f"+{schedule['ch24_at_pump']:.1f}%", "inline": True},
-            {"name": f"🛑 ストップロス(+{int(SL_PCT*100)}%)", "value": f"`${stop_price:.8f}`", "inline": True},
+            {"name": f"🛡 保険逆指値(+{int(HARD_SL_PCT*100)}%)", "value": f"`${hard_stop_price:.8f}`", "inline": True},
+            {"name": f"🛑 終値判定SL(+{int(SL_PCT*100)}%)", "value": f"`${stop_price:.8f}`", "inline": True},
             {"name": f"💰 利確指値 (-{int(TP_PCT*100)}%)", "value": f"`${tp_price:.8f}`", "inline": True},
             {"name": f"⏰ 強制決済時刻 ({HOLD_HOURS}h後)", "value": fmt_jst(exit_time_obj), "inline": True},
             {"name": "✅ 執行チェックリスト",
@@ -369,12 +380,14 @@ def build_entry_embed(schedule, entry_price):
                 f"**④ レバレッジを 1x に設定**\n"
                 f"**⑤ 証拠金 `${position_usd:.2f} USDT` を入力**\n"
                 f"**⑥ 成行注文(Market)で発注**\n"
-                f"**⑦ ストップロス指値: `${stop_price:.8f}` (+{int(SL_PCT*100)}%)**\n"
+                f"**⑦ 保険の逆指値(ストップ注文): `${hard_stop_price:.8f}` (+{int(HARD_SL_PCT*100)}%) を発注直後に設置**\n"
                 f"**⑧ 利確指値: `${tp_price:.8f}` (-{int(TP_PCT*100)}%)**\n"
-                f"**⑨ カレンダーに {fmt_jst(exit_time_obj)} を登録**"
+                f"**⑨ 終値判定SL: botが毎時チェックし、終値が `${stop_price:.8f}` (+{int(SL_PCT*100)}%) を超えたら🛑通知→成行クローズ**\n"
+                f"**⑩ カレンダーに {fmt_jst(exit_time_obj)} を登録**\n"
+                f"※約定価格がこの表示価格とズレた場合は、実際の約定価格×{1+HARD_SL_PCT:.2f}(保険逆指値)/×{1+SL_PCT:.2f}(終値判定SL)/×{1-TP_PCT:.2f}(利確)で再計算して設定"
              ), "inline": False},
         ],
-        "footer": {"text": f"v3.4-260517 / SL=entry+{int(SL_PCT*100)}% / TP=-{int(TP_PCT*100)}% / hold={HOLD_HOURS}h / wait={WAIT_HOURS}h"},
+        "footer": {"text": f"v3.4-260517 / SL=close{int(SL_PCT*100)}%+hard{int(HARD_SL_PCT*100)}% / TP=-{int(TP_PCT*100)}% / hold={HOLD_HOURS}h / wait={WAIT_HOURS}h"},
         "timestamp": now_utc().isoformat()
     }
 
@@ -383,10 +396,11 @@ def build_exit_embed(schedule):
     sym = schedule["symbol"]
     cid = schedule["coin_id"]
     chart_url = f"https://www.coingecko.com/en/coins/{cid}"
+    sl_note = "⚠ 終値判定SL通知済み。既にクローズ済みならこの通知は無視してください。\n" if schedule.get("sl_close_notified") else ""
     return {
         "title": f"⏰ v3.4-260517 強制決済 [{sym}]",
         "url": chart_url,
-        "description": f"保有 {HOLD_HOURS}時間経過。**成行で決済**してください。\n📊 [**CoinGecko**]({chart_url})",
+        "description": f"{sl_note}保有 {HOLD_HOURS}時間経過。**成行で決済**してください。\n📊 [**CoinGecko**]({chart_url})",
         "color": 0x9b59b6,
         "fields": [
             {"name": "銘柄", "value": f"{sym}USDT", "inline": True},
@@ -394,6 +408,32 @@ def build_exit_embed(schedule):
             {"name": "決済時刻", "value": fmt_jst(now_utc()), "inline": True},
         ],
         "footer": {"text": f"v3.4-260517 / {HOLD_HOURS}h 経過"}
+    }
+
+
+def build_sl_close_embed(schedule, entry_price, current_price):
+    """終値判定SL到達の通知 — 終値が entry×(1+SL_PCT) を超えたら成行クローズ指示"""
+    sym = schedule["symbol"]
+    cid = schedule["coin_id"]
+    chart_url = f"https://www.coingecko.com/en/coins/{cid}"
+    over_pct = (current_price / entry_price - 1) * 100 if entry_price else 0.0
+    return {
+        "title": f"🛑 v3.4-260517 終値判定SL到達 [{sym}] — 成行クローズ",
+        "url": chart_url,
+        "description": (
+            f"終値が終値判定SL(+{int(SL_PCT*100)}%)を超えました。**成行でクローズ**し、"
+            f"保険逆指値(+{int(HARD_SL_PCT*100)}%)は**取消し**てください。\n📊 [**CoinGecko**]({chart_url})"
+        ),
+        "color": 0x9b59b6,
+        "fields": [
+            {"name": "銘柄", "value": f"{sym}USDT", "inline": True},
+            {"name": "エントリー価格", "value": f"`${entry_price:.8f}`", "inline": True},
+            {"name": "現在価格", "value": f"`${current_price:.8f}`", "inline": True},
+            {"name": "超過率", "value": f"+{over_pct:.1f}%", "inline": True},
+            {"name": "操作指示", "value": "成行クローズ + 保険逆指値の取消し", "inline": False},
+        ],
+        "footer": {"text": f"v3.4-260517 / 終値判定SL=entry+{int(SL_PCT*100)}%"},
+        "timestamp": now_utc().isoformat()
     }
 
 
@@ -447,6 +487,8 @@ def detect_phase(state):
             "ratio_30d": info.get("ratio_30d"),
             "turnover": info.get("turnover"),
             "vol_z": info.get("vol_z"),
+            "ch24_at_pump_start": info.get("ch24_at_pump_start"),  # pump_start時点のch24(小数, Noneあり得る)
+            "pump_lag_h": round((now_utc() - pump_start).total_seconds() / 3600, 2),  # 検知遅延時間(将来のOOSフィルタ検証用)
             "pump_time": to_iso(pump_start),
             "entry_time": to_iso(entry_time),
             "exit_time": to_iso(exit_time),
@@ -457,14 +499,15 @@ def detect_phase(state):
         state["alerted"][c["id"]] = to_iso(now_utc())
         log(f"  ✓ {c['symbol'].upper()} 登録: entry予定 {fmt_jst(entry_time)} / exit予定 {fmt_jst(exit_time)}")
         new_count += 1
-    return new_count
+    return new_count, coins
 
 
-def schedule_phase(state):
-    """Phase 2: スケジュール処理 — エントリー通知と決済通知"""
+def schedule_phase(state, markets_by_id=None):
+    """Phase 2: スケジュール処理 — エントリー通知・終値判定SL通知・決済通知"""
     log("Phase 2: スケジュール処理...")
-    counts = {"entry": 0, "exit": 0}
+    counts = {"entry": 0, "sl_close": 0, "exit": 0}
     now = now_utc()
+    markets_by_id = markets_by_id or {}
 
     for s in state["scheduled"]:
         sym = s["symbol"]
@@ -473,6 +516,7 @@ def schedule_phase(state):
         exit_t = from_iso(s["exit_time"])
 
         # === エントリー通知 (wait後の窓内 or 既に過ぎてる)===
+        entered_this_run = False
         if not s.get("entry_notified"):
             mins_until = (entry_t - now).total_seconds() / 60
             # entry_time から ±60分 以内 → 通知 (検知時点で既に過ぎてる場合も含む)
@@ -485,12 +529,37 @@ def schedule_phase(state):
                 discord_notify(f"🆕 **v3.4-260517 ENTRY [{sym}]** いますぐ発注!", embeds=[embed])
                 s["entry_notified"] = True
                 s["entry_price"] = cur_price
+                entered_this_run = True
                 counts["entry"] += 1
                 log(f"  🆕 entry notify: {sym} price=${cur_price:.8f}")
                 time.sleep(INTERVAL_SEC)
 
+        # === 終値判定SL通知 (hybrid型: 毎時終値が entry×(1+SL_PCT) を超えたら成行クローズ)===
+        # 判定はエントリーの次のcron(=次の毎時終値)から開始。同一runでのentry→SL連発を防ぐ。
+        # 価格は run冒頭のmarketsスナップショット(毎時:05-:10取得)=直前に閉じた毎時足終値の近似。
+        sl_fired_this_run = False
+        if (not entered_this_run) and s.get("entry_notified") and not s.get("exit_notified") and not s.get("sl_close_notified"):
+            entry_price = s.get("entry_price")  # 古いエントリー(entry_price無し)はスキップ
+            if entry_price:
+                price = markets_by_id.get(cid)
+                if price is None:
+                    price = fetch_current_price(cid)
+                    time.sleep(INTERVAL_SEC)
+                if price is not None and price >= entry_price * (1 + SL_PCT):
+                    embed = build_sl_close_embed(s, entry_price, price)
+                    discord_notify(
+                        f"🛑 **v3.4-260517 終値判定SL到達 [{sym}]** — 成行でクローズ。保険逆指値(+{int(HARD_SL_PCT*100)}%)は取消し",
+                        embeds=[embed]
+                    )
+                    s["sl_close_notified"] = True
+                    s["sl_close_price"] = price
+                    sl_fired_this_run = True
+                    counts["sl_close"] += 1
+                    log(f"  🛑 sl_close notify: {sym} price=${price:.8f} (entry=${entry_price:.8f})")
+
         # === 決済通知 ===
-        if s.get("entry_notified") and not s.get("exit_notified"):
+        # SL通知と同一runでの二重通知を防ぐ(SL発火時のexit通知は次run以降にバックストップとして残す)
+        if s.get("entry_notified") and not s.get("exit_notified") and not sl_fired_this_run:
             mins_until = abs((exit_t - now).total_seconds() / 60)
             if mins_until <= EXIT_WINDOW_MIN:
                 embed = build_exit_embed(s)
@@ -531,11 +600,13 @@ def main():
     state = load_state()
     state = cleanup_state(state)
 
-    new_detected = detect_phase(state)
-    counts = schedule_phase(state)
+    new_detected, coins = detect_phase(state)
+    # detect_phase で取得済みの top1000 markets から id→current_price を構築(終値判定SLに流用)
+    markets_by_id = {c["id"]: c.get("current_price") for c in coins}
+    counts = schedule_phase(state, markets_by_id=markets_by_id)
 
     save_state(state)
-    log(f"=== 完了:新規検知 {new_detected}件 / エントリー通知 {counts['entry']} / 決済通知 {counts['exit']} / 追跡中 {len(state['scheduled'])}件 ===")
+    log(f"=== 完了:新規検知 {new_detected}件 / エントリー通知 {counts['entry']} / 終値判定SL通知 {counts['sl_close']} / 決済通知 {counts['exit']} / 追跡中 {len(state['scheduled'])}件 ===")
 
 
 if __name__ == "__main__":
