@@ -82,6 +82,16 @@ TP_PCT = 0.40                   # 利確 -40% ★v3.4-260517(25%)より深く★
 SL_PCT = 0.15                   # 損切 +15% (entry比、perp銘柄向けに緩和)
 HARD_SL_PCT = 0.30              # 保険逆指値 +30% (hybrid型: 終値判定SL_PCT + 瞬間保険HARD)
 
+# BTCレジーム別 実績成績 (実運用確定トレード・リアルコスト・v3.4+v3.6合算)
+# 出典: ops_review_v3_out/ops_alerts_ledger_v3.csv 集計 (2026-07-03時点)
+# ⚠️ 月次の ops_review_v3.py 実行後にこの定数を更新すること
+REGIME_STATS = {
+    "bear":  {"win": 52.0, "mean": 5.00, "n": 50, "mark": "◎ おすすめ",   "lot": "通常ロット20%"},
+    "range": {"win": 45.0, "mean": 0.75, "n": 20, "mark": "△ 慎重に",     "lot": "半ロット10% + チャート/出来高/上場取引所の目視を厳格に"},
+    "bull":  {"win": None, "mean": None, "n": 0,  "mark": "✕ 非推奨",     "lot": "紙トレード推奨(実運用データなし・BTでも弱い)"},
+}
+PHASE_LOG_STALE_H = 24  # フェーズログがこれより古い場合は不明扱い(安全側)
+
 # その他
 DEDUP_HOURS = 48                # 同銘柄の再アラート抑止
 ENTRY_WINDOW_MIN = 60           # エントリー通知許容窓
@@ -303,6 +313,41 @@ def fetch_current_price(coin_id):
         return None
 
 
+def read_btc_phase():
+    """btc_phase_log.csv の最終行から BTC レジームを読む(エントリー通知の参考用)。
+    戻り値: dict(regime, ret_30d, bull_score, age_h) または None。
+    regime は "bear"/"range"/"bull"/"stale"。ret_30d < -0.10→bear, > +0.10→bull, それ以外→range
+    (ops_review/C10 と同一の ±10% 閾値)。ログが PHASE_LOG_STALE_H より古ければ regime="stale"。
+    ★ いかなる例外でも None を返し、エントリー通知を絶対に壊さない。"""
+    try:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "btc_phase_log.csv")
+        with open(path, "r", encoding="utf-8") as f:
+            lines = [ln for ln in f.read().splitlines() if ln.strip()]
+        if len(lines) < 2:
+            return None
+        header = lines[0].split(",")
+        i_ts = header.index("ts_utc")
+        i_bull = header.index("bull_score")
+        i_ret30 = header.index("ret_30d")
+        # 最後の非空(=データ)行をパース
+        row = lines[-1].split(",")
+        ts = datetime.fromisoformat(row[i_ts]).astimezone(timezone.utc)
+        ret_30d = float(row[i_ret30])
+        bull_score = int(float(row[i_bull]))
+        age_h = (now_utc() - ts).total_seconds() / 3600
+        if age_h > PHASE_LOG_STALE_H:
+            return {"regime": "stale", "ret_30d": ret_30d, "bull_score": bull_score, "age_h": age_h}
+        if ret_30d < -0.10:
+            regime = "bear"
+        elif ret_30d > 0.10:
+            regime = "bull"
+        else:
+            regime = "range"
+        return {"regime": regime, "ret_30d": ret_30d, "bull_score": bull_score, "age_h": age_h}
+    except Exception:
+        return None
+
+
 # ============= Discord 通知 =============
 def discord_notify(content, embeds=None):
     if not DISCORD_WEBHOOK:
@@ -354,6 +399,26 @@ def build_entry_embed(schedule, entry_price):
     mc_str = f"${market_cap/1e9:.2f}B" if market_cap and market_cap >= 1e9 else (f"${market_cap/1e6:.1f}M" if market_cap else "—")
     rank_label = f"#{rank}" if rank else "—"
 
+    # BTCレジーム別 実績勝率と推奨度(参考情報。取得不能でも通知は壊さない)
+    ph = read_btc_phase()
+    if ph is None:
+        phase_name = "📊 BTCフェーズ: 取得不可"
+        phase_value = "⚠ フェーズ情報取得不可 — 安全側で「△ 慎重に」扱いを推奨"
+    elif ph["regime"] == "stale":
+        phase_name = "📊 BTCフェーズ: 情報が古い"
+        phase_value = f"⚠ フェーズ情報が{ph['age_h']:.0f}h前と古い — 安全側で「△ 慎重に」扱いを推奨"
+    else:
+        regime = ph["regime"]
+        st = REGIME_STATS[regime]
+        phase_name = f"📊 BTCフェーズ: {regime}"
+        line1 = f"30d {ph['ret_30d']*100:+.1f}% / bull_score {ph['bull_score']} ({ph['age_h']:.0f}h前時点)"
+        if st["win"] is None:
+            line2 = f"**{st['mark']}** — 実績データなし (n={st['n']}・リアルコスト) → {st['lot']}"
+        else:
+            line2 = (f"**{st['mark']}** — 実績勝率 {st['win']}%・平均 {st['mean']:+.2f}%/件 "
+                     f"(n={st['n']}・リアルコスト) → {st['lot']}")
+        phase_value = f"{line1}\n{line2}"
+
     return {
         "title": f"🔥 v3.6-260517 ENTRY [{sym}] — クリックでチャート確認",
         "url": chart_url,
@@ -369,6 +434,7 @@ def build_entry_embed(schedule, entry_price):
             {"name": "ポジション", "value": f"**${position_usd:.2f} USDT** ({int(POSITION_PCT*100)}%)", "inline": True},
             {"name": "🟡 エントリー価格", "value": f"`${entry_price:.8f}`", "inline": True},
             {"name": "📈 24h変動率", "value": f"+{schedule['ch24_at_pump']:.1f}%", "inline": True},
+            {"name": phase_name, "value": phase_value, "inline": False},
             {"name": f"🛡 保険逆指値(+{int(HARD_SL_PCT*100)}%)", "value": f"`${hard_stop_price:.8f}`", "inline": True},
             {"name": f"🛑 終値判定SL(+{int(SL_PCT*100)}%)", "value": f"`${stop_price:.8f}`", "inline": True},
             {"name": f"💰 利確指値 (-{int(TP_PCT*100)}%)", "value": f"`${tp_price:.8f}`", "inline": True},
@@ -530,6 +596,11 @@ def schedule_phase(state, markets_by_id=None):
                 discord_notify(f"🔥 **v3.6-260517 ENTRY [{sym}]** いますぐ発注!", embeds=[embed])
                 s["entry_notified"] = True
                 s["entry_price"] = cur_price
+                # 将来の照合用にエントリー時点の BTC レジームを記録(例外安全は read_btc_phase 側で担保)
+                ph = read_btc_phase()
+                if ph:
+                    s["btc_regime_at_entry"] = ph["regime"]
+                    s["btc_bull_score_at_entry"] = ph["bull_score"]
                 entered_this_run = True
                 counts["entry"] += 1
                 log(f"  🆕 entry notify: {sym} price=${cur_price:.8f}")
