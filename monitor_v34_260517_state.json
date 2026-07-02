@@ -5,26 +5,10 @@
     "tac": "2026-06-29T11:03:45.204584+00:00",
     "infinit": "2026-06-30T15:29:52.548724+00:00",
     "taiko": "2026-07-01T12:10:08.205089+00:00",
-    "marlin": "2026-07-01T21:39:21.259260+00:00"
+    "marlin": "2026-07-01T21:39:21.259260+00:00",
+    "moonbirds": "2026-07-02T10:42:35.805640+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "tac",
-      "symbol": "TAC",
-      "name": "TAC",
-      "rank": 145,
-      "market_cap": 237478828,
-      "ch24_at_pump": 137.35872,
-      "ratio_30d": 2.7759097035069886,
-      "turnover": 0.021282808299560124,
-      "vol_z": 1.1334573228302405,
-      "pump_time": "2026-06-29T08:00:10.659000+00:00",
-      "entry_time": "2026-06-29T10:00:10.659000+00:00",
-      "exit_time": "2026-07-01T10:00:10.659000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.05164948887649017
-    },
     {
       "coin_id": "infinit",
       "symbol": "IN",
@@ -77,6 +61,27 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.0020202461100922316
+    },
+    {
+      "coin_id": "moonbirds",
+      "symbol": "BIRB",
+      "name": "Moonbirds",
+      "rank": 697,
+      "market_cap": 26354728,
+      "ch24_at_pump": 74.98859,
+      "ratio_30d": 0.9724256901100479,
+      "turnover": 0.4673798289190499,
+      "vol_z": 10.085983115592219,
+      "ch24_at_pump_start": 0.5148154720684079,
+      "pump_lag_h": 5.71,
+      "pump_time": "2026-07-02T05:00:16.763000+00:00",
+      "entry_time": "2026-07-02T07:00:16.763000+00:00",
+      "exit_time": "2026-07-04T07:00:16.763000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.09271984968646113,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -9
     }
   ]
 }
