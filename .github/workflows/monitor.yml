@@ -1,9 +1,12 @@
 name: Altcoin Pump Monitor (7戦略統合版)
 on:
-  schedule:
-    # 1時間ごとに実行(毎時0分)
-    - cron: '0 * * * *'
-  workflow_dispatch:  # 手動実行も可能
+  # 2026-07-03 定期実行を停止: 旧7戦略統合版は2026-05-17にretire済みの決定に対し
+  # scheduleが残って稼働し続けていたため、記録済みの決定に合わせて停止。
+  # (CoinGecko Demo APIの月間コール予算の節約にもなる)
+  # 再開する場合は下記scheduleブロックのコメントを外す。
+  # schedule:
+  #   - cron: '0 * * * *'
+  workflow_dispatch:  # 手動実行のみ可能
 
 permissions:
   contents: write  # state.json をコミット保存するため
