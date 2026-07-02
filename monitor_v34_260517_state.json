@@ -57,7 +57,9 @@
       "exit_time": "2026-07-03T12:02:10.414000+00:00",
       "entry_notified": true,
       "exit_notified": false,
-      "entry_price": 0.13744878130034266
+      "entry_price": 0.13744878130034266,
+      "sl_close_notified": true,
+      "sl_close_price": 0.177843
     },
     {
       "coin_id": "marlin",
