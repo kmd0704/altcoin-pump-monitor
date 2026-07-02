@@ -9,23 +9,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "tac",
-      "symbol": "TAC",
-      "name": "TAC",
-      "rank": 147,
-      "market_cap": 229523492,
-      "ch24_at_pump": 129.09036,
-      "ratio_30d": 2.6598593460365905,
-      "turnover": 0.021337748905353133,
-      "vol_z": 1.1558235610160152,
-      "pump_time": "2026-06-29T08:00:10.659000+00:00",
-      "entry_time": "2026-06-29T10:00:10.659000+00:00",
-      "exit_time": "2026-07-01T10:00:10.659000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.04949021775909485
-    },
-    {
       "coin_id": "infinit",
       "symbol": "IN",
       "name": "INFINIT",
