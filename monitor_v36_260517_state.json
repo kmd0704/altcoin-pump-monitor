@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "tac": "2026-06-29T11:21:49.917969+00:00",
     "infinit": "2026-06-30T15:39:04.521819+00:00",
     "taiko": "2026-07-01T10:08:54.704603+00:00",
     "marlin": "2026-07-01T20:10:55.639311+00:00",
@@ -39,7 +38,7 @@
       "entry_time": "2026-07-01T12:02:10.414000+00:00",
       "exit_time": "2026-07-03T12:02:10.414000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.1406858224005817
     },
     {
@@ -73,7 +72,7 @@
       "entry_time": "2026-07-01T11:00:56.500000+00:00",
       "exit_time": "2026-07-03T11:00:56.500000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.022057258038460408
     },
     {
