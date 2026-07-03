@@ -3,7 +3,8 @@
     "infinit": "2026-06-30T15:29:52.548724+00:00",
     "taiko": "2026-07-01T12:10:08.205089+00:00",
     "marlin": "2026-07-01T21:39:21.259260+00:00",
-    "moonbirds": "2026-07-02T10:42:35.805640+00:00"
+    "moonbirds": "2026-07-02T10:42:35.805640+00:00",
+    "alien-worlds": "2026-07-03T21:09:10.335531+00:00"
   },
   "scheduled": [
     {
@@ -39,7 +40,7 @@
       "entry_time": "2026-07-01T22:01:26.435000+00:00",
       "exit_time": "2026-07-03T22:01:26.435000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.0020202461100922316
     },
     {
@@ -62,6 +63,24 @@
       "entry_price": 0.09271984968646113,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -9
+    },
+    {
+      "coin_id": "alien-worlds",
+      "symbol": "TLM",
+      "name": "Alien Worlds",
+      "rank": 809,
+      "market_cap": 21489921,
+      "ch24_at_pump": 89.68961,
+      "ratio_30d": 2.323564582744344,
+      "turnover": 5.675604922255223,
+      "vol_z": 8.691487658951225,
+      "ch24_at_pump_start": 0.7835616245191739,
+      "pump_lag_h": 0.12,
+      "pump_time": "2026-07-03T21:02:01.542000+00:00",
+      "entry_time": "2026-07-03T23:02:01.542000+00:00",
+      "exit_time": "2026-07-05T23:02:01.542000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
