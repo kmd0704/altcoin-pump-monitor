@@ -8,23 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "infinit",
-      "symbol": "IN",
-      "name": "INFINIT",
-      "rank": 264,
-      "market_cap": 101593149,
-      "ch24_at_pump": 140.37524,
-      "ratio_30d": 2.7354013593377484,
-      "turnover": 0.5254509986148567,
-      "vol_z": 2.444106302842667,
-      "pump_time": "2026-06-30T15:00:52.476000+00:00",
-      "entry_time": "2026-06-30T17:00:52.476000+00:00",
-      "exit_time": "2026-07-02T17:00:52.476000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.2309956209028515
-    },
-    {
       "coin_id": "taiko",
       "symbol": "TAIKO",
       "name": "Taiko",
