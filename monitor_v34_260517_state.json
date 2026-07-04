@@ -9,25 +9,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "taiko",
-      "symbol": "TAIKO",
-      "name": "Taiko",
-      "rank": 683,
-      "market_cap": 27087553,
-      "ch24_at_pump": 97.2116,
-      "ratio_30d": 1.2843933497502311,
-      "turnover": 0.3696866886400035,
-      "vol_z": 2.5002985473422537,
-      "pump_time": "2026-07-01T10:02:10.414000+00:00",
-      "entry_time": "2026-07-01T12:02:10.414000+00:00",
-      "exit_time": "2026-07-03T12:02:10.414000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.13744878130034266,
-      "sl_close_notified": true,
-      "sl_close_price": 0.177843
-    },
-    {
       "coin_id": "marlin",
       "symbol": "POND",
       "name": "Marlin",
