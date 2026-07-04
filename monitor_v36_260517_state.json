@@ -5,26 +5,10 @@
     "marlin": "2026-07-01T20:10:55.639311+00:00",
     "nfprompt-token": "2026-07-02T00:18:17.608001+00:00",
     "moonbirds": "2026-07-02T20:36:07.774114+00:00",
-    "hamster-kombat": "2026-07-04T08:02:24.179024+00:00"
+    "hamster-kombat": "2026-07-04T08:02:24.179024+00:00",
+    "alien-worlds": "2026-07-04T12:14:33.497282+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "taiko",
-      "symbol": "TAIKO",
-      "name": "Taiko",
-      "rank": 771,
-      "market_cap": 21268648,
-      "ch24_at_pump": 71.26475,
-      "ratio_30d": 1.1309985218985714,
-      "turnover": 0.32525658699582244,
-      "vol_z": 1.3288427402115044,
-      "pump_time": "2026-07-01T10:02:10.414000+00:00",
-      "entry_time": "2026-07-01T12:02:10.414000+00:00",
-      "exit_time": "2026-07-03T12:02:10.414000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.1406858224005817
-    },
     {
       "coin_id": "marlin",
       "symbol": "POND",
@@ -41,23 +25,6 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.0019335762789924
-    },
-    {
-      "coin_id": "nfprompt-token",
-      "symbol": "NFP",
-      "name": "NFPrompt",
-      "rank": 881,
-      "market_cap": 16388238,
-      "ch24_at_pump": 371.59439,
-      "ratio_30d": 1.9925811408761336,
-      "turnover": 7.984385443207427,
-      "vol_z": 37.888505948004926,
-      "pump_time": "2026-07-01T09:00:56.500000+00:00",
-      "entry_time": "2026-07-01T11:00:56.500000+00:00",
-      "exit_time": "2026-07-03T11:00:56.500000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.022057258038460408
     },
     {
       "coin_id": "moonbirds",
@@ -98,6 +65,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.0003384607896514337,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7,
+      "sl_close_notified": true,
+      "sl_close_price": 0.00041964
+    },
+    {
+      "coin_id": "alien-worlds",
+      "symbol": "TLM",
+      "name": "Alien Worlds",
+      "rank": 809,
+      "market_cap": 21284420,
+      "ch24_at_pump": 89.13052,
+      "ratio_30d": 2.2216379427073307,
+      "turnover": 6.694154929300987,
+      "vol_z": 5.323155254314732,
+      "ch24_at_pump_start": 0.6349560558706009,
+      "pump_lag_h": 2.22,
+      "pump_time": "2026-07-04T10:01:26.791000+00:00",
+      "entry_time": "2026-07-04T12:01:26.791000+00:00",
+      "exit_time": "2026-07-06T12:01:26.791000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0030889123539311635,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
     }
