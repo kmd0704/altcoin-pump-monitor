@@ -4,7 +4,8 @@
     "taiko": "2026-07-01T12:10:08.205089+00:00",
     "marlin": "2026-07-01T21:39:21.259260+00:00",
     "moonbirds": "2026-07-02T10:42:35.805640+00:00",
-    "alien-worlds": "2026-07-03T21:09:10.335531+00:00"
+    "alien-worlds": "2026-07-03T21:09:10.335531+00:00",
+    "hamster-kombat": "2026-07-04T06:48:17.085374+00:00"
   },
   "scheduled": [
     {
@@ -59,7 +60,7 @@
       "entry_time": "2026-07-02T07:00:16.763000+00:00",
       "exit_time": "2026-07-04T07:00:16.763000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.09271984968646113,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -9
@@ -82,6 +83,27 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.0026044390013223845,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "hamster-kombat",
+      "symbol": "HMSTR",
+      "name": "Hamster Kombat",
+      "rank": 803,
+      "market_cap": 21590871,
+      "ch24_at_pump": 79.93079,
+      "ratio_30d": 2.0837275218957347,
+      "turnover": 0.9880479515422065,
+      "vol_z": 0.5048678591654197,
+      "ch24_at_pump_start": 0.587018250743115,
+      "pump_lag_h": 3.78,
+      "pump_time": "2026-07-04T03:01:35.194000+00:00",
+      "entry_time": "2026-07-04T05:01:35.194000+00:00",
+      "exit_time": "2026-07-06T05:01:35.194000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0003362739895642743,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
     }
