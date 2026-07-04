@@ -9,23 +9,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "marlin",
-      "symbol": "POND",
-      "name": "Marlin",
-      "rank": 818,
-      "market_cap": 19913771,
-      "ch24_at_pump": 169.38331,
-      "ratio_30d": 1.7128215671907023,
-      "turnover": 0.6167115130230613,
-      "vol_z": 0.12529681786122157,
-      "pump_time": "2026-07-01T20:01:26.435000+00:00",
-      "entry_time": "2026-07-01T22:01:26.435000+00:00",
-      "exit_time": "2026-07-03T22:01:26.435000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0019335762789924
-    },
-    {
       "coin_id": "moonbirds",
       "symbol": "BIRB",
       "name": "Moonbirds",
