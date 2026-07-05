@@ -9,27 +9,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "moonbirds",
-      "symbol": "BIRB",
-      "name": "Moonbirds",
-      "rank": 687,
-      "market_cap": 26530976,
-      "ch24_at_pump": 70.91277,
-      "ratio_30d": 0.9677763550761612,
-      "turnover": 0.752686824654484,
-      "vol_z": 31.005111569935792,
-      "ch24_at_pump_start": 0.5148154720684079,
-      "pump_lag_h": 15.6,
-      "pump_time": "2026-07-02T05:00:16.763000+00:00",
-      "entry_time": "2026-07-02T07:00:16.763000+00:00",
-      "exit_time": "2026-07-04T07:00:16.763000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.0926251112815866,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": -9
-    },
-    {
       "coin_id": "hamster-kombat",
       "symbol": "HMSTR",
       "name": "Hamster Kombat",
