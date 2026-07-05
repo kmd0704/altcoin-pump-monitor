@@ -8,27 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "moonbirds",
-      "symbol": "BIRB",
-      "name": "Moonbirds",
-      "rank": 697,
-      "market_cap": 26354728,
-      "ch24_at_pump": 74.98859,
-      "ratio_30d": 0.9724256901100479,
-      "turnover": 0.4673798289190499,
-      "vol_z": 10.085983115592219,
-      "ch24_at_pump_start": 0.5148154720684079,
-      "pump_lag_h": 5.71,
-      "pump_time": "2026-07-02T05:00:16.763000+00:00",
-      "entry_time": "2026-07-02T07:00:16.763000+00:00",
-      "exit_time": "2026-07-04T07:00:16.763000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.09271984968646113,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": -9
-    },
-    {
       "coin_id": "alien-worlds",
       "symbol": "TLM",
       "name": "Alien Worlds",
