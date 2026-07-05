@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "marlin": "2026-07-01T21:39:21.259260+00:00",
     "moonbirds": "2026-07-02T10:42:35.805640+00:00",
     "alien-worlds": "2026-07-03T21:09:10.335531+00:00",
     "hamster-kombat": "2026-07-04T06:48:17.085374+00:00"
@@ -22,7 +21,7 @@
       "entry_time": "2026-07-03T23:02:01.542000+00:00",
       "exit_time": "2026-07-05T23:02:01.542000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.0026044390013223845,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7,
