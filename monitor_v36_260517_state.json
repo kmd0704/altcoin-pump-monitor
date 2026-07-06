@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "nfprompt-token": "2026-07-02T00:18:17.608001+00:00",
     "moonbirds": "2026-07-02T20:36:07.774114+00:00",
     "hamster-kombat": "2026-07-04T08:02:24.179024+00:00",
     "alien-worlds": "2026-07-04T12:14:33.497282+00:00"
@@ -22,7 +21,7 @@
       "entry_time": "2026-07-04T05:01:35.194000+00:00",
       "exit_time": "2026-07-06T05:01:35.194000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.0003384607896514337,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7,
