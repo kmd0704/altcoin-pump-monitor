@@ -1,29 +1,30 @@
 {
   "alerted": {
     "hamster-kombat": "2026-07-04T08:02:24.179024+00:00",
-    "alien-worlds": "2026-07-04T12:14:33.497282+00:00"
+    "alien-worlds": "2026-07-04T12:14:33.497282+00:00",
+    "blur": "2026-07-07T12:07:54.619398+00:00"
   },
   "scheduled": [
     {
-      "coin_id": "alien-worlds",
-      "symbol": "TLM",
-      "name": "Alien Worlds",
-      "rank": 809,
-      "market_cap": 21284420,
-      "ch24_at_pump": 89.13052,
-      "ratio_30d": 2.2216379427073307,
-      "turnover": 6.694154929300987,
-      "vol_z": 5.323155254314732,
-      "ch24_at_pump_start": 0.6349560558706009,
-      "pump_lag_h": 2.22,
-      "pump_time": "2026-07-04T10:01:26.791000+00:00",
-      "entry_time": "2026-07-04T12:01:26.791000+00:00",
-      "exit_time": "2026-07-06T12:01:26.791000+00:00",
+      "coin_id": "blur",
+      "symbol": "BLUR",
+      "name": "Blur",
+      "rank": 344,
+      "market_cap": 72923761,
+      "ch24_at_pump": 76.02514,
+      "ratio_30d": 1.5619762625247622,
+      "turnover": 0.47124152252443025,
+      "vol_z": 49.08902680586671,
+      "ch24_at_pump_start": 0.6442104321588629,
+      "pump_lag_h": 1.13,
+      "pump_time": "2026-07-07T11:00:11.349000+00:00",
+      "entry_time": "2026-07-07T13:00:11.349000+00:00",
+      "exit_time": "2026-07-09T13:00:11.349000+00:00",
       "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0030889123539311635,
+      "exit_notified": false,
+      "entry_price": 0.025802541375309785,
       "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
+      "btc_bull_score_at_entry": -6
     }
   ]
 }
