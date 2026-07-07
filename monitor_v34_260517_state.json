@@ -2,7 +2,8 @@
   "alerted": {
     "alien-worlds": "2026-07-03T21:09:10.335531+00:00",
     "hamster-kombat": "2026-07-04T06:48:17.085374+00:00",
-    "vanar-chain": "2026-07-06T14:27:43.876527+00:00"
+    "vanar-chain": "2026-07-06T14:27:43.876527+00:00",
+    "blur": "2026-07-07T11:08:47.968016+00:00"
   },
   "scheduled": [
     {
@@ -25,6 +26,24 @@
       "entry_price": 0.00786662940565038,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "blur",
+      "symbol": "BLUR",
+      "name": "Blur",
+      "rank": 354,
+      "market_cap": 71173317,
+      "ch24_at_pump": 70.22166,
+      "ratio_30d": 1.5410310561201337,
+      "turnover": 0.4412438310255694,
+      "vol_z": 43.96963055179634,
+      "ch24_at_pump_start": 0.6442104321588629,
+      "pump_lag_h": 0.14,
+      "pump_time": "2026-07-07T11:00:11.349000+00:00",
+      "entry_time": "2026-07-07T13:00:11.349000+00:00",
+      "exit_time": "2026-07-09T13:00:11.349000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
