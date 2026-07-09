@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "blur": "2026-07-07T12:07:54.619398+00:00"
+    "blur": "2026-07-07T12:07:54.619398+00:00",
+    "tagger": "2026-07-09T16:08:01.625138+00:00"
   },
   "scheduled": [
     {
@@ -23,6 +24,24 @@
       "entry_price": 0.025802541375309785,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -6
+    },
+    {
+      "coin_id": "tagger",
+      "symbol": "TAG",
+      "name": "TAGGER",
+      "rank": 319,
+      "market_cap": 76623072,
+      "ch24_at_pump": 87.02543,
+      "ratio_30d": 0.6108603590647942,
+      "turnover": 0.06451227591082796,
+      "vol_z": 21.69249870325429,
+      "ch24_at_pump_start": 0.939401928740184,
+      "pump_lag_h": 0.12,
+      "pump_time": "2026-07-09T16:00:43.740000+00:00",
+      "entry_time": "2026-07-09T18:00:43.740000+00:00",
+      "exit_time": "2026-07-11T18:00:43.740000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
