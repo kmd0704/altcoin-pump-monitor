@@ -2,7 +2,8 @@
   "alerted": {
     "vanar-chain": "2026-07-06T14:27:43.876527+00:00",
     "blur": "2026-07-07T11:08:47.968016+00:00",
-    "tagger": "2026-07-09T18:50:57.802840+00:00"
+    "tagger": "2026-07-09T18:50:57.802840+00:00",
+    "tac": "2026-07-10T00:06:04.033996+00:00"
   },
   "scheduled": [
     {
@@ -44,6 +45,27 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.0008669553774749408,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "tac",
+      "symbol": "TAC",
+      "name": "TAC",
+      "rank": 754,
+      "market_cap": 23326377,
+      "ch24_at_pump": 84.55444,
+      "ratio_30d": 0.29013357707797216,
+      "turnover": 0.1794432851327288,
+      "vol_z": 0.21197126404143193,
+      "ch24_at_pump_start": 0.6503311753940786,
+      "pump_lag_h": 1.07,
+      "pump_time": "2026-07-09T23:02:08.403000+00:00",
+      "entry_time": "2026-07-10T01:02:08.403000+00:00",
+      "exit_time": "2026-07-12T01:02:08.403000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.004981683283487051,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
     }
