@@ -3,27 +3,5 @@
     "tagger": "2026-07-09T16:08:01.625138+00:00",
     "skale": "2026-07-10T07:50:13.728109+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "skale",
-      "symbol": "SKL",
-      "name": "SKALE",
-      "rank": 554,
-      "market_cap": 36390471,
-      "ch24_at_pump": 70.31523,
-      "ratio_30d": 1.3581500517714689,
-      "turnover": 0.3204547985675485,
-      "vol_z": 22.110544540196024,
-      "ch24_at_pump_start": 0.5519962662191293,
-      "pump_lag_h": 1.83,
-      "pump_time": "2026-07-10T06:00:30.601000+00:00",
-      "entry_time": "2026-07-10T08:00:30.601000+00:00",
-      "exit_time": "2026-07-12T08:00:30.601000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.00595936530821066,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    }
-  ]
+  "scheduled": []
 }
