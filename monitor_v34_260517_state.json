@@ -2,27 +2,5 @@
   "alerted": {
     "threshold-network-token": "2026-07-12T10:39:33.341414+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "threshold-network-token",
-      "symbol": "T",
-      "name": "Threshold Network",
-      "rank": 356,
-      "market_cap": 66660648,
-      "ch24_at_pump": 70.37267,
-      "ratio_30d": 1.6130413430440511,
-      "turnover": 0.4296165403091882,
-      "vol_z": 62.05437328259928,
-      "ch24_at_pump_start": 0.5662083868615331,
-      "pump_lag_h": 8.61,
-      "pump_time": "2026-07-12T02:03:10.992000+00:00",
-      "entry_time": "2026-07-12T04:03:10.992000+00:00",
-      "exit_time": "2026-07-14T04:03:10.992000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.006003944783367043,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    }
-  ]
+  "scheduled": []
 }
