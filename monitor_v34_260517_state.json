@@ -1,6 +1,29 @@
 {
   "alerted": {
-    "threshold-network-token": "2026-07-12T10:39:33.341414+00:00"
+    "threshold-network-token": "2026-07-12T10:39:33.341414+00:00",
+    "akedo": "2026-07-15T08:14:13.148744+00:00"
   },
-  "scheduled": []
+  "scheduled": [
+    {
+      "coin_id": "akedo",
+      "symbol": "AKE",
+      "name": "Akedo",
+      "rank": 958,
+      "market_cap": 14189843,
+      "ch24_at_pump": 220.85723,
+      "ratio_30d": 2.280604383581301,
+      "turnover": 0.4177849092678517,
+      "vol_z": 2.5997579913451774,
+      "ch24_at_pump_start": 0.6383244864438844,
+      "pump_lag_h": 2.19,
+      "pump_time": "2026-07-15T06:02:38.479000+00:00",
+      "entry_time": "2026-07-15T08:02:38.479000+00:00",
+      "exit_time": "2026-07-17T08:02:38.479000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0006217376695855044,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    }
+  ]
 }
