@@ -1,4 +1,28 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "akedo": "2026-07-15T09:19:17.064669+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "akedo",
+      "symbol": "AKE",
+      "name": "Akedo",
+      "rank": 972,
+      "market_cap": 14054109,
+      "ch24_at_pump": 218.75837,
+      "ratio_30d": 2.1751560824389933,
+      "turnover": 0.43269057976819375,
+      "vol_z": 3.3044277227461527,
+      "ch24_at_pump_start": 0.6383244864438844,
+      "pump_lag_h": 3.28,
+      "pump_time": "2026-07-15T06:02:38.479000+00:00",
+      "entry_time": "2026-07-15T08:02:38.479000+00:00",
+      "exit_time": "2026-07-17T08:02:38.479000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0006152823157946523,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    }
+  ]
 }
