@@ -42,8 +42,11 @@
       "pump_time": "2026-07-17T13:58:52+00:00",
       "entry_time": "2026-07-17T15:58:52+00:00",
       "exit_time": "2026-07-19T15:58:52+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.018004664968542392,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
