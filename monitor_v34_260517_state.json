@@ -1,6 +1,29 @@
 {
   "alerted": {
-    "akedo": "2026-07-15T08:14:13.148744+00:00"
+    "akedo": "2026-07-15T08:14:13.148744+00:00",
+    "lorenzo-protocol": "2026-07-18T21:52:34.611131+00:00"
   },
-  "scheduled": []
+  "scheduled": [
+    {
+      "coin_id": "lorenzo-protocol",
+      "symbol": "BANK",
+      "name": "Lorenzo Protocol",
+      "rank": 455,
+      "market_cap": 47143817,
+      "ch24_at_pump": 76.18983,
+      "ratio_30d": 2.83069679521385,
+      "turnover": 1.0880576596407325,
+      "vol_z": 10.708933722600015,
+      "ch24_at_pump_start": 0.6526583862970965,
+      "pump_lag_h": 4.85,
+      "pump_time": "2026-07-18T17:01:24.005000+00:00",
+      "entry_time": "2026-07-18T19:01:24.005000+00:00",
+      "exit_time": "2026-07-20T19:01:24.005000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.11216951610951006,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    }
+  ]
 }
