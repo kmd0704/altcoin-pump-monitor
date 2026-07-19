@@ -1,7 +1,8 @@
 {
   "alerted": {
     "loopring": "2026-07-17T13:59:04.495733+00:00",
-    "lorenzo-protocol": "2026-07-18T21:01:41.854703+00:00"
+    "lorenzo-protocol": "2026-07-18T21:01:41.854703+00:00",
+    "alien-worlds": "2026-07-19T16:08:52.920111+00:00"
   },
   "scheduled": [
     {
@@ -47,6 +48,27 @@
       "btc_bull_score_at_entry": -7,
       "sl_close_notified": true,
       "sl_close_price": 0.132279
+    },
+    {
+      "coin_id": "alien-worlds",
+      "symbol": "TLM",
+      "name": "Alien Worlds",
+      "rank": 902,
+      "market_cap": 16646167,
+      "ch24_at_pump": 80.59016,
+      "ratio_30d": 2.596314650459702,
+      "turnover": 1.7432118299244037,
+      "vol_z": 0.043134330460941596,
+      "ch24_at_pump_start": 0.6094531174404287,
+      "pump_lag_h": 8.1,
+      "pump_time": "2026-07-19T08:02:40.692000+00:00",
+      "entry_time": "2026-07-19T10:02:40.692000+00:00",
+      "exit_time": "2026-07-21T10:02:40.692000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0023893121606988915,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
