@@ -7,27 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "loopring",
-      "symbol": "LRC",
-      "name": "Loopring",
-      "rank": 726,
-      "market_cap": 22600622,
-      "ch24_at_pump": 73.36278,
-      "ratio_30d": 1.3080340424503367,
-      "turnover": 0.2591319357902281,
-      "vol_z": 8.05348669864824,
-      "ch24_at_pump_start": 0.7336278205742017,
-      "pump_lag_h": 0.0,
-      "pump_time": "2026-07-17T13:58:52+00:00",
-      "entry_time": "2026-07-17T15:58:52+00:00",
-      "exit_time": "2026-07-19T15:58:52+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.018004664968542392,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "lorenzo-protocol",
       "symbol": "BANK",
       "name": "Lorenzo Protocol",
