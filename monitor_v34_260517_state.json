@@ -22,7 +22,7 @@
       "entry_time": "2026-07-18T19:01:24.005000+00:00",
       "exit_time": "2026-07-20T19:01:24.005000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.11216951610951006,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7,
@@ -86,8 +86,11 @@
       "pump_time": "2026-07-20T15:01:38.479000+00:00",
       "entry_time": "2026-07-20T17:01:38.479000+00:00",
       "exit_time": "2026-07-22T17:01:38.479000+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 2.076089886048736,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
