@@ -2,7 +2,8 @@
   "alerted": {
     "lorenzo-protocol": "2026-07-18T21:52:34.611131+00:00",
     "alien-worlds": "2026-07-19T15:58:56.454163+00:00",
-    "endurance": "2026-07-20T10:13:19.195478+00:00"
+    "endurance": "2026-07-20T10:13:19.195478+00:00",
+    "prometeus": "2026-07-20T15:51:46.163575+00:00"
   },
   "scheduled": [
     {
@@ -69,6 +70,24 @@
       "entry_price": 0.1401863690687765,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "prometeus",
+      "symbol": "PROM",
+      "name": "Prom",
+      "rank": 469,
+      "market_cap": 44545523,
+      "ch24_at_pump": 72.04409,
+      "ratio_30d": 2.1888529708074578,
+      "turnover": 0.0829630289743656,
+      "vol_z": 19.30172333434678,
+      "ch24_at_pump_start": 0.7577447286783012,
+      "pump_lag_h": 0.84,
+      "pump_time": "2026-07-20T15:01:38.479000+00:00",
+      "entry_time": "2026-07-20T17:01:38.479000+00:00",
+      "exit_time": "2026-07-22T17:01:38.479000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
