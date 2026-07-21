@@ -3,7 +3,8 @@
     "loopring": "2026-07-17T13:59:04.495733+00:00",
     "lorenzo-protocol": "2026-07-18T21:01:41.854703+00:00",
     "alien-worlds": "2026-07-19T16:08:52.920111+00:00",
-    "endurance": "2026-07-20T11:10:24.535100+00:00"
+    "endurance": "2026-07-20T11:10:24.535100+00:00",
+    "roll-2": "2026-07-21T00:06:32.754440+00:00"
   },
   "scheduled": [
     {
@@ -70,6 +71,24 @@
       "entry_price": 0.14236773976535094,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "roll-2",
+      "symbol": "ROLL",
+      "name": "ROLL",
+      "rank": 755,
+      "market_cap": 22422765,
+      "ch24_at_pump": 155.50147,
+      "ratio_30d": 1.7587990571781709,
+      "turnover": 0.02578309027874364,
+      "vol_z": 0.24934854572065912,
+      "ch24_at_pump_start": 1.6221303686654407,
+      "pump_lag_h": 0.08,
+      "pump_time": "2026-07-21T00:01:53.793000+00:00",
+      "entry_time": "2026-07-21T02:01:53.793000+00:00",
+      "exit_time": "2026-07-23T02:01:53.793000+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
