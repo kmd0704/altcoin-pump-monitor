@@ -5,7 +5,8 @@
     "endurance": "2026-07-20T10:13:19.195478+00:00",
     "prometeus": "2026-07-20T15:51:46.163575+00:00",
     "nano": "2026-07-20T23:02:12.809980+00:00",
-    "roll-2": "2026-07-21T00:02:52.800331+00:00"
+    "roll-2": "2026-07-21T00:02:52.800331+00:00",
+    "caldera": "2026-07-21T03:33:12.589040+00:00"
   },
   "scheduled": [
     {
@@ -130,6 +131,27 @@
       "pump_time": "2026-07-21T00:01:53.793000+00:00",
       "entry_time": "2026-07-21T02:01:53.793000+00:00",
       "exit_time": "2026-07-23T02:01:53.793000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.14848237157219932,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "caldera",
+      "symbol": "ERA",
+      "name": "Caldera",
+      "rank": 832,
+      "market_cap": 19383369,
+      "ch24_at_pump": 79.6914,
+      "ratio_30d": 1.247826533711737,
+      "turnover": 0.34625025132995285,
+      "vol_z": 5.8507025983236405,
+      "ch24_at_pump_start": 0.6048152700266314,
+      "pump_lag_h": 0.52,
+      "pump_time": "2026-07-21T03:01:51.452000+00:00",
+      "entry_time": "2026-07-21T05:01:51.452000+00:00",
+      "exit_time": "2026-07-23T05:01:51.452000+00:00",
       "entry_notified": false,
       "exit_notified": false
     }
