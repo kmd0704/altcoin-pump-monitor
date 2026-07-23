@@ -7,27 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "endurance",
-      "symbol": "ACE",
-      "name": "Fusionist",
-      "rank": 954,
-      "market_cap": 14871681,
-      "ch24_at_pump": 121.5676,
-      "ratio_30d": 1.847316603677061,
-      "turnover": 1.441703054528558,
-      "vol_z": 7.211351628053133,
-      "ch24_at_pump_start": 0.6006008308808095,
-      "pump_lag_h": 9.16,
-      "pump_time": "2026-07-20T02:00:50.627000+00:00",
-      "entry_time": "2026-07-20T04:00:50.627000+00:00",
-      "exit_time": "2026-07-22T04:00:50.627000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.14236773976535094,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "roll-2",
       "symbol": "ROLL",
       "name": "ROLL",
@@ -64,7 +43,7 @@
       "entry_time": "2026-07-21T05:01:51.452000+00:00",
       "exit_time": "2026-07-23T05:01:51.452000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.10276238173459099,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
