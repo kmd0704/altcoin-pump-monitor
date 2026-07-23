@@ -5,30 +5,10 @@
     "nano": "2026-07-20T23:02:12.809980+00:00",
     "roll-2": "2026-07-21T00:02:52.800331+00:00",
     "caldera": "2026-07-21T03:33:12.589040+00:00",
-    "checkmate-2": "2026-07-23T05:56:19.764833+00:00"
+    "checkmate-2": "2026-07-23T05:56:19.764833+00:00",
+    "rif-token": "2026-07-23T17:23:47.195418+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "prometeus",
-      "symbol": "PROM",
-      "name": "Prom",
-      "rank": 469,
-      "market_cap": 44545523,
-      "ch24_at_pump": 72.04409,
-      "ratio_30d": 2.1888529708074578,
-      "turnover": 0.0829630289743656,
-      "vol_z": 19.30172333434678,
-      "ch24_at_pump_start": 0.7577447286783012,
-      "pump_lag_h": 0.84,
-      "pump_time": "2026-07-20T15:01:38.479000+00:00",
-      "entry_time": "2026-07-20T17:01:38.479000+00:00",
-      "exit_time": "2026-07-22T17:01:38.479000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 2.076089886048736,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
     {
       "coin_id": "nano",
       "symbol": "XNO",
@@ -112,6 +92,27 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.04992464582006169,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": 0
+    },
+    {
+      "coin_id": "rif-token",
+      "symbol": "RIF",
+      "name": "Rootstock Infrastructure Framework",
+      "rank": 234,
+      "market_cap": 115322299,
+      "ch24_at_pump": 91.9,
+      "ratio_30d": 1.3637090683379665,
+      "turnover": 0.11211136242186705,
+      "vol_z": 3.1164191989918044,
+      "ch24_at_pump_start": 0.690986000911288,
+      "pump_lag_h": 2.4,
+      "pump_time": "2026-07-23T15:00:00+00:00",
+      "entry_time": "2026-07-23T17:00:00+00:00",
+      "exit_time": "2026-07-25T17:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.11487368812329261,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": 0
     }
