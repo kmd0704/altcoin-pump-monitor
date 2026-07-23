@@ -5,30 +5,10 @@
     "prometeus": "2026-07-20T15:51:46.163575+00:00",
     "nano": "2026-07-20T23:02:12.809980+00:00",
     "roll-2": "2026-07-21T00:02:52.800331+00:00",
-    "caldera": "2026-07-21T03:33:12.589040+00:00"
+    "caldera": "2026-07-21T03:33:12.589040+00:00",
+    "checkmate-2": "2026-07-23T05:56:19.764833+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "endurance",
-      "symbol": "ACE",
-      "name": "Fusionist",
-      "rank": 944,
-      "market_cap": 14677752,
-      "ch24_at_pump": 118.84135,
-      "ratio_30d": 1.8166188689002187,
-      "turnover": 1.3339693988964247,
-      "vol_z": 6.3596101028747585,
-      "ch24_at_pump_start": 0.6006008308808095,
-      "pump_lag_h": 8.21,
-      "pump_time": "2026-07-20T02:00:50.627000+00:00",
-      "entry_time": "2026-07-20T04:00:50.627000+00:00",
-      "exit_time": "2026-07-22T04:00:50.627000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.1401863690687765,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
     {
       "coin_id": "prometeus",
       "symbol": "PROM",
@@ -108,12 +88,33 @@
       "entry_time": "2026-07-21T05:01:51.452000+00:00",
       "exit_time": "2026-07-23T05:01:51.452000+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.10274861130335754,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7,
       "sl_close_notified": true,
       "sl_close_price": 0.122127
+    },
+    {
+      "coin_id": "checkmate-2",
+      "symbol": "CHECK",
+      "name": "Checkmate",
+      "rank": 965,
+      "market_cap": 15112822,
+      "ch24_at_pump": 72.4,
+      "ratio_30d": 1.5121726821913122,
+      "turnover": 0.49882742316330725,
+      "vol_z": 0.15745670341547222,
+      "ch24_at_pump_start": 0.8798361621739401,
+      "pump_lag_h": 1.94,
+      "pump_time": "2026-07-23T04:00:00+00:00",
+      "entry_time": "2026-07-23T06:00:00+00:00",
+      "exit_time": "2026-07-25T06:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.04992464582006169,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": 0
     }
   ]
 }
