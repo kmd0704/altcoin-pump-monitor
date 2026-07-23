@@ -3,7 +3,8 @@
     "alien-worlds": "2026-07-19T16:08:52.920111+00:00",
     "endurance": "2026-07-20T11:10:24.535100+00:00",
     "roll-2": "2026-07-21T00:06:32.754440+00:00",
-    "caldera": "2026-07-21T03:38:59.691089+00:00"
+    "caldera": "2026-07-21T03:38:59.691089+00:00",
+    "rif-token": "2026-07-23T10:33:05.093041+00:00"
   },
   "scheduled": [
     {
@@ -47,6 +48,27 @@
       "entry_price": 0.10276238173459099,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "rif-token",
+      "symbol": "RIF",
+      "name": "Rootstock Infrastructure Framework",
+      "rank": 297,
+      "market_cap": 80791062,
+      "ch24_at_pump": 73.2,
+      "ratio_30d": 0.8985527018030884,
+      "turnover": 0.10259815760238913,
+      "vol_z": 2.7123177528045757,
+      "ch24_at_pump_start": 0.572648788092418,
+      "pump_lag_h": 4.55,
+      "pump_time": "2026-07-23T06:00:00+00:00",
+      "entry_time": "2026-07-23T08:00:00+00:00",
+      "exit_time": "2026-07-25T08:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.08070686045475886,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": 0
     }
   ]
 }
