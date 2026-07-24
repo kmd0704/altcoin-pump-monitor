@@ -7,27 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "roll-2",
-      "symbol": "ROLL",
-      "name": "ROLL",
-      "rank": 755,
-      "market_cap": 22422765,
-      "ch24_at_pump": 155.50147,
-      "ratio_30d": 1.7587990571781709,
-      "turnover": 0.02578309027874364,
-      "vol_z": 0.24934854572065912,
-      "ch24_at_pump_start": 1.6221303686654407,
-      "pump_lag_h": 0.08,
-      "pump_time": "2026-07-21T00:01:53.793000+00:00",
-      "entry_time": "2026-07-21T02:01:53.793000+00:00",
-      "exit_time": "2026-07-23T02:01:53.793000+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.14834705953631067,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "caldera",
       "symbol": "ERA",
       "name": "Caldera",
