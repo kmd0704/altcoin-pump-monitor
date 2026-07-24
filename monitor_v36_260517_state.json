@@ -7,27 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "caldera",
-      "symbol": "ERA",
-      "name": "Caldera",
-      "rank": 833,
-      "market_cap": 18862691,
-      "ch24_at_pump": 74.1444,
-      "ratio_30d": 1.2070027749650643,
-      "turnover": 0.34510244801471995,
-      "vol_z": 5.738818503880013,
-      "ch24_at_pump_start": 0.6048152700266314,
-      "pump_lag_h": 0.62,
-      "pump_time": "2026-07-21T03:01:51.452000+00:00",
-      "entry_time": "2026-07-21T05:01:51.452000+00:00",
-      "exit_time": "2026-07-23T05:01:51.452000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.10276238173459099,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "rif-token",
       "symbol": "RIF",
       "name": "Rootstock Infrastructure Framework",
