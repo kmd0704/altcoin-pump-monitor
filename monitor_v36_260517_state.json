@@ -1,8 +1,8 @@
 {
   "alerted": {
-    "roll-2": "2026-07-21T00:06:32.754440+00:00",
     "caldera": "2026-07-21T03:38:59.691089+00:00",
-    "rif-token": "2026-07-23T10:33:05.093041+00:00"
+    "rif-token": "2026-07-23T10:33:05.093041+00:00",
+    "dexe": "2026-07-25T03:33:18.008212+00:00"
   },
   "scheduled": [
     {
@@ -27,6 +27,27 @@
       "btc_bull_score_at_entry": 0,
       "sl_close_notified": true,
       "sl_close_price": 0.103569
+    },
+    {
+      "coin_id": "dexe",
+      "symbol": "DEXE",
+      "name": "DeXe",
+      "rank": 160,
+      "market_cap": 425567252,
+      "ch24_at_pump": 107.7,
+      "ratio_30d": 0.19326117085845965,
+      "turnover": 0.07411447327778467,
+      "vol_z": 7.667002760707152,
+      "ch24_at_pump_start": 0.9594614281503655,
+      "pump_lag_h": 10.56,
+      "pump_time": "2026-07-24T17:00:00+00:00",
+      "entry_time": "2026-07-24T19:00:00+00:00",
+      "exit_time": "2026-07-26T19:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 4.358187853991778,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -6
     }
   ]
 }
