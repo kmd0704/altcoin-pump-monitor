@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "caldera": "2026-07-21T03:33:12.589040+00:00",
     "checkmate-2": "2026-07-23T05:56:19.764833+00:00",
     "rif-token": "2026-07-23T17:23:47.195418+00:00",
     "dexe": "2026-07-24T19:26:35.675410+00:00"
@@ -67,7 +66,9 @@
       "exit_notified": false,
       "entry_price": 3.746926278109909,
       "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -6
+      "btc_bull_score_at_entry": -6,
+      "sl_close_notified": true,
+      "sl_close_price": 4.95
     }
   ]
 }
