@@ -7,27 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "checkmate-2",
-      "symbol": "CHECK",
-      "name": "Checkmate",
-      "rank": 965,
-      "market_cap": 15112822,
-      "ch24_at_pump": 72.4,
-      "ratio_30d": 1.5121726821913122,
-      "turnover": 0.49882742316330725,
-      "vol_z": 0.15745670341547222,
-      "ch24_at_pump_start": 0.8798361621739401,
-      "pump_lag_h": 1.94,
-      "pump_time": "2026-07-23T04:00:00+00:00",
-      "entry_time": "2026-07-23T06:00:00+00:00",
-      "exit_time": "2026-07-25T06:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.04992464582006169,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": 0
-    },
-    {
       "coin_id": "rif-token",
       "symbol": "RIF",
       "name": "Rootstock Infrastructure Framework",
