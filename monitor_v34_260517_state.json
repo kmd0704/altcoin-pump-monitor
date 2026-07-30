@@ -1,6 +1,6 @@
 {
   "alerted": {
-    "coti": "2026-07-28T03:26:25.638071+00:00"
+    "coti": "2026-07-30T03:57:57.499499+00:00"
   },
   "scheduled": [
     {
@@ -25,6 +25,27 @@
       "btc_bull_score_at_entry": -6,
       "sl_close_notified": true,
       "sl_close_price": 0.01518667
+    },
+    {
+      "coin_id": "coti",
+      "symbol": "COTI",
+      "name": "COTI",
+      "rank": 415,
+      "market_cap": 50186632,
+      "ch24_at_pump": 76.4,
+      "ratio_30d": 2.000477880800081,
+      "turnover": 1.4816335207897213,
+      "vol_z": 8.51647178272011,
+      "ch24_at_pump_start": 0.5592496850797954,
+      "pump_lag_h": 6.95,
+      "pump_time": "2026-07-29T21:01:01.060000+00:00",
+      "entry_time": "2026-07-29T23:01:01.060000+00:00",
+      "exit_time": "2026-07-31T23:01:01.060000+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.017014904051899128,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -6
     }
   ]
 }
