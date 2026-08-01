@@ -5,27 +5,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "coti",
-      "symbol": "COTI",
-      "name": "COTI",
-      "rank": 415,
-      "market_cap": 50186632,
-      "ch24_at_pump": 76.4,
-      "ratio_30d": 2.000477880800081,
-      "turnover": 1.4816335207897213,
-      "vol_z": 8.51647178272011,
-      "ch24_at_pump_start": 0.5592496850797954,
-      "pump_lag_h": 6.95,
-      "pump_time": "2026-07-29T21:01:01.060000+00:00",
-      "entry_time": "2026-07-29T23:01:01.060000+00:00",
-      "exit_time": "2026-07-31T23:01:01.060000+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.017014904051899128,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -6
-    },
-    {
       "coin_id": "giggle-fund",
       "symbol": "GIGGLE",
       "name": "Giggle Fund",
