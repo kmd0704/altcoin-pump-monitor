@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "giggle-fund": "2026-08-01T06:38:21.587029+00:00"
+    "giggle-fund": "2026-08-01T06:38:21.587029+00:00",
+    "bless-2": "2026-08-02T11:31:16.368051+00:00"
   },
   "scheduled": [
     {
@@ -21,6 +22,27 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 53.869515699436946,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "bless-2",
+      "symbol": "BLESS",
+      "name": "Bless",
+      "rank": 664,
+      "market_cap": 27810812,
+      "ch24_at_pump": 72.6,
+      "ratio_30d": 2.0325441748736455,
+      "turnover": 0.15809838086143393,
+      "vol_z": 0.9964266227045033,
+      "ch24_at_pump_start": 0.5151099053228811,
+      "pump_lag_h": 5.52,
+      "pump_time": "2026-08-02T06:00:00+00:00",
+      "entry_time": "2026-08-02T08:00:00+00:00",
+      "exit_time": "2026-08-04T08:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.014798115893747197,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
     }
