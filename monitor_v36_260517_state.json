@@ -5,27 +5,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "giggle-fund",
-      "symbol": "GIGGLE",
-      "name": "Giggle Fund",
-      "rank": 396,
-      "market_cap": 53960517,
-      "ch24_at_pump": 74.8,
-      "ratio_30d": 2.2411431906375143,
-      "turnover": 0.7734052172012208,
-      "vol_z": 21.402309037430992,
-      "ch24_at_pump_start": 0.5423832065459642,
-      "pump_lag_h": 1.64,
-      "pump_time": "2026-08-01T05:00:00+00:00",
-      "entry_time": "2026-08-01T07:00:00+00:00",
-      "exit_time": "2026-08-03T07:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 53.869515699436946,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "bless-2",
       "symbol": "BLESS",
       "name": "Bless",
