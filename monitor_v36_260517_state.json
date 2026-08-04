@@ -1,7 +1,8 @@
 {
   "alerted": {
     "giggle-fund": "2026-08-01T06:38:21.587029+00:00",
-    "bless-2": "2026-08-02T11:31:16.368051+00:00"
+    "bless-2": "2026-08-02T11:31:16.368051+00:00",
+    "cysic": "2026-08-04T15:32:11.859792+00:00"
   },
   "scheduled": [
     {
@@ -26,6 +27,27 @@
       "btc_bull_score_at_entry": -7,
       "sl_close_notified": true,
       "sl_close_price": 0.01798238
+    },
+    {
+      "coin_id": "cysic",
+      "symbol": "CYS",
+      "name": "Cysic",
+      "rank": 285,
+      "market_cap": 83081964,
+      "ch24_at_pump": 76.5,
+      "ratio_30d": 1.6033232133604824,
+      "turnover": 0.08840333506466769,
+      "vol_z": 7.000938783740589,
+      "ch24_at_pump_start": 0.6440700163700308,
+      "pump_lag_h": 2.54,
+      "pump_time": "2026-08-04T13:00:00+00:00",
+      "entry_time": "2026-08-04T15:00:00+00:00",
+      "exit_time": "2026-08-06T15:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.5178969686391357,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
