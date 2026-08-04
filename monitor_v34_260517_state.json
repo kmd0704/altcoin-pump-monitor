@@ -1,7 +1,8 @@
 {
   "alerted": {
     "giggle-fund": "2026-08-01T06:30:22.236729+00:00",
-    "bless-2": "2026-08-02T10:41:58.226636+00:00"
+    "bless-2": "2026-08-02T10:41:58.226636+00:00",
+    "home": "2026-08-04T13:03:30.353865+00:00"
   },
   "scheduled": [
     {
@@ -26,6 +27,27 @@
       "btc_bull_score_at_entry": -7,
       "sl_close_notified": true,
       "sl_close_price": 0.01795146
+    },
+    {
+      "coin_id": "home",
+      "symbol": "HOME",
+      "name": "HOME",
+      "rank": 435,
+      "market_cap": 46826136,
+      "ch24_at_pump": 74.4,
+      "ratio_30d": 0.6697110650069641,
+      "turnover": 1.3423066836068025,
+      "vol_z": 2.940544582717898,
+      "ch24_at_pump_start": 0.5534337702902143,
+      "pump_lag_h": 1.06,
+      "pump_time": "2026-08-04T12:00:00+00:00",
+      "entry_time": "2026-08-04T14:00:00+00:00",
+      "exit_time": "2026-08-06T14:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.011075469329633951,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
