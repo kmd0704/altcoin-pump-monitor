@@ -1,35 +1,12 @@
 {
   "alerted": {
-    "bless-2": "2026-08-02T10:41:58.226636+00:00",
+    "bless-2": "2026-08-05T10:36:37.783122+00:00",
     "home": "2026-08-04T13:03:30.353865+00:00",
     "cysic": "2026-08-04T15:30:43.575498+00:00",
     "heima": "2026-08-05T04:10:56.075377+00:00",
     "hashflow": "2026-08-05T07:40:11.072954+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "bless-2",
-      "symbol": "BLESS",
-      "name": "Bless",
-      "rank": 653,
-      "market_cap": 28262834,
-      "ch24_at_pump": 77.5,
-      "ratio_30d": 2.137527657285989,
-      "turnover": 0.15405610332285788,
-      "vol_z": 0.7728845273523877,
-      "ch24_at_pump_start": 0.5844316226230835,
-      "pump_lag_h": 2.7,
-      "pump_time": "2026-08-02T08:00:00+00:00",
-      "entry_time": "2026-08-02T10:00:00+00:00",
-      "exit_time": "2026-08-04T10:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.015360721081665807,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7,
-      "sl_close_notified": true,
-      "sl_close_price": 0.01795146
-    },
     {
       "coin_id": "home",
       "symbol": "HOME",
@@ -70,7 +47,9 @@
       "exit_notified": false,
       "entry_price": 0.5177760180196335,
       "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
+      "btc_bull_score_at_entry": -7,
+      "sl_close_notified": true,
+      "sl_close_price": 0.617708
     },
     {
       "coin_id": "heima",
@@ -113,6 +92,27 @@
       "entry_price": 0.017056631654675084,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -5
+    },
+    {
+      "coin_id": "bless-2",
+      "symbol": "BLESS",
+      "name": "Bless",
+      "rank": 554,
+      "market_cap": 35428264,
+      "ch24_at_pump": 74.9,
+      "ratio_30d": 2.148801789857483,
+      "turnover": 0.4475076986213517,
+      "vol_z": 2.0821984630876598,
+      "ch24_at_pump_start": 0.5513964000950322,
+      "pump_lag_h": 4.61,
+      "pump_time": "2026-08-05T06:00:00+00:00",
+      "entry_time": "2026-08-05T08:00:00+00:00",
+      "exit_time": "2026-08-07T08:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.019259094118805862,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
