@@ -2,7 +2,8 @@
   "alerted": {
     "giggle-fund": "2026-08-01T06:38:21.587029+00:00",
     "bless-2": "2026-08-02T11:31:16.368051+00:00",
-    "cysic": "2026-08-04T15:32:11.859792+00:00"
+    "cysic": "2026-08-04T15:32:11.859792+00:00",
+    "heima": "2026-08-05T03:27:28.480501+00:00"
   },
   "scheduled": [
     {
@@ -48,6 +49,27 @@
       "entry_price": 0.5178969686391357,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "heima",
+      "symbol": "HEI",
+      "name": "Heima",
+      "rank": 949,
+      "market_cap": 14234510,
+      "ch24_at_pump": 105.4,
+      "ratio_30d": 1.3701200496685584,
+      "turnover": 1.101877092880589,
+      "vol_z": 1.8880807905427521,
+      "ch24_at_pump_start": 0.8856258400084289,
+      "pump_lag_h": 1.46,
+      "pump_time": "2026-08-05T02:00:00+00:00",
+      "entry_time": "2026-08-05T04:00:00+00:00",
+      "exit_time": "2026-08-07T04:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.17613541497171267,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -5
     }
   ]
 }
