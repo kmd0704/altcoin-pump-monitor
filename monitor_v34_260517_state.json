@@ -70,7 +70,9 @@
       "exit_notified": false,
       "entry_price": 0.18242126412716347,
       "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -5
+      "btc_bull_score_at_entry": -5,
+      "sl_close_notified": true,
+      "sl_close_price": 0.238563
     },
     {
       "coin_id": "hashflow",
