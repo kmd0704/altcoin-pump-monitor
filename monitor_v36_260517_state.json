@@ -1,9 +1,9 @@
 {
   "alerted": {
-    "giggle-fund": "2026-08-01T06:38:21.587029+00:00",
     "bless-2": "2026-08-02T11:31:16.368051+00:00",
     "cysic": "2026-08-04T15:32:11.859792+00:00",
-    "heima": "2026-08-05T03:27:28.480501+00:00"
+    "heima": "2026-08-05T03:27:28.480501+00:00",
+    "hashflow": "2026-08-05T06:38:35.239799+00:00"
   },
   "scheduled": [
     {
@@ -68,6 +68,27 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.17613541497171267,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -5
+    },
+    {
+      "coin_id": "hashflow",
+      "symbol": "HFT",
+      "name": "Hashflow",
+      "rank": 959,
+      "market_cap": 14239806,
+      "ch24_at_pump": 75.4,
+      "ratio_30d": 1.7956471601552009,
+      "turnover": 1.0614814160790038,
+      "vol_z": 26.331002054791934,
+      "ch24_at_pump_start": 0.5411125146727174,
+      "pump_lag_h": 1.64,
+      "pump_time": "2026-08-05T05:00:00+00:00",
+      "entry_time": "2026-08-05T07:00:00+00:00",
+      "exit_time": "2026-08-07T07:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.016444412699526397,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -5
     }
