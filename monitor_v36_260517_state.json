@@ -7,29 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "bless-2",
-      "symbol": "BLESS",
-      "name": "Bless",
-      "rank": 664,
-      "market_cap": 27810812,
-      "ch24_at_pump": 72.6,
-      "ratio_30d": 2.0325441748736455,
-      "turnover": 0.15809838086143393,
-      "vol_z": 0.9964266227045033,
-      "ch24_at_pump_start": 0.5151099053228811,
-      "pump_lag_h": 5.52,
-      "pump_time": "2026-08-02T06:00:00+00:00",
-      "entry_time": "2026-08-02T08:00:00+00:00",
-      "exit_time": "2026-08-04T08:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": false,
-      "entry_price": 0.014798115893747197,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7,
-      "sl_close_notified": true,
-      "sl_close_price": 0.01798238
-    },
-    {
       "coin_id": "cysic",
       "symbol": "CYS",
       "name": "Cysic",
@@ -48,7 +25,9 @@
       "exit_notified": false,
       "entry_price": 0.5178969686391357,
       "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
+      "btc_bull_score_at_entry": -7,
+      "sl_close_notified": true,
+      "sl_close_price": 0.61066
     },
     {
       "coin_id": "heima",
