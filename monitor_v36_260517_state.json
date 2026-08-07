@@ -3,7 +3,8 @@
     "bless-2": "2026-08-05T12:10:05.612747+00:00",
     "cysic": "2026-08-04T15:32:11.859792+00:00",
     "heima": "2026-08-05T03:27:28.480501+00:00",
-    "hashflow": "2026-08-05T06:38:35.239799+00:00"
+    "hashflow": "2026-08-05T06:38:35.239799+00:00",
+    "endurance": "2026-08-07T05:48:01.504247+00:00"
   },
   "scheduled": [
     {
@@ -97,6 +98,27 @@
       "btc_bull_score_at_entry": -7,
       "sl_close_notified": true,
       "sl_close_price": 0.0245813
+    },
+    {
+      "coin_id": "endurance",
+      "symbol": "ACE",
+      "name": "Fusionist",
+      "rank": 914,
+      "market_cap": 15927065,
+      "ch24_at_pump": 93.8,
+      "ratio_30d": 1.9423974674284201,
+      "turnover": 2.266460022413274,
+      "vol_z": 1.6434389166147936,
+      "ch24_at_pump_start": 0.5075339824232055,
+      "pump_lag_h": 11.8,
+      "pump_time": "2026-08-06T18:00:00+00:00",
+      "entry_time": "2026-08-06T20:00:00+00:00",
+      "exit_time": "2026-08-08T20:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.14667493266273576,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
