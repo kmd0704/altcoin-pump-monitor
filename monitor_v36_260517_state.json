@@ -4,7 +4,8 @@
     "cysic": "2026-08-04T15:32:11.859792+00:00",
     "heima": "2026-08-05T03:27:28.480501+00:00",
     "hashflow": "2026-08-05T06:38:35.239799+00:00",
-    "endurance": "2026-08-07T05:48:01.504247+00:00"
+    "endurance": "2026-08-07T05:48:01.504247+00:00",
+    "ethgas-2": "2026-08-07T19:10:34.325916+00:00"
   },
   "scheduled": [
     {
@@ -96,6 +97,27 @@
       "entry_price": 0.14667493266273576,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "ethgas-2",
+      "symbol": "GWEI",
+      "name": "ETHGas",
+      "rank": 344,
+      "market_cap": 65624357,
+      "ch24_at_pump": 70.3,
+      "ratio_30d": 0.2728493219500928,
+      "turnover": 0.2530060202268032,
+      "vol_z": 2.531323016921763,
+      "ch24_at_pump_start": 0.5528333129412262,
+      "pump_lag_h": 3.18,
+      "pump_time": "2026-08-07T16:00:00+00:00",
+      "entry_time": "2026-08-07T18:00:00+00:00",
+      "exit_time": "2026-08-09T18:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.03135228234262401,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -5
     }
   ]
 }
