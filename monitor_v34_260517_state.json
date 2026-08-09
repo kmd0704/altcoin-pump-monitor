@@ -1,7 +1,6 @@
 {
   "alerted": {
     "bless-2": "2026-08-05T10:36:37.783122+00:00",
-    "heima": "2026-08-05T04:10:56.075377+00:00",
     "hashflow": "2026-08-05T07:40:11.072954+00:00",
     "endurance": "2026-08-07T05:41:24.058509+00:00",
     "ethgas-2": "2026-08-07T19:52:46.071239+00:00",
@@ -94,7 +93,9 @@
       "exit_notified": false,
       "entry_price": 0.020563474638101018,
       "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
+      "btc_bull_score_at_entry": -7,
+      "sl_close_notified": true,
+      "sl_close_price": 0.02432068
     },
     {
       "coin_id": "iotex",
