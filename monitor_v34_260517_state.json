@@ -8,27 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "endurance",
-      "symbol": "ACE",
-      "name": "Fusionist",
-      "rank": 910,
-      "market_cap": 16100314,
-      "ch24_at_pump": 93.8,
-      "ratio_30d": 2.011171222771233,
-      "turnover": 2.2690255659193714,
-      "vol_z": 1.6501598832754782,
-      "ch24_at_pump_start": 0.5075339824232055,
-      "pump_lag_h": 11.69,
-      "pump_time": "2026-08-06T18:00:00+00:00",
-      "entry_time": "2026-08-06T20:00:00+00:00",
-      "exit_time": "2026-08-08T20:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.15186819825488332,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "ethgas-2",
       "symbol": "GWEI",
       "name": "ETHGas",
