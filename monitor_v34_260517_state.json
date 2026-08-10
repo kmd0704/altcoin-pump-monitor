@@ -4,7 +4,8 @@
     "ethgas-2": "2026-08-07T19:52:46.071239+00:00",
     "siren-2": "2026-08-08T12:50:53.459818+00:00",
     "bluwhale": "2026-08-08T20:31:18.670209+00:00",
-    "iotex": "2026-08-09T03:44:07.605887+00:00"
+    "iotex": "2026-08-09T03:44:07.605887+00:00",
+    "mubarak": "2026-08-10T01:54:50.477293+00:00"
   },
   "scheduled": [
     {
@@ -92,6 +93,27 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.0033200436550531683,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "mubarak",
+      "symbol": "MUBARAK",
+      "name": "Mubarak",
+      "rank": 676,
+      "market_cap": 27603761,
+      "ch24_at_pump": 82.4,
+      "ratio_30d": 2.121553463942002,
+      "turnover": 1.0458962635102613,
+      "vol_z": 21.42185368039901,
+      "ch24_at_pump_start": 0.5789477851609897,
+      "pump_lag_h": 8.91,
+      "pump_time": "2026-08-09T17:00:00+00:00",
+      "entry_time": "2026-08-09T19:00:00+00:00",
+      "exit_time": "2026-08-11T19:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.027125371819593385,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
     }
