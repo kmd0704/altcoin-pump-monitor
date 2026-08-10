@@ -5,7 +5,8 @@
     "siren-2": "2026-08-08T12:50:53.459818+00:00",
     "bluwhale": "2026-08-08T20:31:18.670209+00:00",
     "iotex": "2026-08-09T03:44:07.605887+00:00",
-    "mubarak": "2026-08-10T01:54:50.477293+00:00"
+    "mubarak": "2026-08-10T01:54:50.477293+00:00",
+    "bubblemaps": "2026-08-10T07:43:57.986847+00:00"
   },
   "scheduled": [
     {
@@ -116,6 +117,27 @@
       "entry_price": 0.027125371819593385,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "bubblemaps",
+      "symbol": "BMT",
+      "name": "Bubblemaps",
+      "rank": 723,
+      "market_cap": 24250943,
+      "ch24_at_pump": 151.4,
+      "ratio_30d": 2.8012528207519307,
+      "turnover": 8.206678741848311,
+      "vol_z": 200.74950231622472,
+      "ch24_at_pump_start": 0.5502938999403957,
+      "pump_lag_h": 22.73,
+      "pump_time": "2026-08-09T09:00:00+00:00",
+      "entry_time": "2026-08-09T11:00:00+00:00",
+      "exit_time": "2026-08-11T11:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.03395134953063971,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -5
     }
   ]
 }
