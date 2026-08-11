@@ -9,27 +9,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "siren-2",
-      "symbol": "SIREN",
-      "name": "Siren",
-      "rank": 552,
-      "market_cap": 42832507,
-      "ch24_at_pump": 80.5,
-      "ratio_30d": 1.1771960621794215,
-      "turnover": 0.06859745320426897,
-      "vol_z": 8.616499385139301,
-      "ch24_at_pump_start": 0.5012035553774805,
-      "pump_lag_h": 1.85,
-      "pump_time": "2026-08-08T11:00:00+00:00",
-      "entry_time": "2026-08-08T13:00:00+00:00",
-      "exit_time": "2026-08-10T13:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.05889776481116147,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "bluwhale",
       "symbol": "BLUAI",
       "name": "Bluwhale",
