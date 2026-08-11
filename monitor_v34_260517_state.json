@@ -3,7 +3,7 @@
     "endurance": "2026-08-07T05:41:24.058509+00:00",
     "ethgas-2": "2026-08-07T19:52:46.071239+00:00",
     "siren-2": "2026-08-08T12:50:53.459818+00:00",
-    "bluwhale": "2026-08-08T20:31:18.670209+00:00",
+    "bluwhale": "2026-08-11T01:50:35.374505+00:00",
     "iotex": "2026-08-09T03:44:07.605887+00:00",
     "mubarak": "2026-08-10T01:54:50.477293+00:00",
     "bubblemaps": "2026-08-10T07:43:57.986847+00:00"
@@ -115,6 +115,27 @@
       "entry_price": 0.03395134953063971,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -5
+    },
+    {
+      "coin_id": "bluwhale",
+      "symbol": "BLUAI",
+      "name": "Bluwhale",
+      "rank": 515,
+      "market_cap": 38248908,
+      "ch24_at_pump": 76.4,
+      "ratio_30d": 1.8826237000982222,
+      "turnover": 0.4867303624177441,
+      "vol_z": 3.7517173503593955,
+      "ch24_at_pump_start": 0.5023869563144658,
+      "pump_lag_h": 4.84,
+      "pump_time": "2026-08-10T21:00:00+00:00",
+      "entry_time": "2026-08-10T23:00:00+00:00",
+      "exit_time": "2026-08-12T23:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.031010530722833246,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
