@@ -46,7 +46,9 @@
       "exit_notified": false,
       "entry_price": 0.34195552699732734,
       "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
+      "btc_bull_score_at_entry": -7,
+      "sl_close_notified": true,
+      "sl_close_price": 0.412727
     },
     {
       "coin_id": "prometeus",
