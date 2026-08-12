@@ -6,6 +6,10 @@ on:
     - cron: '10 * * * *'
   workflow_dispatch:  # 手動実行も可能
 
+concurrency:
+  group: monitor-v36-260517
+  cancel-in-progress: false
+
 permissions:
   contents: write
 

@@ -6,6 +6,10 @@ on:
     - cron: '5 * * * *'
   workflow_dispatch:  # 手動実行も可能
 
+concurrency:
+  group: monitor-v34-260517
+  cancel-in-progress: false
+
 permissions:
   contents: write  # state ファイルを自動コミット保存するため
 

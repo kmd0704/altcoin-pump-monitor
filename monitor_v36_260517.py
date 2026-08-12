@@ -83,14 +83,16 @@ SL_PCT = 0.15                   # 損切 +15% (entry比、perp銘柄向けに緩
 HARD_SL_PCT = 0.30              # 保険逆指値 +30% (hybrid型: 終値判定SL_PCT + 瞬間保険HARD)
 
 # BTCレジーム別 実績成績 (実運用確定トレード・リアルコスト・v3.4+v3.6合算)
-# 出典: ops_review_v3_out/ops_alerts_ledger_v3.csv 集計 (2026-07-03時点)
+# 出典: ops_review_v3_out/ops_alerts_ledger_v3.csv 集計
+# bear: 2026-08-13 更新 — 確定分のみで再集計(進行中1件は除外)。range / bull は据え置き。
 # ⚠️ 月次の ops_review_v3.py 実行後にこの定数を更新すること
 REGIME_STATS = {
-    "bear":  {"win": 52.0, "mean": 5.00, "n": 50, "mark": "◎ おすすめ",   "lot": "通常ロット20%"},
+    "bear":  {"win": 51.0, "mean": 4.47, "n": 49, "mark": "◎ おすすめ",   "lot": "通常ロット20%"},
     "range": {"win": 45.0, "mean": 0.75, "n": 20, "mark": "△ 慎重に",     "lot": "半ロット10% + チャート/出来高/上場取引所の目視を厳格に"},
     "bull":  {"win": None, "mean": None, "n": 0,  "mark": "✕ 非推奨",     "lot": "紙トレード推奨(実運用データなし・BTでも弱い)"},
 }
-PHASE_LOG_STALE_H = 24  # フェーズログがこれより古い場合は不明扱い(安全側)
+# BTC Pulse の実効実行間隔は 1.5〜5h。24h ではフェーズ情報の陳腐化を検知できないため 6h に短縮。
+PHASE_LOG_STALE_H = 6   # フェーズログがこれより古い場合は不明扱い(安全側)
 
 # その他
 DEDUP_HOURS = 48                # 同銘柄の再アラート抑止
@@ -214,6 +216,61 @@ def basic_filter(coin):
     return True, "OK"
 
 
+def compute_rise72(prices, pump_start):
+    """pump_start 直前72hの底からの上昇率 rise72 を計算する(shadow検証用の観測値)。
+
+      lo72   = prices のうち [pump_start-72h, pump_start] 窓の最安値
+      peak   = prices のうち [pump_start, 現在] 窓の最高値
+      rise72 = peak / lo72 - 1
+
+    72h窓の実データ被覆(窓内データが張る時間スパン / 72h)が 50%未満なら None を返す。
+    上場直後などで窓の大半にデータが無い場合、lo72 が真の底とは限らないため判定不能扱いにする。
+    ★ どんな入力でも例外を投げない(呼び出し側の検知処理を壊さないため)。
+    """
+    try:
+        if not prices or pump_start is None:
+            return None
+        ps_ms = pump_start.timestamp() * 1000
+        lo_start_ms = ps_ms - 72 * 3600 * 1000
+        win = [p for p in prices if lo_start_ms <= p[0] <= ps_ms and p[1] and p[1] > 0]
+        if len(win) < 2:
+            return None
+        ts_list = [p[0] for p in win]
+        coverage = (max(ts_list) - min(ts_list)) / (72 * 3600 * 1000)
+        if coverage < 0.5:
+            return None
+        lo72 = min(p[1] for p in win)
+        if lo72 <= 0:
+            return None
+        after = [p[1] for p in prices if p[0] >= ps_ms and p[1] and p[1] > 0]
+        if not after:
+            return None
+        return max(after) / lo72 - 1
+    except Exception:
+        return None
+
+
+def classify_chart(rise72, pump_lag_h, ch24_pct):
+    """チャート形状の shadow 分類(表示のみ・ロットや発注ロジックには一切影響しない)。
+
+      GREEN  : rise72 ≤ +100% かつ 検知遅延 ≤ 1.0h  (初動を捉えた素直な吹き上げ)
+      RED    : rise72 > +120% かつ ch24 > 85%       (伸び切り型・ショートの妙味が薄い)
+      YELLOW : 上記以外(rise72 が None = 判定不能 の場合も含む)
+
+    ch24_pct は % 単位(例: 92.5)。★ 欠損値でも例外を投げず必ず 3値のいずれかを返す。
+    """
+    try:
+        if (rise72 is not None and pump_lag_h is not None
+                and rise72 <= 1.00 and pump_lag_h <= 1.0):
+            return "GREEN"
+        if (rise72 is not None and rise72 > 1.20
+                and ch24_pct is not None and ch24_pct > 85):
+            return "RED"
+    except Exception:
+        return "YELLOW"
+    return "YELLOW"
+
+
 def deep_check(coin):
     """30日比 + turnover + vol_z + pump_start 特定 (v3.4-260517 専用)"""
     try:
@@ -290,9 +347,12 @@ def deep_check(coin):
             if len(prices) >= 25 and prices[-25][1] > 0:
                 ch24_at_pump_start = prices[-1][1] / prices[-25][1] - 1
 
+        # rise72: pump_start 直前72hの底からの上昇率(shadow分類用。計算不能なら None)
+        rise72 = compute_rise72(prices, pump_start)
+
         return True, "OK", {
             "ratio_30d": ratio_30d, "turnover": turnover, "vol_z": vol_z, "pump_start": pump_start,
-            "ch24_at_pump_start": ch24_at_pump_start
+            "ch24_at_pump_start": ch24_at_pump_start, "rise72": rise72
         }
     except Exception as e:
         return False, f"APIエラー: {e}", {}
@@ -419,6 +479,25 @@ def build_entry_embed(schedule, entry_price):
                      f"(n={st['n']}・リアルコスト) → {st['lot']}")
         phase_value = f"{line1}\n{line2}"
 
+    # 📐 チャート分類(shadow検証中) — schedule からは必ず .get で防御的に読む。
+    # 旧フォーマットの schedule(rise72/chart_grade 無し)でも例外を出さず YELLOW 表示に落とす。
+    rise72 = schedule.get("rise72")
+    lag_h = schedule.get("pump_lag_h")
+    ch24_pump = schedule.get("ch24_at_pump")
+    grade = schedule.get("chart_grade")
+    if grade not in ("GREEN", "YELLOW", "RED"):
+        grade = classify_chart(rise72, lag_h, ch24_pump)
+    rise_str = f"{rise72*100:+.0f}%" if isinstance(rise72, (int, float)) else "計算不可"
+    lag_str = f"{lag_h:.1f}h" if isinstance(lag_h, (int, float)) else "—"
+    ch24_str = f"{ch24_pump:+.1f}%" if isinstance(ch24_pump, (int, float)) else "—"
+    if grade == "GREEN":
+        grade_value = f"🟢 GREEN — rise72 {rise_str} / 検知遅延 {lag_str}。※検証中につきロットは通常のまま"
+    elif grade == "RED":
+        grade_value = (f"✕ RED（伸び切り型）— rise72 {rise_str} / 24h {ch24_str}。"
+                       f"見送り推奨。見送った場合も紙成績を記録")
+    else:
+        grade_value = f"△ YELLOW — rise72 {rise_str} / 検知遅延 {lag_str}"
+
     return {
         "title": f"🔥 v3.6-260517 ENTRY [{sym}] — クリックでチャート確認",
         "url": chart_url,
@@ -435,6 +514,7 @@ def build_entry_embed(schedule, entry_price):
             {"name": "🟡 エントリー価格", "value": f"`${entry_price:.8f}`", "inline": True},
             {"name": "📈 24h変動率", "value": f"+{schedule['ch24_at_pump']:.1f}%", "inline": True},
             {"name": phase_name, "value": phase_value, "inline": False},
+            {"name": "📐 チャート分類（shadow検証中・ロット変更なし）", "value": grade_value, "inline": False},
             {"name": f"🛡 保険逆指値(+{int(HARD_SL_PCT*100)}%)", "value": f"`${hard_stop_price:.8f}`", "inline": True},
             {"name": f"🛑 終値判定SL(+{int(SL_PCT*100)}%)", "value": f"`${stop_price:.8f}`", "inline": True},
             {"name": f"💰 利確指値 (-{int(TP_PCT*100)}%)", "value": f"`${tp_price:.8f}`", "inline": True},
@@ -447,11 +527,13 @@ def build_entry_embed(schedule, entry_price):
                 f"**④ レバレッジを 1x に設定**\n"
                 f"**⑤ 証拠金 `${position_usd:.2f} USDT` を入力**\n"
                 f"**⑥ 成行注文(Market)で発注**\n"
-                f"**⑦ 保険の逆指値(ストップ注文): `${hard_stop_price:.8f}` (+{int(HARD_SL_PCT*100)}%) を発注直後に設置**\n"
+                f"**⑦ 保険の逆指値(ストップ注文): `${hard_stop_price:.8f}` (+{int(HARD_SL_PCT*100)}%) を発注直後に設置**"
+                f"（トリガー価格はlast指定・設置後に注文IDを控える）\n"
                 f"**⑧ 利確指値: `${tp_price:.8f}` (-{int(TP_PCT*100)}%)**\n"
                 f"**⑨ 終値判定SL: botが毎時チェックし、終値が `${stop_price:.8f}` (+{int(SL_PCT*100)}%) を超えたら🛑通知→成行クローズ**\n"
                 f"**⑩ カレンダーに {fmt_jst(exit_time_obj)} を登録**\n"
-                f"※約定価格がこの表示価格とズレた場合は、実際の約定価格×{1+HARD_SL_PCT:.2f}(保険逆指値)/×{1+SL_PCT:.2f}(終値判定SL)/×{1-TP_PCT:.2f}(利確)で再計算して設定"
+                f"※約定価格がこの表示価格とズレた場合は、実際の約定価格×{1+HARD_SL_PCT:.2f}(保険逆指値)/×{1+SL_PCT:.2f}(終値判定SL)/×{1-TP_PCT:.2f}(利確)で再計算して設定\n"
+                f"※MEXC現在値がこの通知のエントリー価格から±10%以上乖離している場合は見送り推奨"
              ), "inline": False},
         ],
         "footer": {"text": f"v3.6-260517 / SL=close{int(SL_PCT*100)}%+hard{int(HARD_SL_PCT*100)}% / TP=-{int(TP_PCT*100)}% / hold={HOLD_HOURS}h / wait={WAIT_HOURS}h"},
@@ -515,6 +597,9 @@ def is_alerted_recently(coin_id, alerted):
 def cleanup_state(state):
     cutoff = now_utc() - timedelta(hours=DEDUP_HOURS * 2)
     state["alerted"] = {cid: ts for cid, ts in (state.get("alerted") or {}).items() if from_iso(ts) > cutoff}
+    # scheduled は exit_time から 24h 経過したものだけ削除する。
+    # 決済通知は exit_time-60分 以降なら「過ぎていても」発火する仕様(schedule_phase 参照)なので、
+    # ここで削除されるまでに最低 24h ぶんの通知機会が残る(実効実行間隔 1.5〜5h なら 4回以上)。
     cutoff_sched = now_utc() - timedelta(hours=24)
     state["scheduled"] = [s for s in (state.get("scheduled") or []) if from_iso(s["exit_time"]) > cutoff_sched]
     return state
@@ -544,6 +629,10 @@ def detect_phase(state):
         pump_start = info.get("pump_start", now_utc())
         entry_time = pump_start + timedelta(hours=WAIT_HOURS)
         exit_time = entry_time + timedelta(hours=HOLD_HOURS)
+        pump_lag_h = round((now_utc() - pump_start).total_seconds() / 3600, 2)  # 検知遅延時間(将来のOOSフィルタ検証用)
+        rise72 = info.get("rise72")
+        # shadow分類(表示のみ・発注ロジックとロットには一切影響しない)
+        chart_grade = classify_chart(rise72, pump_lag_h, c.get("price_change_percentage_24h"))
         sched = {
             "coin_id": c["id"],
             "symbol": c["symbol"].upper(),
@@ -555,7 +644,9 @@ def detect_phase(state):
             "turnover": info.get("turnover"),
             "vol_z": info.get("vol_z"),
             "ch24_at_pump_start": info.get("ch24_at_pump_start"),  # pump_start時点のch24(小数, Noneあり得る)
-            "pump_lag_h": round((now_utc() - pump_start).total_seconds() / 3600, 2),  # 検知遅延時間(将来のOOSフィルタ検証用)
+            "pump_lag_h": pump_lag_h,
+            "rise72": rise72,                # pump_start直前72hの底からの上昇率(小数, Noneあり得る)
+            "chart_grade": chart_grade,      # GREEN / YELLOW / RED (shadow検証中・ロット変更なし)
             "pump_time": to_iso(pump_start),
             "entry_time": to_iso(entry_time),
             "exit_time": to_iso(exit_time),
@@ -564,7 +655,7 @@ def detect_phase(state):
         }
         state["scheduled"].append(sched)
         state["alerted"][c["id"]] = to_iso(now_utc())
-        log(f"  ✓ {c['symbol'].upper()} 登録: entry予定 {fmt_jst(entry_time)} / exit予定 {fmt_jst(exit_time)}")
+        log(f"  ✓ {c['symbol'].upper()} 登録: entry予定 {fmt_jst(entry_time)} / exit予定 {fmt_jst(exit_time)} / 分類 {chart_grade}")
         new_count += 1
     return new_count, coins
 
@@ -593,17 +684,24 @@ def schedule_phase(state, markets_by_id=None):
                     log(f"  ⚠ {sym} 現在価格取得失敗、保留")
                     continue
                 embed = build_entry_embed(s, cur_price)
-                discord_notify(f"🔥 **v3.6-260517 ENTRY [{sym}]** いますぐ発注!", embeds=[embed])
-                s["entry_notified"] = True
-                s["entry_price"] = cur_price
-                # 将来の照合用にエントリー時点の BTC レジームを記録(例外安全は read_btc_phase 側で担保)
-                ph = read_btc_phase()
-                if ph:
-                    s["btc_regime_at_entry"] = ph["regime"]
-                    s["btc_bull_score_at_entry"] = ph["bull_score"]
-                entered_this_run = True
-                counts["entry"] += 1
-                log(f"  🆕 entry notify: {sym} price=${cur_price:.8f}")
+                # ★ Discord 送信が成功したときだけ state を更新する。
+                #   失敗したのにフラグを立てると、そのエントリー通知は永久に失われる。
+                ok = discord_notify(f"🔥 **v3.6-260517 ENTRY [{sym}]** いますぐ発注!", embeds=[embed])
+                if ok:
+                    s["entry_notified"] = True
+                    s["entry_price"] = cur_price
+                    # 将来の照合用にエントリー時点の BTC レジームを記録(例外安全は read_btc_phase 側で担保)
+                    ph = read_btc_phase()
+                    if ph:
+                        s["btc_regime_at_entry"] = ph["regime"]
+                        s["btc_bull_score_at_entry"] = ph["bull_score"]
+                    entered_this_run = True
+                    counts["entry"] += 1
+                    log(f"  🆕 entry notify: {sym} price=${cur_price:.8f}")
+                else:
+                    # entry_notified を立てないので次run で再試行される。
+                    # エントリー窓は「過ぎていても通知」仕様なので、時刻が過ぎていても発火する。
+                    log(f"  ⚠ {sym} entry通知失敗、次回再試行")
                 time.sleep(INTERVAL_SEC)
 
         # === 終値判定SL通知 (hybrid型: 毎時終値が entry×(1+SL_PCT) を超えたら成行クローズ)===
@@ -619,26 +717,40 @@ def schedule_phase(state, markets_by_id=None):
                     time.sleep(INTERVAL_SEC)
                 if price is not None and price >= entry_price * (1 + SL_PCT):
                     embed = build_sl_close_embed(s, entry_price, price)
-                    discord_notify(
+                    # ★ 送信成功時のみ state 更新(失敗時は次run で再判定・再送)
+                    ok = discord_notify(
                         f"🛑 **v3.6-260517 終値判定SL到達 [{sym}]** — 成行でクローズ。保険逆指値(+{int(HARD_SL_PCT*100)}%)は取消し",
                         embeds=[embed]
                     )
-                    s["sl_close_notified"] = True
-                    s["sl_close_price"] = price
-                    sl_fired_this_run = True
-                    counts["sl_close"] += 1
-                    log(f"  🛑 sl_close notify: {sym} price=${price:.8f} (entry=${entry_price:.8f})")
+                    if ok:
+                        s["sl_close_notified"] = True
+                        s["sl_close_price"] = price
+                        sl_fired_this_run = True
+                        counts["sl_close"] += 1
+                        log(f"  🛑 sl_close notify: {sym} price=${price:.8f} (entry=${entry_price:.8f})")
+                    else:
+                        log(f"  ⚠ {sym} 終値判定SL通知失敗、次回再試行")
 
         # === 決済通知 ===
         # SL通知と同一runでの二重通知を防ぐ(SL発火時のexit通知は次run以降にバックストップとして残す)
         if s.get("entry_notified") and not s.get("exit_notified") and not sl_fired_this_run:
-            mins_until = abs((exit_t - now).total_seconds() / 60)
+            # ★ entry側と同じ「過ぎていたら常に発火」仕様にする。
+            #   abs() だと exit_time ±60分 の窓しか見ないため、Actions の実効実行間隔が
+            #   1.5〜5h 空くと窓ごと飛び越えて決済通知を永久に取りこぼす(実例あり)。
+            #   1回きりの保証は exit_notified フラグ側で担保済み。
+            #   cleanup_state は exit_time が 24h より古い scheduled のみ削除するので、
+            #   exit_time 経過後も最低 24h(最悪の5h間隔でも4回以上)の通知機会が残る。
+            mins_until = (exit_t - now).total_seconds() / 60
             if mins_until <= EXIT_WINDOW_MIN:
                 embed = build_exit_embed(s)
-                discord_notify(f"⏰ **v3.6-260517 決済 [{sym}]** {HOLD_HOURS}h 経過、成行決済を!", embeds=[embed])
-                s["exit_notified"] = True
-                counts["exit"] += 1
-                log(f"  🏁 exit notify: {sym}")
+                # ★ 送信成功時のみ exit_notified を立てる(失敗時は次run で再試行)
+                ok = discord_notify(f"⏰ **v3.6-260517 決済 [{sym}]** {HOLD_HOURS}h 経過、成行決済を!", embeds=[embed])
+                if ok:
+                    s["exit_notified"] = True
+                    counts["exit"] += 1
+                    log(f"  🏁 exit notify: {sym}")
+                else:
+                    log(f"  ⚠ {sym} 決済通知失敗、次回再試行")
 
     return counts
 
