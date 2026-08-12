@@ -4,7 +4,8 @@
     "bluwhale": "2026-08-11T01:50:35.374505+00:00",
     "iotex": "2026-08-09T03:44:07.605887+00:00",
     "mubarak": "2026-08-10T01:54:50.477293+00:00",
-    "bubblemaps": "2026-08-10T07:43:57.986847+00:00"
+    "bubblemaps": "2026-08-10T07:43:57.986847+00:00",
+    "apriori": "2026-08-12T10:07:14.903228+00:00"
   },
   "scheduled": [
     {
@@ -67,6 +68,27 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.031010530722833246,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "apriori",
+      "symbol": "APR",
+      "name": "aPriori",
+      "rank": 262,
+      "market_cap": 94722287,
+      "ch24_at_pump": 73.4,
+      "ratio_30d": 1.585955761954062,
+      "turnover": 0.017735402151631365,
+      "vol_z": 3.879305687182726,
+      "ch24_at_pump_start": 0.5186188330709323,
+      "pump_lag_h": 3.12,
+      "pump_time": "2026-08-12T07:00:00+00:00",
+      "entry_time": "2026-08-12T09:00:00+00:00",
+      "exit_time": "2026-08-14T09:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.3350728453490358,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
     }
