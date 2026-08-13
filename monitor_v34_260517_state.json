@@ -9,27 +9,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "bluwhale",
-      "symbol": "BLUAI",
-      "name": "Bluwhale",
-      "rank": 515,
-      "market_cap": 38248908,
-      "ch24_at_pump": 76.4,
-      "ratio_30d": 1.8826237000982222,
-      "turnover": 0.4867303624177441,
-      "vol_z": 3.7517173503593955,
-      "ch24_at_pump_start": 0.5023869563144658,
-      "pump_lag_h": 4.84,
-      "pump_time": "2026-08-10T21:00:00+00:00",
-      "entry_time": "2026-08-10T23:00:00+00:00",
-      "exit_time": "2026-08-12T23:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.031010530722833246,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "apriori",
       "symbol": "APR",
       "name": "aPriori",
