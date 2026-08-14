@@ -3,7 +3,8 @@
     "bluwhale": "2026-08-11T02:22:53.251466+00:00",
     "apriori": "2026-08-12T10:17:07.590151+00:00",
     "prometeus": "2026-08-12T13:39:03.431651+00:00",
-    "bedrock-token": "2026-08-13T02:41:27.368970+00:00"
+    "bedrock-token": "2026-08-13T02:41:27.368970+00:00",
+    "openeden": "2026-08-14T02:39:56.693628+00:00"
   },
   "scheduled": [
     {
@@ -74,6 +75,29 @@
       "btc_bull_score_at_entry": -7,
       "sl_close_notified": true,
       "sl_close_price": 0.259049
+    },
+    {
+      "coin_id": "openeden",
+      "symbol": "EDEN",
+      "name": "OpenEden",
+      "rank": 609,
+      "market_cap": 30920478,
+      "ch24_at_pump": 74.3,
+      "ratio_30d": 1.8405264914387052,
+      "turnover": 0.189925104901608,
+      "vol_z": 10.730616211408186,
+      "ch24_at_pump_start": 0.5426648918848911,
+      "pump_lag_h": 4.67,
+      "rise72": 0.8949935545606091,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-08-13T22:00:00+00:00",
+      "entry_time": "2026-08-14T00:00:00+00:00",
+      "exit_time": "2026-08-16T00:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.07768790883522535,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
