@@ -8,27 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "prometeus",
-      "symbol": "PROM",
-      "name": "Prom",
-      "rank": 361,
-      "market_cap": 63337440,
-      "ch24_at_pump": 71.3,
-      "ratio_30d": 2.6871285780273175,
-      "turnover": 0.24062194680135401,
-      "vol_z": 7.903222280440779,
-      "ch24_at_pump_start": 0.5495348869339014,
-      "pump_lag_h": 4.21,
-      "pump_time": "2026-08-12T09:00:00+00:00",
-      "entry_time": "2026-08-12T11:00:00+00:00",
-      "exit_time": "2026-08-14T11:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 3.484471716320501,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "bedrock-token",
       "symbol": "BR",
       "name": "Bedrock",
