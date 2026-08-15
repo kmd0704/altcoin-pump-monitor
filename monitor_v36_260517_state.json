@@ -4,34 +4,10 @@
     "prometeus": "2026-08-12T13:39:03.431651+00:00",
     "bedrock-token": "2026-08-13T02:41:27.368970+00:00",
     "openeden": "2026-08-14T02:39:56.693628+00:00",
-    "endurance": "2026-08-15T01:46:08.461538+00:00"
+    "endurance": "2026-08-15T01:46:08.461538+00:00",
+    "cow-protocol": "2026-08-15T13:38:22.941568+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "bedrock-token",
-      "symbol": "BR",
-      "name": "Bedrock",
-      "rank": 342,
-      "market_cap": 65385875,
-      "ch24_at_pump": 79.3,
-      "ratio_30d": 1.5596443125252277,
-      "turnover": 0.05776543132608571,
-      "vol_z": 0.14240523778454714,
-      "ch24_at_pump_start": 0.6247960338658756,
-      "pump_lag_h": 15.69,
-      "rise72": 0.9102467145731528,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-08-12T11:00:00+00:00",
-      "entry_time": "2026-08-12T13:00:00+00:00",
-      "exit_time": "2026-08-14T13:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.22340568531855376,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -7,
-      "sl_close_notified": true,
-      "sl_close_price": 0.259049
-    },
     {
       "coin_id": "openeden",
       "symbol": "EDEN",
@@ -79,6 +55,29 @@
       "btc_bull_score_at_entry": -7,
       "sl_close_notified": true,
       "sl_close_price": 0.236239
+    },
+    {
+      "coin_id": "cow-protocol",
+      "symbol": "COW",
+      "name": "CoW Protocol",
+      "rank": 269,
+      "market_cap": 93086365,
+      "ch24_at_pump": 76.3,
+      "ratio_30d": 1.0912319855356287,
+      "turnover": 0.05215021037233313,
+      "vol_z": 21.43664687407771,
+      "ch24_at_pump_start": 0.5926695384178238,
+      "pump_lag_h": 3.64,
+      "rise72": 0.7776696920862296,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-08-15T10:00:00+00:00",
+      "entry_time": "2026-08-15T12:00:00+00:00",
+      "exit_time": "2026-08-17T12:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.16207550630214634,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
