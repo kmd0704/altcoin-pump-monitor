@@ -4,7 +4,8 @@
     "apriori": "2026-08-12T10:17:07.590151+00:00",
     "prometeus": "2026-08-12T13:39:03.431651+00:00",
     "bedrock-token": "2026-08-13T02:41:27.368970+00:00",
-    "openeden": "2026-08-14T02:39:56.693628+00:00"
+    "openeden": "2026-08-14T02:39:56.693628+00:00",
+    "endurance": "2026-08-15T01:46:08.461538+00:00"
   },
   "scheduled": [
     {
@@ -96,6 +97,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.07768790883522535,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "endurance",
+      "symbol": "ACE",
+      "name": "Fusionist",
+      "rank": 738,
+      "market_cap": 22084938,
+      "ch24_at_pump": 73.9,
+      "ratio_30d": 2.888080459260057,
+      "turnover": 3.605818200502376,
+      "vol_z": 4.412637169667801,
+      "ch24_at_pump_start": 0.5044065749361166,
+      "pump_lag_h": 16.77,
+      "rise72": 2.6152882926115164,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-08-14T09:00:00+00:00",
+      "entry_time": "2026-08-14T11:00:00+00:00",
+      "exit_time": "2026-08-16T11:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.20395464275975803,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
     }
