@@ -3,7 +3,8 @@
     "bedrock-token": "2026-08-13T02:05:43.289684+00:00",
     "openeden": "2026-08-14T02:03:50.481468+00:00",
     "endurance": "2026-08-15T01:18:08.698310+00:00",
-    "cow-protocol": "2026-08-15T13:31:15.039248+00:00"
+    "cow-protocol": "2026-08-15T13:31:15.039248+00:00",
+    "portal-2": "2026-08-16T23:20:40.858755+00:00"
   },
   "scheduled": [
     {
@@ -75,6 +76,29 @@
       "exit_notified": false,
       "entry_price": 0.16116312429952095,
       "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -7
+    },
+    {
+      "coin_id": "portal-2",
+      "symbol": "PORTAL",
+      "name": "Portal",
+      "rank": 954,
+      "market_cap": 15726954,
+      "ch24_at_pump": 70.5,
+      "ratio_30d": 1.6317304468292022,
+      "turnover": 1.1764796704025167,
+      "vol_z": 10.69803000556909,
+      "ch24_at_pump_start": 0.5897980477634246,
+      "pump_lag_h": 4.34,
+      "rise72": 0.7806900322813926,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-08-16T19:00:00+00:00",
+      "entry_time": "2026-08-16T21:00:00+00:00",
+      "exit_time": "2026-08-18T21:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.01788071708981091,
+      "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -7
     }
   ]
