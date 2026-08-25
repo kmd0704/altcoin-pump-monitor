@@ -2,29 +2,5 @@
   "alerted": {
     "melania-meme": "2026-08-22T05:37:56.304295+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "melania-meme",
-      "symbol": "MELANIA",
-      "name": "Melania Meme",
-      "rank": 217,
-      "market_cap": 131228381,
-      "ch24_at_pump": 72.0,
-      "ratio_30d": 1.641444856341369,
-      "turnover": 0.1266323599023777,
-      "vol_z": 15.315735201399269,
-      "ch24_at_pump_start": 0.7264044617208658,
-      "pump_lag_h": 0.63,
-      "rise72": 1.001849794464417,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-08-22T05:00:00+00:00",
-      "entry_time": "2026-08-22T07:00:00+00:00",
-      "exit_time": "2026-08-24T07:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.1217514726841951,
-      "btc_regime_at_entry": "bull",
-      "btc_bull_score_at_entry": 3
-    }
-  ]
+  "scheduled": []
 }
