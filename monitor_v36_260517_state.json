@@ -1,7 +1,8 @@
 {
   "alerted": {
     "melania-meme": "2026-08-22T05:37:56.304295+00:00",
-    "delysium": "2026-08-25T15:54:46.827505+00:00"
+    "delysium": "2026-08-25T15:54:46.827505+00:00",
+    "lobster-2": "2026-08-25T23:34:04.628267+00:00"
   },
   "scheduled": [
     {
@@ -28,6 +29,26 @@
       "btc_bull_score_at_entry": 1,
       "sl_close_notified": true,
       "sl_close_price": 0.00849081
+    },
+    {
+      "coin_id": "lobster-2",
+      "symbol": "龙虾",
+      "name": "龙虾 (Lobster)",
+      "rank": 479,
+      "market_cap": 45675420,
+      "ch24_at_pump": 70.67917,
+      "ratio_30d": 2.6449000897984507,
+      "turnover": 0.08723607083138286,
+      "vol_z": 0.18101729332233077,
+      "ch24_at_pump_start": 0.6014211588140279,
+      "pump_lag_h": 0.57,
+      "rise72": 1.112101735620275,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-08-25T23:00:00+00:00",
+      "entry_time": "2026-08-26T01:00:00+00:00",
+      "exit_time": "2026-08-28T01:00:00+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
