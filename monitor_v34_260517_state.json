@@ -1,6 +1,31 @@
 {
   "alerted": {
-    "melania-meme": "2026-08-22T05:28:40.272858+00:00"
+    "melania-meme": "2026-08-22T05:28:40.272858+00:00",
+    "delysium": "2026-08-25T15:42:53.531593+00:00"
   },
-  "scheduled": []
+  "scheduled": [
+    {
+      "coin_id": "delysium",
+      "symbol": "AGI",
+      "name": "Delysium",
+      "rank": 871,
+      "market_cap": 18320913,
+      "ch24_at_pump": 71.28704,
+      "ratio_30d": 1.9700131553301081,
+      "turnover": 0.7737765556939235,
+      "vol_z": 3.0790795193496376,
+      "ch24_at_pump_start": 0.5438421672664424,
+      "pump_lag_h": 2.71,
+      "rise72": 1.0529773433089447,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-08-25T13:00:00+00:00",
+      "entry_time": "2026-08-25T15:00:00+00:00",
+      "exit_time": "2026-08-27T15:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.007030241851913278,
+      "btc_regime_at_entry": "bull",
+      "btc_bull_score_at_entry": 1
+    }
+  ]
 }
