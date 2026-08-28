@@ -53,7 +53,9 @@
       "exit_notified": false,
       "entry_price": 0.042709513783776513,
       "btc_regime_at_entry": "bull",
-      "btc_bull_score_at_entry": 1
+      "btc_bull_score_at_entry": 1,
+      "sl_close_notified": true,
+      "sl_close_price": 0.053838
     },
     {
       "coin_id": "bubblemaps",
