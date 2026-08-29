@@ -9,52 +9,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "tac",
-      "symbol": "TAC",
-      "name": "TAC",
-      "rank": 824,
-      "market_cap": 19331151,
-      "ch24_at_pump": 72.27,
-      "ratio_30d": 1.1570669448725288,
-      "turnover": 0.17143959268685438,
-      "vol_z": 11.333983994692494,
-      "ch24_at_pump_start": 0.6900083153049499,
-      "pump_lag_h": 0.02,
-      "rise72": 11.961928317337911,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-08-26T09:41:10+00:00",
-      "entry_time": "2026-08-26T11:41:10+00:00",
-      "exit_time": "2026-08-28T11:41:10+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0041923234487283925,
-      "btc_regime_at_entry": "bull",
-      "btc_bull_score_at_entry": 1
-    },
-    {
-      "coin_id": "bob-build-on-bitcoin",
-      "symbol": "BOB",
-      "name": "BOB (Build on Bitcoin)",
-      "rank": 768,
-      "market_cap": 21723702,
-      "ch24_at_pump": 70.09058,
-      "ratio_30d": 1.8440199753754971,
-      "turnover": 0.07202684586494361,
-      "vol_z": 1.4880361041871053,
-      "ch24_at_pump_start": 0.689263058275317,
-      "pump_lag_h": 2.93,
-      "rise72": 0.7034236418913598,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-08-26T11:00:00+00:00",
-      "entry_time": "2026-08-26T13:00:00+00:00",
-      "exit_time": "2026-08-28T13:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0067695769452615915,
-      "btc_regime_at_entry": "bull",
-      "btc_bull_score_at_entry": 1
-    },
-    {
       "coin_id": "helium",
       "symbol": "HNT",
       "name": "Helium",
@@ -71,8 +25,11 @@
       "pump_time": "2026-08-29T10:00:00+00:00",
       "entry_time": "2026-08-29T12:00:00+00:00",
       "exit_time": "2026-08-31T12:00:00+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.35211142653124383,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 0
     }
   ]
 }
