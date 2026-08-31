@@ -2,7 +2,8 @@
   "alerted": {
     "helium": "2026-08-29T14:25:22.818012+00:00",
     "seeker": "2026-08-30T17:24:01.341275+00:00",
-    "boundless": "2026-08-30T17:24:03.989185+00:00"
+    "boundless": "2026-08-30T17:24:03.989185+00:00",
+    "zora": "2026-08-31T05:25:05.686680+00:00"
   },
   "scheduled": [
     {
@@ -75,6 +76,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.06788801110354759,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 1
+    },
+    {
+      "coin_id": "zora",
+      "symbol": "ZORA",
+      "name": "Zora",
+      "rank": 450,
+      "market_cap": 48994533,
+      "ch24_at_pump": 77.95753,
+      "ratio_30d": 2.024845908921378,
+      "turnover": 0.9497797869994755,
+      "vol_z": 4.679878368712838,
+      "ch24_at_pump_start": 0.5826503952847673,
+      "pump_lag_h": 2.42,
+      "rise72": 0.9253208398721207,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-08-31T03:00:00+00:00",
+      "entry_time": "2026-08-31T05:00:00+00:00",
+      "exit_time": "2026-09-02T05:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.011129607721140633,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 1
     }
