@@ -1,35 +1,9 @@
 {
   "alerted": {
-    "helium": "2026-08-29T10:53:29.375955+00:00",
     "seeker": "2026-08-30T17:58:04.049396+00:00",
     "zora": "2026-08-31T04:18:53.727200+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "seeker",
-      "symbol": "SKR",
-      "name": "Seeker",
-      "rank": 233,
-      "market_cap": 122701746,
-      "ch24_at_pump": 71.02987,
-      "ratio_30d": 2.432470673373247,
-      "turnover": 0.19783813069758735,
-      "vol_z": 6.764548073525431,
-      "ch24_at_pump_start": 0.6373958271396769,
-      "pump_lag_h": 7.97,
-      "rise72": 1.0917878859831132,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-08-30T10:00:00+00:00",
-      "entry_time": "2026-08-30T12:00:00+00:00",
-      "exit_time": "2026-09-01T12:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.017768901627738906,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 1,
-      "sl_close_notified": true,
-      "sl_close_price": 0.02349477
-    },
     {
       "coin_id": "zora",
       "symbol": "ZORA",
