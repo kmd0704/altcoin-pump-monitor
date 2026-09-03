@@ -3,29 +3,5 @@
     "seeker": "2026-08-30T17:58:04.049396+00:00",
     "zora": "2026-08-31T04:18:53.727200+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "zora",
-      "symbol": "ZORA",
-      "name": "Zora",
-      "rank": 443,
-      "market_cap": 49756869,
-      "ch24_at_pump": 77.59983,
-      "ratio_30d": 2.0418083502097457,
-      "turnover": 0.9222902328111876,
-      "vol_z": 3.915929477967182,
-      "ch24_at_pump_start": 0.5826503952847673,
-      "pump_lag_h": 1.31,
-      "rise72": 0.8385598805800942,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-08-31T03:00:00+00:00",
-      "entry_time": "2026-08-31T05:00:00+00:00",
-      "exit_time": "2026-09-02T05:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.011083448290292697,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 1
-    }
-  ]
+  "scheduled": []
 }
