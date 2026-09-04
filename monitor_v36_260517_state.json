@@ -2,29 +2,5 @@
   "alerted": {
     "siacoin": "2026-09-01T10:00:29.164716+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "siacoin",
-      "symbol": "SC",
-      "name": "Siacoin",
-      "rank": 434,
-      "market_cap": 51368048,
-      "ch24_at_pump": 71.70317,
-      "ratio_30d": 2.0489776555135975,
-      "turnover": 0.12878504757983994,
-      "vol_z": 1.4986052260699512,
-      "ch24_at_pump_start": 0.5026363761238948,
-      "pump_lag_h": 1.01,
-      "rise72": 0.747995878784943,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-09-01T09:00:00+00:00",
-      "entry_time": "2026-09-01T11:00:00+00:00",
-      "exit_time": "2026-09-03T11:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0010362145447447844,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 1
-    }
-  ]
+  "scheduled": []
 }
