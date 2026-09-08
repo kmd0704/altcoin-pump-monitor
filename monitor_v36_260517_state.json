@@ -1,32 +1,31 @@
 {
   "alerted": {
-    "4-2": "2026-09-05T08:59:43.679350+00:00"
+    "4-2": "2026-09-05T08:59:43.679350+00:00",
+    "sophon": "2026-09-08T04:27:09.302817+00:00"
   },
   "scheduled": [
     {
-      "coin_id": "4-2",
-      "symbol": "4",
-      "name": "4",
-      "rank": 695,
-      "market_cap": 27166223,
-      "ch24_at_pump": 74.00263,
-      "ratio_30d": 2.8145797609045964,
-      "turnover": 0.3749942262293803,
-      "vol_z": 4.953850257043225,
-      "ch24_at_pump_start": 0.5554449797007215,
-      "pump_lag_h": 7.0,
-      "rise72": 1.1335748034367428,
+      "coin_id": "sophon",
+      "symbol": "SOPH",
+      "name": "Sophon",
+      "rank": 594,
+      "market_cap": 35875491,
+      "ch24_at_pump": 92.05593,
+      "ratio_30d": 2.2336684931225275,
+      "turnover": 0.7310507607709493,
+      "vol_z": 8.519291374178398,
+      "ch24_at_pump_start": 0.5426102618402551,
+      "pump_lag_h": 3.45,
+      "rise72": 1.166526029834805,
       "chart_grade": "YELLOW",
-      "pump_time": "2026-09-05T02:00:00+00:00",
-      "entry_time": "2026-09-05T04:00:00+00:00",
-      "exit_time": "2026-09-07T04:00:00+00:00",
+      "pump_time": "2026-09-08T01:00:00+00:00",
+      "entry_time": "2026-09-08T03:00:00+00:00",
+      "exit_time": "2026-09-10T03:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.02718323523378421,
+      "exit_notified": false,
+      "entry_price": 0.008633310065418115,
       "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 1,
-      "sl_close_notified": true,
-      "sl_close_price": 0.03259903
+      "btc_bull_score_at_entry": 1
     }
   ]
 }
