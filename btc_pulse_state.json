@@ -2,12 +2,12 @@
   "daily_briefed_date": null,
   "last_trend_state": {
     "ema20_above_ema50": true,
-    "ema50_above_ema200": false,
+    "ema50_above_ema200": true,
     "price_above_ema200": true,
     "fr_state": "hot",
     "cb_state": "neutral"
   },
-  "last_trend_alert": "2026-09-07T22:16:33.494554+00:00",
+  "last_trend_alert": "2026-09-09T01:10:29.500069+00:00",
   "last_sudden_move_alert": null,
   "last_fr_state": "hot",
   "last_premium_state": "neutral",
