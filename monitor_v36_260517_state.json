@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "sophon": "2026-09-08T04:27:09.302817+00:00"
+    "sophon": "2026-09-08T04:27:09.302817+00:00",
+    "iostoken": "2026-09-10T00:08:47.872661+00:00"
   },
   "scheduled": [
     {
@@ -27,6 +28,29 @@
       "btc_bull_score_at_entry": 1,
       "sl_close_notified": true,
       "sl_close_price": 0.01268995
+    },
+    {
+      "coin_id": "iostoken",
+      "symbol": "IOST",
+      "name": "IOST",
+      "rank": 399,
+      "market_cap": 62975749,
+      "ch24_at_pump": 102.65168,
+      "ratio_30d": 2.911312033823448,
+      "turnover": 1.371781872623164,
+      "vol_z": 13.32928394593181,
+      "ch24_at_pump_start": 0.5973587988951303,
+      "pump_lag_h": 9.15,
+      "rise72": 2.404627013757915,
+      "chart_grade": "RED",
+      "pump_time": "2026-09-09T15:00:00+00:00",
+      "entry_time": "2026-09-09T17:00:00+00:00",
+      "exit_time": "2026-09-11T17:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0017452291477809507,
+      "btc_regime_at_entry": "bull",
+      "btc_bull_score_at_entry": 1
     }
   ]
 }
