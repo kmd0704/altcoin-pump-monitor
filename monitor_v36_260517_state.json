@@ -1,7 +1,8 @@
 {
   "alerted": {
     "sophon": "2026-09-08T04:27:09.302817+00:00",
-    "iostoken": "2026-09-10T00:08:47.872661+00:00"
+    "iostoken": "2026-09-10T00:08:47.872661+00:00",
+    "storj": "2026-09-11T18:25:37.476653+00:00"
   },
   "scheduled": [
     {
@@ -22,10 +23,33 @@
       "entry_time": "2026-09-09T17:00:00+00:00",
       "exit_time": "2026-09-11T17:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.0017452291477809507,
       "btc_regime_at_entry": "bull",
       "btc_bull_score_at_entry": 1
+    },
+    {
+      "coin_id": "storj",
+      "symbol": "STORJ",
+      "name": "Storj",
+      "rank": 773,
+      "market_cap": 22864049,
+      "ch24_at_pump": 87.37281,
+      "ratio_30d": 1.2958432833374076,
+      "turnover": 0.6380838802165147,
+      "vol_z": 0.10921095186153794,
+      "ch24_at_pump_start": 0.5755145385671143,
+      "pump_lag_h": 6.43,
+      "rise72": 0.9477802841254634,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-11T12:00:00+00:00",
+      "entry_time": "2026-09-11T14:00:00+00:00",
+      "exit_time": "2026-09-13T14:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.05404761019875624,
+      "btc_regime_at_entry": "bull",
+      "btc_bull_score_at_entry": 3
     }
   ]
 }
