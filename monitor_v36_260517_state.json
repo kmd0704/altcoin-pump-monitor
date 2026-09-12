@@ -1,7 +1,8 @@
 {
   "alerted": {
     "iostoken": "2026-09-10T00:08:47.872661+00:00",
-    "storj": "2026-09-11T18:25:37.476653+00:00"
+    "storj": "2026-09-11T18:25:37.476653+00:00",
+    "lisk": "2026-09-12T14:03:21.160803+00:00"
   },
   "scheduled": [
     {
@@ -51,6 +52,29 @@
       "btc_bull_score_at_entry": 3,
       "sl_close_notified": true,
       "sl_close_price": 0.067949
+    },
+    {
+      "coin_id": "lisk",
+      "symbol": "LSK",
+      "name": "Lisk",
+      "rank": 429,
+      "market_cap": 54989446,
+      "ch24_at_pump": 76.51275,
+      "ratio_30d": 2.4604283724717213,
+      "turnover": 0.44375445505639577,
+      "vol_z": 12.743822173649992,
+      "ch24_at_pump_start": 0.5303475050277393,
+      "pump_lag_h": 3.06,
+      "rise72": 1.2695662582110518,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-12T11:00:00+00:00",
+      "entry_time": "2026-09-12T13:00:00+00:00",
+      "exit_time": "2026-09-14T13:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.24068684955313216,
+      "btc_regime_at_entry": "bull",
+      "btc_bull_score_at_entry": 3
     }
   ]
 }
