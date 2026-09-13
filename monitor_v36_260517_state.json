@@ -23,7 +23,7 @@
       "entry_time": "2026-09-11T14:00:00+00:00",
       "exit_time": "2026-09-13T14:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.05404761019875624,
       "btc_regime_at_entry": "bull",
       "btc_bull_score_at_entry": 3,
