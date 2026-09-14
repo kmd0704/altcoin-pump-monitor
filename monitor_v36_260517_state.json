@@ -1,7 +1,8 @@
 {
   "alerted": {
     "storj": "2026-09-11T18:25:37.476653+00:00",
-    "lisk": "2026-09-12T14:03:21.160803+00:00"
+    "lisk": "2026-09-12T14:03:21.160803+00:00",
+    "bedrock-token": "2026-09-14T13:56:57.835786+00:00"
   },
   "scheduled": [
     {
@@ -47,12 +48,35 @@
       "entry_time": "2026-09-12T13:00:00+00:00",
       "exit_time": "2026-09-14T13:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.24068684955313216,
       "btc_regime_at_entry": "bull",
       "btc_bull_score_at_entry": 3,
       "sl_close_notified": true,
       "sl_close_price": 0.386238
+    },
+    {
+      "coin_id": "bedrock-token",
+      "symbol": "BR",
+      "name": "Bedrock",
+      "rank": 208,
+      "market_cap": 154593634,
+      "ch24_at_pump": 99.24445,
+      "ratio_30d": 2.178470023478157,
+      "turnover": 0.03329291230182608,
+      "vol_z": 3.0523881283482726,
+      "ch24_at_pump_start": 0.5215559784115833,
+      "pump_lag_h": 9.95,
+      "rise72": 1.1305580648220603,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-14T04:00:00+00:00",
+      "entry_time": "2026-09-14T06:00:00+00:00",
+      "exit_time": "2026-09-16T06:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.520831916257534,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 3
     }
   ]
 }
