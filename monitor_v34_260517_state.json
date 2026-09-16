@@ -3,7 +3,8 @@
     "lisk": "2026-09-12T13:54:37.743071+00:00",
     "civic": "2026-09-13T14:08:35.011415+00:00",
     "bedrock-token": "2026-09-14T12:06:03.858512+00:00",
-    "infinity-ground": "2026-09-14T18:23:50.576678+00:00"
+    "infinity-ground": "2026-09-14T18:23:50.576678+00:00",
+    "synapse-2": "2026-09-16T09:08:54.539205+00:00"
   },
   "scheduled": [
     {
@@ -47,7 +48,7 @@
       "entry_time": "2026-09-14T06:00:00+00:00",
       "exit_time": "2026-09-16T06:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.4930768166539136,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 3
@@ -76,6 +77,29 @@
       "btc_bull_score_at_entry": 3,
       "sl_close_notified": true,
       "sl_close_price": 0.162856
+    },
+    {
+      "coin_id": "synapse-2",
+      "symbol": "SYN",
+      "name": "Synapse",
+      "rank": 524,
+      "market_cap": 39535213,
+      "ch24_at_pump": 124.95486,
+      "ratio_30d": 1.727112115604809,
+      "turnover": 0.38747791689654476,
+      "vol_z": 9.091053531455982,
+      "ch24_at_pump_start": 0.7059149823456652,
+      "pump_lag_h": 2.15,
+      "rise72": 1.6405706055269929,
+      "chart_grade": "RED",
+      "pump_time": "2026-09-16T07:00:00+00:00",
+      "entry_time": "2026-09-16T09:00:00+00:00",
+      "exit_time": "2026-09-18T09:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.1801909173797971,
+      "btc_regime_at_entry": "bull",
+      "btc_bull_score_at_entry": 2
     }
   ]
 }
