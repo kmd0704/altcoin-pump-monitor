@@ -2,7 +2,8 @@
   "alerted": {
     "lisk": "2026-09-12T14:03:21.160803+00:00",
     "bedrock-token": "2026-09-14T13:56:57.835786+00:00",
-    "infinity-ground": "2026-09-14T19:17:34.744223+00:00"
+    "infinity-ground": "2026-09-14T19:17:34.744223+00:00",
+    "synapse-2": "2026-09-16T11:24:46.062347+00:00"
   },
   "scheduled": [
     {
@@ -52,6 +53,29 @@
       "btc_bull_score_at_entry": 3,
       "sl_close_notified": true,
       "sl_close_price": 0.163321
+    },
+    {
+      "coin_id": "synapse-2",
+      "symbol": "SYN",
+      "name": "Synapse",
+      "rank": 522,
+      "market_cap": 39186109,
+      "ch24_at_pump": 126.86571,
+      "ratio_30d": 1.7260673951382062,
+      "turnover": 0.46219947351925805,
+      "vol_z": 13.305085216928898,
+      "ch24_at_pump_start": 0.7059149823456652,
+      "pump_lag_h": 4.41,
+      "rise72": 1.6405706055269929,
+      "chart_grade": "RED",
+      "pump_time": "2026-09-16T07:00:00+00:00",
+      "entry_time": "2026-09-16T09:00:00+00:00",
+      "exit_time": "2026-09-18T09:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.18099520145490147,
+      "btc_regime_at_entry": "bull",
+      "btc_bull_score_at_entry": 2
     }
   ]
 }
