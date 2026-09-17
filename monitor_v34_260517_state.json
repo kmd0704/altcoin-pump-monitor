@@ -3,7 +3,8 @@
     "civic": "2026-09-13T14:08:35.011415+00:00",
     "bedrock-token": "2026-09-14T12:06:03.858512+00:00",
     "infinity-ground": "2026-09-14T18:23:50.576678+00:00",
-    "synapse-2": "2026-09-16T09:08:54.539205+00:00"
+    "synapse-2": "2026-09-16T09:08:54.539205+00:00",
+    "harmony": "2026-09-17T05:51:24.631849+00:00"
   },
   "scheduled": [
     {
@@ -76,6 +77,29 @@
       "entry_price": 0.1801909173797971,
       "btc_regime_at_entry": "bull",
       "btc_bull_score_at_entry": 2
+    },
+    {
+      "coin_id": "harmony",
+      "symbol": "ONE",
+      "name": "Harmony",
+      "rank": 883,
+      "market_cap": 18103920,
+      "ch24_at_pump": 82.83582,
+      "ratio_30d": 1.6381468057343567,
+      "turnover": 0.224066587910828,
+      "vol_z": 7.546061605989995,
+      "ch24_at_pump_start": 0.5951050718536235,
+      "pump_lag_h": 3.86,
+      "rise72": 0.9266656986490049,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-17T02:00:00+00:00",
+      "entry_time": "2026-09-17T04:00:00+00:00",
+      "exit_time": "2026-09-19T04:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0012033532408260877,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 0
     }
   ]
 }
