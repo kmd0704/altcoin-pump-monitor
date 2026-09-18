@@ -4,7 +4,8 @@
     "infinity-ground": "2026-09-14T18:23:50.576678+00:00",
     "synapse-2": "2026-09-16T09:08:54.539205+00:00",
     "harmony": "2026-09-17T05:51:24.631849+00:00",
-    "concierge-io": "2026-09-17T11:11:34.125043+00:00"
+    "concierge-io": "2026-09-17T11:11:34.125043+00:00",
+    "g-token": "2026-09-18T10:44:41.018540+00:00"
   },
   "scheduled": [
     {
@@ -25,7 +26,7 @@
       "entry_time": "2026-09-16T09:00:00+00:00",
       "exit_time": "2026-09-18T09:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.1801909173797971,
       "btc_regime_at_entry": "bull",
       "btc_bull_score_at_entry": 2
@@ -75,6 +76,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.2814821075201051,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 0
+    },
+    {
+      "coin_id": "g-token",
+      "symbol": "G",
+      "name": "Gravity (by Galxe)",
+      "rank": 437,
+      "market_cap": 54040712,
+      "ch24_at_pump": 77.9167,
+      "ratio_30d": 1.9222444551004074,
+      "turnover": 0.45291451461917487,
+      "vol_z": 5.904246681649029,
+      "ch24_at_pump_start": 0.5127100555358575,
+      "pump_lag_h": 3.74,
+      "rise72": 0.95988167837071,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-18T07:00:00+00:00",
+      "entry_time": "2026-09-18T09:00:00+00:00",
+      "exit_time": "2026-09-20T09:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.007476988641909344,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 0
     }
