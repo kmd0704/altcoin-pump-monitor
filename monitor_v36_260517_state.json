@@ -3,32 +3,10 @@
     "synapse-2": "2026-09-16T11:24:46.062347+00:00",
     "concierge-io": "2026-09-17T07:34:33.393344+00:00",
     "harmony": "2026-09-17T07:34:36.136975+00:00",
-    "g-token": "2026-09-18T11:06:36.991723+00:00"
+    "g-token": "2026-09-18T11:06:36.991723+00:00",
+    "bsquared-network": "2026-09-19T10:51:18.113529+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "synapse-2",
-      "symbol": "SYN",
-      "name": "Synapse",
-      "rank": 522,
-      "market_cap": 39186109,
-      "ch24_at_pump": 126.86571,
-      "ratio_30d": 1.7260673951382062,
-      "turnover": 0.46219947351925805,
-      "vol_z": 13.305085216928898,
-      "ch24_at_pump_start": 0.7059149823456652,
-      "pump_lag_h": 4.41,
-      "rise72": 1.6405706055269929,
-      "chart_grade": "RED",
-      "pump_time": "2026-09-16T07:00:00+00:00",
-      "entry_time": "2026-09-16T09:00:00+00:00",
-      "exit_time": "2026-09-18T09:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.18099520145490147,
-      "btc_regime_at_entry": "bull",
-      "btc_bull_score_at_entry": 2
-    },
     {
       "coin_id": "concierge-io",
       "symbol": "AVA",
@@ -47,7 +25,7 @@
       "entry_time": "2026-09-17T08:00:00+00:00",
       "exit_time": "2026-09-19T08:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.2674547620744812,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 0
@@ -101,6 +79,29 @@
       "btc_bull_score_at_entry": 0,
       "sl_close_notified": true,
       "sl_close_price": 0.00998296
+    },
+    {
+      "coin_id": "bsquared-network",
+      "symbol": "B2",
+      "name": "BSquared Network",
+      "rank": 662,
+      "market_cap": 31750008,
+      "ch24_at_pump": 80.46045,
+      "ratio_30d": 1.6656433657869079,
+      "turnover": 0.1442787865899515,
+      "vol_z": 3.701571028372821,
+      "ch24_at_pump_start": 0.8799451113888628,
+      "pump_lag_h": 1.86,
+      "rise72": 0.9505503924705025,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-19T09:00:00+00:00",
+      "entry_time": "2026-09-19T11:00:00+00:00",
+      "exit_time": "2026-09-21T11:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.7678602983349704,
+      "btc_regime_at_entry": "bull",
+      "btc_bull_score_at_entry": 1
     }
   ]
 }
