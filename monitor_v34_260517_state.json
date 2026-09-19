@@ -3,32 +3,10 @@
     "synapse-2": "2026-09-16T09:08:54.539205+00:00",
     "harmony": "2026-09-17T05:51:24.631849+00:00",
     "concierge-io": "2026-09-17T11:11:34.125043+00:00",
-    "g-token": "2026-09-18T10:44:41.018540+00:00"
+    "g-token": "2026-09-18T10:44:41.018540+00:00",
+    "bsquared-network": "2026-09-19T12:57:01.439526+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "synapse-2",
-      "symbol": "SYN",
-      "name": "Synapse",
-      "rank": 524,
-      "market_cap": 39535213,
-      "ch24_at_pump": 124.95486,
-      "ratio_30d": 1.727112115604809,
-      "turnover": 0.38747791689654476,
-      "vol_z": 9.091053531455982,
-      "ch24_at_pump_start": 0.7059149823456652,
-      "pump_lag_h": 2.15,
-      "rise72": 1.6405706055269929,
-      "chart_grade": "RED",
-      "pump_time": "2026-09-16T07:00:00+00:00",
-      "entry_time": "2026-09-16T09:00:00+00:00",
-      "exit_time": "2026-09-18T09:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.1801909173797971,
-      "btc_regime_at_entry": "bull",
-      "btc_bull_score_at_entry": 2
-    },
     {
       "coin_id": "harmony",
       "symbol": "ONE",
@@ -101,6 +79,29 @@
       "btc_bull_score_at_entry": 0,
       "sl_close_notified": true,
       "sl_close_price": 0.00987228
+    },
+    {
+      "coin_id": "bsquared-network",
+      "symbol": "B2",
+      "name": "BSquared Network",
+      "rank": 666,
+      "market_cap": 32129817,
+      "ch24_at_pump": 87.4861,
+      "ratio_30d": 1.719207629452559,
+      "turnover": 0.1596596579235713,
+      "vol_z": 6.004151076969604,
+      "ch24_at_pump_start": 0.8799451113888628,
+      "pump_lag_h": 3.95,
+      "rise72": 1.0328283169434256,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-19T09:00:00+00:00",
+      "entry_time": "2026-09-19T11:00:00+00:00",
+      "exit_time": "2026-09-21T11:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.7846623088607144,
+      "btc_regime_at_entry": "bull",
+      "btc_bull_score_at_entry": 1
     }
   ]
 }
