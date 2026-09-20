@@ -4,7 +4,8 @@
     "concierge-io": "2026-09-17T07:34:33.393344+00:00",
     "harmony": "2026-09-17T07:34:36.136975+00:00",
     "g-token": "2026-09-18T11:06:36.991723+00:00",
-    "bsquared-network": "2026-09-19T10:51:18.113529+00:00"
+    "bsquared-network": "2026-09-19T10:51:18.113529+00:00",
+    "celer-network": "2026-09-20T06:09:29.833564+00:00"
   },
   "scheduled": [
     {
@@ -29,31 +30,6 @@
       "entry_price": 0.2674547620744812,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 0
-    },
-    {
-      "coin_id": "harmony",
-      "symbol": "ONE",
-      "name": "Harmony",
-      "rank": 854,
-      "market_cap": 19051958,
-      "ch24_at_pump": 93.25785,
-      "ratio_30d": 1.770509153831217,
-      "turnover": 0.2771568973304726,
-      "vol_z": 12.16091139556998,
-      "ch24_at_pump_start": 0.5951050718536235,
-      "pump_lag_h": 5.58,
-      "rise72": 0.9800162264193226,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-09-17T02:00:00+00:00",
-      "entry_time": "2026-09-17T04:00:00+00:00",
-      "exit_time": "2026-09-19T04:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0012929316797692279,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 0,
-      "sl_close_notified": true,
-      "sl_close_price": 0.0017623
     },
     {
       "coin_id": "g-token",
@@ -102,6 +78,29 @@
       "entry_price": 0.7678602983349704,
       "btc_regime_at_entry": "bull",
       "btc_bull_score_at_entry": 1
+    },
+    {
+      "coin_id": "celer-network",
+      "symbol": "CELR",
+      "name": "Celer Network",
+      "rank": 591,
+      "market_cap": 37375574,
+      "ch24_at_pump": 104.14285,
+      "ratio_30d": 2.289749009909504,
+      "turnover": 0.5378537654384615,
+      "vol_z": 2.6058557860585823,
+      "ch24_at_pump_start": 0.6854707728363405,
+      "pump_lag_h": 5.16,
+      "rise72": 1.4350979631653402,
+      "chart_grade": "RED",
+      "pump_time": "2026-09-20T01:00:00+00:00",
+      "entry_time": "2026-09-20T03:00:00+00:00",
+      "exit_time": "2026-09-22T03:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.004681105611020115,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 2
     }
   ]
 }
