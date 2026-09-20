@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "synapse-2": "2026-09-16T09:08:54.539205+00:00",
     "harmony": "2026-09-17T05:51:24.631849+00:00",
     "concierge-io": "2026-09-17T11:11:34.125043+00:00",
     "g-token": "2026-09-18T10:44:41.018540+00:00",
@@ -8,29 +7,6 @@
     "celer-network": "2026-09-20T05:49:32.771617+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "concierge-io",
-      "symbol": "AVA",
-      "name": "AVA (Travala)",
-      "rank": 806,
-      "market_cap": 20851129,
-      "ch24_at_pump": 76.47713,
-      "ratio_30d": 1.624668077599872,
-      "turnover": 1.2501907957094012,
-      "vol_z": 5.122854559372996,
-      "ch24_at_pump_start": 0.5871760908437822,
-      "pump_lag_h": 5.19,
-      "rise72": 0.9035782750905348,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-09-17T06:00:00+00:00",
-      "entry_time": "2026-09-17T08:00:00+00:00",
-      "exit_time": "2026-09-19T08:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.2814821075201051,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 0
-    },
     {
       "coin_id": "g-token",
       "symbol": "G",
@@ -49,7 +25,7 @@
       "entry_time": "2026-09-18T09:00:00+00:00",
       "exit_time": "2026-09-20T09:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.007476988641909344,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 0,
