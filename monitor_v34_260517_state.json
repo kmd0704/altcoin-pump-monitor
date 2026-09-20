@@ -4,34 +4,10 @@
     "harmony": "2026-09-17T05:51:24.631849+00:00",
     "concierge-io": "2026-09-17T11:11:34.125043+00:00",
     "g-token": "2026-09-18T10:44:41.018540+00:00",
-    "bsquared-network": "2026-09-19T12:57:01.439526+00:00"
+    "bsquared-network": "2026-09-19T12:57:01.439526+00:00",
+    "celer-network": "2026-09-20T05:49:32.771617+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "harmony",
-      "symbol": "ONE",
-      "name": "Harmony",
-      "rank": 883,
-      "market_cap": 18103920,
-      "ch24_at_pump": 82.83582,
-      "ratio_30d": 1.6381468057343567,
-      "turnover": 0.224066587910828,
-      "vol_z": 7.546061605989995,
-      "ch24_at_pump_start": 0.5951050718536235,
-      "pump_lag_h": 3.86,
-      "rise72": 0.9266656986490049,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-09-17T02:00:00+00:00",
-      "entry_time": "2026-09-17T04:00:00+00:00",
-      "exit_time": "2026-09-19T04:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0012033532408260877,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 0,
-      "sl_close_notified": true,
-      "sl_close_price": 0.0015297
-    },
     {
       "coin_id": "concierge-io",
       "symbol": "AVA",
@@ -102,6 +78,29 @@
       "entry_price": 0.7846623088607144,
       "btc_regime_at_entry": "bull",
       "btc_bull_score_at_entry": 1
+    },
+    {
+      "coin_id": "celer-network",
+      "symbol": "CELR",
+      "name": "Celer Network",
+      "rank": 578,
+      "market_cap": 37967255,
+      "ch24_at_pump": 108.98879,
+      "ratio_30d": 2.343847002250007,
+      "turnover": 0.537741510408071,
+      "vol_z": 2.606924236432572,
+      "ch24_at_pump_start": 0.6854707728363405,
+      "pump_lag_h": 4.83,
+      "rise72": 1.4350979631653402,
+      "chart_grade": "RED",
+      "pump_time": "2026-09-20T01:00:00+00:00",
+      "entry_time": "2026-09-20T03:00:00+00:00",
+      "exit_time": "2026-09-22T03:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.004791702193612397,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 2
     }
   ]
 }
