@@ -2,7 +2,8 @@
   "alerted": {
     "g-token": "2026-09-18T11:06:36.991723+00:00",
     "bsquared-network": "2026-09-19T10:51:18.113529+00:00",
-    "celer-network": "2026-09-20T06:09:29.833564+00:00"
+    "celer-network": "2026-09-20T06:09:29.833564+00:00",
+    "icon": "2026-09-21T19:20:46.642353+00:00"
   },
   "scheduled": [
     {
@@ -50,6 +51,29 @@
       "entry_price": 0.004681105611020115,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 2
+    },
+    {
+      "coin_id": "icon",
+      "symbol": "ICX",
+      "name": "ICON",
+      "rank": 909,
+      "market_cap": 19582141,
+      "ch24_at_pump": 76.08238,
+      "ratio_30d": 1.0346254147922371,
+      "turnover": 0.0733734372807282,
+      "vol_z": 0.26797687715775226,
+      "ch24_at_pump_start": 2.8013048111507595,
+      "pump_lag_h": 2.35,
+      "rise72": 2.982791418607422,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-21T17:00:00+00:00",
+      "entry_time": "2026-09-21T19:00:00+00:00",
+      "exit_time": "2026-09-23T19:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.017886195168465367,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 3
     }
   ]
 }
