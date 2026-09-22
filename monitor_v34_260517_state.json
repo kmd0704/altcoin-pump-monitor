@@ -1,35 +1,11 @@
 {
   "alerted": {
-    "g-token": "2026-09-18T10:44:41.018540+00:00",
     "bsquared-network": "2026-09-19T12:57:01.439526+00:00",
     "celer-network": "2026-09-20T05:49:32.771617+00:00",
     "zetachain": "2026-09-21T12:14:56.323056+00:00",
     "icon": "2026-09-21T18:31:12.901640+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "bsquared-network",
-      "symbol": "B2",
-      "name": "BSquared Network",
-      "rank": 666,
-      "market_cap": 32129817,
-      "ch24_at_pump": 87.4861,
-      "ratio_30d": 1.719207629452559,
-      "turnover": 0.1596596579235713,
-      "vol_z": 6.004151076969604,
-      "ch24_at_pump_start": 0.8799451113888628,
-      "pump_lag_h": 3.95,
-      "rise72": 1.0328283169434256,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-09-19T09:00:00+00:00",
-      "entry_time": "2026-09-19T11:00:00+00:00",
-      "exit_time": "2026-09-21T11:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.7846623088607144,
-      "btc_regime_at_entry": "bull",
-      "btc_bull_score_at_entry": 1
-    },
     {
       "coin_id": "celer-network",
       "symbol": "CELR",
