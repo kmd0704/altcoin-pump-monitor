@@ -1,7 +1,8 @@
 {
   "alerted": {
     "celer-network": "2026-09-20T06:09:29.833564+00:00",
-    "icon": "2026-09-21T19:20:46.642353+00:00"
+    "icon": "2026-09-21T19:20:46.642353+00:00",
+    "overtake": "2026-09-23T16:50:27.739034+00:00"
   },
   "scheduled": [
     {
@@ -28,6 +29,29 @@
       "btc_bull_score_at_entry": 3,
       "sl_close_notified": true,
       "sl_close_price": 0.02915109
+    },
+    {
+      "coin_id": "overtake",
+      "symbol": "TAKE",
+      "name": "OVERTAKE",
+      "rank": 619,
+      "market_cap": 36121973,
+      "ch24_at_pump": 73.15692,
+      "ratio_30d": 1.8804383976161096,
+      "turnover": 0.172290114038677,
+      "vol_z": 6.697873076667712,
+      "ch24_at_pump_start": 0.7318743560760215,
+      "pump_lag_h": 9.84,
+      "rise72": 2.7319460882087836,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-23T07:00:00+00:00",
+      "entry_time": "2026-09-23T09:00:00+00:00",
+      "exit_time": "2026-09-25T09:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.10335676436798263,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 2
     }
   ]
 }
