@@ -1,34 +1,10 @@
 {
   "alerted": {
-    "celer-network": "2026-09-20T05:49:32.771617+00:00",
     "zetachain": "2026-09-21T12:14:56.323056+00:00",
     "icon": "2026-09-21T18:31:12.901640+00:00",
     "overtake": "2026-09-23T14:45:29.756005+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "zetachain",
-      "symbol": "ZETA",
-      "name": "ZetaChain",
-      "rank": 276,
-      "market_cap": 106519912,
-      "ch24_at_pump": 72.18764,
-      "ratio_30d": 1.9979530588065366,
-      "turnover": 0.1793724020207347,
-      "vol_z": 9.563559213537898,
-      "ch24_at_pump_start": 0.5194126228999225,
-      "pump_lag_h": 8.25,
-      "rise72": 0.9451614144610394,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-09-21T04:00:00+00:00",
-      "entry_time": "2026-09-21T06:00:00+00:00",
-      "exit_time": "2026-09-23T06:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.06594802305987442,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 2
-    },
     {
       "coin_id": "icon",
       "symbol": "ICX",
