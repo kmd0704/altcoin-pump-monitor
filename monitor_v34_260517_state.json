@@ -2,29 +2,5 @@
   "alerted": {
     "overtake": "2026-09-23T14:45:29.756005+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "overtake",
-      "symbol": "TAKE",
-      "name": "OVERTAKE",
-      "rank": 427,
-      "market_cap": 58443616,
-      "ch24_at_pump": 171.93327,
-      "ratio_30d": 2.9380624356703127,
-      "turnover": 0.1575212554270653,
-      "vol_z": 5.986764087634204,
-      "ch24_at_pump_start": 0.7318743560760215,
-      "pump_lag_h": 7.76,
-      "rise72": 2.7319460882087836,
-      "chart_grade": "RED",
-      "pump_time": "2026-09-23T07:00:00+00:00",
-      "entry_time": "2026-09-23T09:00:00+00:00",
-      "exit_time": "2026-09-25T09:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.16555823265346553,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 2
-    }
-  ]
+  "scheduled": []
 }
