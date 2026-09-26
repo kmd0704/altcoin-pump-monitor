@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "overtake": "2026-09-23T16:50:27.739034+00:00"
+    "overtake": "2026-09-23T16:50:27.739034+00:00",
+    "superrare": "2026-09-26T07:35:10.029527+00:00"
   },
   "scheduled": [
     {
@@ -25,6 +26,26 @@
       "entry_price": 0.10335676436798263,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 2
+    },
+    {
+      "coin_id": "superrare",
+      "symbol": "RARE",
+      "name": "SuperRare",
+      "rank": 941,
+      "market_cap": 19067961,
+      "ch24_at_pump": 77.76565,
+      "ratio_30d": 1.8402337558422988,
+      "turnover": 1.088379191109226,
+      "vol_z": 22.148475945330226,
+      "ch24_at_pump_start": 0.6524710157111158,
+      "pump_lag_h": 0.59,
+      "rise72": 0.8203292907666233,
+      "chart_grade": "GREEN",
+      "pump_time": "2026-09-26T07:00:00+00:00",
+      "entry_time": "2026-09-26T09:00:00+00:00",
+      "exit_time": "2026-09-28T09:00:00+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
