@@ -5,29 +5,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "overtake",
-      "symbol": "TAKE",
-      "name": "OVERTAKE",
-      "rank": 619,
-      "market_cap": 36121973,
-      "ch24_at_pump": 73.15692,
-      "ratio_30d": 1.8804383976161096,
-      "turnover": 0.172290114038677,
-      "vol_z": 6.697873076667712,
-      "ch24_at_pump_start": 0.7318743560760215,
-      "pump_lag_h": 9.84,
-      "rise72": 2.7319460882087836,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-09-23T07:00:00+00:00",
-      "entry_time": "2026-09-23T09:00:00+00:00",
-      "exit_time": "2026-09-25T09:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.10335676436798263,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 2
-    },
-    {
       "coin_id": "superrare",
       "symbol": "RARE",
       "name": "SuperRare",
@@ -44,8 +21,11 @@
       "pump_time": "2026-09-26T07:00:00+00:00",
       "entry_time": "2026-09-26T09:00:00+00:00",
       "exit_time": "2026-09-28T09:00:00+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.02286997708973717,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 6
     }
   ]
 }
