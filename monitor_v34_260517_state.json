@@ -1,7 +1,8 @@
 {
   "alerted": {
     "overtake": "2026-09-23T14:45:29.756005+00:00",
-    "superrare": "2026-09-26T14:11:55.485682+00:00"
+    "superrare": "2026-09-26T14:11:55.485682+00:00",
+    "quack-ai": "2026-09-27T06:21:48.361058+00:00"
   },
   "scheduled": [
     {
@@ -26,6 +27,26 @@
       "entry_price": 0.02446834753706796,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 6
+    },
+    {
+      "coin_id": "quack-ai",
+      "symbol": "Q",
+      "name": "Quack AI",
+      "rank": 194,
+      "market_cap": 193337011,
+      "ch24_at_pump": 83.40057,
+      "ratio_30d": 1.8563996674242236,
+      "turnover": 0.06470398710677058,
+      "vol_z": 18.861659845532422,
+      "ch24_at_pump_start": 0.8652125506293917,
+      "pump_lag_h": 0.36,
+      "rise72": 1.4318588104300116,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-27T06:00:00+00:00",
+      "entry_time": "2026-09-27T08:00:00+00:00",
+      "exit_time": "2026-09-29T08:00:00+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
