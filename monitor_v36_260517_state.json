@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "kaio": "2026-09-28T06:45:59.165713+00:00"
+    "kaio": "2026-09-28T06:45:59.165713+00:00",
+    "moonriver": "2026-09-30T23:42:54.254980+00:00"
   },
   "scheduled": [
     {
@@ -23,6 +24,29 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.036944143986703766,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 2
+    },
+    {
+      "coin_id": "moonriver",
+      "symbol": "MOVR",
+      "name": "Moonriver",
+      "rank": 752,
+      "market_cap": 26865213,
+      "ch24_at_pump": 75.49117,
+      "ratio_30d": 2.732581500321124,
+      "turnover": 1.5919788464907605,
+      "vol_z": 32.39206153591258,
+      "ch24_at_pump_start": 0.6526373248203328,
+      "pump_lag_h": 2.72,
+      "rise72": 1.2984001858083651,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-09-30T21:00:00+00:00",
+      "entry_time": "2026-09-30T23:00:00+00:00",
+      "exit_time": "2026-10-02T23:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 2.1572908936410706,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 2
     }
