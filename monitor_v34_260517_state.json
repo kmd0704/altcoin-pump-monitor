@@ -1,7 +1,8 @@
 {
   "alerted": {
     "kaio": "2026-09-28T04:14:52.341852+00:00",
-    "moonriver": "2026-09-30T10:57:59.745704+00:00"
+    "moonriver": "2026-09-30T10:57:59.745704+00:00",
+    "lobster-2": "2026-10-01T16:04:51.696130+00:00"
   },
   "scheduled": [
     {
@@ -28,6 +29,29 @@
       "btc_bull_score_at_entry": 2,
       "sl_close_notified": true,
       "sl_close_price": 2.43
+    },
+    {
+      "coin_id": "lobster-2",
+      "symbol": "龙虾",
+      "name": "龙虾 (Lobster)",
+      "rank": 303,
+      "market_cap": 95256624,
+      "ch24_at_pump": 82.18789,
+      "ratio_30d": 1.4923728724474685,
+      "turnover": 0.25588331610352816,
+      "vol_z": 1.2692806969748809,
+      "ch24_at_pump_start": 0.5073812050157869,
+      "pump_lag_h": 3.08,
+      "rise72": 1.9648089047178923,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-10-01T13:00:00+00:00",
+      "entry_time": "2026-10-01T15:00:00+00:00",
+      "exit_time": "2026-10-03T15:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.09527905572619264,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 2
     }
   ]
 }
