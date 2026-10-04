@@ -3,29 +3,5 @@
     "moonriver": "2026-09-30T23:42:54.254980+00:00",
     "lobster-2": "2026-10-01T18:49:43.441559+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "lobster-2",
-      "symbol": "龙虾",
-      "name": "龙虾 (Lobster)",
-      "rank": 275,
-      "market_cap": 106432670,
-      "ch24_at_pump": 123.6079,
-      "ratio_30d": 1.6808279730628617,
-      "turnover": 0.2652685461214597,
-      "vol_z": 1.8608546212889494,
-      "ch24_at_pump_start": 0.5073812050157869,
-      "pump_lag_h": 5.83,
-      "rise72": 2.3241894256732882,
-      "chart_grade": "RED",
-      "pump_time": "2026-10-01T13:00:00+00:00",
-      "entry_time": "2026-10-01T15:00:00+00:00",
-      "exit_time": "2026-10-03T15:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.10715536902069014,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 2
-    }
-  ]
+  "scheduled": []
 }
