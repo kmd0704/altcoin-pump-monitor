@@ -1,7 +1,7 @@
 {
   "alerted": {
-    "lobster-2": "2026-10-01T18:49:43.441559+00:00",
-    "gitcoin": "2026-10-05T00:50:43.849223+00:00"
+    "gitcoin": "2026-10-05T00:50:43.849223+00:00",
+    "iexec-rlc": "2026-10-05T22:34:36.267796+00:00"
   },
   "scheduled": [
     {
@@ -24,6 +24,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.20971776813708193,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 6
+    },
+    {
+      "coin_id": "iexec-rlc",
+      "symbol": "RLC",
+      "name": "iExec RLC",
+      "rank": 412,
+      "market_cap": 65285890,
+      "ch24_at_pump": 107.93466,
+      "ratio_30d": 2.427506719382619,
+      "turnover": 0.23499886310981202,
+      "vol_z": 37.983013274897864,
+      "ch24_at_pump_start": 0.5260703823822188,
+      "pump_lag_h": 9.58,
+      "rise72": 1.081293564970359,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-10-05T13:00:00+00:00",
+      "entry_time": "2026-10-05T15:00:00+00:00",
+      "exit_time": "2026-10-07T15:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.748792900125735,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": 6
     }
