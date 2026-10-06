@@ -48,7 +48,9 @@
       "exit_notified": false,
       "entry_price": 0.748792900125735,
       "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 6
+      "btc_bull_score_at_entry": 6,
+      "sl_close_notified": true,
+      "sl_close_price": 0.901069
     }
   ]
 }
