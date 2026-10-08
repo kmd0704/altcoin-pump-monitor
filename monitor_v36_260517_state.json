@@ -1,33 +1,32 @@
 {
   "alerted": {
     "gitcoin": "2026-10-05T00:50:43.849223+00:00",
-    "iexec-rlc": "2026-10-05T22:34:36.267796+00:00"
+    "iexec-rlc": "2026-10-05T22:34:36.267796+00:00",
+    "origin-protocol": "2026-10-08T16:24:57.790018+00:00"
   },
   "scheduled": [
     {
-      "coin_id": "iexec-rlc",
-      "symbol": "RLC",
-      "name": "iExec RLC",
-      "rank": 412,
-      "market_cap": 65285890,
-      "ch24_at_pump": 107.93466,
-      "ratio_30d": 2.427506719382619,
-      "turnover": 0.23499886310981202,
-      "vol_z": 37.983013274897864,
-      "ch24_at_pump_start": 0.5260703823822188,
-      "pump_lag_h": 9.58,
-      "rise72": 1.081293564970359,
+      "coin_id": "origin-protocol",
+      "symbol": "OGN",
+      "name": "Origin Token",
+      "rank": 702,
+      "market_cap": 28121167,
+      "ch24_at_pump": 86.78815,
+      "ratio_30d": 2.1865816943735448,
+      "turnover": 0.9921809835323248,
+      "vol_z": 8.278581711753755,
+      "ch24_at_pump_start": 0.6115325072663818,
+      "pump_lag_h": 5.42,
+      "rise72": 1.106320283256803,
       "chart_grade": "YELLOW",
-      "pump_time": "2026-10-05T13:00:00+00:00",
-      "entry_time": "2026-10-05T15:00:00+00:00",
-      "exit_time": "2026-10-07T15:00:00+00:00",
+      "pump_time": "2026-10-08T11:00:00+00:00",
+      "entry_time": "2026-10-08T13:00:00+00:00",
+      "exit_time": "2026-10-10T13:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.748792900125735,
+      "exit_notified": false,
+      "entry_price": 0.040824039889487906,
       "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 6,
-      "sl_close_notified": true,
-      "sl_close_price": 0.901069
+      "btc_bull_score_at_entry": 6
     }
   ]
 }
