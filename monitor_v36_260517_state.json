@@ -2,7 +2,8 @@
   "alerted": {
     "iexec-rlc": "2026-10-05T22:34:36.267796+00:00",
     "origin-protocol": "2026-10-08T16:24:57.790018+00:00",
-    "talus": "2026-10-09T08:55:56.371878+00:00"
+    "talus": "2026-10-09T08:55:56.371878+00:00",
+    "janction": "2026-10-09T16:08:01.162669+00:00"
   },
   "scheduled": [
     {
@@ -47,8 +48,34 @@
       "pump_time": "2026-10-09T08:00:00+00:00",
       "entry_time": "2026-10-09T10:00:00+00:00",
       "exit_time": "2026-10-11T10:00:00+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.03203065091833552,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "janction",
+      "symbol": "JCT",
+      "name": "Janction",
+      "rank": 703,
+      "market_cap": 29061313,
+      "ch24_at_pump": 89.92964,
+      "ratio_30d": 1.3684365774697858,
+      "turnover": 0.15959693207879538,
+      "vol_z": 30.931106664572507,
+      "ch24_at_pump_start": 0.5208006451659861,
+      "pump_lag_h": 4.13,
+      "rise72": 0.9662873926344617,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-10-09T12:00:00+00:00",
+      "entry_time": "2026-10-09T14:00:00+00:00",
+      "exit_time": "2026-10-11T14:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0025167106286864524,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
     }
   ]
 }
