@@ -3,7 +3,8 @@
     "iexec-rlc": "2026-10-05T22:34:36.267796+00:00",
     "origin-protocol": "2026-10-08T16:24:57.790018+00:00",
     "talus": "2026-10-09T08:55:56.371878+00:00",
-    "janction": "2026-10-09T16:08:01.162669+00:00"
+    "janction": "2026-10-09T16:08:01.162669+00:00",
+    "magic": "2026-10-09T20:50:59.697904+00:00"
   },
   "scheduled": [
     {
@@ -76,6 +77,29 @@
       "entry_price": 0.0025167106286864524,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "magic",
+      "symbol": "MAGIC",
+      "name": "Treasure",
+      "rank": 557,
+      "market_cap": 41013153,
+      "ch24_at_pump": 93.00786,
+      "ratio_30d": 2.6983881966460577,
+      "turnover": 1.1089241452772958,
+      "vol_z": 4.121125910430905,
+      "ch24_at_pump_start": 0.6942081776781122,
+      "pump_lag_h": 3.85,
+      "rise72": 1.0354695823924218,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-10-09T17:00:00+00:00",
+      "entry_time": "2026-10-09T19:00:00+00:00",
+      "exit_time": "2026-10-11T19:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.12468739724728466,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": 0
     }
   ]
 }
