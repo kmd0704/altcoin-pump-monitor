@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "iexec-rlc": "2026-10-05T18:02:42.567587+00:00",
     "origin-protocol": "2026-10-08T17:45:57.825172+00:00",
     "talus": "2026-10-09T10:11:07.969783+00:00",
     "magic": "2026-10-09T17:21:52.984181+00:00",
@@ -70,8 +69,11 @@
       "pump_time": "2026-10-09T17:00:00+00:00",
       "entry_time": "2026-10-09T19:00:00+00:00",
       "exit_time": "2026-10-11T19:00:00+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.11727701220381719,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": 0
     },
     {
       "coin_id": "janction",
