@@ -1,7 +1,8 @@
 {
   "alerted": {
     "iexec-rlc": "2026-10-05T22:34:36.267796+00:00",
-    "origin-protocol": "2026-10-08T16:24:57.790018+00:00"
+    "origin-protocol": "2026-10-08T16:24:57.790018+00:00",
+    "talus": "2026-10-09T08:55:56.371878+00:00"
   },
   "scheduled": [
     {
@@ -28,6 +29,26 @@
       "btc_bull_score_at_entry": 6,
       "sl_close_notified": true,
       "sl_close_price": 0.04767522
+    },
+    {
+      "coin_id": "talus",
+      "symbol": "US",
+      "name": "Talus",
+      "rank": 340,
+      "market_cap": 77602458,
+      "ch24_at_pump": 85.03705,
+      "ratio_30d": 1.7670898239202422,
+      "turnover": 0.4681868238357439,
+      "vol_z": 1.5574398860857246,
+      "ch24_at_pump_start": 0.8080913277060642,
+      "pump_lag_h": 0.93,
+      "rise72": 1.2123571909281985,
+      "chart_grade": "RED",
+      "pump_time": "2026-10-09T08:00:00+00:00",
+      "entry_time": "2026-10-09T10:00:00+00:00",
+      "exit_time": "2026-10-11T10:00:00+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
