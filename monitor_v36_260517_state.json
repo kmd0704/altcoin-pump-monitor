@@ -75,7 +75,9 @@
       "exit_notified": false,
       "entry_price": 0.0025167106286864524,
       "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": -1
+      "btc_bull_score_at_entry": -1,
+      "sl_close_notified": true,
+      "sl_close_price": 0.00290098
     },
     {
       "coin_id": "magic",
@@ -98,7 +100,9 @@
       "exit_notified": false,
       "entry_price": 0.12468739724728466,
       "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": 0
+      "btc_bull_score_at_entry": 0,
+      "sl_close_notified": true,
+      "sl_close_price": 0.160008
     }
   ]
 }
