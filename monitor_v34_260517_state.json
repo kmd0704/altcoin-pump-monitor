@@ -3,7 +3,8 @@
     "origin-protocol": "2026-10-08T17:45:57.825172+00:00",
     "talus": "2026-10-09T10:11:07.969783+00:00",
     "magic": "2026-10-09T17:21:52.984181+00:00",
-    "janction": "2026-10-09T17:21:55.639984+00:00"
+    "janction": "2026-10-09T17:21:55.639984+00:00",
+    "lumia": "2026-10-11T04:36:47.909454+00:00"
   },
   "scheduled": [
     {
@@ -103,6 +104,26 @@
       "btc_bull_score_at_entry": 0,
       "sl_close_notified": true,
       "sl_close_price": 0.0030599
+    },
+    {
+      "coin_id": "lumia",
+      "symbol": "LUMIA",
+      "name": "Lumia",
+      "rank": 616,
+      "market_cap": 35077792,
+      "ch24_at_pump": 77.38634,
+      "ratio_30d": 1.9829221708756273,
+      "turnover": 0.3823756485762109,
+      "vol_z": 94.82974766708779,
+      "ch24_at_pump_start": 0.7871079690191634,
+      "pump_lag_h": 0.02,
+      "rise72": 0.9512879264173808,
+      "chart_grade": "GREEN",
+      "pump_time": "2026-10-11T04:35:30+00:00",
+      "entry_time": "2026-10-11T06:35:30+00:00",
+      "exit_time": "2026-10-13T06:35:30+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
