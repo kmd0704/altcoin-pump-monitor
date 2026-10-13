@@ -1,37 +1,11 @@
 {
   "alerted": {
-    "origin-protocol": "2026-10-08T17:45:57.825172+00:00",
     "talus": "2026-10-09T10:11:07.969783+00:00",
     "magic": "2026-10-09T17:21:52.984181+00:00",
     "janction": "2026-10-09T17:21:55.639984+00:00",
     "lumia": "2026-10-11T04:36:47.909454+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "magic",
-      "symbol": "MAGIC",
-      "name": "Treasure",
-      "rank": 606,
-      "market_cap": 35358742,
-      "ch24_at_pump": 70.98737,
-      "ratio_30d": 2.261423809445361,
-      "turnover": 1.0431987468001518,
-      "vol_z": 2.6316996803104975,
-      "ch24_at_pump_start": 0.6942081776781122,
-      "pump_lag_h": 0.36,
-      "rise72": 0.7110526287130505,
-      "chart_grade": "GREEN",
-      "pump_time": "2026-10-09T17:00:00+00:00",
-      "entry_time": "2026-10-09T19:00:00+00:00",
-      "exit_time": "2026-10-11T19:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.11727701220381719,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": 0,
-      "sl_close_notified": true,
-      "sl_close_price": 0.141687
-    },
     {
       "coin_id": "lumia",
       "symbol": "LUMIA",
