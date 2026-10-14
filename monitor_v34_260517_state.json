@@ -1,6 +1,31 @@
 {
   "alerted": {
-    "lumia": "2026-10-11T04:36:47.909454+00:00"
+    "lumia": "2026-10-11T04:36:47.909454+00:00",
+    "zerebro": "2026-10-14T23:45:08.841996+00:00"
   },
-  "scheduled": []
+  "scheduled": [
+    {
+      "coin_id": "zerebro",
+      "symbol": "ZEREBRO",
+      "name": "Zerebro",
+      "rank": 481,
+      "market_cap": 47043267,
+      "ch24_at_pump": 71.17875,
+      "ratio_30d": 1.5381857147701035,
+      "turnover": 0.18673634298908584,
+      "vol_z": 5.614176414924507,
+      "ch24_at_pump_start": 0.5051989934948595,
+      "pump_lag_h": 3.75,
+      "rise72": 0.7655171244135144,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-10-14T20:00:00+00:00",
+      "entry_time": "2026-10-14T22:00:00+00:00",
+      "exit_time": "2026-10-16T22:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.04713067410931506,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": 3
+    }
+  ]
 }
