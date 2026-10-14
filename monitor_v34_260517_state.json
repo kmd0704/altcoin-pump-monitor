@@ -2,29 +2,5 @@
   "alerted": {
     "lumia": "2026-10-11T04:36:47.909454+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "lumia",
-      "symbol": "LUMIA",
-      "name": "Lumia",
-      "rank": 616,
-      "market_cap": 35077792,
-      "ch24_at_pump": 77.38634,
-      "ratio_30d": 1.9829221708756273,
-      "turnover": 0.3823756485762109,
-      "vol_z": 94.82974766708779,
-      "ch24_at_pump_start": 0.7871079690191634,
-      "pump_lag_h": 0.02,
-      "rise72": 0.9512879264173808,
-      "chart_grade": "GREEN",
-      "pump_time": "2026-10-11T04:35:30+00:00",
-      "entry_time": "2026-10-11T06:35:30+00:00",
-      "exit_time": "2026-10-13T06:35:30+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.15600741952021657,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": 0
-    }
-  ]
+  "scheduled": []
 }
