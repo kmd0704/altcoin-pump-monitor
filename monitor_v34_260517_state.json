@@ -1,7 +1,7 @@
 {
   "alerted": {
-    "lumia": "2026-10-11T04:36:47.909454+00:00",
-    "zerebro": "2026-10-14T23:45:08.841996+00:00"
+    "zerebro": "2026-10-14T23:45:08.841996+00:00",
+    "puffer-finance": "2026-10-15T08:56:37.938461+00:00"
   },
   "scheduled": [
     {
@@ -26,6 +26,29 @@
       "entry_price": 0.04713067410931506,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": 3
+    },
+    {
+      "coin_id": "puffer-finance",
+      "symbol": "PUFFER",
+      "name": "Puffer",
+      "rank": 643,
+      "market_cap": 30404239,
+      "ch24_at_pump": 96.52069,
+      "ratio_30d": 2.70806940172334,
+      "turnover": 0.32787634325536497,
+      "vol_z": 3.063743960256628,
+      "ch24_at_pump_start": 1.5453055833030578,
+      "pump_lag_h": 3.94,
+      "rise72": 2.127156132979489,
+      "chart_grade": "RED",
+      "pump_time": "2026-10-15T05:00:00+00:00",
+      "entry_time": "2026-10-15T07:00:00+00:00",
+      "exit_time": "2026-10-17T07:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.05287892196880881,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": 4
     }
   ]
 }
