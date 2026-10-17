@@ -7,29 +7,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "zerebro",
-      "symbol": "ZEREBRO",
-      "name": "Zerebro",
-      "rank": 481,
-      "market_cap": 47043267,
-      "ch24_at_pump": 71.17875,
-      "ratio_30d": 1.5381857147701035,
-      "turnover": 0.18673634298908584,
-      "vol_z": 5.614176414924507,
-      "ch24_at_pump_start": 0.5051989934948595,
-      "pump_lag_h": 3.75,
-      "rise72": 0.7655171244135144,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-10-14T20:00:00+00:00",
-      "entry_time": "2026-10-14T22:00:00+00:00",
-      "exit_time": "2026-10-16T22:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.04713067410931506,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": 3
-    },
-    {
       "coin_id": "puffer-finance",
       "symbol": "PUFFER",
       "name": "Puffer",
@@ -93,7 +70,7 @@
       "entry_time": "2026-10-15T23:00:00+00:00",
       "exit_time": "2026-10-17T23:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.04141852802912215,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": 0
