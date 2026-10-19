@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "zerebro": "2026-10-14T23:45:08.841996+00:00",
     "puffer-finance": "2026-10-15T08:56:37.938461+00:00",
     "stbl": "2026-10-16T00:07:26.100841+00:00",
     "siren-2": "2026-10-16T05:33:32.924329+00:00"
@@ -26,29 +25,6 @@
       "entry_notified": true,
       "exit_notified": true,
       "entry_price": 0.024952120252667288,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": 0
-    },
-    {
-      "coin_id": "siren-2",
-      "symbol": "SIREN",
-      "name": "Siren",
-      "rank": 665,
-      "market_cap": 30072679,
-      "ch24_at_pump": 82.04092,
-      "ratio_30d": 1.5309863154556325,
-      "turnover": 0.0667652947951477,
-      "vol_z": 32.38196991340982,
-      "ch24_at_pump_start": 0.5000953475400511,
-      "pump_lag_h": 8.56,
-      "rise72": 0.9297829761501111,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-10-15T21:00:00+00:00",
-      "entry_time": "2026-10-15T23:00:00+00:00",
-      "exit_time": "2026-10-17T23:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.04141852802912215,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": 0
     }
