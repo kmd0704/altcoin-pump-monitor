@@ -4,29 +4,5 @@
     "stbl": "2026-10-16T00:07:26.100841+00:00",
     "siren-2": "2026-10-16T05:33:32.924329+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "stbl",
-      "symbol": "STBL",
-      "name": "STBL",
-      "rank": 855,
-      "market_cap": 21366303,
-      "ch24_at_pump": 104.19297,
-      "ratio_30d": 1.631468604936625,
-      "turnover": 0.1270311156926037,
-      "vol_z": 0.8696702104490456,
-      "ch24_at_pump_start": 1.0026970419015986,
-      "pump_lag_h": 0.02,
-      "rise72": 1.1326441141077002,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-10-16T00:06:10+00:00",
-      "entry_time": "2026-10-16T02:06:10+00:00",
-      "exit_time": "2026-10-18T02:06:10+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.024952120252667288,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": 0
-    }
-  ]
+  "scheduled": []
 }
