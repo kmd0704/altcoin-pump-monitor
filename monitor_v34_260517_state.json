@@ -1,6 +1,7 @@
 {
   "alerted": {
-    "janction": "2026-10-20T14:46:04.208357+00:00"
+    "janction": "2026-10-20T14:46:04.208357+00:00",
+    "doodles": "2026-10-20T18:59:39.961937+00:00"
   },
   "scheduled": [
     {
@@ -23,6 +24,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.004286362252181344,
+      "btc_regime_at_entry": "range",
+      "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "doodles",
+      "symbol": "DOOD",
+      "name": "Doodles",
+      "rank": 868,
+      "market_cap": 18916722,
+      "ch24_at_pump": 83.89555,
+      "ratio_30d": 1.3224189992169644,
+      "turnover": 0.7090817078589196,
+      "vol_z": 9.258087689125464,
+      "ch24_at_pump_start": 0.6392136807393858,
+      "pump_lag_h": 2.99,
+      "rise72": 0.961758472638107,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-10-20T16:00:00+00:00",
+      "entry_time": "2026-10-20T18:00:00+00:00",
+      "exit_time": "2026-10-22T18:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.002429947482945822,
       "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -1
     }
