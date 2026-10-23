@@ -2,32 +2,10 @@
   "alerted": {
     "janction": "2026-10-20T14:59:50.908705+00:00",
     "doodles": "2026-10-20T19:10:27.915974+00:00",
-    "iostoken": "2026-10-21T07:30:21.400794+00:00"
+    "iostoken": "2026-10-21T07:30:21.400794+00:00",
+    "irys": "2026-10-23T13:20:18.628682+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "janction",
-      "symbol": "JCT",
-      "name": "Janction",
-      "rank": 467,
-      "market_cap": 49063540,
-      "ch24_at_pump": 123.74746,
-      "ratio_30d": 2.570516285359735,
-      "turnover": 0.14029138920718198,
-      "vol_z": 1.2393212054769753,
-      "ch24_at_pump_start": 0.5772072551716914,
-      "pump_lag_h": 6.0,
-      "rise72": 1.5825638378441265,
-      "chart_grade": "RED",
-      "pump_time": "2026-10-20T09:00:00+00:00",
-      "entry_time": "2026-10-20T11:00:00+00:00",
-      "exit_time": "2026-10-22T11:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0042969069494719824,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -1
-    },
     {
       "coin_id": "doodles",
       "symbol": "DOOD",
@@ -77,6 +55,29 @@
       "btc_bull_score_at_entry": -1,
       "sl_close_notified": true,
       "sl_close_price": 0.00163867
+    },
+    {
+      "coin_id": "irys",
+      "symbol": "IRYS",
+      "name": "Irys",
+      "rank": 307,
+      "market_cap": 87821419,
+      "ch24_at_pump": 126.73486,
+      "ratio_30d": 2.7616196288754944,
+      "turnover": 1.4162787761694986,
+      "vol_z": 9.89152474054801,
+      "ch24_at_pump_start": 0.6297703769399039,
+      "pump_lag_h": 5.34,
+      "rise72": 2.5115609417069535,
+      "chart_grade": "RED",
+      "pump_time": "2026-10-23T08:00:00+00:00",
+      "entry_time": "2026-10-23T10:00:00+00:00",
+      "exit_time": "2026-10-25T10:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.043894920713941334,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
     }
   ]
 }
