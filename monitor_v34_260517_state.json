@@ -3,7 +3,8 @@
     "janction": "2026-10-20T14:46:04.208357+00:00",
     "doodles": "2026-10-20T18:59:39.961937+00:00",
     "iostoken": "2026-10-21T07:12:31.994444+00:00",
-    "irys": "2026-10-23T13:09:41.084001+00:00"
+    "irys": "2026-10-23T13:09:41.084001+00:00",
+    "moonbirds": "2026-10-24T00:20:35.878596+00:00"
   },
   "scheduled": [
     {
@@ -55,6 +56,26 @@
       "btc_bull_score_at_entry": -1,
       "sl_close_notified": true,
       "sl_close_price": 0.120761
+    },
+    {
+      "coin_id": "moonbirds",
+      "symbol": "BIRB",
+      "name": "Moonbirds",
+      "rank": 573,
+      "market_cap": 35939442,
+      "ch24_at_pump": 140.07936,
+      "ratio_30d": 1.7895142322123856,
+      "turnover": 1.3871086227713703,
+      "vol_z": 11.399962688445173,
+      "ch24_at_pump_start": 1.4456678582836293,
+      "pump_lag_h": 0.02,
+      "rise72": 1.4845726920657016,
+      "chart_grade": "RED",
+      "pump_time": "2026-10-24T00:19:10+00:00",
+      "entry_time": "2026-10-24T02:19:10+00:00",
+      "exit_time": "2026-10-26T02:19:10+00:00",
+      "entry_notified": false,
+      "exit_notified": false
     }
   ]
 }
