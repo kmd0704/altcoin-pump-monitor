@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "janction": "2026-10-20T14:46:04.208357+00:00",
     "doodles": "2026-10-20T18:59:39.961937+00:00",
     "iostoken": "2026-10-21T07:12:31.994444+00:00",
     "irys": "2026-10-23T13:09:41.084001+00:00",
@@ -121,8 +120,11 @@
       "pump_time": "2026-10-24T14:00:00+00:00",
       "entry_time": "2026-10-24T16:00:00+00:00",
       "exit_time": "2026-10-26T16:00:00+00:00",
-      "entry_notified": false,
-      "exit_notified": false
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.03615260182810361,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
     }
   ]
 }
