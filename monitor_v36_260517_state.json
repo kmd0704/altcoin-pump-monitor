@@ -5,34 +5,10 @@
     "iostoken": "2026-10-21T07:30:21.400794+00:00",
     "irys": "2026-10-23T13:20:18.628682+00:00",
     "moonbirds": "2026-10-24T00:34:46.951317+00:00",
-    "infinit": "2026-10-24T05:44:18.220380+00:00"
+    "infinit": "2026-10-24T05:44:18.220380+00:00",
+    "orderly-network": "2026-10-24T10:50:17.290696+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "iostoken",
-      "symbol": "IOST",
-      "name": "IOST",
-      "rank": 489,
-      "market_cap": 46370176,
-      "ch24_at_pump": 73.15687,
-      "ratio_30d": 1.461301877552112,
-      "turnover": 0.3627071913229273,
-      "vol_z": 13.42025612041218,
-      "ch24_at_pump_start": 0.7462578047870203,
-      "pump_lag_h": 1.51,
-      "rise72": 0.8738145851714418,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-10-21T06:00:00+00:00",
-      "entry_time": "2026-10-21T08:00:00+00:00",
-      "exit_time": "2026-10-23T08:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.0012889151007549247,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": -1,
-      "sl_close_notified": true,
-      "sl_close_price": 0.00163867
-    },
     {
       "coin_id": "irys",
       "symbol": "IRYS",
@@ -102,6 +78,29 @@
       "exit_notified": false,
       "entry_price": 0.05006488960665665,
       "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "orderly-network",
+      "symbol": "ORDER",
+      "name": "Orderly",
+      "rank": 522,
+      "market_cap": 41122314,
+      "ch24_at_pump": 209.73379,
+      "ratio_30d": 2.4513373359123762,
+      "turnover": 0.3815674846170334,
+      "vol_z": 27.642798315406903,
+      "ch24_at_pump_start": 1.0082889403213011,
+      "pump_lag_h": 1.84,
+      "rise72": 2.2819027977068007,
+      "chart_grade": "RED",
+      "pump_time": "2026-10-24T09:00:00+00:00",
+      "entry_time": "2026-10-24T11:00:00+00:00",
+      "exit_time": "2026-10-26T11:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.10038705290938398,
+      "btc_regime_at_entry": "range",
       "btc_bull_score_at_entry": -1
     }
   ]
