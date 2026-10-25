@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "iostoken": "2026-10-21T07:30:21.400794+00:00",
     "irys": "2026-10-23T13:20:18.628682+00:00",
     "moonbirds": "2026-10-24T00:34:46.951317+00:00",
     "infinit": "2026-10-24T05:44:18.220380+00:00",
@@ -27,7 +26,7 @@
       "entry_time": "2026-10-23T10:00:00+00:00",
       "exit_time": "2026-10-25T10:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.043894920713941334,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1,
