@@ -5,7 +5,8 @@
     "moonbirds": "2026-10-24T00:34:46.951317+00:00",
     "infinit": "2026-10-24T05:44:18.220380+00:00",
     "orderly-network": "2026-10-24T10:50:17.290696+00:00",
-    "bubblemaps": "2026-10-24T14:27:32.144094+00:00"
+    "bubblemaps": "2026-10-24T14:27:32.144094+00:00",
+    "apriori": "2026-10-25T06:00:28.280525+00:00"
   },
   "scheduled": [
     {
@@ -122,6 +123,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.03734654665392484,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "apriori",
+      "symbol": "APR",
+      "name": "Capricorn",
+      "rank": 807,
+      "market_cap": 20966693,
+      "ch24_at_pump": 101.97772,
+      "ratio_30d": 0.34894023172681693,
+      "turnover": 0.8852254006551119,
+      "vol_z": 0.4970218330202418,
+      "ch24_at_pump_start": 0.8334256042859378,
+      "pump_lag_h": 1.01,
+      "rise72": 1.2785961952561484,
+      "chart_grade": "RED",
+      "pump_time": "2026-10-25T05:00:00+00:00",
+      "entry_time": "2026-10-25T07:00:00+00:00",
+      "exit_time": "2026-10-27T07:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.05230994870447019,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
     }
