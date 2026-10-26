@@ -5,7 +5,8 @@
     "infinit": "2026-10-24T05:44:18.220380+00:00",
     "orderly-network": "2026-10-24T10:50:17.290696+00:00",
     "bubblemaps": "2026-10-24T14:27:32.144094+00:00",
-    "apriori": "2026-10-25T06:00:28.280525+00:00"
+    "apriori": "2026-10-25T06:00:28.280525+00:00",
+    "bulla-3": "2026-10-26T19:13:03.927733+00:00"
   },
   "scheduled": [
     {
@@ -95,7 +96,7 @@
       "entry_time": "2026-10-24T16:00:00+00:00",
       "exit_time": "2026-10-26T16:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.03734654665392484,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
@@ -120,6 +121,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.05230994870447019,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "bulla-3",
+      "symbol": "BULLA",
+      "name": "BULLA",
+      "rank": 381,
+      "market_cap": 61187936,
+      "ch24_at_pump": 73.02881,
+      "ratio_30d": 1.46091707933069,
+      "turnover": 0.07356362849729539,
+      "vol_z": 6.33470776986469,
+      "ch24_at_pump_start": 0.5099868720873824,
+      "pump_lag_h": 7.22,
+      "rise72": 0.9138722859056005,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-10-26T12:00:00+00:00",
+      "entry_time": "2026-10-26T14:00:00+00:00",
+      "exit_time": "2026-10-28T14:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.1529987093998667,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
     }
