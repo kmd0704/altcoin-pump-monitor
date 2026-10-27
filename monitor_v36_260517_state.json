@@ -10,29 +10,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "infinit",
-      "symbol": "IN",
-      "name": "INFINIT",
-      "rank": 916,
-      "market_cap": 17274364,
-      "ch24_at_pump": 82.63387,
-      "ratio_30d": 1.3387081085116717,
-      "turnover": 0.5187985619034498,
-      "vol_z": 5.375590715441877,
-      "ch24_at_pump_start": 0.5225864644149816,
-      "pump_lag_h": 1.74,
-      "rise72": 0.8775128180147849,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-10-24T04:00:00+00:00",
-      "entry_time": "2026-10-24T06:00:00+00:00",
-      "exit_time": "2026-10-26T06:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.05006488960665665,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": -1
-    },
-    {
       "coin_id": "orderly-network",
       "symbol": "ORDER",
       "name": "Orderly",
@@ -96,7 +73,7 @@
       "entry_time": "2026-10-25T07:00:00+00:00",
       "exit_time": "2026-10-27T07:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.05230994870447019,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
