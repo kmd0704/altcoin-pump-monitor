@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "irys": "2026-10-23T13:09:41.084001+00:00",
     "moonbirds": "2026-10-24T00:20:35.878596+00:00",
     "infinit": "2026-10-24T05:28:37.333308+00:00",
     "orderly-network": "2026-10-24T10:28:35.986380+00:00",
@@ -8,29 +7,6 @@
     "apriori": "2026-10-25T05:46:56.513280+00:00"
   },
   "scheduled": [
-    {
-      "coin_id": "orderly-network",
-      "symbol": "ORDER",
-      "name": "Orderly",
-      "rank": 578,
-      "market_cap": 35580407,
-      "ch24_at_pump": 165.16455,
-      "ratio_30d": 2.1110384057903193,
-      "turnover": 0.36221509188724826,
-      "vol_z": 24.609853211776656,
-      "ch24_at_pump_start": 1.0082889403213011,
-      "pump_lag_h": 1.48,
-      "rise72": 1.8263033196331184,
-      "chart_grade": "RED",
-      "pump_time": "2026-10-24T09:00:00+00:00",
-      "entry_time": "2026-10-24T11:00:00+00:00",
-      "exit_time": "2026-10-26T11:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.08638280087871078,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -1
-    },
     {
       "coin_id": "bubblemaps",
       "symbol": "BMT",
