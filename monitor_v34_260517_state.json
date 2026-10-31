@@ -1,4 +1,30 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "meet48": "2026-10-31T00:29:56.495319+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "meet48",
+      "symbol": "IDOL",
+      "name": "MEET48",
+      "rank": 440,
+      "market_cap": 50919524,
+      "ch24_at_pump": 70.03661,
+      "ratio_30d": 2.1342380943929977,
+      "turnover": 0.46662245709132655,
+      "vol_z": 8.816876099934564,
+      "ch24_at_pump_start": 0.932255557979413,
+      "pump_lag_h": 7.5,
+      "rise72": 2.5749717485651447,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-10-30T17:00:00+00:00",
+      "entry_time": "2026-10-30T19:00:00+00:00",
+      "exit_time": "2026-11-01T19:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.023183627396223476,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -2
+    }
+  ]
 }
