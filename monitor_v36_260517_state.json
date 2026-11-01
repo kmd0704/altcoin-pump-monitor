@@ -1,6 +1,31 @@
 {
   "alerted": {
-    "meet48": "2026-10-29T00:50:25.117693+00:00"
+    "meet48": "2026-10-29T00:50:25.117693+00:00",
+    "funfair": "2026-11-01T19:34:50.469367+00:00"
   },
-  "scheduled": []
+  "scheduled": [
+    {
+      "coin_id": "funfair",
+      "symbol": "FUN",
+      "name": "FUNToken",
+      "rank": 717,
+      "market_cap": 26285875,
+      "ch24_at_pump": 95.84252,
+      "ratio_30d": 0.29004706238006756,
+      "turnover": 0.03971724317953899,
+      "vol_z": 2.175122748497607,
+      "ch24_at_pump_start": 0.5660823502670884,
+      "pump_lag_h": 1.58,
+      "rise72": 0.6391866854946999,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-11-01T18:00:00+00:00",
+      "entry_time": "2026-11-01T20:00:00+00:00",
+      "exit_time": "2026-11-03T20:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0023896896958238156,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -2
+    }
+  ]
 }
