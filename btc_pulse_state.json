@@ -3,7 +3,7 @@
   "last_trend_state": {
     "ema20_above_ema50": false,
     "ema50_above_ema200": true,
-    "price_above_ema200": false,
+    "price_above_ema200": true,
     "fr_state": "hot",
     "cb_state": "cold"
   },
