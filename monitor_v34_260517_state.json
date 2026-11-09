@@ -3,52 +3,5 @@
     "akedo": "2026-11-06T07:44:27.357877+00:00",
     "unifai-network": "2026-11-06T07:44:30.067074+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "akedo",
-      "symbol": "AKE",
-      "name": "Akedo",
-      "rank": 240,
-      "market_cap": 116497975,
-      "ch24_at_pump": 104.99331,
-      "ratio_30d": 0.172521270628272,
-      "turnover": 0.21597930982253666,
-      "vol_z": 1.7419930561656853,
-      "ch24_at_pump_start": 0.6693124548674014,
-      "pump_lag_h": 2.74,
-      "rise72": 1.391454769701034,
-      "chart_grade": "RED",
-      "pump_time": "2026-11-06T05:00:00+00:00",
-      "entry_time": "2026-11-06T07:00:00+00:00",
-      "exit_time": "2026-11-08T07:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.005137181108967266,
-      "btc_regime_at_entry": "range",
-      "btc_bull_score_at_entry": -4
-    },
-    {
-      "coin_id": "unifai-network",
-      "symbol": "UAI",
-      "name": "UnifAI Network",
-      "rank": 479,
-      "market_cap": 43559606,
-      "ch24_at_pump": 78.28885,
-      "ratio_30d": 0.629755490666699,
-      "turnover": 0.2984658262828918,
-      "vol_z": 1.651081666422355,
-      "ch24_at_pump_start": 0.7512418503630249,
-      "pump_lag_h": 0.74,
-      "rise72": 1.46807953756845,
-      "chart_grade": "YELLOW",
-      "pump_time": "2026-11-06T07:00:00+00:00",
-      "entry_time": "2026-11-06T09:00:00+00:00",
-      "exit_time": "2026-11-08T09:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.18695580058193773,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": -4
-    }
-  ]
+  "scheduled": []
 }
