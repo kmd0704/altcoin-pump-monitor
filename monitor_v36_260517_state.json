@@ -1,7 +1,30 @@
 {
   "alerted": {
-    "akedo": "2026-11-06T09:17:16.637629+00:00",
-    "unifai-network": "2026-11-06T09:17:19.331471+00:00"
+    "initia": "2026-11-10T16:59:07.639008+00:00"
   },
-  "scheduled": []
+  "scheduled": [
+    {
+      "coin_id": "initia",
+      "symbol": "INIT",
+      "name": "Initia",
+      "rank": 364,
+      "market_cap": 62119250,
+      "ch24_at_pump": 91.87041,
+      "ratio_30d": 2.418936406688166,
+      "turnover": 0.687719057499037,
+      "vol_z": 4.212815190487329,
+      "ch24_at_pump_start": 0.7103276062693813,
+      "pump_lag_h": 11.99,
+      "rise72": 1.6765101895304348,
+      "chart_grade": "RED",
+      "pump_time": "2026-11-10T05:00:00+00:00",
+      "entry_time": "2026-11-10T07:00:00+00:00",
+      "exit_time": "2026-11-12T07:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.2824918294973695,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -6
+    }
+  ]
 }
