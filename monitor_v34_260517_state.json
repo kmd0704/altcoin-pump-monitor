@@ -1,4 +1,54 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "akedo": "2026-11-13T09:12:36.342394+00:00",
+    "sanctum-2": "2026-11-13T09:12:39.041962+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "akedo",
+      "symbol": "AKE",
+      "name": "Akedo",
+      "rank": 230,
+      "market_cap": 118103084,
+      "ch24_at_pump": 85.25455,
+      "ratio_30d": 0.2098562715579107,
+      "turnover": 0.7000376842368642,
+      "vol_z": 0.17696901042093746,
+      "ch24_at_pump_start": 0.7928792128619984,
+      "pump_lag_h": 2.21,
+      "rise72": 1.1449809568531992,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-11-13T07:00:00+00:00",
+      "entry_time": "2026-11-13T09:00:00+00:00",
+      "exit_time": "2026-11-15T09:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.005153434157797209,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -6
+    },
+    {
+      "coin_id": "sanctum-2",
+      "symbol": "SANC",
+      "name": "Sanctum",
+      "rank": 438,
+      "market_cap": 48484090,
+      "ch24_at_pump": 121.6406,
+      "ratio_30d": 1.4637834035938244,
+      "turnover": 0.02277066955760024,
+      "vol_z": 30.381807619095007,
+      "ch24_at_pump_start": 1.2388061046433751,
+      "pump_lag_h": 6.21,
+      "rise72": 1.9632247216326788,
+      "chart_grade": "RED",
+      "pump_time": "2026-11-13T03:00:00+00:00",
+      "entry_time": "2026-11-13T05:00:00+00:00",
+      "exit_time": "2026-11-15T05:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.09744061329374791,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -6
+    }
+  ]
 }
