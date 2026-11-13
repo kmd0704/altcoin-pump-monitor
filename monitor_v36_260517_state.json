@@ -1,7 +1,9 @@
 {
   "alerted": {
     "initia": "2026-11-10T16:59:07.639008+00:00",
-    "sanctum-2": "2026-11-13T07:51:10.109599+00:00"
+    "sanctum-2": "2026-11-13T07:51:10.109599+00:00",
+    "akedo": "2026-11-13T16:13:13.033879+00:00",
+    "lombard-protocol": "2026-11-13T16:13:15.790221+00:00"
   },
   "scheduled": [
     {
@@ -24,6 +26,52 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.09666003633453708,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -6
+    },
+    {
+      "coin_id": "akedo",
+      "symbol": "AKE",
+      "name": "Akedo",
+      "rank": 144,
+      "market_cap": 248057026,
+      "ch24_at_pump": 290.07096,
+      "ratio_30d": 0.4154992787763861,
+      "turnover": 0.7192439310847272,
+      "vol_z": 2.005414938075267,
+      "ch24_at_pump_start": 0.7928792128619984,
+      "pump_lag_h": 9.22,
+      "rise72": 3.291856335879829,
+      "chart_grade": "RED",
+      "pump_time": "2026-11-13T07:00:00+00:00",
+      "entry_time": "2026-11-13T09:00:00+00:00",
+      "exit_time": "2026-11-15T09:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.010546208984183528,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -6
+    },
+    {
+      "coin_id": "lombard-protocol",
+      "symbol": "BARD",
+      "name": "Lombard",
+      "rank": 358,
+      "market_cap": 64444966,
+      "ch24_at_pump": 82.48636,
+      "ratio_30d": 1.3911858433254831,
+      "turnover": 0.3844194846773829,
+      "vol_z": 122.42823746309894,
+      "ch24_at_pump_start": 0.5823361943019718,
+      "pump_lag_h": 11.22,
+      "rise72": 1.059341026551388,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-11-13T05:00:00+00:00",
+      "entry_time": "2026-11-13T07:00:00+00:00",
+      "exit_time": "2026-11-15T07:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.1618798313822095,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -6
     }
