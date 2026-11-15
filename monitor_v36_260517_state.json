@@ -23,7 +23,7 @@
       "entry_time": "2026-11-13T05:00:00+00:00",
       "exit_time": "2026-11-15T05:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.09666003633453708,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -6
@@ -46,7 +46,7 @@
       "entry_time": "2026-11-13T09:00:00+00:00",
       "exit_time": "2026-11-15T09:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.010546208984183528,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -6,
@@ -71,7 +71,7 @@
       "entry_time": "2026-11-13T07:00:00+00:00",
       "exit_time": "2026-11-15T07:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.1618798313822095,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -6
