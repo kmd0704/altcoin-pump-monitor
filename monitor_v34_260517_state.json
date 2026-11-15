@@ -1,7 +1,8 @@
 {
   "alerted": {
     "akedo": "2026-11-13T09:12:36.342394+00:00",
-    "sanctum-2": "2026-11-13T09:12:39.041962+00:00"
+    "sanctum-2": "2026-11-13T09:12:39.041962+00:00",
+    "vine": "2026-11-15T22:34:42.314516+00:00"
   },
   "scheduled": [
     {
@@ -51,6 +52,29 @@
       "entry_price": 0.09744061329374791,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -6
+    },
+    {
+      "coin_id": "vine",
+      "symbol": "VINE",
+      "name": "Vine",
+      "rank": 933,
+      "market_cap": 14334105,
+      "ch24_at_pump": 211.05494,
+      "ratio_30d": 1.888834495217237,
+      "turnover": 1.001596971439263,
+      "vol_z": 10.426842178036042,
+      "ch24_at_pump_start": 0.985620334040807,
+      "pump_lag_h": 5.58,
+      "rise72": 2.3060048319727087,
+      "chart_grade": "RED",
+      "pump_time": "2026-11-15T17:00:00+00:00",
+      "entry_time": "2026-11-15T19:00:00+00:00",
+      "exit_time": "2026-11-17T19:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.014324200064052951,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
