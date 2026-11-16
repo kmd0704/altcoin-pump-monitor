@@ -4,7 +4,8 @@
     "akedo": "2026-11-13T16:13:13.033879+00:00",
     "lombard-protocol": "2026-11-13T16:13:15.790221+00:00",
     "vine": "2026-11-15T21:42:39.417611+00:00",
-    "superrare": "2026-11-16T09:30:53.016049+00:00"
+    "superrare": "2026-11-16T09:30:53.016049+00:00",
+    "bless-2": "2026-11-16T20:21:30.898640+00:00"
   },
   "scheduled": [
     {
@@ -50,6 +51,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.015748884824620266,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "bless-2",
+      "symbol": "BLESS",
+      "name": "Bless",
+      "rank": 547,
+      "market_cap": 32364196,
+      "ch24_at_pump": 95.54266,
+      "ratio_30d": 2.3437737918704618,
+      "turnover": 0.12656501848055682,
+      "vol_z": 1.6066003965450517,
+      "ch24_at_pump_start": 0.6069246053802624,
+      "pump_lag_h": 6.36,
+      "rise72": 1.2896179701368693,
+      "chart_grade": "RED",
+      "pump_time": "2026-11-16T14:00:00+00:00",
+      "entry_time": "2026-11-16T16:00:00+00:00",
+      "exit_time": "2026-11-18T16:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.01757310439980555,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
     }
