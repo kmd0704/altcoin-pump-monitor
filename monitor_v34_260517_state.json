@@ -2,7 +2,8 @@
   "alerted": {
     "vine": "2026-11-15T22:34:42.314516+00:00",
     "superrare": "2026-11-16T10:44:42.651323+00:00",
-    "bless-2": "2026-11-16T20:50:00.447237+00:00"
+    "bless-2": "2026-11-16T20:50:00.447237+00:00",
+    "brevis": "2026-11-17T21:31:40.098526+00:00"
   },
   "scheduled": [
     {
@@ -23,7 +24,7 @@
       "entry_time": "2026-11-15T19:00:00+00:00",
       "exit_time": "2026-11-17T19:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.014324200064052951,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -7
@@ -71,6 +72,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.018302981252407802,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "brevis",
+      "symbol": "BREV",
+      "name": "Brevis",
+      "rank": 635,
+      "market_cap": 27148425,
+      "ch24_at_pump": 92.91937,
+      "ratio_30d": 1.488832770251021,
+      "turnover": 0.4236980192003753,
+      "vol_z": 7.396082154800521,
+      "ch24_at_pump_start": 0.7355778576630048,
+      "pump_lag_h": 7.53,
+      "rise72": 1.026018075586543,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-11-17T14:00:00+00:00",
+      "entry_time": "2026-11-17T16:00:00+00:00",
+      "exit_time": "2026-11-19T16:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.10843246491940157,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
     }
