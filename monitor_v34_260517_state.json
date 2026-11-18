@@ -3,7 +3,8 @@
     "vine": "2026-11-15T22:34:42.314516+00:00",
     "superrare": "2026-11-16T10:44:42.651323+00:00",
     "bless-2": "2026-11-16T20:50:00.447237+00:00",
-    "brevis": "2026-11-17T21:31:40.098526+00:00"
+    "brevis": "2026-11-17T21:31:40.098526+00:00",
+    "momentum-3": "2026-11-18T12:43:44.876874+00:00"
   },
   "scheduled": [
     {
@@ -47,7 +48,7 @@
       "entry_time": "2026-11-16T07:00:00+00:00",
       "exit_time": "2026-11-18T07:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.015715410767511425,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
@@ -97,6 +98,29 @@
       "entry_price": 0.10843246491940157,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
+    },
+    {
+      "coin_id": "momentum-3",
+      "symbol": "MMT",
+      "name": "Momentum",
+      "rank": 388,
+      "market_cap": 52823539,
+      "ch24_at_pump": 114.00941,
+      "ratio_30d": 1.8922840107727343,
+      "turnover": 1.017269081552682,
+      "vol_z": 118.25776351664878,
+      "ch24_at_pump_start": 0.9120515520079697,
+      "pump_lag_h": 6.73,
+      "rise72": 1.538062782586056,
+      "chart_grade": "RED",
+      "pump_time": "2026-11-18T06:00:00+00:00",
+      "entry_time": "2026-11-18T08:00:00+00:00",
+      "exit_time": "2026-11-20T08:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.2527749204417563,
+      "btc_regime_at_entry": "bear",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
