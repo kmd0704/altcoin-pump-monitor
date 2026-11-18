@@ -8,29 +8,6 @@
   },
   "scheduled": [
     {
-      "coin_id": "vine",
-      "symbol": "VINE",
-      "name": "Vine",
-      "rank": 950,
-      "market_cap": 14243971,
-      "ch24_at_pump": 211.31451,
-      "ratio_30d": 1.9124236853794572,
-      "turnover": 0.9551772201632779,
-      "vol_z": 7.958086130475207,
-      "ch24_at_pump_start": 0.985620334040807,
-      "pump_lag_h": 4.71,
-      "rise72": 2.353800581662512,
-      "chart_grade": "RED",
-      "pump_time": "2026-11-15T17:00:00+00:00",
-      "entry_time": "2026-11-15T19:00:00+00:00",
-      "exit_time": "2026-11-17T19:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.01417487823913682,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": -7
-    },
-    {
       "coin_id": "superrare",
       "symbol": "RARE",
       "name": "SuperRare",
@@ -71,7 +48,7 @@
       "entry_time": "2026-11-16T16:00:00+00:00",
       "exit_time": "2026-11-18T16:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.01757310439980555,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -1
