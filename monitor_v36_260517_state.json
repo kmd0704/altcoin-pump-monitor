@@ -1,6 +1,5 @@
 {
   "alerted": {
-    "superrare": "2026-11-16T09:30:53.016049+00:00",
     "bless-2": "2026-11-16T20:21:30.898640+00:00",
     "brevis": "2026-11-17T22:14:40.284345+00:00",
     "momentum-3": "2026-11-18T13:52:12.068976+00:00"
@@ -47,7 +46,7 @@
       "entry_time": "2026-11-18T08:00:00+00:00",
       "exit_time": "2026-11-20T08:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.24084343950662226,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -7
