@@ -3,29 +3,5 @@
     "brevis": "2026-11-17T22:14:40.284345+00:00",
     "momentum-3": "2026-11-18T13:52:12.068976+00:00"
   },
-  "scheduled": [
-    {
-      "coin_id": "momentum-3",
-      "symbol": "MMT",
-      "name": "Momentum",
-      "rank": 410,
-      "market_cap": 49250125,
-      "ch24_at_pump": 110.6067,
-      "ratio_30d": 1.8339243008865649,
-      "turnover": 1.0531639526362342,
-      "vol_z": 116.35448405499552,
-      "ch24_at_pump_start": 0.9120515520079697,
-      "pump_lag_h": 7.87,
-      "rise72": 1.5338819638171266,
-      "chart_grade": "RED",
-      "pump_time": "2026-11-18T06:00:00+00:00",
-      "entry_time": "2026-11-18T08:00:00+00:00",
-      "exit_time": "2026-11-20T08:00:00+00:00",
-      "entry_notified": true,
-      "exit_notified": true,
-      "entry_price": 0.24084343950662226,
-      "btc_regime_at_entry": "stale",
-      "btc_bull_score_at_entry": -7
-    }
-  ]
+  "scheduled": []
 }
