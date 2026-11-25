@@ -1,7 +1,8 @@
 {
   "alerted": {
     "bugscoin": "2026-11-25T02:19:49.479031+00:00",
-    "big-time": "2026-11-25T12:41:46.453449+00:00"
+    "big-time": "2026-11-25T12:41:46.453449+00:00",
+    "mantra": "2026-11-25T22:27:17.038181+00:00"
   },
   "scheduled": [
     {
@@ -47,6 +48,29 @@
       "entry_notified": true,
       "exit_notified": false,
       "entry_price": 0.007011381256827408,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -5
+    },
+    {
+      "coin_id": "mantra",
+      "symbol": "MANTRA",
+      "name": "MANTRA",
+      "rank": 666,
+      "market_cap": 23167273,
+      "ch24_at_pump": 100.30198,
+      "ratio_30d": 0.8910474990121335,
+      "turnover": 0.35266596810195006,
+      "vol_z": 38.46238853275205,
+      "ch24_at_pump_start": 0.5621124623807847,
+      "pump_lag_h": 6.45,
+      "rise72": 1.025916779656722,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-11-25T16:00:00+00:00",
+      "entry_time": "2026-11-25T18:00:00+00:00",
+      "exit_time": "2026-11-27T18:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0033520897723135104,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -5
     }
