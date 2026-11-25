@@ -1,4 +1,30 @@
 {
-  "alerted": {},
-  "scheduled": []
+  "alerted": {
+    "bugscoin": "2026-11-25T02:19:49.479031+00:00"
+  },
+  "scheduled": [
+    {
+      "coin_id": "bugscoin",
+      "symbol": "BGSC",
+      "name": "BugsCoin",
+      "rank": 872,
+      "market_cap": 14949912,
+      "ch24_at_pump": 74.88706,
+      "ratio_30d": 2.917217956375917,
+      "turnover": 0.22353868173316435,
+      "vol_z": 27.10320748937248,
+      "ch24_at_pump_start": 0.5741190966074783,
+      "pump_lag_h": 4.33,
+      "rise72": 2.236469700841472,
+      "chart_grade": "YELLOW",
+      "pump_time": "2026-11-24T22:00:00+00:00",
+      "entry_time": "2026-11-25T00:00:00+00:00",
+      "exit_time": "2026-11-27T00:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.001436422226156628,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -5
+    }
+  ]
 }
