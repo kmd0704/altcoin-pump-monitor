@@ -1,7 +1,8 @@
 {
   "alerted": {
     "big-time": "2026-11-25T09:38:14.586234+00:00",
-    "mantra": "2026-11-25T19:47:56.956244+00:00"
+    "mantra": "2026-11-25T19:47:56.956244+00:00",
+    "bulla-3": "2026-11-26T11:59:07.899943+00:00"
   },
   "scheduled": [
     {
@@ -49,6 +50,29 @@
       "entry_price": 0.0033646941612384203,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -5
+    },
+    {
+      "coin_id": "bulla-3",
+      "symbol": "BULLA",
+      "name": "BULLA",
+      "rank": 758,
+      "market_cap": 19591183,
+      "ch24_at_pump": 90.80272,
+      "ratio_30d": 0.3592674592586081,
+      "turnover": 0.19370029099812855,
+      "vol_z": 0.9946690702984038,
+      "ch24_at_pump_start": 0.6045061650864796,
+      "pump_lag_h": 3.99,
+      "rise72": 1.3526091668300273,
+      "chart_grade": "RED",
+      "pump_time": "2026-11-26T08:00:00+00:00",
+      "entry_time": "2026-11-26T10:00:00+00:00",
+      "exit_time": "2026-11-28T10:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.04923639518142193,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
