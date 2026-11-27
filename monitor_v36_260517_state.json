@@ -3,7 +3,8 @@
     "bugscoin": "2026-11-25T02:19:49.479031+00:00",
     "big-time": "2026-11-25T12:41:46.453449+00:00",
     "mantra": "2026-11-25T22:27:17.038181+00:00",
-    "bulla-3": "2026-11-26T15:03:22.793592+00:00"
+    "bulla-3": "2026-11-26T15:03:22.793592+00:00",
+    "portal-2": "2026-11-27T18:53:04.587358+00:00"
   },
   "scheduled": [
     {
@@ -70,7 +71,7 @@
       "entry_time": "2026-11-25T18:00:00+00:00",
       "exit_time": "2026-11-27T18:00:00+00:00",
       "entry_notified": true,
-      "exit_notified": false,
+      "exit_notified": true,
       "entry_price": 0.0033520897723135104,
       "btc_regime_at_entry": "stale",
       "btc_bull_score_at_entry": -5
@@ -99,6 +100,29 @@
       "btc_bull_score_at_entry": -7,
       "sl_close_notified": true,
       "sl_close_price": 0.055786
+    },
+    {
+      "coin_id": "portal-2",
+      "symbol": "PORTAL",
+      "name": "Portal",
+      "rank": 508,
+      "market_cap": 34590919,
+      "ch24_at_pump": 213.90929,
+      "ratio_30d": 2.8301317096982186,
+      "turnover": 0.7141158113038221,
+      "vol_z": 32.03004594834551,
+      "ch24_at_pump_start": 0.6739296635147631,
+      "pump_lag_h": 7.88,
+      "rise72": 2.333964760505785,
+      "chart_grade": "RED",
+      "pump_time": "2026-11-27T11:00:00+00:00",
+      "entry_time": "2026-11-27T13:00:00+00:00",
+      "exit_time": "2026-11-29T13:00:00+00:00",
+      "entry_notified": true,
+      "exit_notified": false,
+      "entry_price": 0.0389918580703749,
+      "btc_regime_at_entry": "stale",
+      "btc_bull_score_at_entry": -7
     }
   ]
 }
